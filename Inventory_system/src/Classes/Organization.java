@@ -4,33 +4,61 @@
  */
 package Classes;
 
+import Users.UserAccountDirectory;
+
 /**
  *
  * @author aesha
  */
-public class Organization extends Enterprise{
+public abstract class Organization{
     
-    private String orgType;
-    private String orgName;
+    private String name;
+    private int organizationID;
+    private static int counter = 0;
+    private UserAccountDirectory userAccountDirectory;
     
-    public Organization(){
+   /* public enum OrgType {
         
+    }*/
+     public Organization(String name) {
+        this.name = name;
+        userAccountDirectory = new UserAccountDirectory();
+        organizationID = counter;
+        ++counter;
     }
 
-    public String getOrgType() {
-        return orgType;
+    public String getName() {
+        return name;
     }
 
-    public void setOrgType(String orgType) {
-        this.orgType = orgType;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getOrgName() {
-        return orgName;
+    public int getOrganizationID() {
+        return organizationID;
     }
 
-    public void setOrgName(String orgName) {
-        this.orgName = orgName;
+    public void setOrganizationID(int organizationID) {
+        this.organizationID = organizationID;
     }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public static void setCounter(int counter) {
+        Organization.counter = counter;
+    }
+
+    public UserAccountDirectory getUserAccountDirectory() {
+        return userAccountDirectory;
+    }
+
+    public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
+        this.userAccountDirectory = userAccountDirectory;
+    }
+
+     
     
 }
