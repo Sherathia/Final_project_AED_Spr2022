@@ -73,11 +73,11 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtconfpwd1" pref="76" max="32767" attributes="0"/>
-                                              <Component id="txtcountry" alignment="0" pref="76" max="32767" attributes="0"/>
+                                              <Component id="txtconfpwd1" max="32767" attributes="0"/>
+                                              <Component id="txtcountry" alignment="0" max="32767" attributes="0"/>
                                               <Component id="cmbEnterprise" alignment="0" max="32767" attributes="0"/>
                                               <Component id="cmbOrganisation" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtcontact" alignment="1" pref="76" max="32767" attributes="0"/>
+                                              <Component id="txtcontact" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -249,6 +249,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbEnterpriseActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
