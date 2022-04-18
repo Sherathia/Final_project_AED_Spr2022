@@ -11,6 +11,8 @@ package Classes;
 public class Network {
     
     private String country;
+    private EnterpriseDirectory enterpriseDirectory;
+    
 
     public String getCountry() {
         return country;
@@ -19,5 +21,14 @@ public class Network {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public EnterpriseDirectory getEnterpriseDirectory() {
+        return enterpriseDirectory;
+    }
+
+    public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
+        this.enterpriseDirectory = enterpriseDirectory;
+    }
+    
     
 }

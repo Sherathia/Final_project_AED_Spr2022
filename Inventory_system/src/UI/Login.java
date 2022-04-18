@@ -4,7 +4,8 @@
  */
 package UI;
 
-import Organisation.HierarchyManage;
+import Screens.HierarchyManage;
+import Users.UserAccount;
 import java.awt.CardLayout;
 import java.awt.event.HierarchyListener;
 
@@ -39,10 +40,10 @@ public class Login extends javax.swing.JFrame {
         RightPanel = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtPWd = new javax.swing.JPasswordField();
+        txtPwd = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -73,8 +74,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jTextField1.setText("Username");
+        txtUserName.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtUserName.setText("Username");
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -98,8 +99,8 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(178, Short.MAX_VALUE))
         );
 
-        txtPWd.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        txtPWd.setText("Password");
+        txtPwd.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtPwd.setText("Password");
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
@@ -118,8 +119,8 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtPWd, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                        .addComponent(jTextField1))
+                        .addComponent(txtPwd, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                        .addComponent(txtUserName))
                     .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,9 +134,9 @@ public class Login extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(txtPWd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -152,7 +153,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,8 +179,18 @@ public class Login extends javax.swing.JFrame {
         PanelLogin.add("Hierarchy",hr);
         CardLayout layout = (CardLayout)PanelLogin.getLayout();
         layout.next(PanelLogin);*/
+       String UserName = txtUserName.getText();
+       char[] passwordArr = txtPwd.getPassword();
+       String password = String.valueOf(passwordArr);
+       boolean flag= false;
+       UserAccount userAccount;
+       
        hr.setVisible(true);
        this.dispose();
+       
+       
+       
+       
  
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -228,8 +239,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel leftPanel;
-    private javax.swing.JPasswordField txtPWd;
+    private javax.swing.JPasswordField txtPwd;
+    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

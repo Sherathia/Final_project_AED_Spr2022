@@ -27,4 +27,43 @@ public class UserAccountDirectory {
         this.userAccountList = userAccountList;
     }
     
+    public UserAccount createUserAccount( String name, String username, String password, String network) {
+        UserAccount ua = new UserAccount(name,username, password, network);
+        ua.setName(name);
+        ua.setUsername(username);
+        ua.setPassword(password);
+        ua.setNetwork(network);
+        userAccountList.add(ua);
+        return ua;
+    }
+    
+    public UserAccount validateUser(String username, String password) {
+        for (UserAccount acc : userAccountList) {
+            if (acc.getUsername().equals(username) && acc.getPassword().equals(password)) {
+                return acc;
+            }
+        }
+        return null;
+    }
+    public UserAccount getAccountUserName(String userName) {
+        UserAccount AccountDetail = userAccountList.stream().filter(x -> x.getUsername().equals(userName)).findAny().orElse(null);
+        return AccountDetail;
+    }
+    
+    
+    public boolean duplicateUserName(String username) {
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public void DeleteUserAccount(UserAccount account) {
+        int value = userAccountList.indexOf(account);
+        userAccountList.remove(value);
+    }
+    
+    
 }
