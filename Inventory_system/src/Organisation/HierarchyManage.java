@@ -4,6 +4,7 @@
  */
 package Organisation;
 
+import UI.Login;
 import UI.RegistrationScreen;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -17,9 +18,10 @@ public class HierarchyManage extends javax.swing.JFrame {
     /**
      * Creates new form HierarchyManage
      */
- 
     public HierarchyManage() {
         initComponents();
+        
+       
          }
 
     /**
@@ -37,6 +39,7 @@ public class HierarchyManage extends javax.swing.JFrame {
         btnOrg = new javax.swing.JButton();
         btnUser = new javax.swing.JButton();
         btnRequest = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         RightPanel = new javax.swing.JPanel();
         WorkArea = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -50,6 +53,11 @@ public class HierarchyManage extends javax.swing.JFrame {
         btnEnterprise.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnEnterprise.setForeground(new java.awt.Color(51, 153, 255));
         btnEnterprise.setText("Manage Enterprise");
+        btnEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterpriseActionPerformed(evt);
+            }
+        });
 
         btnOrg.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnOrg.setForeground(new java.awt.Color(51, 153, 255));
@@ -72,6 +80,18 @@ public class HierarchyManage extends javax.swing.JFrame {
         btnRequest.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnRequest.setForeground(new java.awt.Color(51, 153, 255));
         btnRequest.setText("Manage Requests");
+        btnRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\logout1.png")); // NOI18N
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LeftPanelLayout = new javax.swing.GroupLayout(LeftPanel);
         LeftPanel.setLayout(LeftPanelLayout);
@@ -88,11 +108,15 @@ public class HierarchyManage extends javax.swing.JFrame {
                             .addComponent(btnEnterprise, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnOrg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
+            .addGroup(LeftPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LeftPanelLayout.setVerticalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftPanelLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(43, 43, 43)
                 .addComponent(btnEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnOrg)
@@ -100,7 +124,9 @@ public class HierarchyManage extends javax.swing.JFrame {
                 .addComponent(btnUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRequest)
-                .addContainerGap(450, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(366, Short.MAX_VALUE))
         );
 
         LeftPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnEnterprise, btnOrg, btnRequest, btnUser});
@@ -136,7 +162,7 @@ public class HierarchyManage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(151, 151, 151))
         );
@@ -176,6 +202,30 @@ public class HierarchyManage extends javax.swing.JFrame {
         CardLayout layout = (CardLayout)RightPanel.getLayout();
         layout.next(RightPanel);
     }//GEN-LAST:event_btnUserActionPerformed
+
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
+        // TODO add your handling code here:
+          RequestScreen requestScreen = new RequestScreen(RightPanel);
+        RightPanel.add("RequestScreen",requestScreen);
+        CardLayout layout = (CardLayout)RightPanel.getLayout();
+        layout.next(RightPanel);
+    }//GEN-LAST:event_btnRequestActionPerformed
+
+    private void btnEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterpriseActionPerformed
+        // TODO add your handling code here:
+        EnterpriseScreen enterpriseScreen = new EnterpriseScreen(RightPanel);
+        RightPanel.add("EnterpriseScreen",enterpriseScreen);
+        CardLayout layout = (CardLayout)RightPanel.getLayout();
+        layout.next(RightPanel);
+        
+    }//GEN-LAST:event_btnEnterpriseActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+           new Login().setVisible(true);
+          this.dispose();
+        
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,6 +267,7 @@ public class HierarchyManage extends javax.swing.JFrame {
     private javax.swing.JPanel RightPanel;
     private javax.swing.JPanel WorkArea;
     private javax.swing.JButton btnEnterprise;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnOrg;
     private javax.swing.JButton btnRequest;
     private javax.swing.JButton btnUser;
