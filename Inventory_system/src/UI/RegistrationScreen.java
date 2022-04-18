@@ -4,6 +4,11 @@
  */
 package UI;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -38,11 +43,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtconfpwd1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
         txtcountry = new javax.swing.JTextField();
         cmbEnterprise = new javax.swing.JComboBox<>();
         cmbOrganisation = new javax.swing.JComboBox<>();
@@ -53,8 +58,8 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        pwd1 = new javax.swing.JPasswordField();
+        pwd2 = new javax.swing.JPasswordField();
 
         panelRegister.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -77,7 +82,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel5.setText("Email Id:");
 
-        txtconfpwd1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel6.setText("Country:");
@@ -88,8 +93,13 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel8.setText("Organisation:");
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton1.setText("Register");
+        btnRegister.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         txtcountry.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
@@ -148,11 +158,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPasswordField1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jPasswordField1.setText("jPasswordField1");
+        pwd1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        pwd1.setText("jPasswordField1");
 
-        jPasswordField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jPasswordField2.setText("jPasswordField1");
+        pwd2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        pwd2.setText("jPasswordField1");
 
         javax.swing.GroupLayout panelRegisterLayout = new javax.swing.GroupLayout(panelRegister);
         panelRegister.setLayout(panelRegisterLayout);
@@ -193,15 +203,15 @@ public class RegistrationScreen extends javax.swing.JPanel {
                                 .addGap(176, 176, 176)))
                         .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtName)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtconfpwd1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtcountry, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbEnterprise, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbOrganisation, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtcontact, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(pwd1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pwd2, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(panelRegisterLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(btnBack)))
@@ -229,15 +239,15 @@ public class RegistrationScreen extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtconfpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -255,7 +265,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
                     .addComponent(jLabel9)
                     .addComponent(txtcontact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
-                .addComponent(jButton1)
+                .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(29, 29, 29))
@@ -277,12 +287,57 @@ public class RegistrationScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        String Name = txtName.getText();
+        String UserName = txtUsername.getText();
+        
+        char pass[]= pwd1.getPassword();
+        String Password = String.valueOf(pass);
+        
+        char passconf[]= pwd2.getPassword();
+        String PasswordConfirm = String.valueOf(passconf);
+        
+        /*if(Password != PasswordConfirm)
+                {
+                   JOptionPane.showMessageDialog(this, "Passwords don't match");
+                   pwd2.setText(null);
+                   return;
+                }*/
+        
+        String EmailId = txtEmail.getText();
+        String Contact = txtcontact.getText();
+        String Country = txtcountry.getText();
+        String Organization = cmbOrganisation.getItemAt(cmbOrganisation.getSelectedIndex());
+        String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
+        
+        if(Name.isEmpty() || UserName.isEmpty() || EmailId.isEmpty() || Contact.isEmpty() 
+                || Country.isEmpty() || Organization.isEmpty() || Enterprise.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please populate values!!..");
+            return;
+        }
+        
+        
+        try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+        Statement myStatement = con.createStatement();
+        String query = "Insert into `FinalProj_Users`"+"values('"+Name+"','"+UserName+"','"+Password+"','"+EmailId+"','"+Country+"','"+Enterprise+"','"+Organization+"','"+Contact+"')";
+       myStatement.executeUpdate(query);
+        //System.out.println("Inserted data");
+       
+    }catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in data");
+    }
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbEnterprise;
     private javax.swing.JComboBox<String> cmbOrganisation;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -296,12 +351,12 @@ public class RegistrationScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JPanel panelRegister;
+    private javax.swing.JPasswordField pwd1;
+    private javax.swing.JPasswordField pwd2;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtUsername;
-    private javax.swing.JTextField txtconfpwd1;
     private javax.swing.JTextField txtcontact;
     private javax.swing.JTextField txtcountry;
     // End of variables declaration//GEN-END:variables
