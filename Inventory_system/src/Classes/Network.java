@@ -13,6 +13,10 @@ public class Network {
     private String country;
     private EnterpriseDirectory enterpriseDirectory;
     
+    public Network()
+    {
+        
+    }
 
     public String getCountry() {
         return country;
