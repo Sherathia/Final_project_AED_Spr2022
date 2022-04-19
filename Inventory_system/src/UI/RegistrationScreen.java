@@ -4,6 +4,7 @@
  */
 package UI;
 
+import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -285,6 +286,9 @@ public class RegistrationScreen extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        rightPanel.remove(this);
+        CardLayout layout = (CardLayout) rightPanel.getLayout();
+        layout.previous(rightPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -324,12 +328,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
         Statement myStatement = con.createStatement();
         String query = "Insert into `FinalProj_Users`"+"values('"+Name+"','"+UserName+"','"+Password+"','"+EmailId+"','"+Country+"','"+Enterprise+"','"+Organization+"','"+Contact+"')";
-       myStatement.executeUpdate(query);
+        myStatement.executeUpdate(query);
         //System.out.println("Inserted data");
-       
-    }catch(Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in data");
-    }
+           }catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+               }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
 

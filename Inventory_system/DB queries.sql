@@ -36,8 +36,13 @@ Country varchar(200),
 Create_datetime date);
 
 
+drop table FinalProj_Network;
 create table FinalProj_Network
 (
 Name varchar(200),
-Create_datetime date);
+Create_datetime varchar(200));
 
+
+insert into FinalProj_Network values ("US","19-Apr-2022");
+insert into FinalProj_Network values ("CANADA","19-Apr-2022");
+insert into FinalProj_Network values ("INDIA","19-Apr-2022");
