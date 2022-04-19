@@ -4,6 +4,8 @@
  */
 package UI;
 
+import java.awt.Component;
+
 /**
  *
  * @author anvithalakshmisha
@@ -13,8 +15,45 @@ public class OrgPanel extends javax.swing.JPanel {
     /**
      * Creates new form OrgPanel
      */
-    public OrgPanel() {
+    String selectedOrg;
+
+    public OrgPanel(String selectedOrg) {
         initComponents();
+        this.selectedOrg = selectedOrg;
+        if (this.selectedOrg == "Hospitals") {
+            panelForDisplay(panelHospital);
+        } else if (this.selectedOrg == "Vaccine manufacturer") {
+            panelForDisplay(panelVaccine);
+        } else if (this.selectedOrg == "Blood bank") {
+            panelForDisplay(panelBloodbank);
+        } else if (this.selectedOrg == "Medical equipment") {
+            panelForDisplay(panelMedicalEquip);
+        } else if (this.selectedOrg == "Insurance") {
+            panelForDisplay(panelInsurance);
+        } else if (this.selectedOrg == "Food market chains") {
+            panelForDisplay(panelFoodbank);
+        } else if (this.selectedOrg == "Clothing retailers") {
+            panelForDisplay(panelClothing);
+        } else if (this.selectedOrg == "Transport/Travel agencies") {
+            panelForDisplay(panelTransportation);
+        }
+
+        comboBoxBloodGroup.addItem("A positive");
+        comboBoxBloodGroup.addItem("A negative");
+        comboBoxBloodGroup.addItem("B positive");
+        comboBoxBloodGroup.addItem("B negative");
+        comboBoxBloodGroup.addItem("O positive");
+        comboBoxBloodGroup.addItem("O negative");
+        comboBoxBloodGroup.addItem("AB positive");
+        comboBoxBloodGroup.addItem("AB negative");
+
+    }
+
+    private void panelForDisplay(Component component) {
+        jLayeredPane1.removeAll();
+        jLayeredPane1.add(component);
+        jLayeredPane1.revalidate();
+        jLayeredPane1.repaint();
     }
 
     /**
@@ -27,21 +66,62 @@ public class OrgPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jPanel1 = new javax.swing.JPanel();
+        panelHospital = new javax.swing.JPanel();
         lblHospitalInventory = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtNumberOfBeds = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        txtHospitalLoc = new javax.swing.JTextField();
+        btnSendRequestHospital = new javax.swing.JButton();
+        panelVaccine = new javax.swing.JPanel();
         lblVaccineInventory1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtNumberOfBeds1 = new javax.swing.JTextField();
+        txtVaccine = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtVaccineCount = new javax.swing.JTextField();
+        btnSendRequestVaccine = new javax.swing.JButton();
+        panelMedicalEquip = new javax.swing.JPanel();
+        lbMedicalEqupInventory = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtMedicalEquip = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtMedicalEquipCount = new javax.swing.JTextField();
+        btnSendRequestMedicalEquip = new javax.swing.JButton();
+        panelBloodbank = new javax.swing.JPanel();
+        lblBloodbankInventory = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtBloodCount = new javax.swing.JTextField();
+        btnSendRequestBloodbank = new javax.swing.JButton();
+        comboBoxBloodGroup = new javax.swing.JComboBox<>();
+        panelInsurance = new javax.swing.JPanel();
+        lblVaccineInventory2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtInsuranceCoverage = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtNumberOfCoverage = new javax.swing.JTextField();
+        btnSubmitRequestInsurance = new javax.swing.JButton();
+        panelFoodbank = new javax.swing.JPanel();
+        lblFoodbankInventory = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtNumberOfBeds1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtHospitalLoc1 = new javax.swing.JTextField();
+        btnSendRequestFoodbank = new javax.swing.JButton();
+        panelTransportation = new javax.swing.JPanel();
+        lblFoodbankInventory1 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtVehicleType = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtVehicleCount = new javax.swing.JTextField();
+        btnSendRequestTransportation = new javax.swing.JButton();
+        panelClothing = new javax.swing.JPanel();
+        lblFoodbankInventory2 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtNumberOfClothing1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtClothingLoc1 = new javax.swing.JTextField();
+        btnSendRequestClothing = new javax.swing.JButton();
 
         jLayeredPane1.setLayout(new java.awt.CardLayout());
 
@@ -54,55 +134,55 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Enter the location :");
 
-        jButton1.setText("Send request");
+        btnSendRequestHospital.setText("Send request");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelHospitalLayout = new javax.swing.GroupLayout(panelHospital);
+        panelHospital.setLayout(panelHospitalLayout);
+        panelHospitalLayout.setHorizontalGroup(
+            panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHospitalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblHospitalInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(panelHospitalLayout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHospitalLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumberOfBeds, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(303, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHospitalLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnSendRequestHospital)
                 .addGap(175, 175, 175))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField1, txtNumberOfBeds});
+        panelHospitalLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtHospitalLoc, txtNumberOfBeds});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2});
+        panelHospitalLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2});
 
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelHospitalLayout.setVerticalGroup(
+            panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHospitalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblHospitalInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNumberOfBeds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHospitalLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(83, 83, 83)
-                .addComponent(jButton1)
+                .addComponent(btnSendRequestHospital)
                 .addContainerGap(191, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(jPanel1, "card2");
+        jLayeredPane1.add(panelHospital, "card2");
 
         lblVaccineInventory1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblVaccineInventory1.setForeground(new java.awt.Color(51, 153, 255));
@@ -113,71 +193,405 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Enter the number of vaccine required  :");
 
-        jButton2.setText("Send request");
+        btnSendRequestVaccine.setText("Send request");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelVaccineLayout = new javax.swing.GroupLayout(panelVaccine);
+        panelVaccine.setLayout(panelVaccineLayout);
+        panelVaccineLayout.setHorizontalGroup(
+            panelVaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVaccineLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblVaccineInventory1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(panelVaccineLayout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelVaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumberOfBeds1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelVaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtVaccineCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVaccine, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(295, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVaccineLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnSendRequestVaccine)
                 .addGap(175, 175, 175))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField2, txtNumberOfBeds1});
+        panelVaccineLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtVaccine, txtVaccineCount});
 
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        panelVaccineLayout.setVerticalGroup(
+            panelVaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVaccineLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblVaccineInventory1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelVaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
+                    .addComponent(txtVaccine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelVaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtVaccineCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addComponent(btnSendRequestVaccine)
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(panelVaccine, "card2");
+
+        lbMedicalEqupInventory.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        lbMedicalEqupInventory.setForeground(new java.awt.Color(51, 153, 255));
+        lbMedicalEqupInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMedicalEqupInventory.setText("Medical Euipment Inventory");
+
+        jLabel5.setText("Enter the medical equipment required :");
+
+        jLabel6.setText("Enter the count :");
+
+        btnSendRequestMedicalEquip.setText("Send request");
+
+        javax.swing.GroupLayout panelMedicalEquipLayout = new javax.swing.GroupLayout(panelMedicalEquip);
+        panelMedicalEquip.setLayout(panelMedicalEquipLayout);
+        panelMedicalEquipLayout.setHorizontalGroup(
+            panelMedicalEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMedicalEquipLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbMedicalEqupInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelMedicalEquipLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(panelMedicalEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelMedicalEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMedicalEquip, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMedicalEquipCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(283, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMedicalEquipLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSendRequestMedicalEquip)
+                .addGap(175, 175, 175))
+        );
+
+        panelMedicalEquipLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtMedicalEquip, txtMedicalEquipCount});
+
+        panelMedicalEquipLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel5, jLabel6});
+
+        panelMedicalEquipLayout.setVerticalGroup(
+            panelMedicalEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMedicalEquipLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbMedicalEqupInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(panelMedicalEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtMedicalEquip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelMedicalEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtMedicalEquipCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addComponent(btnSendRequestMedicalEquip)
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(panelMedicalEquip, "card2");
+
+        lblBloodbankInventory.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        lblBloodbankInventory.setForeground(new java.awt.Color(51, 153, 255));
+        lblBloodbankInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBloodbankInventory.setText("Bloodbank Inventory");
+
+        jLabel7.setText("Enter the blood group required :");
+
+        jLabel8.setText("Enter the count :");
+
+        btnSendRequestBloodbank.setText("Send request");
+
+        comboBoxBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout panelBloodbankLayout = new javax.swing.GroupLayout(panelBloodbank);
+        panelBloodbank.setLayout(panelBloodbankLayout);
+        panelBloodbankLayout.setHorizontalGroup(
+            panelBloodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBloodbankLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblBloodbankInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelBloodbankLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(panelBloodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBloodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(comboBoxBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBloodCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(315, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBloodbankLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSendRequestBloodbank)
+                .addGap(175, 175, 175))
+        );
+
+        panelBloodbankLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel7, jLabel8});
+
+        panelBloodbankLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboBoxBloodGroup, txtBloodCount});
+
+        panelBloodbankLayout.setVerticalGroup(
+            panelBloodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBloodbankLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblBloodbankInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addGroup(panelBloodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(comboBoxBloodGroup, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(panelBloodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtBloodCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addComponent(btnSendRequestBloodbank)
+                .addGap(199, 199, 199))
+        );
+
+        jLayeredPane1.add(panelBloodbank, "card2");
+
+        lblVaccineInventory2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        lblVaccineInventory2.setForeground(new java.awt.Color(51, 153, 255));
+        lblVaccineInventory2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVaccineInventory2.setText("Insurance Inventory");
+
+        jLabel9.setText("Enter the insurance coverage required :");
+
+        jLabel10.setText("Enter the number of such coverage(s) required  :");
+
+        btnSubmitRequestInsurance.setText("Send request");
+
+        javax.swing.GroupLayout panelInsuranceLayout = new javax.swing.GroupLayout(panelInsurance);
+        panelInsurance.setLayout(panelInsuranceLayout);
+        panelInsuranceLayout.setHorizontalGroup(
+            panelInsuranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInsuranceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblVaccineInventory2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelInsuranceLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(panelInsuranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(panelInsuranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNumberOfCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInsuranceCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(237, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInsuranceLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSubmitRequestInsurance)
+                .addGap(175, 175, 175))
+        );
+
+        panelInsuranceLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel10, jLabel9});
+
+        panelInsuranceLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtInsuranceCoverage, txtNumberOfCoverage});
+
+        panelInsuranceLayout.setVerticalGroup(
+            panelInsuranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInsuranceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblVaccineInventory2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(panelInsuranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtInsuranceCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelInsuranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtNumberOfCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addComponent(btnSubmitRequestInsurance)
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(panelInsurance, "card2");
+
+        lblFoodbankInventory.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        lblFoodbankInventory.setForeground(new java.awt.Color(51, 153, 255));
+        lblFoodbankInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFoodbankInventory.setText("Foodbank Inventory");
+
+        jLabel11.setText("Enter the number of people to be served :");
+
+        jLabel12.setText("Enter the location :");
+
+        btnSendRequestFoodbank.setText("Send request");
+
+        javax.swing.GroupLayout panelFoodbankLayout = new javax.swing.GroupLayout(panelFoodbank);
+        panelFoodbank.setLayout(panelFoodbankLayout);
+        panelFoodbankLayout.setHorizontalGroup(
+            panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFoodbankLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoodbankInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelFoodbankLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHospitalLoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumberOfBeds1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(291, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFoodbankLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSendRequestFoodbank)
+                .addGap(175, 175, 175))
+        );
+
+        panelFoodbankLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel11, jLabel12});
+
+        panelFoodbankLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtHospitalLoc1, txtNumberOfBeds1});
+
+        panelFoodbankLayout.setVerticalGroup(
+            panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFoodbankLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoodbankInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
                     .addComponent(txtNumberOfBeds1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtHospitalLoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(83, 83, 83)
-                .addComponent(jButton2)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addComponent(btnSendRequestFoodbank)
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 873, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+        jLayeredPane1.add(panelFoodbank, "card2");
+
+        lblFoodbankInventory1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        lblFoodbankInventory1.setForeground(new java.awt.Color(51, 153, 255));
+        lblFoodbankInventory1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFoodbankInventory1.setText("Transportation Inventory");
+
+        jLabel13.setText("Enter the type of vehicle required :");
+
+        jLabel14.setText("Enter the count :");
+
+        btnSendRequestTransportation.setText("Send request");
+
+        javax.swing.GroupLayout panelTransportationLayout = new javax.swing.GroupLayout(panelTransportation);
+        panelTransportation.setLayout(panelTransportationLayout);
+        panelTransportationLayout.setHorizontalGroup(
+            panelTransportationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTransportationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoodbankInventory1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelTransportationLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(panelTransportationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelTransportationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtVehicleCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVehicleType, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(335, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTransportationLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSendRequestTransportation)
+                .addGap(175, 175, 175))
         );
 
-        jLayeredPane1.add(jPanel2, "card3");
+        panelTransportationLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtVehicleCount, txtVehicleType});
+
+        panelTransportationLayout.setVerticalGroup(
+            panelTransportationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTransportationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoodbankInventory1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(panelTransportationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtVehicleType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelTransportationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtVehicleCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addComponent(btnSendRequestTransportation)
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(panelTransportation, "card2");
+
+        lblFoodbankInventory2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        lblFoodbankInventory2.setForeground(new java.awt.Color(51, 153, 255));
+        lblFoodbankInventory2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFoodbankInventory2.setText("Clothing Inventory");
+
+        jLabel15.setText("Enter the number of people to be served :");
+
+        jLabel16.setText("Enter the location :");
+
+        btnSendRequestClothing.setText("Send request");
+
+        javax.swing.GroupLayout panelClothingLayout = new javax.swing.GroupLayout(panelClothing);
+        panelClothing.setLayout(panelClothingLayout);
+        panelClothingLayout.setHorizontalGroup(
+            panelClothingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelClothingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoodbankInventory2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelClothingLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(panelClothingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelClothingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtClothingLoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumberOfClothing1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(291, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelClothingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSendRequestClothing)
+                .addGap(175, 175, 175))
+        );
+
+        panelClothingLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtClothingLoc1, txtNumberOfClothing1});
+
+        panelClothingLayout.setVerticalGroup(
+            panelClothingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelClothingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoodbankInventory2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(panelClothingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txtNumberOfClothing1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelClothingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtClothingLoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addComponent(btnSendRequestClothing)
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(panelClothing, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -199,21 +613,62 @@ public class OrgPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnSendRequestBloodbank;
+    private javax.swing.JButton btnSendRequestClothing;
+    private javax.swing.JButton btnSendRequestFoodbank;
+    private javax.swing.JButton btnSendRequestHospital;
+    private javax.swing.JButton btnSendRequestMedicalEquip;
+    private javax.swing.JButton btnSendRequestTransportation;
+    private javax.swing.JButton btnSendRequestVaccine;
+    private javax.swing.JButton btnSubmitRequestInsurance;
+    private javax.swing.JComboBox<String> comboBoxBloodGroup;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lbMedicalEqupInventory;
+    private javax.swing.JLabel lblBloodbankInventory;
+    private javax.swing.JLabel lblFoodbankInventory;
+    private javax.swing.JLabel lblFoodbankInventory1;
+    private javax.swing.JLabel lblFoodbankInventory2;
     private javax.swing.JLabel lblHospitalInventory;
     private javax.swing.JLabel lblVaccineInventory1;
+    private javax.swing.JLabel lblVaccineInventory2;
+    private javax.swing.JPanel panelBloodbank;
+    private javax.swing.JPanel panelClothing;
+    private javax.swing.JPanel panelFoodbank;
+    private javax.swing.JPanel panelHospital;
+    private javax.swing.JPanel panelInsurance;
+    private javax.swing.JPanel panelMedicalEquip;
+    private javax.swing.JPanel panelTransportation;
+    private javax.swing.JPanel panelVaccine;
+    private javax.swing.JTextField txtBloodCount;
+    private javax.swing.JTextField txtClothingLoc1;
+    private javax.swing.JTextField txtHospitalLoc;
+    private javax.swing.JTextField txtHospitalLoc1;
+    private javax.swing.JTextField txtInsuranceCoverage;
+    private javax.swing.JTextField txtMedicalEquip;
+    private javax.swing.JTextField txtMedicalEquipCount;
     private javax.swing.JTextField txtNumberOfBeds;
     private javax.swing.JTextField txtNumberOfBeds1;
+    private javax.swing.JTextField txtNumberOfClothing1;
+    private javax.swing.JTextField txtNumberOfCoverage;
+    private javax.swing.JTextField txtVaccine;
+    private javax.swing.JTextField txtVaccineCount;
+    private javax.swing.JTextField txtVehicleCount;
+    private javax.swing.JTextField txtVehicleType;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,12 +17,18 @@ public class createRequests extends javax.swing.JFrame {
      */
     public createRequests() {
         initComponents();
-        
-//        String[] network = {"India", "USa"};
-//        JComboBox comboBoxNetwork = new JComboBox(network);
-//        this.add(comboBoxNetwork);
-//        this.setVisible(true);
-        
+
+        comboBoxNetwork.removeAllItems();
+        comboBoxEnterprise.removeAllItems();
+        comboBoxOrg.removeAllItems();
+        comboBoxNetwork.addItem("Select");
+        comboBoxNetwork.addItem("India");
+        comboBoxEnterprise.addItem("Select");
+        comboBoxEnterprise.addItem("Medical enterprise");
+        comboBoxEnterprise.addItem("Government enterprise");
+        comboBoxEnterprise.addItem("Warehouse enterprise");
+        comboBoxEnterprise.addItem("Voluntary enterprise");
+        comboBoxOrg.addItem("Select");
     }
 
     /**
@@ -35,16 +41,101 @@ public class createRequests extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblLoggedInAs = new javax.swing.JLabel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel2 = new javax.swing.JPanel();
         lblChooseNetwork = new javax.swing.JLabel();
-        lblEnterprise = new javax.swing.JLabel();
         comboBoxNetwork = new javax.swing.JComboBox<>();
+        lblChooseEnterprise = new javax.swing.JLabel();
         comboBoxEnterprise = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        lblChooseOrg = new javax.swing.JLabel();
         comboBoxOrg = new javax.swing.JComboBox<>();
         btnCreateRequest = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        lblLoggedInAs = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1300, 570));
+
+        lblChooseNetwork.setText("Choose network : ");
+
+        comboBoxNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxNetwork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxNetworkActionPerformed(evt);
+            }
+        });
+
+        lblChooseEnterprise.setText("Choose enterprise :");
+
+        comboBoxEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxEnterpriseActionPerformed(evt);
+            }
+        });
+
+        lblChooseOrg.setText("Choose organization :");
+
+        comboBoxOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxOrgActionPerformed(evt);
+            }
+        });
+
+        btnCreateRequest.setText("Create request");
+        btnCreateRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateRequestActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCreateRequest)
+                .addContainerGap(280, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblChooseOrg)
+                        .addComponent(lblChooseEnterprise)
+                        .addComponent(lblChooseNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(322, Short.MAX_VALUE)
+                .addComponent(btnCreateRequest)
+                .addGap(195, 195, 195))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(143, 143, 143)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblChooseNetwork)
+                        .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(24, 24, 24)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblChooseEnterprise)
+                        .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(25, 25, 25)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblChooseOrg)
+                        .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(273, Short.MAX_VALUE)))
+        );
+
+        jSplitPane1.setLeftComponent(jPanel2);
 
         lblLoggedInAs.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblLoggedInAs.setForeground(new java.awt.Color(51, 153, 255));
@@ -52,67 +143,30 @@ public class createRequests extends javax.swing.JFrame {
         lblLoggedInAs.setText("Welcome User {{Username}}");
         lblLoggedInAs.setToolTipText("");
 
-        lblChooseNetwork.setText("Choose network : ");
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblLoggedInAs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(lblLoggedInAs, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 501, Short.MAX_VALUE))
+        );
 
-        lblEnterprise.setText("Choose enterprise :");
-
-        comboBoxNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        comboBoxEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("Choose organization :");
-
-        comboBoxOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btnCreateRequest.setText("Create request");
+        jSplitPane1.setRightComponent(jPanel3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLoggedInAs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(lblEnterprise)
-                    .addComponent(lblChooseNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(190, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCreateRequest)
-                .addGap(150, 150, 150))
+            .addComponent(jSplitPane1)
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, lblChooseNetwork, lblEnterprise});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboBoxEnterprise, comboBoxNetwork, comboBoxOrg});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblLoggedInAs, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChooseNetwork)
-                    .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEnterprise)
-                    .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93)
-                .addComponent(btnCreateRequest)
-                .addContainerGap(171, Short.MAX_VALUE))
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -128,6 +182,71 @@ public class createRequests extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboBoxNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxNetworkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxNetworkActionPerformed
+
+    private void comboBoxEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEnterpriseActionPerformed
+        // TODO add your handling code here:
+        System.out.println("combox" + comboBoxEnterprise.getSelectedItem());
+        if (comboBoxEnterprise.getSelectedItem() == "Medical enterprise") {
+            comboBoxOrg.removeAllItems();
+            comboBoxOrg.addItem("Select");
+            comboBoxOrg.addItem("Hospitals");
+            comboBoxOrg.addItem("Vaccine manufacturer");
+            comboBoxOrg.addItem("Blood bank");
+            comboBoxOrg.addItem("Medical equipment");
+            comboBoxOrg.addItem("Insurance");
+        } else if (comboBoxEnterprise.getSelectedItem() == "Warehouse enterprise") {
+            comboBoxOrg.removeAllItems();
+            comboBoxOrg.addItem("Select");
+            comboBoxOrg.addItem("Food market chains");
+            comboBoxOrg.addItem("Clothing retailers");
+            comboBoxOrg.addItem("Transport/Travel agencies");
+        } else if (comboBoxEnterprise.getSelectedItem() == "Government enterprise") {
+            comboBoxOrg.removeAllItems();
+            comboBoxOrg.addItem("Select");
+            comboBoxOrg.addItem("Government");
+            comboBoxOrg.addItem("NDRF");
+        } else if (comboBoxEnterprise.getSelectedItem() == "Voluntary enterprise") {
+            comboBoxOrg.removeAllItems();
+            comboBoxOrg.addItem("Select");
+            comboBoxOrg.addItem("NGOs");
+            comboBoxOrg.addItem("Fund raiser");
+        }
+    }//GEN-LAST:event_comboBoxEnterpriseActionPerformed
+
+    private void comboBoxOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxOrgActionPerformed
+
+    private void btnCreateRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRequestActionPerformed
+        // TODO add your handling code here:
+        String selectedOrg = null;
+        if (comboBoxNetwork.getSelectedIndex() != 0 && comboBoxEnterprise.getSelectedIndex() != 0 && comboBoxOrg.getSelectedIndex() != 0) {
+            if (comboBoxOrg.getSelectedItem() == "Hospitals") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Vaccine manufacturer") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Blood bank") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Medical equipment") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Insurance") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Food market chains") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Clothing retailers") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Transport/Travel agencies") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            }
+            OrgPanel orgPanel = new OrgPanel(selectedOrg);
+            jSplitPane1.setRightComponent(orgPanel);
+
+        }
+    }//GEN-LAST:event_btnCreateRequestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,7 +278,7 @@ public class createRequests extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new createRequests().setVisible(true);
-                
+
             }
         });
     }
@@ -169,10 +288,13 @@ public class createRequests extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxEnterprise;
     private javax.swing.JComboBox<String> comboBoxNetwork;
     private javax.swing.JComboBox<String> comboBoxOrg;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblChooseEnterprise;
     private javax.swing.JLabel lblChooseNetwork;
-    private javax.swing.JLabel lblEnterprise;
+    private javax.swing.JLabel lblChooseOrg;
     private javax.swing.JLabel lblLoggedInAs;
     // End of variables declaration//GEN-END:variables
 }
