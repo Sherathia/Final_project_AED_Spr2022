@@ -4,7 +4,13 @@
  */
 package Screens;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +25,57 @@ public class UserScreen extends javax.swing.JPanel {
     public UserScreen(JPanel rightPanel) {
         initComponents();
         this.rightPanel = rightPanel;
+      
+        
+        DefaultTableModel model = (DefaultTableModel)tblUsers.getModel();
+         model.setRowCount(0);
+        try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+        Statement myStatement = con.createStatement();
+        String query = "select * from FinalProj_Users";
+        ResultSet rs = myStatement.executeQuery(query);
+        //System.out.println("Inserted data");
+        
+        while(rs.next())
+        {
+            String Name = rs.getString("Name");
+            String UserName = rs.getString("Username");
+            String Password = rs.getString("Password");
+            String Country = rs.getString("Country");
+            String Email = rs.getString("emailID");
+            String enterprise = rs.getString("enterprise");
+            String Organization = rs.getString("Organization");
+            String Contact = rs.getString("Contact");
+           // String Date = rs.getString("Create_datetime");
+            
+            Object row[] = new Object[7];
+            row[0] = UserName;
+            row[1] = Name;
+            row[2] = Contact;
+            row[3] = Email;
+            row[4] = Organization;
+            row[5] = enterprise;
+            row[6] = Country;
+            model.addRow(row);
+            
+        }
+        
+        String query1 = "select distinct Country from FinalProj_Organization";
+        ResultSet rs1 = myStatement.executeQuery(query1);
+        //cmbEnterprise.removeAllItems();
+        cmbNetwork.removeAllItems();
+        //cmbOrg.removeAllItems();
+        while(rs1.next())
+        {
+            cmbNetwork.addItem(rs1.getString("Country"));
+            
+        }
+        
+        con.close();
+        }catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB call");
+             }   
     }
 
     /**
@@ -33,7 +90,7 @@ public class UserScreen extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblUsers = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -46,15 +103,12 @@ public class UserScreen extends javax.swing.JPanel {
         txtUserName = new javax.swing.JTextField();
         txtContact = new javax.swing.JTextField();
         txtEmailID = new javax.swing.JTextField();
-        txtPwd = new javax.swing.JTextField();
-        txtenterprise = new javax.swing.JTextField();
-        txtNetwork = new javax.swing.JTextField();
-        txtOrganization = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        btnBrowse = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        pwd = new javax.swing.JPasswordField();
+        cmbEnterprise = new javax.swing.JComboBox<>();
+        cmbNetwork = new javax.swing.JComboBox<>();
+        cmbOrg = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,19 +116,19 @@ public class UserScreen extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(0, 153, 255));
         jLabel5.setText("MANAGE USERS");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "UserName", "Name", "Contact", "Location", "Email Id", "Password", "Organisation", "Enterprise", "Network"
+                "UserName", "Name", "Contact", "Email Id", "Organisation", "Enterprise", "Network"
             }
         ));
-        jTable1.setSelectionForeground(new java.awt.Color(51, 153, 255));
-        jScrollPane1.setViewportView(jTable1);
+        tblUsers.setSelectionForeground(new java.awt.Color(51, 153, 255));
+        jScrollPane1.setViewportView(tblUsers);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Name:");
@@ -108,43 +162,38 @@ public class UserScreen extends javax.swing.JPanel {
 
         txtEmailID.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        txtPwd.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
-        txtenterprise.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
-        txtNetwork.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
-        txtOrganization.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\create1.png")); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreate.setBackground(new java.awt.Color(255, 255, 255));
+        btnCreate.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\create1.png")); // NOI18N
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel12.setText("Location:");
-
-        jTextField10.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
-        btnBrowse.setBackground(new java.awt.Color(255, 255, 255));
-        btnBrowse.setText("Browse");
-        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBrowseActionPerformed(evt);
+                btnCreateActionPerformed(evt);
             }
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\manage_users.png")); // NOI18N
+
+        cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEnterpriseActionPerformed(evt);
+            }
+        });
+
+        cmbNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbNetwork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNetworkActionPerformed(evt);
+            }
+        });
+
+        cmbOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,31 +207,25 @@ public class UserScreen extends javax.swing.JPanel {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtContact)
-                                    .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmailID, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(35, 35, 35)
+                            .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pwd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmailID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtContact, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel11))
                                 .addGap(58, 58, 58)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(btnBrowse))
-                                    .addComponent(txtOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtPwd, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbEnterprise, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbNetwork, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbOrg, 0, 81, Short.MAX_VALUE))))
+                        .addGap(116, 116, 116)
                         .addComponent(jLabel1)
                         .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -190,6 +233,9 @@ public class UserScreen extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pwd, txtContact, txtEmailID, txtName, txtUserName});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -199,13 +245,12 @@ public class UserScreen extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
+                        .addGap(124, 124, 124)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBrowse))
+                            .addComponent(jLabel10)
+                            .addComponent(cmbNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -215,29 +260,22 @@ public class UserScreen extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
-                                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(cmbOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(txtenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(txtNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(txtOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel9)
+                                .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(50, 50, 50)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8)
+                            .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -260,23 +298,119 @@ public class UserScreen extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        String Name = txtName.getText();
+        String UserName = txtUserName.getText();
+        
+        char pass[]= pwd.getPassword();
+        String Password = String.valueOf(pass);
+              
+        String EmailId = txtEmailID.getText();
+        String Contact = txtContact.getText();
+        String Country = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
+        String Organization = cmbOrg.getItemAt(cmbOrg.getSelectedIndex());
+        String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
+        
+        if(Name.isEmpty() || UserName.isEmpty() || EmailId.isEmpty() || Contact.isEmpty() 
+                || Country.isEmpty() || Organization.isEmpty() || Enterprise.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please populate values!!..");
+            return;
+        }
+        
+        try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+        Statement myStatement = con.createStatement();
+        
+        String Check = "Select distinct Username from FinalProj_Users";
+        ResultSet rs1 = myStatement.executeQuery(Check);
+        while(rs1.next())
+        {   
+            String ValidateUser = rs1.getString("Username");
+            
+            if(UserName.equalsIgnoreCase(ValidateUser))
+            {
+                JOptionPane.showMessageDialog(this, "UserName already Exists.. Please try again!!");
+                txtUserName.setText(null);
+                return;
+            }
+        }
+          if(!txtUserName.getText().isEmpty())
+          {
+          String query = "Insert into `FinalProj_Users`"+"values('"+Name+"','"+UserName+"','"+Password+"','"+EmailId+"','"+Country+"','"+Enterprise+"','"+Organization+"','"+Contact+"')";
+          myStatement.executeUpdate(query);
+          JOptionPane.showMessageDialog(this, "User Created Successfully!!");
+          txtEmailID.setText(null);
+          txtContact.setText(null);
+          txtName.setText(null);
+          txtUserName.setText(null);
+          pwd.setText(null); 
+          }
+          con.close();
+           }catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+               }
+        
+    }//GEN-LAST:event_btnCreateActionPerformed
 
-    }//GEN-LAST:event_btnBrowseActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cmbNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String CountrySelected = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
+          try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+        Statement myStatement = con.createStatement();
+         String query1 = "select distinct Enterrpise from FinalProj_Organization where Country ='"+CountrySelected+"'";
+        ResultSet rs1 = myStatement.executeQuery(query1);
+        cmbEnterprise.removeAllItems();
+        //cmbOrg.removeAllItems();
+        while(rs1.next())
+        {
+            cmbEnterprise.addItem(rs1.getString("Enterrpise"));
+            
+        }
+        
+        con.close();
+        }catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB call");
+             }   
+    }//GEN-LAST:event_cmbNetworkActionPerformed
+
+    private void cmbEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseActionPerformed
+        // TODO add your handling code here:
+         String EnterpriseSelected = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
+         String CountrySelected = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
+          try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+        Statement myStatement = con.createStatement();
+         String query2 = "select OrgName from FinalProj_Organization where Enterrpise ='"+EnterpriseSelected+"' and country ='"+CountrySelected+"'";
+        ResultSet rs1 = myStatement.executeQuery(query2);
+        cmbOrg.removeAllItems();
+        //cmbOrg.removeAllItems();
+        while(rs1.next())
+        {
+            cmbOrg.addItem(rs1.getString("OrgName"));
+            
+        }
+        
+        con.close();
+        }catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB call");
+             }   
+    }//GEN-LAST:event_cmbEnterpriseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBrowse;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JComboBox<String> cmbEnterprise;
+    private javax.swing.JComboBox<String> cmbNetwork;
+    private javax.swing.JComboBox<String> cmbOrg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -286,15 +420,11 @@ public class UserScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField10;
+    private javax.swing.JPasswordField pwd;
+    private javax.swing.JTable tblUsers;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtEmailID;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtNetwork;
-    private javax.swing.JTextField txtOrganization;
-    private javax.swing.JTextField txtPwd;
     private javax.swing.JTextField txtUserName;
-    private javax.swing.JTextField txtenterprise;
     // End of variables declaration//GEN-END:variables
 }
