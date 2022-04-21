@@ -205,10 +205,14 @@ public class HierarchyManage extends javax.swing.JFrame {
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
-          RequestScreen requestScreen = new RequestScreen(RightPanel);
+        AdminRequestScreen ar;
+        ar = new AdminRequestScreen();
+                ar.setVisible(true);
+                this.dispose();
+          /*RequestScreen requestScreen = new RequestScreen(RightPanel);
         RightPanel.add("RequestScreen",requestScreen);
         CardLayout layout = (CardLayout)RightPanel.getLayout();
-        layout.next(RightPanel);
+        layout.next(RightPanel);*/
     }//GEN-LAST:event_btnRequestActionPerformed
 
     private void btnEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterpriseActionPerformed
