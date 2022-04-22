@@ -4,17 +4,31 @@
  */
 package Screens;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.JPanel;
+import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aesha
  */
+
 public class TasksRequest extends javax.swing.JPanel {
 
     /**
      * Creates new form TasksRequest
      */
-    public TasksRequest() {
+    private JPanel RightPanel;
+    public TasksRequest(JPanel RightPanel) {
         initComponents();
+        this.RightPanel= RightPanel;
     }
 
     /**
@@ -29,9 +43,16 @@ public class TasksRequest extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblRequest = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tblManageRequest = new javax.swing.JTable();
+        btnApprove = new javax.swing.JButton();
+        btnHold = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtRequestID = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtComments = new javax.swing.JTextField();
+        btnviewpendingreq = new javax.swing.JButton();
+        btnviewrequests = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -39,55 +60,131 @@ public class TasksRequest extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
         jLabel1.setText("MANAGE REQUEST");
 
-        tblRequest.setModel(new javax.swing.table.DefaultTableModel(
+        tblManageRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Request No.", "Enterprise", "Organization", "Requester", "Request Desc", "Quantity", "Location", "Status", "Created Date", "Comments"
+                "Request No.", "Network", "Enterprise", "Organization", "Requester", "Request Desc", "Quantity", "Location", "Status", "Created Date", "Comments"
             }
         ));
-        tblRequest.setGridColor(new java.awt.Color(0, 0, 0));
-        tblRequest.setShowGrid(false);
-        jScrollPane1.setViewportView(tblRequest);
+        tblManageRequest.setGridColor(new java.awt.Color(0, 0, 0));
+        tblManageRequest.setShowGrid(false);
+        jScrollPane1.setViewportView(tblManageRequest);
 
-        jButton1.setText("Approve Request");
+        btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Reject Request");
+        btnHold.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnHold.setText("Hold");
+        btnHold.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoldActionPerformed(evt);
+            }
+        });
+
+        btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel3.setText("Request ID:");
+
+        txtRequestID.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel2.setText("Comments:");
+
+        txtComments.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        btnviewpendingreq.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnviewpendingreq.setText("View Pending Requests");
+        btnviewpendingreq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewpendingreqActionPerformed(evt);
+            }
+        });
+
+        btnviewrequests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnviewrequests.setText("View All Requests");
+        btnviewrequests.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewrequestsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(331, 331, 331)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(145, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton2))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHold, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnviewpendingreq)
+                            .addGap(33, 33, 33)
+                            .addComponent(btnviewrequests))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(367, 367, 367)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel1)
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(75, 75, 75)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(410, Short.MAX_VALUE))
+                    .addComponent(btnviewpendingreq)
+                    .addComponent(btnviewrequests))
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHold)))
+                    .addComponent(btnApprove))
+                .addGap(31, 31, 31)
+                .addComponent(btnReject)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -102,13 +199,184 @@ public class TasksRequest extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        String requestId = txtRequestID.getText();
+        String comments = txtComments.getText();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_AdminRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+        }
+        //System.out.println("Inserted data");
+        catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+    }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnHoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoldActionPerformed
+        // TODO add your handling code here:
+        String requestId = txtRequestID.getText();
+        String comments = txtComments.getText();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_AdminRequests set status='ON HOLD',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request On Hold!!");
+            con.close();
+        }
+        //System.out.println("Inserted data");
+        catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+    }//GEN-LAST:event_btnHoldActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        String requestId = txtRequestID.getText();
+        String comments = txtComments.getText();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_AdminRequests set status='REJECTED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            con.close();
+        }
+        //System.out.println("Inserted data");
+        catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+    }//GEN-LAST:event_btnRejectActionPerformed
+
+    private void btnviewpendingreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewpendingreqActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblManageRequest.getModel();
+        model.setRowCount(0);
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_AdminRequests where status ='CREATED' and Attrib1='WORK'";
+            ResultSet rs = myStatement.executeQuery(query);
+            while(rs.next())
+            {
+               String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Network = rs.getString("Network");
+                String Enterprise = rs.getString("Enterprise");
+                String Organization = rs.getString("Organization");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Location = rs.getString("Location");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[11];
+                row[0] = RequestID;
+                row[1] = Network;
+                row[2] = Enterprise;
+                row[3] = Organization;
+                row[4] = Requester;
+                row[5] = Description;
+                row[6] = quantity;
+                row[7] = Location;
+                row[8] = status;
+                row[9] = RequestedDate;
+                row[10] = Comments;
+                model.addRow(row);
+            }
+            con.close();
+        }
+        //System.out.println("Inserted data");
+        catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+        }
+    }//GEN-LAST:event_btnviewpendingreqActionPerformed
+
+    private void btnviewrequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewrequestsActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblManageRequest.getModel();
+        model.setRowCount(0);
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_AdminRequests where Attrib1='WORK'";
+            ResultSet rs = myStatement.executeQuery(query);
+            while(rs.next())
+            {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Network = rs.getString("Network");
+                String Enterprise = rs.getString("Enterprise");
+                String Organization = rs.getString("Organization");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Location = rs.getString("Location");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[11];
+                row[0] = RequestID;
+                row[1] = Network;
+                row[2] = Enterprise;
+                row[3] = Organization;
+                row[4] = Requester;
+                row[5] = Description;
+                row[6] = quantity;
+                row[7] = Location;
+                row[8] = status;
+                row[9] = RequestedDate;
+                row[10] = Comments;
+                model.addRow(row);
+            }
+            con.close();
+        }
+        //System.out.println("Inserted data");
+        catch(Exception E) {
+            JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+        }
+
+    }//GEN-LAST:event_btnviewrequestsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnApprove;
+    private javax.swing.JButton btnHold;
+    private javax.swing.JButton btnReject;
+    private javax.swing.JButton btnviewpendingreq;
+    private javax.swing.JButton btnviewrequests;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblRequest;
+    private javax.swing.JTable tblManageRequest;
+    private javax.swing.JTextField txtComments;
+    private javax.swing.JTextField txtRequestID;
     // End of variables declaration//GEN-END:variables
 }
