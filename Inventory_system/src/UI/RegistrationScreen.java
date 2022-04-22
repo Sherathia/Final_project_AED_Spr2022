@@ -25,6 +25,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
     public RegistrationScreen(JPanel rightPanel) {
         initComponents();
         this.rightPanel = rightPanel;
+        
     }
 
     /**
@@ -49,7 +50,6 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
-        txtcountry = new javax.swing.JTextField();
         cmbEnterprise = new javax.swing.JComboBox<>();
         cmbOrganisation = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -61,6 +61,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         pwd1 = new javax.swing.JPasswordField();
         pwd2 = new javax.swing.JPasswordField();
+        txtcountry = new javax.swing.JTextField();
 
         panelRegister.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -102,13 +103,20 @@ public class RegistrationScreen extends javax.swing.JPanel {
             }
         });
 
-        txtcountry.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
         cmbEnterprise.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medical", "Voluntary", "Government", "Warehouse" }));
+        cmbEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEnterpriseActionPerformed(evt);
+            }
+        });
 
         cmbOrganisation.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        cmbOrganisation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbOrganisation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbOrganisationActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel9.setText("Contact:");
@@ -160,10 +168,10 @@ public class RegistrationScreen extends javax.swing.JPanel {
         );
 
         pwd1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        pwd1.setText("jPasswordField1");
 
         pwd2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        pwd2.setText("jPasswordField1");
+
+        txtcountry.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout panelRegisterLayout = new javax.swing.GroupLayout(panelRegister);
         panelRegister.setLayout(panelRegisterLayout);
@@ -202,21 +210,22 @@ public class RegistrationScreen extends javax.swing.JPanel {
                             .addGroup(panelRegisterLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(176, 176, 176)))
-                        .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtName)
-                            .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtcountry, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbEnterprise, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbOrganisation, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtcontact, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pwd1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pwd2, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtName)
+                                .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cmbEnterprise, javax.swing.GroupLayout.Alignment.LEADING, 0, 142, Short.MAX_VALUE)
+                                .addComponent(cmbOrganisation, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtcontact, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pwd1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtcountry, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(pwd2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelRegisterLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(btnBack)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(357, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
                 .addGap(0, 341, Short.MAX_VALUE)
@@ -267,7 +276,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
                     .addComponent(txtcontact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(btnRegister)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(29, 29, 29))
         );
@@ -329,11 +338,56 @@ public class RegistrationScreen extends javax.swing.JPanel {
         Statement myStatement = con.createStatement();
         String query = "Insert into `FinalProj_Users`"+"values('"+Name+"','"+UserName+"','"+Password+"','"+EmailId+"','"+Country+"','"+Enterprise+"','"+Organization+"','"+Contact+"')";
         myStatement.executeUpdate(query);
+        JOptionPane.showMessageDialog(this, "User Created Successfully!!..");
+        txtEmail.setText(null);
+        txtName.setText(null);
+        txtUsername.setText(null);
+        txtcontact.setText(null);
+        txtcountry.setText(null);
+        pwd1.setText(null);
+        pwd2.setText(null);
         //System.out.println("Inserted data");
            }catch(Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
                }
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void cmbOrganisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganisationActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_cmbOrganisationActionPerformed
+
+    private void cmbEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseActionPerformed
+        // TODO add your handling code here:
+        String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
+        cmbOrganisation.removeAllItems();
+                if(Enterprise.equalsIgnoreCase("Medical"))
+                {
+                 cmbOrganisation.addItem("Hospitals");
+                 cmbOrganisation.addItem("Vaccine Manufacturer");
+                 cmbOrganisation.addItem("Blood Bank");
+                 cmbOrganisation.addItem("Medical Equipments");
+                 cmbOrganisation.addItem("Insurance");
+                 
+                }
+                else if(Enterprise.equalsIgnoreCase("Voluntary"))
+                {
+                    cmbOrganisation.addItem("NGO");
+                    cmbOrganisation.addItem("Fund Raiser");
+                }
+                else if(Enterprise.equalsIgnoreCase("Government"))
+                {
+                    cmbOrganisation.addItem("Government");
+                    cmbOrganisation.addItem("NDRF");
+                }
+                else if(Enterprise.equalsIgnoreCase("Warehouse"))
+                {
+                    cmbOrganisation.addItem("FoodMarket");
+                    cmbOrganisation.addItem("Clothing");
+                    cmbOrganisation.addItem("Transport");
+                }
+    }//GEN-LAST:event_cmbEnterpriseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
