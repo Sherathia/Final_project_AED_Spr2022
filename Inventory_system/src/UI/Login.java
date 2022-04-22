@@ -5,6 +5,7 @@
 package UI;
 
 import Organization.ClothingRetailerScreen.ClothingRetailerMain;
+import Organization.TransportScreens.TransportMain;
 import Organization.WarehouseScreens.FoodMarketMain;
 import Screens.HierarchyManage;
 import Users.UserAccount;
@@ -30,6 +31,7 @@ public class Login extends javax.swing.JFrame {
     public Fundraiser fr;
     public FoodMarketMain fm;
     public ClothingRetailerMain crm;
+    public TransportMain tm;
     
     public Login() {
         initComponents();
@@ -250,6 +252,12 @@ public class Login extends javax.swing.JFrame {
                 {
                  crm =  new ClothingRetailerMain();
                  crm.setVisible(true);
+                 this.dispose();
+                }
+                else if(DBOrg.equalsIgnoreCase("Transport"))
+                {
+                 tm =  new TransportMain();
+                 tm.setVisible(true);
                  this.dispose();
                 }
             }
