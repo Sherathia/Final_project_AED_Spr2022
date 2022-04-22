@@ -70,11 +70,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnLogout" min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="jButton5" min="-2" pref="154" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" pref="154" max="-2" attributes="0"/>
-                              <Component id="btnLogout" min="-2" pref="70" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -85,9 +85,9 @@
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="472" max="32767" attributes="0"/>
-                          <Component id="btnLogout" min="-2" pref="73" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace pref="491" max="32767" attributes="0"/>
+                          <Component id="btnLogout" min="-2" pref="44" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -112,7 +112,7 @@
                 <Component class="javax.swing.JButton" name="btnLogout">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\aesha\OneDrive\Desktop\AED\Final_project\Images\logout1.png"/>
+                      <Image iconType="2" name="C:\Users\aesha\OneDrive\Desktop\AED\Final_project\Images\logoutimage.png"/>
                     </Property>
                   </Properties>
                   <Events>
