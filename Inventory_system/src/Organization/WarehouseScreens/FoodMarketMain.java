@@ -28,6 +28,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
         initComponents();
         DefaultTableModel model = (DefaultTableModel)tblFoodRequest.getModel();
          model.setRowCount(0);
+         
        try{
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
