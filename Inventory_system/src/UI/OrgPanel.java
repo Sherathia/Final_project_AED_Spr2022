@@ -5,6 +5,13 @@
 package UI;
 
 import java.awt.Component;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -135,6 +142,11 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel2.setText("Enter the location :");
 
         btnSendRequestHospital.setText("Send request");
+        btnSendRequestHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestHospitalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelHospitalLayout = new javax.swing.GroupLayout(panelHospital);
         panelHospital.setLayout(panelHospitalLayout);
@@ -610,6 +622,41 @@ public class OrgPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSendRequestHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestHospitalActionPerformed
+        // TODO add your handling code here:
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("inventorymanagementaas@gmail.com", "aas051997");
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("inventorymanagementaas@gmail.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("anvithabl@gmail.com"));
+
+//            if (id != null && customer != null && ticket != null) {
+            message.setSubject("test");
+            message.setText("Dear ,Your booking for event " + " has been confirmed.\n\nRegards,\nDiego Stadium Booking Admin");
+//            } 
+//        else {
+            message.setSubject("Thanks for registering with us!");
+            message.setText("You have successfully registered yourself!");
+//            }
+            Transport.send(message);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_btnSendRequestHospitalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
