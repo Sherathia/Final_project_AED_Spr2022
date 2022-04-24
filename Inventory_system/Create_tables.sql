@@ -111,6 +111,20 @@ Comments varchar(200),
 Attrib1 varchar(200),
 Attrib2 varchar(200));
 
+
+create table FinalProj_HospitalRequests
+(
+RequestID varchar(200),
+quantity varchar(200),
+Description varchar(200),
+Requester varchar(200),
+RequestedDate varchar(200),
+ApprovalDate varchar(200),
+status varchar(200),
+Comments varchar(200),
+Attrib1 varchar(200),
+Attrib2 varchar(200));
+
 insert into FinalProj_ClothingRequests
 values("1","200","Men clothes required","NDRF","01-01-2022",null,null,null,null,null);
 
@@ -121,6 +135,15 @@ StoreName varchar(200),
 MenApparel varchar(200),
 WomenApparel varchar(200),
 KidsApparel varchar(200),
+Lastupdated varchar(200)
+);
+
+create table FinalProj_Vehicles
+(
+StoreName varchar(200),
+Ambulance varchar(200),
+Truck varchar(200),
+Travel varchar(200),
 Lastupdated varchar(200)
 );
 
