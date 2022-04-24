@@ -189,7 +189,6 @@ public class createRequests extends javax.swing.JFrame {
 
     private void comboBoxEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEnterpriseActionPerformed
         // TODO add your handling code here:
-        System.out.println("combox" + comboBoxEnterprise.getSelectedItem());
         if (comboBoxEnterprise.getSelectedItem() == "Medical enterprise") {
             comboBoxOrg.removeAllItems();
             comboBoxOrg.addItem("Select");

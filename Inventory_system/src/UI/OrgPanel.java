@@ -37,7 +37,7 @@ public class OrgPanel extends javax.swing.JPanel {
         } else if (this.selectedOrg == "Transport/Travel agencies") {
             panelForDisplay(panelTransportation);
         }
-
+        comboBoxBloodGroup.removeAllItems();;
         comboBoxBloodGroup.addItem("A positive");
         comboBoxBloodGroup.addItem("A negative");
         comboBoxBloodGroup.addItem("B positive");
