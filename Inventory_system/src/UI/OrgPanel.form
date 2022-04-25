@@ -220,6 +220,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Send request"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendRequestVaccineActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -311,6 +314,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Send request"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendRequestMedicalEquipActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -400,6 +406,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Send request"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendRequestBloodbankActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="comboBoxBloodGroup">
               <Properties>
@@ -506,6 +515,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Send request"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitRequestInsuranceActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -532,8 +544,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtHospitalLoc1" linkSize="12" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNumberOfBeds1" linkSize="12" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="txtFoodBankLoc" linkSize="12" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFoodBankServed" linkSize="12" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="291" max="32767" attributes="0"/>
                   </Group>
@@ -552,12 +564,12 @@
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNumberOfBeds1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFoodBankServed" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtHospitalLoc1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFoodBankLoc" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                       <Component id="btnSendRequestFoodbank" min="-2" max="-2" attributes="0"/>
@@ -584,19 +596,22 @@
                 <Property name="text" type="java.lang.String" value="Enter the number of people to be served :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNumberOfBeds1">
+            <Component class="javax.swing.JTextField" name="txtFoodBankServed">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter the location :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtHospitalLoc1">
+            <Component class="javax.swing.JTextField" name="txtFoodBankLoc">
             </Component>
             <Component class="javax.swing.JButton" name="btnSendRequestFoodbank">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Send request"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendRequestFoodbankActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -688,6 +703,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Send request"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendRequestTransportationActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -779,6 +797,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Send request"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendRequestClothingActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

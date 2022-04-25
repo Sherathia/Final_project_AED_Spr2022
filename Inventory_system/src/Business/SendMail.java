@@ -38,16 +38,9 @@ public class SendMail {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress("inventorymanagementaas@gmail.com"));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress());
-
-//            if (id != null && customer != null && ticket != null) {
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject(subject);
-            message.setText("Dear ," + "" + ".\n\nRegards,\nInventory Management Admin");
-//            } 
-//        else {
-//            message.setSubject("Thanks for registering with us!");
-//            message.setText("You have successfully registered yourself!");
-//            }
+            message.setText("Dear \n ," + text + ".\n\nRegards,\nInventory Management Admin");
             Transport.send(message);
         } catch (Exception ex) {
             System.out.println(ex);
