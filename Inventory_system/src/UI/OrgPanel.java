@@ -5,13 +5,7 @@
 package UI;
 
 import java.awt.Component;
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -111,9 +105,9 @@ public class OrgPanel extends javax.swing.JPanel {
         panelFoodbank = new javax.swing.JPanel();
         lblFoodbankInventory = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtNumberOfBeds1 = new javax.swing.JTextField();
+        txtFoodBankServed = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtHospitalLoc1 = new javax.swing.JTextField();
+        txtFoodBankLoc = new javax.swing.JTextField();
         btnSendRequestFoodbank = new javax.swing.JButton();
         panelTransportation = new javax.swing.JPanel();
         lblFoodbankInventory1 = new javax.swing.JLabel();
@@ -206,6 +200,11 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel4.setText("Enter the number of vaccine required  :");
 
         btnSendRequestVaccine.setText("Send request");
+        btnSendRequestVaccine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestVaccineActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelVaccineLayout = new javax.swing.GroupLayout(panelVaccine);
         panelVaccine.setLayout(panelVaccineLayout);
@@ -263,6 +262,11 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel6.setText("Enter the count :");
 
         btnSendRequestMedicalEquip.setText("Send request");
+        btnSendRequestMedicalEquip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestMedicalEquipActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMedicalEquipLayout = new javax.swing.GroupLayout(panelMedicalEquip);
         panelMedicalEquip.setLayout(panelMedicalEquipLayout);
@@ -322,6 +326,11 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel8.setText("Enter the count :");
 
         btnSendRequestBloodbank.setText("Send request");
+        btnSendRequestBloodbank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestBloodbankActionPerformed(evt);
+            }
+        });
 
         comboBoxBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -383,6 +392,11 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel10.setText("Enter the number of such coverage(s) required  :");
 
         btnSubmitRequestInsurance.setText("Send request");
+        btnSubmitRequestInsurance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitRequestInsuranceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelInsuranceLayout = new javax.swing.GroupLayout(panelInsurance);
         panelInsurance.setLayout(panelInsuranceLayout);
@@ -442,6 +456,11 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel12.setText("Enter the location :");
 
         btnSendRequestFoodbank.setText("Send request");
+        btnSendRequestFoodbank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestFoodbankActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFoodbankLayout = new javax.swing.GroupLayout(panelFoodbank);
         panelFoodbank.setLayout(panelFoodbankLayout);
@@ -458,8 +477,8 @@ public class OrgPanel extends javax.swing.JPanel {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtHospitalLoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumberOfBeds1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFoodBankLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFoodBankServed, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(291, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFoodbankLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -469,7 +488,7 @@ public class OrgPanel extends javax.swing.JPanel {
 
         panelFoodbankLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel11, jLabel12});
 
-        panelFoodbankLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtHospitalLoc1, txtNumberOfBeds1});
+        panelFoodbankLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtFoodBankLoc, txtFoodBankServed});
 
         panelFoodbankLayout.setVerticalGroup(
             panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,11 +498,11 @@ public class OrgPanel extends javax.swing.JPanel {
                 .addGap(69, 69, 69)
                 .addGroup(panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txtNumberOfBeds1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFoodBankServed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelFoodbankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(txtHospitalLoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFoodBankLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(83, 83, 83)
                 .addComponent(btnSendRequestFoodbank)
                 .addContainerGap(191, Short.MAX_VALUE))
@@ -501,6 +520,11 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel14.setText("Enter the count :");
 
         btnSendRequestTransportation.setText("Send request");
+        btnSendRequestTransportation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestTransportationActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTransportationLayout = new javax.swing.GroupLayout(panelTransportation);
         panelTransportation.setLayout(panelTransportationLayout);
@@ -558,6 +582,11 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel16.setText("Enter the location :");
 
         btnSendRequestClothing.setText("Send request");
+        btnSendRequestClothing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestClothingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelClothingLayout = new javax.swing.GroupLayout(panelClothing);
         panelClothing.setLayout(panelClothingLayout);
@@ -625,38 +654,187 @@ public class OrgPanel extends javax.swing.JPanel {
 
     private void btnSendRequestHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestHospitalActionPerformed
         // TODO add your handling code here:
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        StringBuilder Error = new StringBuilder();
+        if (!txtHospitalLoc.getText().isEmpty()) {
+        } else {
+            Error.append("Enter Hospital Location \n");
+        }
+        if (!txtNumberOfBeds.getText().isEmpty()) {
+        } else {
+            Error.append("Enter Number of beds \n");
+        }
+        if (Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Request created");
+            txtNumberOfBeds.setText("");
+            txtHospitalLoc.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request for hospital beds has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
 
-        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("inventorymanagementaas@gmail.com", "aas051997");
-            }
-        });
-
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("inventorymanagementaas@gmail.com"));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("anvithabl@gmail.com"));
-
-//            if (id != null && customer != null && ticket != null) {
-            message.setSubject("test");
-            message.setText("Dear ,Your booking for event " + " has been confirmed.\n\nRegards,\nDiego Stadium Booking Admin");
-//            } 
-//        else {
-            message.setSubject("Thanks for registering with us!");
-            message.setText("You have successfully registered yourself!");
-//            }
-            Transport.send(message);
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } else {
+            JOptionPane.showMessageDialog(this, Error);
         }
     }//GEN-LAST:event_btnSendRequestHospitalActionPerformed
+
+    private void btnSendRequestVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestVaccineActionPerformed
+        // TODO add your handling code here:
+        StringBuilder Error = new StringBuilder();
+        if (!txtVaccine.getText().isEmpty()) {
+        } else {
+            Error.append("Enter vaccine required \n");
+        }
+        if (!txtVaccineCount.getText().isEmpty()) {
+        } else {
+            Error.append("Enter the vaccine count \n");
+        }
+        if (Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Request created");
+            txtVaccineCount.setText("");
+            txtVaccine.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request for vaccine has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+
+        } else {
+            JOptionPane.showMessageDialog(this, Error);
+        }
+    }//GEN-LAST:event_btnSendRequestVaccineActionPerformed
+
+    private void btnSendRequestMedicalEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestMedicalEquipActionPerformed
+        // TODO add your handling code here:
+        StringBuilder Error = new StringBuilder();
+        if (!txtMedicalEquip.getText().isEmpty()) {
+        } else {
+            Error.append("Enter equipment required \n");
+        }
+        if (!txtMedicalEquipCount.getText().isEmpty()) {
+        } else {
+            Error.append("Enter the equipment count \n");
+        }
+        if (Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Request created");
+            txtMedicalEquip.setText("");
+            txtMedicalEquipCount.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request for medical equipment has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+
+        } else {
+            JOptionPane.showMessageDialog(this, Error);
+        }
+    }//GEN-LAST:event_btnSendRequestMedicalEquipActionPerformed
+
+    private void btnSendRequestBloodbankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestBloodbankActionPerformed
+        // TODO add your handling code here:
+        StringBuilder Error = new StringBuilder();
+        if (comboBoxBloodGroup.getSelectedIndex() != -1) {
+        } else {
+            Error.append("Select the blood group  \n");
+        }
+        if (!txtBloodCount.getText().isEmpty()) {
+        } else {
+            Error.append("Enter the count \n");
+        }
+        if (Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Request created");
+//            comboBoxBloodGroup.rem"");
+            txtBloodCount.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request for blood has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+
+        } else {
+            JOptionPane.showMessageDialog(this, Error);
+        }
+    }//GEN-LAST:event_btnSendRequestBloodbankActionPerformed
+
+    private void btnSubmitRequestInsuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestInsuranceActionPerformed
+        // TODO add your handling code here:
+        StringBuilder Error = new StringBuilder();
+        if (!txtInsuranceCoverage.getText().isEmpty()) {
+        } else {
+            Error.append("Enter insurance coverage required \n");
+        }
+        if (!txtNumberOfCoverage.getText().isEmpty()) {
+        } else {
+            Error.append("Enter insurance coverage count \n");
+        }
+        if (Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Request created");
+            txtInsuranceCoverage.setText("");
+            txtNumberOfCoverage.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request for insurance coverage has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+
+        } else {
+            JOptionPane.showMessageDialog(this, Error);
+        }
+    }//GEN-LAST:event_btnSubmitRequestInsuranceActionPerformed
+
+    private void btnSendRequestFoodbankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestFoodbankActionPerformed
+        // TODO add your handling code here:
+        StringBuilder Error = new StringBuilder();
+        if (!txtFoodBankServed.getText().isEmpty()) {
+        } else {
+            Error.append("Enter number of people to be served \n");
+        }
+        if (!txtFoodBankLoc.getText().isEmpty()) {
+        } else {
+            Error.append("Enter location \n");
+        }
+        if (Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Request created");
+            txtFoodBankLoc.setText("");
+            txtFoodBankServed.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request for food items has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+
+        } else {
+            JOptionPane.showMessageDialog(this, Error);
+        }
+    }//GEN-LAST:event_btnSendRequestFoodbankActionPerformed
+
+    private void btnSendRequestTransportationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestTransportationActionPerformed
+        // TODO add your handling code here:
+        StringBuilder Error = new StringBuilder();
+        if (!txtVehicleType.getText().isEmpty()) {
+        } else {
+            Error.append("Enter vehicle type \n");
+        }
+        if (!txtVehicleCount.getText().isEmpty()) {
+        } else {
+            Error.append("Enter number of vehicles required \n");
+        }
+        if (Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Request created");
+            txtVehicleCount.setText("");
+            txtVehicleType.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request for vehicles has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+
+        } else {
+            JOptionPane.showMessageDialog(this, Error);
+        }
+    }//GEN-LAST:event_btnSendRequestTransportationActionPerformed
+
+    private void btnSendRequestClothingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestClothingActionPerformed
+        // TODO add your handling code here:
+        StringBuilder Error = new StringBuilder();
+        if (!txtClothingLoc1.getText().isEmpty()) {
+        } else {
+            Error.append("Enter location \n");
+        }
+        if (!txtNumberOfClothing1.getText().isEmpty()) {
+        } else {
+            Error.append("Enter number of people to be served \n");
+        }
+        if (Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Request created");
+            txtNumberOfClothing1.setText("");
+            txtClothingLoc1.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request for clothing has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+
+        } else {
+            JOptionPane.showMessageDialog(this, Error);
+        }
+    }//GEN-LAST:event_btnSendRequestClothingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -704,13 +882,13 @@ public class OrgPanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelVaccine;
     private javax.swing.JTextField txtBloodCount;
     private javax.swing.JTextField txtClothingLoc1;
+    private javax.swing.JTextField txtFoodBankLoc;
+    private javax.swing.JTextField txtFoodBankServed;
     private javax.swing.JTextField txtHospitalLoc;
-    private javax.swing.JTextField txtHospitalLoc1;
     private javax.swing.JTextField txtInsuranceCoverage;
     private javax.swing.JTextField txtMedicalEquip;
     private javax.swing.JTextField txtMedicalEquipCount;
     private javax.swing.JTextField txtNumberOfBeds;
-    private javax.swing.JTextField txtNumberOfBeds1;
     private javax.swing.JTextField txtNumberOfClothing1;
     private javax.swing.JTextField txtNumberOfCoverage;
     private javax.swing.JTextField txtVaccine;
