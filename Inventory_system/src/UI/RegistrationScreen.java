@@ -134,6 +134,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel9.setText("Contact:");
 
         txtcontact.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtcontact.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtcontactFocusLost(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 153, 255));
@@ -372,8 +377,10 @@ public class RegistrationScreen extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please populate values!!..");
             return;
         }
-        
-        sendMail("Registration","Registered Successfully",EmailId);
+         Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Registration", "Registration Completed.!!", EmailId);
+
+        //sendMail("Registration","Registered Successfully",EmailId);
         
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -447,40 +454,6 @@ public class RegistrationScreen extends javax.swing.JPanel {
        
     }//GEN-LAST:event_pwd1FocusLost
 
-    public void sendMail(String subject, String text, String to) {
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-
-        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("inventorymanagementaas@gmail.com", "aas051997");
-            }
-        });
-
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("inventorymanagementaas@gmail.com"));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress());
-
-//            if (id != null && customer != null && ticket != null) {
-            message.setSubject(subject);
-            message.setText("Dear ," + "" + ".\n\nRegards,\nInventory Management Admin");
-//            } 
-//        else {
-//            message.setSubject("Thanks for registering with us!");
-//            message.setText("You have successfully registered yourself!");
-//            }
-            Transport.send(message);
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-    
     private void pwd2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwd2FocusLost
         // TODO add your handling code here:
          char pass1[]= pwd1.getPassword();
@@ -497,6 +470,16 @@ public class RegistrationScreen extends javax.swing.JPanel {
             pwd2.setText(null);
         }
     }//GEN-LAST:event_pwd2FocusLost
+
+    private void txtcontactFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcontactFocusLost
+        // TODO add your handling code here:
+        String ContactNo = txtcontact.getText();
+        if(ContactNo.length()!=10)
+        {
+            JOptionPane.showMessageDialog(this, "Please enter Valid Phone number!");
+            return;
+        }
+    }//GEN-LAST:event_txtcontactFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

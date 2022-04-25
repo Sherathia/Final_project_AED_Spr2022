@@ -32,6 +32,7 @@ public class Login extends javax.swing.JFrame {
     public FoodMarketMain fm;
     public ClothingRetailerMain crm;
     public TransportMain tm;
+    public createRequests cr;
     
     public Login() {
         initComponents();
@@ -260,6 +261,12 @@ public class Login extends javax.swing.JFrame {
                 {
                  tm =  new TransportMain();
                  tm.setVisible(true);
+                 this.dispose();
+                }
+                else if(DBOrg.equalsIgnoreCase("NGO"))
+                {
+                 cr =  new createRequests();
+                 cr.setVisible(true);
                  this.dispose();
                 }
             }

@@ -40,7 +40,7 @@ public class SendMail {
             message.setFrom(new InternetAddress("inventorymanagementaas@gmail.com"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject(subject);
-            message.setText("Dear \n ," + text + ".\n\nRegards,\nInventory Management Admin");
+            message.setText("Hello, \n " + text + ".\n\nRegards,\nInventory Management Admin");
             Transport.send(message);
         } catch (Exception ex) {
             System.out.println(ex);
