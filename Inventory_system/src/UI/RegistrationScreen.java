@@ -365,6 +365,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
             return;
         }
         
+<<<<<<< Updated upstream
+=======
+        Business.SendMail mail = new Business.SendMail();
+        mail.sendMail("User Registration", "User Registered", EmailId);
+>>>>>>> Stashed changes
         
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -438,6 +443,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
        
     }//GEN-LAST:event_pwd1FocusLost
 
+<<<<<<< Updated upstream
+=======
+   
+    
+>>>>>>> Stashed changes
     private void pwd2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwd2FocusLost
         // TODO add your handling code here:
          char pass1[]= pwd1.getPassword();
