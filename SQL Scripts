@@ -1,0 +1,94 @@
+Table Creation Scripts
+
+
+create table FinalProj_HospitalRequests
+(
+RequestID varchar(200),
+quantity varchar(200),
+Description varchar(200),
+Requester varchar(200),
+RequestedDate varchar(200),
+ApprovalDate varchar(200),
+status varchar(200),
+Comments varchar(200),
+Attrib1 varchar(200),
+Attrib2 varchar(200));
+
+
+create table FinalProj_HospitalAvailability
+(
+HospitalName varchar(200),
+AvailableBeds varchar(200),
+AvailableVentilators varchar(200),
+Lastupdated varchar(200)
+);
+
+
+create table FinalProj_MedicalEquipManufRequests
+(
+RequestID varchar(200),
+quantity varchar(200),
+Description varchar(200),
+Requester varchar(200),
+RequestedDate varchar(200),
+ApprovalDate varchar(200),
+status varchar(200),
+Comments varchar(200),
+Attrib1 varchar(200),
+Attrib2 varchar(200));
+
+
+create table FinalProj_MedicalEquipManufAvailability
+(
+ManufacturerName varchar(200),
+AvailableEquipment varchar(200),
+AvailableQuantity varchar(200),
+Lastupdated varchar(200)
+);
+
+
+create table FinalProj_VaccineManufRequests
+(
+RequestID varchar(200),
+quantity varchar(200),
+Description varchar(200),
+Requester varchar(200),
+RequestedDate varchar(200),
+ApprovalDate varchar(200),
+status varchar(200),
+Comments varchar(200),
+Attrib1 varchar(200),
+Attrib2 varchar(200));
+
+
+create table FinalProj_VaccineManufAvailability
+(
+VaccineManufacturerName varchar(200),
+AvailableVaccines varchar(200),
+AvailableQuantity varchar(200),
+Lastupdated varchar(200)
+);
+
+
+create table FinalProj_BloodBankRequests
+(
+RequestID varchar(200),
+quantity varchar(200),
+Description varchar(200),
+Requester varchar(200),
+RequestedDate varchar(200),
+ApprovalDate varchar(200),
+status varchar(200),
+Comments varchar(200),
+Attrib1 varchar(200),
+Attrib2 varchar(200));
+
+
+create table FinalProj_BloodGroupAvailability
+(
+BloodBankName varchar(200),
+AvailableBloodGroups varchar(200),
+AvailableUnits varchar(200),
+Lastupdated varchar(200)
+);
+
