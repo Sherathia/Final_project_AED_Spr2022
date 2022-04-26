@@ -10,6 +10,7 @@ import java.beans.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,6 +23,15 @@ public class MainHospitals extends javax.swing.JFrame {
      */
     public MainHospitals() {
         initComponents();
+        DefaultTableModel model = (DefaultTableModel)tblHospital.getModel();
+        model.setRowCount(0);
+        
+        try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+        Statement myStatement = con.createStatement();
+        String query = "Select * "
+        }
     }
 
     /**
@@ -42,7 +52,7 @@ public class MainHospitals extends javax.swing.JFrame {
         btnLogout1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblHospital = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtRequestID = new javax.swing.JTextField();
@@ -155,7 +165,7 @@ public class MainHospitals extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HOSPITAL MANAGEMENT");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -166,7 +176,7 @@ public class MainHospitals extends javax.swing.JFrame {
                 "Request ID", "Description", "Quantity", "Requester", "Requested Date", "Status", "Approval Date", "Comments"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblHospital);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("RequestID");
@@ -415,7 +425,7 @@ public class MainHospitals extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblHospital;
     private javax.swing.JTextField txtComments;
     private javax.swing.JTextField txtRequestID;
     // End of variables declaration//GEN-END:variables
