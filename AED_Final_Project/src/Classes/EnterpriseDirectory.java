@@ -4,10 +4,30 @@
  */
 package Classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author saisr
  */
 public class EnterpriseDirectory {
+    
+    private List<Enterprise> enterpriseList;
+    
+    public EnterpriseDirectory()
+    {
+        enterpriseList = new ArrayList<>();
+    }
+
+    public List<Enterprise> getEnterpriseList() {
+        return enterpriseList;
+    }
+
+    public void setEnterpriseList(List<Enterprise> enterpriseList) {
+        this.enterpriseList = enterpriseList;
+    }
+    
+    
     
 }
