@@ -2,19 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.Insurance;
+package ui.Hospitals;
+
+import javax.swing.JPanel;
 
 /**
  *
  * @author saisr
  */
-public class InsuranceRequests extends javax.swing.JPanel {
+public class HospitalCreateRequest extends javax.swing.JPanel {
 
     /**
-     * Creates new form InsuranceRequests
+     * Creates new form Requests
      */
-    public InsuranceRequests() {
+    private JPanel jPanel1;
+    
+    public HospitalCreateRequest(JPanel jPanel1) {
         initComponents();
+        this.jPanel1 = jPanel1;
     }
 
     /**
@@ -30,11 +35,11 @@ public class InsuranceRequests extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+            .addGap(0, 793, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
+            .addGap(0, 747, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
