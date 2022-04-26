@@ -5,7 +5,9 @@
 package UI;
 
 import Organization.ClothingRetailerScreen.ClothingRetailerMain;
+import Organization.Hospitals.HospitalMain;
 import Organization.TransportScreens.TransportMain;
+import Organization.VaccineManufacturers.MainVaccineManufacturers;
 import Organization.WarehouseScreens.FoodMarketMain;
 import Screens.HierarchyManage;
 import Users.UserAccount;
@@ -17,6 +19,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import ui.MedicalEquipManuf.MainMedicalEquipManuf;
 
 /**
  *
@@ -33,6 +36,9 @@ public class Login extends javax.swing.JFrame {
     public ClothingRetailerMain crm;
     public TransportMain tm;
     public createRequests cr;
+    public HospitalMain hm;
+    public MainVaccineManufacturers vm;
+    public MainMedicalEquipManuf mef;
     
     public Login() {
         initComponents();
@@ -239,7 +245,7 @@ public class Login extends javax.swing.JFrame {
                 hr.setVisible(true);
                 this.dispose();
                 }
-                else if(DBOrg.equalsIgnoreCase("Item 2"))
+                else if(DBOrg.equalsIgnoreCase("Fund Raiser"))
                 {
                  fr =  new Fundraiser();
                  fr.setVisible(true);
@@ -268,6 +274,36 @@ public class Login extends javax.swing.JFrame {
                  cr =  new createRequests();
                  cr.setVisible(true);
                  this.dispose();
+                }
+                else if(DBOrg.equalsIgnoreCase("Government"))
+                {
+                 cr =  new createRequests();
+                 cr.setVisible(true);
+                 this.dispose();
+                }
+                else if(DBOrg.equalsIgnoreCase("NDRF"))
+                {
+                 cr =  new createRequests();
+                 cr.setVisible(true);
+                 this.dispose();
+                }
+                else if(DBOrg.equalsIgnoreCase("Hospitals"))
+                {
+                 hm =  new HospitalMain();
+                 hm.setVisible(true);
+                 this.dispose();
+                }
+                else if(DBOrg.equalsIgnoreCase("Vaccine Manufacturer"))
+                {
+                 vm =  new MainVaccineManufacturers();
+                 vm.setVisible(true);
+                 this.dispose();
+                }
+                else if(DBOrg.equalsIgnoreCase("Medical Equipments"))
+                {
+                  mef = new  MainMedicalEquipManuf();
+                  mef.setVisible(true);
+                  this.dispose();
                 }
             }
             
