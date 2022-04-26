@@ -4,10 +4,40 @@
  */
 package Classes;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author saisr
  */
-public class Ecosystem {
+public class Ecosystem extends Organization {
+    
+    private static EcoSystem ecosystem;
+    private ArrayList<Network> networklist;
+    
+    public static Ecosystem getSystem()
+    {
+        if(ecosystem == null)
+        {
+            ecosystem = new Ecosystem();
+        }
+        return ecosystem;
+    }
+    
+    private Ecosystem()
+    {
+        super(null);
+        networklist = new ArrayList<Network>();
+    }
+
+    public ArrayList<Network> getNetworklist() {
+        return networklist;
+    }
+
+    public void setNetworklist(ArrayList<Network> networklist) {
+        this.networklist = networklist;
+    }
+    
+    
     
 }
