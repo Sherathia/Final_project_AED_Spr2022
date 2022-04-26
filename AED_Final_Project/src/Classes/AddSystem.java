@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import Users.UserAccount;
+
 /**
  *
  * @author saisr
