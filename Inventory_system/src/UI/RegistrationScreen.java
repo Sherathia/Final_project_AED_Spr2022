@@ -418,7 +418,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
                  cmbOrganisation.addItem("Vaccine Manufacturer");
                  cmbOrganisation.addItem("Blood Bank");
                  cmbOrganisation.addItem("Medical Equipments");
-                 cmbOrganisation.addItem("Insurance");
+                 //cmbOrganisation.addItem("Insurance");
                  
                 }
                 else if(Enterprise.equalsIgnoreCase("Voluntary"))
