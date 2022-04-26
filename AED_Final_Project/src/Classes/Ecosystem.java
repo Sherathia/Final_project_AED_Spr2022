@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Ecosystem extends Organization {
     
-    private static EcoSystem ecosystem;
+    private static Ecosystem ecosystem;
     private ArrayList<Network> networklist;
     
     public static Ecosystem getSystem()
