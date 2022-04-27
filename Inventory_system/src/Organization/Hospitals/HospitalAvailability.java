@@ -46,6 +46,8 @@ public class HospitalAvailability extends javax.swing.JPanel {
         tblFoodItems = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel4.setText("ICU:");
 
         jLabel2.setText("Beds:");
