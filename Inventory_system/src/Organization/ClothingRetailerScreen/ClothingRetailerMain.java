@@ -97,7 +97,8 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
-        btnViewRequest.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnViewRequest.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnViewRequest.setForeground(new java.awt.Color(51, 153, 255));
         btnViewRequest.setText("View Requests");
         btnViewRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +106,8 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
             }
         });
 
-        btnUpdAvailability.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnUpdAvailability.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnUpdAvailability.setForeground(new java.awt.Color(51, 153, 255));
         btnUpdAvailability.setText("Update Availability");
         btnUpdAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +115,8 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
             }
         });
 
-        btnCreateRequest.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnCreateRequest.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCreateRequest.setForeground(new java.awt.Color(51, 153, 255));
         btnCreateRequest.setText("Create Requests");
         btnCreateRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +156,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
                 .addComponent(btnUpdAvailability)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCreateRequest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 517, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 505, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -222,7 +225,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,7 +284,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
