@@ -5,6 +5,7 @@
 package ui.MedicalEquipManuf;
 
 //import com.sun.jdi.connect.spi.Connection;
+import UI.Login;
 import java.awt.CardLayout;
 //import java.beans.Statement;
 import java.text.DateFormat;
@@ -56,7 +57,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(51, 153, 255));
 
-        btnViewRequest.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnViewRequest.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnViewRequest.setText("View Requests");
         btnViewRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +65,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             }
         });
 
-        btnUpdAvailability.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnUpdAvailability.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnUpdAvailability.setText("Update Availability");
         btnUpdAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +110,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 149, Short.MAX_VALUE)
+            .addGap(0, 189, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -118,7 +119,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 769, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -226,7 +227,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(btnReject)
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(RightPane);

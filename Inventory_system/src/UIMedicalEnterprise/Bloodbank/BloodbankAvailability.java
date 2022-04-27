@@ -47,6 +47,8 @@ public class BloodbankAvailability extends javax.swing.JPanel {
         cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel2.setBackground(new java.awt.Color(51, 153, 255));
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 153, 255));
@@ -66,14 +68,23 @@ public class BloodbankAvailability extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblBloodGroupAvailability);
 
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel3.setText("Blood Bank Name:");
 
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel4.setText("Available Blood Groups:");
 
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel5.setText("Available Units:");
 
+        txtAvailableUnits.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        txtAvailableBloodGroups.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        cmbStore.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         cmbStore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnUpdate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +139,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtAvailableUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addContainerGap(344, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

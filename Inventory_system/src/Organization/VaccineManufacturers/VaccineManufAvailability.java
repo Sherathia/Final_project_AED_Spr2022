@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.VaccineManufacturers;
+package Organization.VaccineManufacturers;
 
 //import com.sun.jdi.connect.spi.Connection;
 //import java.beans.Statement;
@@ -46,6 +46,8 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         txtAvailableVaccines = new javax.swing.JTextField();
         cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setBackground(new java.awt.Color(51, 153, 255));
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N

@@ -16,7 +16,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -54,8 +57,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtAvailableUnits" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtAvailableBloodGroups" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAvailableQuantity" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAvailableVaccines" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cmbStore" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
@@ -84,14 +87,14 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAvailableBloodGroups" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAvailableVaccines" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAvailableUnits" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAvailableQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="344" max="32767" attributes="0"/>
+                  <EmptySpace pref="247" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -109,7 +112,7 @@
               <Color blue="ff" green="99" red="33" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="BLOOD GROUP AVAILABILITY"/>
+            <Property name="text" type="java.lang.String" value="VACCINES AVAILABILITY"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -119,13 +122,13 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tblBloodGroupAvailability">
+            <Component class="javax.swing.JTable" name="tblVaccineAvailability">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Blood Bank Name" type="java.lang.Object"/>
-                    <Column editable="true" title="Available Blood Groups" type="java.lang.Object"/>
-                    <Column editable="true" title="Available Units" type="java.lang.Object"/>
+                    <Column editable="true" title="Vaccine Manufacturer Name" type="java.lang.Object"/>
+                    <Column editable="true" title="Available Vaccines" type="java.lang.Object"/>
+                    <Column editable="true" title="Available Quantity" type="java.lang.Object"/>
                     <Column editable="true" title="LastUpdated" type="java.lang.Object"/>
                   </Table>
                 </Property>
@@ -162,47 +165,25 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Blood Bank Name:"/>
+            <Property name="text" type="java.lang.String" value="Vaccine Manufacturer Name:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Available Blood Groups:"/>
+            <Property name="text" type="java.lang.String" value="Available Vaccines:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Available Units:"/>
+            <Property name="text" type="java.lang.String" value="Available Quantity:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAvailableUnits">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="14" style="0"/>
-            </Property>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="txtAvailableQuantity">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAvailableBloodGroups">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="14" style="0"/>
-            </Property>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="txtAvailableVaccines">
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbStore">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="14" style="0"/>
-            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="Item 1"/>
@@ -218,9 +199,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnUpdate">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="14" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="UPDATE"/>
           </Properties>
           <Events>
