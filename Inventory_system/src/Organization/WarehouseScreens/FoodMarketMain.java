@@ -97,7 +97,8 @@ public class FoodMarketMain extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 153, 255));
         jButton1.setText("Create Requests");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +106,8 @@ public class FoodMarketMain extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(51, 153, 255));
         jButton2.setText("Update Availability");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +115,8 @@ public class FoodMarketMain extends javax.swing.JFrame {
             }
         });
 
-        btnViewRequest.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnViewRequest.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnViewRequest.setForeground(new java.awt.Color(51, 153, 255));
         btnViewRequest.setText("View Requests");
         btnViewRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,15 +138,13 @@ public class FoodMarketMain extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnViewRequest, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -270,7 +271,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnReject)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                 .addGap(55, 55, 55))
         );
 
@@ -286,7 +287,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
 
         pack();

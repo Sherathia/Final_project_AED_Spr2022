@@ -50,11 +50,11 @@ public class createRequests extends javax.swing.JFrame {
         lblChooseOrg = new javax.swing.JLabel();
         comboBoxOrg = new javax.swing.JComboBox<>();
         btnCreateRequest = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lblLoggedInAs = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1300, 570));
 
         lblChooseNetwork.setText("Choose network : ");
 
@@ -90,14 +90,23 @@ public class createRequests extends javax.swing.JFrame {
             }
         });
 
+        btnLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\logoutimage.png")); // NOI18N
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCreateRequest)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCreateRequest)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(312, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -117,7 +126,9 @@ public class createRequests extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(322, Short.MAX_VALUE)
                 .addComponent(btnCreateRequest)
-                .addGap(195, 195, 195))
+                .addGap(140, 140, 140)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(143, 143, 143)
@@ -247,6 +258,12 @@ public class createRequests extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCreateRequestActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,6 +301,7 @@ public class createRequests extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateRequest;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JComboBox<String> comboBoxEnterprise;
     private javax.swing.JComboBox<String> comboBoxNetwork;
     private javax.swing.JComboBox<String> comboBoxOrg;
