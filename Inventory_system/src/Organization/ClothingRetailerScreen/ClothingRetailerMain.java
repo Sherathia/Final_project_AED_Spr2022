@@ -56,7 +56,23 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
             row[7] = Comments;
             model.addRow(row);
         }
-        con.close();
+        
+        String querysel = "Select MenApparel from FinalProj_ClothingItems";
+            ResultSet rs1 = myStatement.executeQuery(querysel);
+            String Quantity ;
+            int total =0;
+            while(rs1.next())
+        {
+            
+            Quantity = rs1.getString("MenApparel");
+            total += Integer.parseInt(Quantity);
+        }
+            if(total<=0)
+            {
+                 btnApprove.setEnabled(false);
+            }
+            con.close();
+       
          }
        catch(Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
@@ -92,6 +108,8 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -223,6 +241,11 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clothes.jpg"))); // NOI18N
 
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel5.setText("Quantity:");
+
+        txtQuantity.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -236,9 +259,11 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
                         .addGap(52, 52, 52)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
@@ -274,7 +299,11 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
                             .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addComponent(btnReject))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnReject)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel5)
+                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel4))
                 .addContainerGap(174, Short.MAX_VALUE))
         );
@@ -336,6 +365,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         String requestId = txtRequestID.getText();
         String comments = txtComments.getText();
+        String Quantity = txtQuantity.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
@@ -346,6 +376,32 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
             String query = "Update FinalProj_ClothingRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
             myStatement.executeUpdate(query);
+            
+            
+            String querysel = "Select * from FinalProj_ClothingItems";
+            int MenApparel1;
+            int finalqty =0;
+            int flag=0;
+            String StoreName1 = null;
+            ResultSet rs1 = myStatement.executeQuery(querysel);
+            while(rs1.next())
+            {
+                //cmbStore.addItem(rs.getString("StoreName"));
+                 StoreName1 = rs1.getString("StoreName");
+                 MenApparel1 = Integer.parseInt(rs1.getString("MenApparel"));
+
+                if(MenApparel1 >= Integer.parseInt(Quantity) && flag==0)
+                {
+                    finalqty = MenApparel1- Integer.parseInt(Quantity);
+                    //return; 
+                    flag =1;
+                }
+                
+            }
+            
+            String queryupd = "Update FinalProj_ClothingItems set MenApparel ='"+finalqty+"',Lastupdated ='"+Date+"' where StoreName='"+StoreName1+"'";
+            myStatement.executeUpdate(queryupd);
+            
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             con.close();
         }
@@ -380,9 +436,13 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
-           RightPane.remove(this);
+                ClothingRetailerMain cm;
+                cm = new ClothingRetailerMain();
+                cm.setVisible(true);
+                this.dispose();
+          /* RightPane.remove(this);
         CardLayout layout = (CardLayout) RightPane.getLayout();
-        layout.previous(RightPane);
+        layout.previous(RightPane);*/
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
     private void btnUpdAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdAvailabilityActionPerformed
@@ -455,6 +515,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -462,6 +523,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable tblClothingRtl;
     private javax.swing.JTextField txtComments;
+    private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtRequestID;
     // End of variables declaration//GEN-END:variables
 }
