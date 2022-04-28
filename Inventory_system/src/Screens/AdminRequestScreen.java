@@ -50,7 +50,6 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         tblRequests = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnApprove = new javax.swing.JButton();
-        btnHold = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         txtComments = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -148,15 +147,6 @@ public class AdminRequestScreen extends javax.swing.JFrame {
             }
         });
 
-        btnHold.setBackground(new java.awt.Color(188, 210, 254));
-        btnHold.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnHold.setText("Hold");
-        btnHold.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHoldActionPerformed(evt);
-            }
-        });
-
         btnReject.setBackground(new java.awt.Color(188, 210, 254));
         btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnReject.setText("Reject");
@@ -225,16 +215,13 @@ public class AdminRequestScreen extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(27, 27, 27)
                         .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(RightPanelLayout.createSequentialGroup()
-                                .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(RightPanelLayout.createSequentialGroup()
                                 .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44)
-                                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnHold, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(RightPanelLayout.createSequentialGroup()
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,10 +253,8 @@ public class AdminRequestScreen extends javax.swing.JFrame {
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHold))
-                .addGap(33, 33, 33)
-                .addComponent(btnReject)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                    .addComponent(btnReject))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(23, 23, 23))
         );
@@ -413,29 +398,6 @@ public class AdminRequestScreen extends javax.swing.JFrame {
                }
     }//GEN-LAST:event_btnApproveActionPerformed
 
-    private void btnHoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoldActionPerformed
-        // TODO add your handling code here:
-        String requestId = txtRequestID.getText();
-        String comments = txtComments.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime()); 
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        
-        String query = "Update FinalProj_AdminRequests set status='ON HOLD',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "Request On Hold!!");
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-               }
-    }//GEN-LAST:event_btnHoldActionPerformed
-
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         String requestId = txtRequestID.getText();
@@ -518,7 +480,6 @@ public class AdminRequestScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel RightPanel;
     private javax.swing.JButton btnApprove;
-    private javax.swing.JButton btnHold;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnTaskRequest;
