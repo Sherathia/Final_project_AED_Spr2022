@@ -78,7 +78,7 @@ public class Login extends javax.swing.JFrame {
 
         RightPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\login button_final.jpg")); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login button_final.jpg"))); // NOI18N
         btnLogin.setBorder(null);
         btnLogin.setMaximumSize(new java.awt.Dimension(675, 353));
         btnLogin.setMinimumSize(new java.awt.Dimension(675, 353));
