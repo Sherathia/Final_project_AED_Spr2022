@@ -114,6 +114,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNumberOfBeds">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNumberOfBedsFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
@@ -215,6 +218,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtVaccineCount">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtVaccineCountFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSendRequestVaccine">
               <Properties>
@@ -309,6 +315,10 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtMedicalEquipCount">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtMedicalEquipCountFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMedicalEquipCountActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSendRequestMedicalEquip">
               <Properties>
@@ -401,6 +411,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBloodCount">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtBloodCountFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSendRequestBloodbank">
               <Properties>
@@ -510,6 +523,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNumberOfCoverage">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNumberOfCoverageFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSubmitRequestInsurance">
               <Properties>
@@ -597,6 +613,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtFoodBankServed">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFoodBankServedFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
@@ -698,6 +717,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtVehicleCount">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtVehicleCountFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSendRequestTransportation">
               <Properties>
@@ -785,6 +807,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNumberOfClothing1">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNumberOfClothing1FocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>

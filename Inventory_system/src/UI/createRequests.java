@@ -25,9 +25,7 @@ public class createRequests extends javax.swing.JFrame {
         comboBoxNetwork.addItem("India");
         comboBoxEnterprise.addItem("Select");
         comboBoxEnterprise.addItem("Medical enterprise");
-        comboBoxEnterprise.addItem("Government enterprise");
         comboBoxEnterprise.addItem("Warehouse enterprise");
-        comboBoxEnterprise.addItem("Voluntary enterprise");
         comboBoxOrg.addItem("Select");
     }
 
@@ -214,16 +212,6 @@ public class createRequests extends javax.swing.JFrame {
             comboBoxOrg.addItem("Food market chains");
             comboBoxOrg.addItem("Clothing retailers");
             comboBoxOrg.addItem("Transport/Travel agencies");
-        } else if (comboBoxEnterprise.getSelectedItem() == "Government enterprise") {
-            comboBoxOrg.removeAllItems();
-            comboBoxOrg.addItem("Select");
-            comboBoxOrg.addItem("Government");
-            comboBoxOrg.addItem("NDRF");
-        } else if (comboBoxEnterprise.getSelectedItem() == "Voluntary enterprise") {
-            comboBoxOrg.removeAllItems();
-            comboBoxOrg.addItem("Select");
-            comboBoxOrg.addItem("NGOs");
-            comboBoxOrg.addItem("Fund raiser");
         }
     }//GEN-LAST:event_comboBoxEnterpriseActionPerformed
 

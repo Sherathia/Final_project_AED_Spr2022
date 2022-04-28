@@ -133,6 +133,12 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Enter the number of beds required :");
 
+        txtNumberOfBeds.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNumberOfBedsFocusLost(evt);
+            }
+        });
+
         jLabel2.setText("Enter the location :");
 
         btnSendRequestHospital.setText("Send request");
@@ -199,6 +205,12 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Enter the number of vaccine required  :");
 
+        txtVaccineCount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtVaccineCountFocusLost(evt);
+            }
+        });
+
         btnSendRequestVaccine.setText("Send request");
         btnSendRequestVaccine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +272,17 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel5.setText("Enter the medical equipment required :");
 
         jLabel6.setText("Enter the count :");
+
+        txtMedicalEquipCount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMedicalEquipCountFocusLost(evt);
+            }
+        });
+        txtMedicalEquipCount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMedicalEquipCountActionPerformed(evt);
+            }
+        });
 
         btnSendRequestMedicalEquip.setText("Send request");
         btnSendRequestMedicalEquip.addActionListener(new java.awt.event.ActionListener() {
@@ -324,6 +347,12 @@ public class OrgPanel extends javax.swing.JPanel {
         jLabel7.setText("Enter the blood group required :");
 
         jLabel8.setText("Enter the count :");
+
+        txtBloodCount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBloodCountFocusLost(evt);
+            }
+        });
 
         btnSendRequestBloodbank.setText("Send request");
         btnSendRequestBloodbank.addActionListener(new java.awt.event.ActionListener() {
@@ -391,6 +420,12 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLabel10.setText("Enter the number of such coverage(s) required  :");
 
+        txtNumberOfCoverage.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNumberOfCoverageFocusLost(evt);
+            }
+        });
+
         btnSubmitRequestInsurance.setText("Send request");
         btnSubmitRequestInsurance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -452,6 +487,12 @@ public class OrgPanel extends javax.swing.JPanel {
         lblFoodbankInventory.setText("Foodbank Inventory");
 
         jLabel11.setText("Enter the number of people to be served :");
+
+        txtFoodBankServed.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFoodBankServedFocusLost(evt);
+            }
+        });
 
         jLabel12.setText("Enter the location :");
 
@@ -519,6 +560,12 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLabel14.setText("Enter the count :");
 
+        txtVehicleCount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtVehicleCountFocusLost(evt);
+            }
+        });
+
         btnSendRequestTransportation.setText("Send request");
         btnSendRequestTransportation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -578,6 +625,12 @@ public class OrgPanel extends javax.swing.JPanel {
         lblFoodbankInventory2.setText("Clothing Inventory");
 
         jLabel15.setText("Enter the number of people to be served :");
+
+        txtNumberOfClothing1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNumberOfClothing1FocusLost(evt);
+            }
+        });
 
         jLabel16.setText("Enter the location :");
 
@@ -835,6 +888,146 @@ public class OrgPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, Error);
         }
     }//GEN-LAST:event_btnSendRequestClothingActionPerformed
+
+    private void txtNumberOfBedsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumberOfBedsFocusLost
+        // TODO add your handling code here:
+        boolean isChar = false;
+        if (!evt.isTemporary()) {
+            String key = txtNumberOfBeds.getText();
+            for (int i = 0; i < key.length(); i++) {
+                if (!(key.charAt(i) >= '0'
+                        && key.charAt(i) <= '9')) {
+                    isChar = true;
+                }
+            }
+            if (isChar) {
+                JOptionPane.showMessageDialog(this, "enter only number");
+            }
+        }
+    }//GEN-LAST:event_txtNumberOfBedsFocusLost
+
+    private void txtVaccineCountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVaccineCountFocusLost
+        // TODO add your handling code here:
+        boolean isChar = false;
+        if (!evt.isTemporary()) {
+            String key = txtVaccineCount.getText();
+            for (int i = 0; i < key.length(); i++) {
+                if (!(key.charAt(i) >= '0'
+                        && key.charAt(i) <= '9')) {
+                    isChar = true;
+                }
+            }
+            if (isChar) {
+                JOptionPane.showMessageDialog(this, "enter only number");
+            }
+        }
+    }//GEN-LAST:event_txtVaccineCountFocusLost
+
+    private void txtMedicalEquipCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedicalEquipCountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMedicalEquipCountActionPerformed
+
+    private void txtMedicalEquipCountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMedicalEquipCountFocusLost
+        // TODO add your handling code here:
+        boolean isChar = false;
+        if (!evt.isTemporary()) {
+            String key = txtMedicalEquipCount.getText();
+            for (int i = 0; i < key.length(); i++) {
+                if (!(key.charAt(i) >= '0'
+                        && key.charAt(i) <= '9')) {
+                    isChar = true;
+                }
+            }
+            if (isChar) {
+                JOptionPane.showMessageDialog(this, "enter only number");
+            }
+        }
+    }//GEN-LAST:event_txtMedicalEquipCountFocusLost
+
+    private void txtBloodCountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBloodCountFocusLost
+        // TODO add your handling code here:
+        boolean isChar = false;
+        if (!evt.isTemporary()) {
+            String key = txtBloodCount.getText();
+            for (int i = 0; i < key.length(); i++) {
+                if (!(key.charAt(i) >= '0'
+                        && key.charAt(i) <= '9')) {
+                    isChar = true;
+                }
+            }
+            if (isChar) {
+                JOptionPane.showMessageDialog(this, "enter only number");
+            }
+        }
+    }//GEN-LAST:event_txtBloodCountFocusLost
+
+    private void txtNumberOfCoverageFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumberOfCoverageFocusLost
+        // TODO add your handling code here:
+        boolean isChar = false;
+        if (!evt.isTemporary()) {
+            String key = txtNumberOfCoverage.getText();
+            for (int i = 0; i < key.length(); i++) {
+                if (!(key.charAt(i) >= '0'
+                        && key.charAt(i) <= '9')) {
+                    isChar = true;
+                }
+            }
+            if (isChar) {
+                JOptionPane.showMessageDialog(this, "enter only number");
+            }
+        }
+    }//GEN-LAST:event_txtNumberOfCoverageFocusLost
+
+    private void txtFoodBankServedFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFoodBankServedFocusLost
+        // TODO add your handling code here:
+        boolean isChar = false;
+        if (!evt.isTemporary()) {
+            String key = txtFoodBankServed.getText();
+            for (int i = 0; i < key.length(); i++) {
+                if (!(key.charAt(i) >= '0'
+                        && key.charAt(i) <= '9')) {
+                    isChar = true;
+                }
+            }
+            if (isChar) {
+                JOptionPane.showMessageDialog(this, "enter only number");
+            }
+        }
+    }//GEN-LAST:event_txtFoodBankServedFocusLost
+
+    private void txtVehicleCountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVehicleCountFocusLost
+        // TODO add your handling code here:
+        boolean isChar = false;
+        if (!evt.isTemporary()) {
+            String key = txtVehicleCount.getText();
+            for (int i = 0; i < key.length(); i++) {
+                if (!(key.charAt(i) >= '0'
+                        && key.charAt(i) <= '9')) {
+                    isChar = true;
+                }
+            }
+            if (isChar) {
+                JOptionPane.showMessageDialog(this, "enter only number");
+            }
+        }
+    }//GEN-LAST:event_txtVehicleCountFocusLost
+
+    private void txtNumberOfClothing1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumberOfClothing1FocusLost
+        // TODO add your handling code here:
+        boolean isChar = false;
+        if (!evt.isTemporary()) {
+            String key = txtNumberOfClothing1.getText();
+            for (int i = 0; i < key.length(); i++) {
+                if (!(key.charAt(i) >= '0'
+                        && key.charAt(i) <= '9')) {
+                    isChar = true;
+                }
+            }
+            if (isChar) {
+                JOptionPane.showMessageDialog(this, "enter only number");
+            }
+        }
+    }//GEN-LAST:event_txtNumberOfClothing1FocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
