@@ -38,12 +38,12 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClothingItems = new javax.swing.JTable();
+        tblVaccineAvailability = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtWomen = new javax.swing.JTextField();
-        txtMen = new javax.swing.JTextField();
+        txtAvailableQuantity = new javax.swing.JTextField();
+        txtAvailableVaccines = new javax.swing.JTextField();
         cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
 
@@ -53,7 +53,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("VACCINES AVAILABILITY");
 
-        tblClothingItems.setModel(new javax.swing.table.DefaultTableModel(
+        tblVaccineAvailability.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,12 +61,12 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Manufacturer Name", "Available Vaccines", "Available Quantity", "LastUpdated"
+                "Vaccine Manufacturer Name", "Available Vaccines", "Available Quantity", "LastUpdated"
             }
         ));
-        jScrollPane1.setViewportView(tblClothingItems);
+        jScrollPane1.setViewportView(tblVaccineAvailability);
 
-        jLabel3.setText("Manufacturer Name:");
+        jLabel3.setText("Vaccine Manufacturer Name:");
 
         jLabel4.setText("Available Vaccines:");
 
@@ -101,8 +101,8 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
                                     .addComponent(jLabel3))
                                 .addGap(33, 33, 33)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtWomen)
-                                    .addComponent(txtMen)
+                                    .addComponent(txtAvailableQuantity)
+                                    .addComponent(txtAvailableVaccines)
                                     .addComponent(cmbStore, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(57, 57, 57)
                                 .addComponent(btnUpdate)))))
@@ -123,11 +123,11 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtMen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAvailableVaccines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtWomen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAvailableQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(247, Short.MAX_VALUE))
         );
 
@@ -147,42 +147,39 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        String MenApparel = txtMen.getText();
-        String WomenApparel = txtWomen.getText();
-        String KidsApparel = txtKids.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String AvailableVaccines = txtAvailableVaccines.getText();
+        String AvailableQuantity = txtAvailableQuantity.getText();
+        String VaccineManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblClothingItems.getModel();
+        DefaultTableModel model = (DefaultTableModel)tblVaccineAvailability.getModel();
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingItems set MenApparel ='"+MenApparel+"',KidsApparel ='"+KidsApparel+"',Lastupdated ='"+Date+"', WomenApparel ='"+WomenApparel+"' where StoreName='"+StoreName+"'";
+            String query = "Update FinalProj_VaccineManufAvailability set AvailableVaccines ='"+AvailableVaccines+"',AvailableQuantity ='"+AvailableQuantity+"',Lastupdated ='"+Date+"' where VaccineManufacturerName='"+VaccineManufacturerName+"'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
-            String querysel = "Select * from FinalProj_ClothingItems";
+            String querysel = "Select * from FinalProj_VaccineManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
             cmbStore.removeAllItems();
             model.setRowCount(0);
             while(rs.next())
             {
-                cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = rs.getString("StoreName");
-                String MenApparel1 = rs.getString("MenApparel");
-                String KidsApparel1 = rs.getString("KidsApparel");
-                String WomenAppare11 = rs.getString("WomenApparel");
+                cmbStore.addItem(rs.getString("VaccineManufacturerName"));
+                String VaccineManufacturerName1 = rs.getString("VaccineManufacturerName");
+                String AvailableVaccines1 = rs.getString("AvailableVaccines");
+                String AvailableQuantity1 = rs.getString("AvailableQuantity");
                 String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[5];
-                row[0] = StoreName1;
-                row[1] = MenApparel1;
-                row[2] = WomenAppare11;
-                row[3] = KidsApparel1;
-                row[4] = Lastupdated;
+                Object row[] = new Object[4];
+                row[0] = VaccineManufacturerName1;
+                row[1] = AvailableVaccines1;
+                row[2] = AvailableQuantity1;
+                row[3] = Lastupdated;
                 model.addRow(row);
             }
             con.close();
@@ -203,8 +200,8 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblClothingItems;
-    private javax.swing.JTextField txtMen;
-    private javax.swing.JTextField txtWomen;
+    private javax.swing.JTable tblVaccineAvailability;
+    private javax.swing.JTextField txtAvailableQuantity;
+    private javax.swing.JTextField txtAvailableVaccines;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,12 +38,12 @@ public class BloodbankAvailability extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClothingItems = new javax.swing.JTable();
+        tblBloodGroupAvailability = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtWomen = new javax.swing.JTextField();
-        txtMen = new javax.swing.JTextField();
+        txtAvailableUnits = new javax.swing.JTextField();
+        txtAvailableBloodGroups = new javax.swing.JTextField();
         cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
 
@@ -53,7 +53,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("BLOOD GROUP AVAILABILITY");
 
-        tblClothingItems.setModel(new javax.swing.table.DefaultTableModel(
+        tblBloodGroupAvailability.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,16 +61,16 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Blood Bank Name", "Available Blood Groups", "Available Quantity", "LastUpdated"
+                "Blood Bank Name", "Available Blood Groups", "Available Units", "LastUpdated"
             }
         ));
-        jScrollPane1.setViewportView(tblClothingItems);
+        jScrollPane1.setViewportView(tblBloodGroupAvailability);
 
         jLabel3.setText("Blood Bank Name:");
 
         jLabel4.setText("Available Blood Groups:");
 
-        jLabel5.setText("Available Quantity:");
+        jLabel5.setText("Available Units:");
 
         cmbStore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -101,8 +101,8 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                                     .addComponent(jLabel3))
                                 .addGap(33, 33, 33)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtWomen)
-                                    .addComponent(txtMen)
+                                    .addComponent(txtAvailableUnits)
+                                    .addComponent(txtAvailableBloodGroups)
                                     .addComponent(cmbStore, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(57, 57, 57)
                                 .addComponent(btnUpdate)))))
@@ -123,11 +123,11 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtMen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAvailableBloodGroups, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtWomen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAvailableUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(356, Short.MAX_VALUE))
         );
 
@@ -145,42 +145,39 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        String MenApparel = txtMen.getText();
-        String WomenApparel = txtWomen.getText();
-        String KidsApparel = txtKids.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String AvailableBloodGroups = txtAvailableBloodGroups.getText();
+        String AvailableUnits = txtAvailableUnits.getText();
+        String BloodBankName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblClothingItems.getModel();
+        DefaultTableModel model = (DefaultTableModel)tblBloodGroupAvailability.getModel();
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingItems set MenApparel ='"+MenApparel+"',KidsApparel ='"+KidsApparel+"',Lastupdated ='"+Date+"', WomenApparel ='"+WomenApparel+"' where StoreName='"+StoreName+"'";
+            String query = "Update FinalProj_BloodGroupAvailability set AvailableBloodGroups ='"+AvailableBloodGroups+"',AvailableUnits ='"+AvailableUnits+"',Lastupdated ='"+Date+"' where BloodBankName='"+BloodBankName+"'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
-            String querysel = "Select * from FinalProj_ClothingItems";
+            String querysel = "Select * from FinalProj_BloodGroupAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
             cmbStore.removeAllItems();
             model.setRowCount(0);
             while(rs.next())
             {
-                cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = rs.getString("StoreName");
-                String MenApparel1 = rs.getString("MenApparel");
-                String KidsApparel1 = rs.getString("KidsApparel");
-                String WomenAppare11 = rs.getString("WomenApparel");
+                cmbStore.addItem(rs.getString("BloodBankName"));
+                String BloodBankName1 = rs.getString("BloodBankName");
+                String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
+                String AvailableUnits1 = rs.getString("AvailableUnits");
                 String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[5];
-                row[0] = StoreName1;
-                row[1] = MenApparel1;
-                row[2] = WomenAppare11;
-                row[3] = KidsApparel1;
-                row[4] = Lastupdated;
+                Object row[] = new Object[4];
+                row[0] = BloodBankName1;
+                row[1] = AvailableBloodGroups1;
+                row[2] = AvailableUnits1;
+                row[3] = Lastupdated;
                 model.addRow(row);
             }
             con.close();
@@ -201,8 +198,8 @@ public class BloodbankAvailability extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblClothingItems;
-    private javax.swing.JTextField txtMen;
-    private javax.swing.JTextField txtWomen;
+    private javax.swing.JTable tblBloodGroupAvailability;
+    private javax.swing.JTextField txtAvailableBloodGroups;
+    private javax.swing.JTextField txtAvailableUnits;
     // End of variables declaration//GEN-END:variables
 }

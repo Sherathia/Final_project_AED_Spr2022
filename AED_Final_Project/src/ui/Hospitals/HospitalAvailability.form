@@ -201,8 +201,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtWomen" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtMen" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAvailableVentilators" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAvailableBeds" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cmbStore" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
@@ -231,12 +231,12 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAvailableBeds" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtWomen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAvailableVentilators" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="268" max="32767" attributes="0"/>
               </Group>
@@ -322,9 +322,9 @@
             <Property name="text" type="java.lang.String" value="Available Ventilators:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtWomen">
+        <Component class="javax.swing.JTextField" name="txtAvailableVentilators">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMen">
+        <Component class="javax.swing.JTextField" name="txtAvailableBeds">
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbStore">
           <Properties>

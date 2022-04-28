@@ -280,7 +280,7 @@ public class MainBloodbank extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='IN PROGRESS', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_BloodBankRequests set status='IN PROGRESS', comments ='"+comments+"' where RequestID='"+requestId+"'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
             con.close();
@@ -303,7 +303,7 @@ public class MainBloodbank extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_BloodBankRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             con.close();
@@ -326,7 +326,7 @@ public class MainBloodbank extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='REJECTED', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_BloodBankRequests set status='REJECTED', comments ='"+comments+"' where RequestID='"+requestId+"'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
             con.close();

@@ -52,8 +52,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtWomen" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtMen" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAvailableQuantity" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAvailableVaccines" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cmbStore" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
@@ -82,12 +82,12 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAvailableVaccines" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtWomen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAvailableQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="247" max="32767" attributes="0"/>
               </Group>
@@ -117,11 +117,11 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tblClothingItems">
+            <Component class="javax.swing.JTable" name="tblVaccineAvailability">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Manufacturer Name" type="java.lang.Object"/>
+                    <Column editable="true" title="Vaccine Manufacturer Name" type="java.lang.Object"/>
                     <Column editable="true" title="Available Vaccines" type="java.lang.Object"/>
                     <Column editable="true" title="Available Quantity" type="java.lang.Object"/>
                     <Column editable="true" title="LastUpdated" type="java.lang.Object"/>
@@ -160,7 +160,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Manufacturer Name:"/>
+            <Property name="text" type="java.lang.String" value="Vaccine Manufacturer Name:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -173,9 +173,9 @@
             <Property name="text" type="java.lang.String" value="Available Quantity:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtWomen">
+        <Component class="javax.swing.JTextField" name="txtAvailableQuantity">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMen">
+        <Component class="javax.swing.JTextField" name="txtAvailableVaccines">
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbStore">
           <Properties>

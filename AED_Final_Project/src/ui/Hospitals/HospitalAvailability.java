@@ -36,16 +36,16 @@ public class HospitalAvailability extends javax.swing.JPanel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
-            String query = "Select * from FinalProj_ClothingItems";
+            String query = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(query);
              cmbStore.removeAllItems();
              
             while(rs.next())
             {   
-                cmbStore.addItem(rs.getString("StoreName"));
-                String HospitalName = rs.getString("StoreName");
-                String AvailableBeds = rs.getString("MenApparel");
-                String AvailableVentilators = rs.getString("WomenApparel");
+                cmbStore.addItem(rs.getString("HospitalName"));
+                String HospitalName = rs.getString("HospitalName");
+                String AvailableBeds = rs.getString("AvailableBeds");
+                String AvailableVentilators = rs.getString("AvailableVentilators");
                 String Lastupdated = rs.getString("Lastupdated");
                 
 
@@ -92,8 +92,8 @@ public class HospitalAvailability extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtWomen = new javax.swing.JTextField();
-        txtMen = new javax.swing.JTextField();
+        txtAvailableVentilators = new javax.swing.JTextField();
+        txtAvailableBeds = new javax.swing.JTextField();
         cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
 
@@ -235,8 +235,8 @@ public class HospitalAvailability extends javax.swing.JPanel {
                                     .addComponent(jLabel3))
                                 .addGap(33, 33, 33)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtWomen)
-                                    .addComponent(txtMen)
+                                    .addComponent(txtAvailableVentilators)
+                                    .addComponent(txtAvailableBeds)
                                     .addComponent(cmbStore, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(57, 57, 57)
                                 .addComponent(btnUpdate)))))
@@ -257,11 +257,11 @@ public class HospitalAvailability extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtMen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAvailableBeds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtWomen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAvailableVentilators, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
 
@@ -285,10 +285,9 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        String MenApparel = txtMen.getText();
-        String WomenApparel = txtWomen.getText();
-        String KidsApparel = txtKids.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String AvailableBeds = txtAvailableBeds.getText();
+        String AvailableVentilators = txtAvailableVentilators.getText();
+        String HospitalName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel)tblMedicalSupplies.getModel();
@@ -298,29 +297,27 @@ public class HospitalAvailability extends javax.swing.JPanel {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingItems set MenApparel ='"+MenApparel+"',KidsApparel ='"+KidsApparel+"',Lastupdated ='"+Date+"', WomenApparel ='"+WomenApparel+"' where StoreName='"+StoreName+"'";
+            String query = "Update FinalProj_HospitalAvailability set AvailableBeds ='"+AvailableBeds+"',AvailableVentilators ='"+AvailableVentilators+"',Lastupdated ='"+Date+"' where HospitalName='"+HospitalName+"'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
-            String querysel = "Select * from FinalProj_ClothingItems";
+            String querysel = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
             cmbStore.removeAllItems();
             model.setRowCount(0);
             while(rs.next())
             {
-                cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = rs.getString("StoreName");
-                String MenApparel1 = rs.getString("MenApparel");
-                String KidsApparel1 = rs.getString("KidsApparel");
-                String WomenAppare11 = rs.getString("WomenApparel");
+                cmbStore.addItem(rs.getString("HospitalName"));
+                String HospitalName1 = rs.getString("HospitalName");
+                String AvailableBeds1 = rs.getString("AvailableBeds");
+                String AvailableVentilators1 = rs.getString("AvailableVentilators");
                 String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[5];
-                row[0] = StoreName1;
-                row[1] = MenApparel1;
-                row[2] = WomenAppare11;
-                row[3] = KidsApparel1;
-                row[4] = Lastupdated;
+                Object row[] = new Object[4];
+                row[0] = HospitalName1;
+                row[1] = AvailableBeds1;
+                row[2] = AvailableVentilators1;
+                row[3] = Lastupdated;
                 model.addRow(row);
             }
             con.close();
@@ -354,7 +351,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable tblMedicalSupplies;
-    private javax.swing.JTextField txtMen;
-    private javax.swing.JTextField txtWomen;
+    private javax.swing.JTextField txtAvailableBeds;
+    private javax.swing.JTextField txtAvailableVentilators;
     // End of variables declaration//GEN-END:variables
 }
