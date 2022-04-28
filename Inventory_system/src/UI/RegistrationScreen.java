@@ -100,7 +100,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
 
         btnRegister.setBackground(new java.awt.Color(231, 239, 254));
         btnRegister.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        btnRegister.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\registerbtn1.jpg")); // NOI18N
+        btnRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registerbtn1.jpg"))); // NOI18N
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -205,7 +205,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
 
         txtcountry.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\newuser3.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/newuser3.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRegisterLayout = new javax.swing.GroupLayout(panelRegister);
         panelRegister.setLayout(panelRegisterLayout);
