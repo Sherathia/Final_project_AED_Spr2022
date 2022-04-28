@@ -35,16 +35,18 @@ public class HospitalAvailability extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtFood = new javax.swing.JTextField();
+        cmbICU = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtWater = new javax.swing.JTextField();
+        cmbBeds = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cmbStore = new javax.swing.JComboBox<>();
+        cmbHospital = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFoodItems = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -54,7 +56,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
         jLabel3.setText("Hospital:");
 
-        cmbStore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +81,15 @@ public class HospitalAvailability extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setText("HOSPITAL AVAILABILITY");
 
+        jButton1.setText("CREATE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("DELETE");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,24 +98,28 @@ public class HospitalAvailability extends javax.swing.JPanel {
                 .addContainerGap(180, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(191, 191, 191))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel3))
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFood)
-                                    .addComponent(txtWater)
-                                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmbICU)
+                                    .addComponent(cmbBeds)
+                                    .addComponent(cmbHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(57, 57, 57)
-                                .addComponent(btnUpdate)))
-                        .addGap(158, 158, 158))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(191, 191, 191))))
+                                .addComponent(btnUpdate)
+                                .addGap(33, 33, 33)
+                                .addComponent(jButton1)
+                                .addGap(37, 37, 37)
+                                .addComponent(jButton3)))
+                        .addGap(100, 100, 100))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,25 +131,28 @@ public class HospitalAvailability extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate))
+                    .addComponent(cmbHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jButton3)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtWater, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbBeds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbICU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(274, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        String foodpacket = txtFood.getText();
-        String watercans = txtWater.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String AvailableVentilators = cmbICU.getText();
+        String AvailableBeds = cmbBeds.getText();
+        String HospitalName = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel)tblFoodItems.getModel();
@@ -144,26 +162,26 @@ public class HospitalAvailability extends javax.swing.JPanel {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_FoodmarketItems set foodpacket ='"+foodpacket+"',Lastupdated ='"+Date+"', watercans ='"+watercans+"' where StoreName='"+StoreName+"'";
+            String query = "Update FinalProj_HospitalAvailability set AvailableBeds ='"+AvailableBeds+"',Lastupdated ='"+Date+"', AvailableVentilators ='"+AvailableVentilators+"' where HospitalName='"+HospitalName+"'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
-            String querysel = "Select * from FinalProj_FoodmarketItems";
+            String querysel = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            cmbHospital.removeAllItems();
             model.setRowCount(0);
             while(rs.next())
             {
-                cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = cmbStore.getItemAt(cmbStore.getSelectedIndex());
-                String WaterCans = rs.getString("WaterCans");
-                String FoodPacket = rs.getString("FoodPacket");
+                cmbHospital.addItem(rs.getString("HospitalName"));
+                String HospitalName1 = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+                String AvailableBeds1 = rs.getString("AvailableBeds");
+                String AvailableVentilators1 = rs.getString("AvailableVentilators");
                 String Lastupdated = rs.getString("Lastupdated");
 
                 Object row[] = new Object[4];
-                row[0] = StoreName1;
-                row[1] = WaterCans;
-                row[2] = FoodPacket;
+                row[0] = HospitalName1;
+                row[1] = AvailableBeds1;
+                row[2] = AvailableVentilators1;
                 row[3] = Lastupdated;
                 model.addRow(row);
             }
@@ -176,17 +194,24 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+ 
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbStore;
+    private javax.swing.JTextField cmbBeds;
+    private javax.swing.JComboBox<String> cmbHospital;
+    private javax.swing.JTextField cmbICU;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblFoodItems;
-    private javax.swing.JTextField txtFood;
-    private javax.swing.JTextField txtWater;
     // End of variables declaration//GEN-END:variables
 }
