@@ -83,7 +83,7 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jButton1.setText("CREATE");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\crerrequest.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crerrequest.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
