@@ -4,10 +4,27 @@
  */
 package Enterprise.Warehouse;
 
+import Enterprise.Warehouse.FoodMarketRetailers;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
- * @author aesha
+ * @author anvithalakshmisha
  */
 public class FoodMarketRtlDirectory {
-    
+
+    public List<FoodMarketRetailers> foodMarketList;
+
+    public FoodMarketRtlDirectory() {
+        foodMarketList = new ArrayList<>();
+    }
+
+    public List<FoodMarketRetailers> getFoodMarketList() {
+        return foodMarketList;
+    }
+
+    public void setFoodMarketList(List<FoodMarketRetailers> foodMarketList) {
+        this.foodMarketList = foodMarketList;
+    }
 }

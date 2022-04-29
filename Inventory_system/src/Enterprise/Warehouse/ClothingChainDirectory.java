@@ -4,10 +4,27 @@
  */
 package Enterprise.Warehouse;
 
+import Enterprise.Warehouse.ClothingChain;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
- * @author aesha
+ * @author anvithalakshmisha
  */
 public class ClothingChainDirectory {
-    
+
+    public List<ClothingChain> clothingChainList;
+
+    public ClothingChainDirectory() {
+        clothingChainList = new ArrayList<>();
+    }
+
+    public List<ClothingChain> getClothingChainList() {
+        return clothingChainList;
+    }
+
+    public void setclothingChainList(List<ClothingChain> clothingChainList) {
+        this.clothingChainList = clothingChainList;
+    }
 }

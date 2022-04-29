@@ -4,10 +4,27 @@
  */
 package Enterprise.Warehouse;
 
+import Enterprise.Warehouse.TransportAgencies;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
- * @author aesha
+ * @author anvithalakshmisha
  */
 public class TransportAgenciesDirectory {
-    
+
+    public List<FoodMarketRetailers> transportAgenciesList;
+
+    public TransportAgenciesDirectory() {
+        transportAgenciesList = new ArrayList<>();
+    }
+
+    public List<FoodMarketRetailers> getTransportAgenciesList() {
+        return transportAgenciesList;
+    }
+
+    public void setTransportAgenciesList(List<FoodMarketRetailers> transportAgenciesList) {
+        this.transportAgenciesList = transportAgenciesList;
+    }
 }
