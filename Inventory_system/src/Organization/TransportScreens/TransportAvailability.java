@@ -52,8 +52,8 @@ public class TransportAvailability extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtTravel = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -63,13 +63,13 @@ public class TransportAvailability extends javax.swing.JPanel {
 
         tblVehicles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "StoreName", "Travel Vehicles", "LastUpdated"
+                "StoreName", "Travel Vehicles", "Ambulance", "Truck", "LastUpdated"
             }
         ));
         jScrollPane1.setViewportView(tblVehicles);
@@ -91,14 +91,19 @@ public class TransportAvailability extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("CREATE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreate.setText("CREATE");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCreateActionPerformed(evt);
             }
         });
 
-        jButton3.setText("DELETE");
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,9 +135,9 @@ public class TransportAvailability extends javax.swing.JPanel {
                                             .addComponent(txtTravel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton1)
+                                        .addComponent(btnCreate)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton3)))
+                                        .addComponent(btnDelete)))
                                 .addGap(428, 428, 428))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,8 +172,8 @@ public class TransportAvailability extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(btnCreate)
+                    .addComponent(btnDelete))
                 .addContainerGap(243, Short.MAX_VALUE))
         );
 
@@ -230,16 +235,106 @@ public class TransportAvailability extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+         String Ambulance = txtAmbulance.getText();
+         String Truck = txtTruck.getText();
+         String Travel = txtTravel.getText();
+        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Insert into `FinalProj_Vehicles`" + "values('" + StoreName + "','" + Ambulance + "','" + Truck + "','" + Travel + "','" + Date + "')";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Inserted!!");
+
+            String querysel = "Select * from FinalProj_Vehicles";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            //cmbStore.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                //cmbStore.addItem(rs.getString("StoreName"));
+                String StoreName1 = rs.getString("StoreName");
+                String Ambulance1 = rs.getString("Ambulance");
+                String Truck1 = rs.getString("Truck");
+                String Travel1 = rs.getString("Travel");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[5];
+                row[0] = StoreName1;
+                row[1] = Travel1;
+                 row[2] = Ambulance1;
+                 row[3] = Truck1;
+                row[4] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        String Ambulance = txtAmbulance.getText();
+         String Truck = txtTruck.getText();
+         String Travel = txtTravel.getText();
+        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Delete from `FinalProj_Vehicles` where `StoreName`='" + StoreName + "'";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Deleted!!");
+
+            String querysel = "Select * from FinalProj_Vehicles";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            cmbStore.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                cmbStore.addItem(rs.getString("StoreName"));
+                String StoreName1 = rs.getString("StoreName");
+                String Ambulance1 = rs.getString("Ambulance");
+                String Truck1 = rs.getString("Truck");
+                String Travel1 = rs.getString("Travel");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[5];
+                row[0] = StoreName1;
+                row[1] = Travel1;
+                 row[2] = Ambulance1;
+                 row[3] = Truck1;
+                row[4] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cmbStore;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
