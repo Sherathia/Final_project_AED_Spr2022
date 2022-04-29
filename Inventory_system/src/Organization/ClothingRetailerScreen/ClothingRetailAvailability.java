@@ -24,26 +24,25 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
      * Creates new form ClothingRetailAvailability
      */
     private JPanel RightPanel;
+
     public ClothingRetailAvailability(JPanel RightPanel) {
         initComponents();
         this.RightPanel = RightPanel;
-         DefaultTableModel model = (DefaultTableModel)tblClothingItems.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblClothingItems.getModel();
         model.setRowCount(0);
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
             String query = "Select * from FinalProj_ClothingItems";
             ResultSet rs = myStatement.executeQuery(query);
-             //cmbStore.removeAllItems();
-             
-            while(rs.next())
-            {   
+            //cmbStore.removeAllItems();
+
+            while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName = rs.getString("StoreName");
                 String MenApparel = rs.getString("MenApparel");
                 String Lastupdated = rs.getString("Lastupdated");
-                
 
                 Object row[] = new Object[3];
                 row[0] = StoreName;
@@ -52,9 +51,8 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
         }
     }
@@ -193,14 +191,14 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
         String StoreName = txtStoreName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblClothingItems.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblClothingItems.getModel();
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingItems set MenApparel ='"+MenApparel+"',Lastupdated ='"+Date+"' where StoreName='"+StoreName+"'";
+            String query = "Update FinalProj_ClothingItems set MenApparel ='" + MenApparel + "',Lastupdated ='" + Date + "' where StoreName='" + StoreName + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
@@ -208,8 +206,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
             ResultSet rs = myStatement.executeQuery(querysel);
             //cmbStore.removeAllItems();
             model.setRowCount(0);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = rs.getString("StoreName");
                 String MenApparel1 = rs.getString("MenApparel");
@@ -222,9 +219,8 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
 
@@ -236,24 +232,23 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
         String StoreName = txtStoreName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblClothingItems.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblClothingItems.getModel();
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Insert into `FinalProj_ClothingItems`"+"values('"+StoreName+"','"+MenApparel+"','"+Date+"')";
-        myStatement.executeUpdate(query);
-        
-          JOptionPane.showMessageDialog(this, "Record Inserted!!");
+            String query = "Insert into `FinalProj_ClothingItems`" + "values('" + StoreName + "','" + MenApparel + "','" + Date + "')";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Inserted!!");
 
             String querysel = "Select * from FinalProj_ClothingItems";
             ResultSet rs = myStatement.executeQuery(querysel);
             //cmbStore.removeAllItems();
             model.setRowCount(0);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = rs.getString("StoreName");
                 String MenApparel1 = rs.getString("MenApparel");
@@ -266,9 +261,8 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -279,25 +273,23 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
         String StoreName = txtStoreName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblClothingItems.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblClothingItems.getModel();
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Delete from `FinalProj_ClothingItems` where `StoreName`='"+StoreName+"'";
-        myStatement.executeUpdate(query);
-        
-        
-          JOptionPane.showMessageDialog(this, "Record Deleted!!");
+            String query = "Delete from `FinalProj_ClothingItems` where `StoreName`='" + StoreName + "'";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Deleted!!");
 
             String querysel = "Select * from FinalProj_ClothingItems";
             ResultSet rs = myStatement.executeQuery(querysel);
             //cmbStore.removeAllItems();
             model.setRowCount(0);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = rs.getString("StoreName");
                 String MenApparel1 = rs.getString("MenApparel");
@@ -310,9 +302,8 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Organization.Hospitals;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -129,13 +130,14 @@ public class HospitalAvailability extends javax.swing.JPanel {
                 .addGap(100, 100, 100)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(cmbHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdate)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -155,14 +157,14 @@ public class HospitalAvailability extends javax.swing.JPanel {
         String HospitalName = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblFoodItems.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_HospitalAvailability set AvailableBeds ='"+AvailableBeds+"',Lastupdated ='"+Date+"', AvailableVentilators ='"+AvailableVentilators+"' where HospitalName='"+HospitalName+"'";
+            String query = "Update FinalProj_HospitalAvailability set AvailableBeds ='" + AvailableBeds + "',Lastupdated ='" + Date + "', AvailableVentilators ='" + AvailableVentilators + "' where HospitalName='" + HospitalName + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
@@ -170,8 +172,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
             ResultSet rs = myStatement.executeQuery(querysel);
             cmbHospital.removeAllItems();
             model.setRowCount(0);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 cmbHospital.addItem(rs.getString("HospitalName"));
                 String HospitalName1 = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
                 String AvailableBeds1 = rs.getString("AvailableBeds");
@@ -186,9 +187,8 @@ public class HospitalAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
 
@@ -196,7 +196,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
- 
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

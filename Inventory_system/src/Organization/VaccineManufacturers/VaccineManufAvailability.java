@@ -133,13 +133,14 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
                 .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdate)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -172,14 +173,14 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         String VaccineManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblVaccineAvailability.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblVaccineAvailability.getModel();
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_VaccineManufAvailability set AvailableVaccines ='"+AvailableVaccines+"',AvailableQuantity ='"+AvailableQuantity+"',Lastupdated ='"+Date+"' where VaccineManufacturerName='"+VaccineManufacturerName+"'";
+            String query = "Update FinalProj_VaccineManufAvailability set AvailableVaccines ='" + AvailableVaccines + "',AvailableQuantity ='" + AvailableQuantity + "',Lastupdated ='" + Date + "' where VaccineManufacturerName='" + VaccineManufacturerName + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
@@ -187,8 +188,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
             ResultSet rs = myStatement.executeQuery(querysel);
             cmbStore.removeAllItems();
             model.setRowCount(0);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 cmbStore.addItem(rs.getString("VaccineManufacturerName"));
                 String VaccineManufacturerName1 = rs.getString("VaccineManufacturerName");
                 String AvailableVaccines1 = rs.getString("AvailableVaccines");
@@ -203,9 +203,8 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnUpdateActionPerformed

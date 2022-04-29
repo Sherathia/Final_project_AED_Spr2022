@@ -24,10 +24,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
      * Creates new form RegistrationScreen
      */
     private JPanel rightPanel;
+
     public RegistrationScreen(JPanel rightPanel) {
         initComponents();
         this.rightPanel = rightPanel;
-        
+
     }
 
     /**
@@ -347,121 +348,109 @@ public class RegistrationScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
         String Name = txtName.getText();
         String UserName = txtUsername.getText();
-        
-        char pass[]= pwd1.getPassword();
+
+        char pass[] = pwd1.getPassword();
         String Password = String.valueOf(pass);
-        
-        char passconf[]= pwd2.getPassword();
+
+        char passconf[] = pwd2.getPassword();
         String PasswordConfirm = String.valueOf(passconf);
-        
+
         /*if(Password != PasswordConfirm)
                 {
                    JOptionPane.showMessageDialog(this, "Passwords don't match");
                    pwd2.setText(null);
                    return;
                 }*/
-        
         String EmailId = txtEmail.getText();
         String Contact = txtcontact.getText();
         String Country = txtcountry.getText();
         String Organization = cmbOrganisation.getItemAt(cmbOrganisation.getSelectedIndex());
         String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
-        
-        if(Name.isEmpty() || UserName.isEmpty() || EmailId.isEmpty() || Contact.isEmpty() 
-                || Country.isEmpty() || Organization.isEmpty() || Enterprise.isEmpty())
-        {
+
+        if (Name.isEmpty() || UserName.isEmpty() || EmailId.isEmpty() || Contact.isEmpty()
+                || Country.isEmpty() || Organization.isEmpty() || Enterprise.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please populate values!!..");
             return;
         }
-         Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Registration", "Registration Completed.!!", EmailId);
+        Business.SendMail mail = new Business.SendMail();
+        mail.sendMail("Registration", "Registration Completed.!!", EmailId);
 
         //sendMail("Registration","Registered Successfully",EmailId);
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Insert into `FinalProj_Users`"+"values('"+Name+"','"+UserName+"','"+Password+"','"+EmailId+"','"+Country+"','"+Enterprise+"','"+Organization+"','"+Contact+"')";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "User Created Successfully!!..");
-        txtEmail.setText(null);
-        txtName.setText(null);
-        txtUsername.setText(null);
-        txtcontact.setText(null);
-        txtcountry.setText(null);
-        pwd1.setText(null);
-        pwd2.setText(null);
-        //System.out.println("Inserted data");
-           }catch(Exception E) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Inventory_Management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "pankaaniamithu@5");
+            Statement myStatement = con.createStatement();
+            String query = "Insert into `FinalProj_Users`" + "values('" + Name + "','" + UserName + "','" + Password + "','" + EmailId + "','" + Country + "','" + Enterprise + "','" + Organization + "','" + Contact + "')";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "User Created Successfully!!..");
+            txtEmail.setText(null);
+            txtName.setText(null);
+            txtUsername.setText(null);
+            txtcontact.setText(null);
+            txtcountry.setText(null);
+            pwd1.setText(null);
+            pwd2.setText(null);
+            //System.out.println("Inserted data");
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void cmbOrganisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganisationActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_cmbOrganisationActionPerformed
 
     private void cmbEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseActionPerformed
         // TODO add your handling code here:
         String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
         cmbOrganisation.removeAllItems();
-                if(Enterprise.equalsIgnoreCase("Medical"))
-                {
-                 cmbOrganisation.addItem("Hospitals");
-                 cmbOrganisation.addItem("Vaccine Manufacturer");
-                 cmbOrganisation.addItem("Blood Bank");
-                 cmbOrganisation.addItem("Medical Equipments");
-                 //cmbOrganisation.addItem("Insurance");
-                 
-                }
-                else if(Enterprise.equalsIgnoreCase("Voluntary"))
-                {
-                    cmbOrganisation.addItem("NGO");
-                    cmbOrganisation.addItem("Fund Raiser");
-                }
-                else if(Enterprise.equalsIgnoreCase("Government"))
-                {
-                    cmbOrganisation.addItem("Government");
-                    cmbOrganisation.addItem("NDRF");
-                }
-                else if(Enterprise.equalsIgnoreCase("Warehouse"))
-                {
-                    cmbOrganisation.addItem("FoodMarket");
-                    cmbOrganisation.addItem("Clothing");
-                    cmbOrganisation.addItem("Transport");
-                }
+        if (Enterprise.equalsIgnoreCase("Medical")) {
+            cmbOrganisation.addItem("Hospitals");
+            cmbOrganisation.addItem("Vaccine Manufacturer");
+            cmbOrganisation.addItem("Blood Bank");
+            cmbOrganisation.addItem("Medical Equipments");
+            //cmbOrganisation.addItem("Insurance");
+
+        } else if (Enterprise.equalsIgnoreCase("Voluntary")) {
+            cmbOrganisation.addItem("NGO");
+            cmbOrganisation.addItem("Fund Raiser");
+        } else if (Enterprise.equalsIgnoreCase("Government")) {
+            cmbOrganisation.addItem("Government");
+            cmbOrganisation.addItem("NDRF");
+        } else if (Enterprise.equalsIgnoreCase("Warehouse")) {
+            cmbOrganisation.addItem("FoodMarket");
+            cmbOrganisation.addItem("Clothing");
+            cmbOrganisation.addItem("Transport");
+        }
     }//GEN-LAST:event_cmbEnterpriseActionPerformed
 
     private void pwd1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pwd1MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_pwd1MouseExited
 
     private void pwd2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pwd2MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_pwd2MouseExited
 
     private void pwd1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwd1FocusLost
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_pwd1FocusLost
 
     private void pwd2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwd2FocusLost
         // TODO add your handling code here:
-         char pass1[]= pwd1.getPassword();
+        char pass1[] = pwd1.getPassword();
         String Password1 = String.valueOf(pass1);
-        if(Password1.length()<= 8)
-        {
+        if (Password1.length() <= 8) {
             JOptionPane.showMessageDialog(this, "Passwords should be more than 8 characters");
         }
-        char pass2[]= pwd2.getPassword();
+        char pass2[] = pwd2.getPassword();
         String Password2 = String.valueOf(pass2);
-        if(!Password2.equalsIgnoreCase(Password1))
-        {
+        if (!Password2.equalsIgnoreCase(Password1)) {
             JOptionPane.showMessageDialog(this, "Passwords and confirm passwords are not matching!!");
             pwd2.setText(null);
         }
@@ -470,8 +459,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
     private void txtcontactFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcontactFocusLost
         // TODO add your handling code here:
         String ContactNo = txtcontact.getText();
-        if(ContactNo.length()!=10)
-        {
+        if (ContactNo.length() != 10) {
             JOptionPane.showMessageDialog(this, "Please enter Valid Phone number!");
             return;
         }

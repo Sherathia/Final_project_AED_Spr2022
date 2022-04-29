@@ -161,14 +161,14 @@ public class BloodbankAvailability extends javax.swing.JPanel {
         String BloodBankName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblBloodGroupAvailability.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_BloodGroupAvailability set AvailableBloodGroups ='"+AvailableBloodGroups+"',AvailableUnits ='"+AvailableUnits+"',Lastupdated ='"+Date+"' where BloodBankName='"+BloodBankName+"'";
+            String query = "Update FinalProj_BloodGroupAvailability set AvailableBloodGroups ='" + AvailableBloodGroups + "',AvailableUnits ='" + AvailableUnits + "',Lastupdated ='" + Date + "' where BloodBankName='" + BloodBankName + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
@@ -176,8 +176,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             ResultSet rs = myStatement.executeQuery(querysel);
             cmbStore.removeAllItems();
             model.setRowCount(0);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 cmbStore.addItem(rs.getString("BloodBankName"));
                 String BloodBankName1 = rs.getString("BloodBankName");
                 String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
@@ -192,9 +191,8 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnUpdateActionPerformed

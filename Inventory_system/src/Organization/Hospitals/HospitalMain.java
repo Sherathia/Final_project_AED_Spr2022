@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Organization.Hospitals;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.CardLayout;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aesha
@@ -229,18 +231,17 @@ public class HospitalMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='IN PROGRESS', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_ClothingRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
@@ -252,18 +253,17 @@ public class HospitalMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_ClothingRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
@@ -275,18 +275,17 @@ public class HospitalMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='REJECTED', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_ClothingRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed

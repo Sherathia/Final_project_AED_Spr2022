@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ui.Bloodbank;
+package UIMedicalEnterprise.Bloodbank;
 
 //import com.sun.jdi.connect.spi.Connection;
 import UI.Login;
@@ -274,18 +274,17 @@ public class MainBloodbank extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_BloodBankRequests set status='IN PROGRESS', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_BloodBankRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
@@ -297,18 +296,17 @@ public class MainBloodbank extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_BloodBankRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_BloodBankRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
@@ -320,18 +318,17 @@ public class MainBloodbank extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_BloodBankRequests set status='REJECTED', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_BloodBankRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed
@@ -346,8 +343,8 @@ public class MainBloodbank extends javax.swing.JFrame {
     private void btnUpdAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdAvailabilityActionPerformed
         // TODO add your handling code here:
         BloodbankAvailability ba = new BloodbankAvailability(RightPane);
-        RightPane.add("BloodbankAvailability",ba);
-        CardLayout layout = (CardLayout)RightPane.getLayout();
+        RightPane.add("BloodbankAvailability", ba);
+        CardLayout layout = (CardLayout) RightPane.getLayout();
         layout.next(RightPane);
     }//GEN-LAST:event_btnUpdAvailabilityActionPerformed
 

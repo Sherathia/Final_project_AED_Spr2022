@@ -19,7 +19,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import ui.MedicalEquipManuf.MainMedicalEquipManuf;
+import UIMedicalEnterprise.MedicalEquipManuf.MainMedicalEquipManuf;
 
 /**
  *
@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public HierarchyManage hr ;
+    public HierarchyManage hr;
     public Fundraiser fr;
     public FoodMarketMain fm;
     public ClothingRetailerMain crm;
@@ -39,10 +39,10 @@ public class Login extends javax.swing.JFrame {
     public HospitalMain hm;
     public MainVaccineManufacturers vm;
     public MainMedicalEquipManuf mef;
-    
+
     public Login() {
         initComponents();
-        
+
     }
 
     /**
@@ -226,119 +226,91 @@ public class Login extends javax.swing.JFrame {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         RegistrationScreen rs = new RegistrationScreen(PanelLogin);
-        PanelLogin.add("RegistrationScreen",rs);
-        CardLayout layout = (CardLayout)PanelLogin.getLayout();
+        PanelLogin.add("RegistrationScreen", rs);
+        CardLayout layout = (CardLayout) PanelLogin.getLayout();
         layout.next(PanelLogin);
-        
-        
+
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-       /* Hierarchy hr = new Hierarchy(PanelLogin);
+        /* Hierarchy hr = new Hierarchy(PanelLogin);
         PanelLogin.add("Hierarchy",hr);
         CardLayout layout = (CardLayout)PanelLogin.getLayout();
         layout.next(PanelLogin);*/
-       String UserName = txtUserName.getText();
-       char[] passwordArr = txtPwd.getPassword();
-       String password = String.valueOf(passwordArr);
-       UserAccount userAccount;
-       
-       try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_Users";
-        ResultSet rs = myStatement.executeQuery(query);
-        
-        while(rs.next())
-        {
-            String DBUsername = rs.getString("Username");
-            String DBPassword = rs.getString("Password");
-            String DBOrg = rs.getString("Organization");
-            
-            if(UserName.equalsIgnoreCase(DBUsername) && password.equalsIgnoreCase(DBPassword))
-            {
-                if(DBOrg.equalsIgnoreCase("Admin"))
-                {
-                hr = new HierarchyManage();
-                hr.setVisible(true);
-                this.dispose();
+        String UserName = txtUserName.getText();
+        char[] passwordArr = txtPwd.getPassword();
+        String password = String.valueOf(passwordArr);
+        UserAccount userAccount;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_Users";
+            ResultSet rs = myStatement.executeQuery(query);
+
+            while (rs.next()) {
+                String DBUsername = rs.getString("Username");
+                String DBPassword = rs.getString("Password");
+                String DBOrg = rs.getString("Organization");
+
+                if (UserName.equalsIgnoreCase(DBUsername) && password.equalsIgnoreCase(DBPassword)) {
+                    if (DBOrg.equalsIgnoreCase("Admin")) {
+                        hr = new HierarchyManage();
+                        hr.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("Fund Raiser")) {
+                        fr = new Fundraiser();
+                        fr.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("FoodMarket")) {
+                        fm = new FoodMarketMain();
+                        fm.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("Clothing")) {
+                        crm = new ClothingRetailerMain();
+                        crm.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("Transport")) {
+                        tm = new TransportMain();
+                        tm.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("NGO")) {
+                        cr = new createRequests();
+                        cr.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("Government")) {
+                        cr = new createRequests();
+                        cr.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("NDRF")) {
+                        cr = new createRequests();
+                        cr.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("Hospitals")) {
+                        hm = new HospitalMain();
+                        hm.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("Vaccine Manufacturer")) {
+                        vm = new MainVaccineManufacturers();
+                        vm.setVisible(true);
+                        this.dispose();
+                    } else if (DBOrg.equalsIgnoreCase("Medical Equipments")) {
+                        mef = new MainMedicalEquipManuf();
+                        mef.setVisible(true);
+                        this.dispose();
+                    }
                 }
-                else if(DBOrg.equalsIgnoreCase("Fund Raiser"))
-                {
-                 fr =  new Fundraiser();
-                 fr.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("FoodMarket"))
-                {
-                 fm =  new FoodMarketMain();
-                 fm.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("Clothing"))
-                {
-                 crm =  new ClothingRetailerMain();
-                 crm.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("Transport"))
-                {
-                 tm =  new TransportMain();
-                 tm.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("NGO"))
-                {
-                 cr =  new createRequests();
-                 cr.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("Government"))
-                {
-                 cr =  new createRequests();
-                 cr.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("NDRF"))
-                {
-                 cr =  new createRequests();
-                 cr.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("Hospitals"))
-                {
-                 hm =  new HospitalMain();
-                 hm.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("Vaccine Manufacturer"))
-                {
-                 vm =  new MainVaccineManufacturers();
-                 vm.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("Medical Equipments"))
-                {
-                  mef = new  MainMedicalEquipManuf();
-                  mef.setVisible(true);
-                  this.dispose();
-                }
+
             }
-            
-        }
-        //System.out.println("Inserted data");
-           }catch(Exception E) {
+            //System.out.println("Inserted data");
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
-       
-       
-       
-       
-       
-       
- 
+        }
+
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
