@@ -44,10 +44,10 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtAvailableQuantity = new javax.swing.JTextField();
         txtAvailableEquipment = new javax.swing.JTextField();
-        cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
 
         jLabel2.setBackground(new java.awt.Color(51, 153, 255));
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
@@ -73,8 +73,6 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         jLabel4.setText("Available Equipment:");
 
         jLabel5.setText("Available Quantity:");
-
-        cmbStore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -116,9 +114,9 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
                                     .addComponent(jLabel3))
                                 .addGap(33, 33, 33)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAvailableQuantity)
+                                    .addComponent(txtAvailableQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                                     .addComponent(txtAvailableEquipment)
-                                    .addComponent(cmbStore, 0, 250, Short.MAX_VALUE)))
+                                    .addComponent(txtName)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnUpdate)
                                 .addGap(18, 18, 18)
@@ -137,10 +135,10 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -155,7 +153,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
                         .addComponent(btnCreate)
                         .addComponent(btnDelete))
                     .addComponent(btnUpdate))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -174,7 +172,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
         String AvailableEquipment = txtAvailableEquipment.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
-        String ManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String ManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
@@ -190,10 +188,10 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("ManufacturerName"));
+               // cmbStore.addItem(rs.getString("ManufacturerName"));
                 String ManufacturerName1 = rs.getString("ManufacturerName");
                 String AvailableEquipment1 = rs.getString("AvailableEquipment");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -217,7 +215,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
          String AvailableEquipment = txtAvailableEquipment.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
-        String ManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String ManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
@@ -234,11 +232,11 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
-                cmbStore.addItem(rs.getString("ManufacturerName"));
+               // cmbStore.addItem(rs.getString("ManufacturerName"));
                 String ManufacturerName1 = rs.getString("ManufacturerName");
                 String AvailableEquipment1 = rs.getString("AvailableEquipment");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -262,7 +260,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
          String AvailableEquipment = txtAvailableEquipment.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
-        String ManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String ManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
@@ -279,10 +277,10 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+           // cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("ManufacturerName"));
+               // cmbStore.addItem(rs.getString("ManufacturerName"));
                 String ManufacturerName1 = rs.getString("ManufacturerName");
                 String AvailableEquipment1 = rs.getString("AvailableEquipment");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -307,7 +305,6 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbStore;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -317,5 +314,6 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
     private javax.swing.JTable tblMedicalEquipmentAvailability;
     private javax.swing.JTextField txtAvailableEquipment;
     private javax.swing.JTextField txtAvailableQuantity;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

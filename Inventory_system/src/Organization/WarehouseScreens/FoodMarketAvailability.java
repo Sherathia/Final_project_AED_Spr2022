@@ -36,11 +36,11 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
             Statement myStatement = con.createStatement();
             String query = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(query);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
 
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+                //cmbStore.addItem(rs.getString("StoreName"));
+                String StoreName = rs.getString("StoreName");
                 String WaterCans = rs.getString("WaterCans");
                 String FoodPacket = rs.getString("FoodPacket");
                 String Lastupdated = rs.getString("Lastupdated");
@@ -77,10 +77,10 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtWater = new javax.swing.JTextField();
         txtFood = new javax.swing.JTextField();
-        cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        txtStore = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -106,8 +106,6 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
         jLabel3.setText("StoreName:");
 
         jLabel4.setText("Food Packet:");
-
-        cmbStore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -158,9 +156,9 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
                             .addComponent(jLabel3))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFood)
+                            .addComponent(txtFood, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtWater)
-                            .addComponent(cmbStore, 0, 250, Short.MAX_VALUE))))
+                            .addComponent(txtStore))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,7 +171,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -206,7 +204,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
         String foodpacket = txtFood.getText();
         String watercans = txtWater.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String StoreName = txtStore.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
@@ -222,11 +220,11 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+           // cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+               // cmbStore.addItem(rs.getString("StoreName"));
+                String StoreName1 = rs.getString("StoreName");
                 String WaterCans = rs.getString("WaterCans");
                 String FoodPacket = rs.getString("FoodPacket");
                 String Lastupdated = rs.getString("Lastupdated");
@@ -250,7 +248,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
         String foodpacket = txtFood.getText();
         String watercans = txtWater.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String StoreName = txtStore.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
@@ -267,11 +265,11 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+          //  cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+              //  cmbStore.addItem(rs.getString("StoreName"));
+                String StoreName1 = rs.getString("StoreName");
                 String WaterCans = rs.getString("WaterCans");
                 String FoodPacket = rs.getString("FoodPacket");
                 String Lastupdated = rs.getString("Lastupdated");
@@ -294,7 +292,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
          String foodpacket = txtFood.getText();
         String watercans = txtWater.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String StoreName = txtStore.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
@@ -311,12 +309,12 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+           // cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
-                cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+                //cmbStore.addItem(rs.getString("StoreName"));
+                String StoreName1 = rs.getString("StoreName");
                 String WaterCans = rs.getString("WaterCans");
                 String FoodPacket = rs.getString("FoodPacket");
                 String Lastupdated = rs.getString("Lastupdated");
@@ -340,7 +338,6 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbStore;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -349,6 +346,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblFoodItems;
     private javax.swing.JTextField txtFood;
+    private javax.swing.JTextField txtStore;
     private javax.swing.JTextField txtWater;
     // End of variables declaration//GEN-END:variables
 }

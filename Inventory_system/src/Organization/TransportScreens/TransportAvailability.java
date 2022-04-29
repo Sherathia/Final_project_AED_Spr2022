@@ -44,7 +44,6 @@ public class TransportAvailability extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVehicles = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        cmbStore = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtAmbulance = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -54,6 +53,7 @@ public class TransportAvailability extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        txtStoreName = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -75,8 +75,6 @@ public class TransportAvailability extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblVehicles);
 
         jLabel3.setText("StoreName:");
-
-        cmbStore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Ambulance:");
 
@@ -128,24 +126,23 @@ public class TransportAvailability extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(33, 33, 33)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtTruck)
-                                            .addComponent(txtAmbulance)
-                                            .addComponent(cmbStore, 0, 250, Short.MAX_VALUE)
-                                            .addComponent(txtTravel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(btnCreate)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnDelete)))
-                                .addGap(428, 428, 428))
+                                        .addComponent(btnDelete))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtAmbulance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTruck, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTravel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(420, 420, 420))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39))))))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbStore, txtAmbulance, txtTravel});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -153,10 +150,10 @@ public class TransportAvailability extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -174,7 +171,7 @@ public class TransportAvailability extends javax.swing.JPanel {
                     .addComponent(btnUpdate)
                     .addComponent(btnCreate)
                     .addComponent(btnDelete))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -194,7 +191,7 @@ public class TransportAvailability extends javax.swing.JPanel {
         String Ambulance = txtAmbulance.getText();
         String Truck = txtTruck.getText();
         String Travel = txtTravel.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String StoreName = txtStoreName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
@@ -210,10 +207,10 @@ public class TransportAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_Vehicles";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("StoreName"));
+                //cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = rs.getString("StoreName");
                 String Ambulance1 = rs.getString("Ambulance");
                 String Truck1 = rs.getString("Truck");
@@ -240,7 +237,7 @@ public class TransportAvailability extends javax.swing.JPanel {
          String Ambulance = txtAmbulance.getText();
          String Truck = txtTruck.getText();
          String Travel = txtTravel.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String StoreName = txtStoreName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
@@ -257,7 +254,7 @@ public class TransportAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_Vehicles";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
@@ -287,7 +284,7 @@ public class TransportAvailability extends javax.swing.JPanel {
         String Ambulance = txtAmbulance.getText();
          String Truck = txtTruck.getText();
          String Travel = txtTravel.getText();
-        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String StoreName = txtStoreName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
@@ -304,10 +301,10 @@ public class TransportAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_Vehicles";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("StoreName"));
+                //cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = rs.getString("StoreName");
                 String Ambulance1 = rs.getString("Ambulance");
                 String Truck1 = rs.getString("Truck");
@@ -334,7 +331,6 @@ public class TransportAvailability extends javax.swing.JPanel {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbStore;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -344,6 +340,7 @@ public class TransportAvailability extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblVehicles;
     private javax.swing.JTextField txtAmbulance;
+    private javax.swing.JTextField txtStoreName;
     private javax.swing.JTextField txtTravel;
     private javax.swing.JTextField txtTruck;
     // End of variables declaration//GEN-END:variables

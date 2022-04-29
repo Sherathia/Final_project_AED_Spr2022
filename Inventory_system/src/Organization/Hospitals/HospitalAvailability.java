@@ -41,13 +41,13 @@ public class HospitalAvailability extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         cmbBeds = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cmbHospital = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFoodItems = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        txtHospital = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -56,8 +56,6 @@ public class HospitalAvailability extends javax.swing.JPanel {
         jLabel2.setText("Beds:");
 
         jLabel3.setText("Hospital:");
-
-        cmbHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -117,9 +115,9 @@ public class HospitalAvailability extends javax.swing.JPanel {
                                     .addComponent(jLabel4))
                                 .addGap(62, 62, 62)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbICU)
+                                    .addComponent(cmbICU, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                                     .addComponent(cmbBeds)
-                                    .addComponent(cmbHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtHospital)))
                             .addComponent(btnUpdate))
                         .addGap(397, 397, 397))))
             .addGroup(layout.createSequentialGroup()
@@ -142,7 +140,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cmbHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -164,7 +162,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
         String AvailableVentilators = cmbICU.getText();
         String AvailableBeds = cmbBeds.getText();
-        String HospitalName = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+        String HospitalName = txtHospital.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
@@ -180,11 +178,11 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbHospital.removeAllItems();
+           // cmbHospital.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbHospital.addItem(rs.getString("HospitalName"));
-                String HospitalName1 = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+                //cmbHospital.addItem(rs.getString("HospitalName"));
+                String HospitalName1 = rs.getString("HospitalName");
                 String AvailableBeds1 = rs.getString("AvailableBeds");
                 String AvailableVentilators1 = rs.getString("AvailableVentilators");
                 String Lastupdated = rs.getString("Lastupdated");
@@ -208,7 +206,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
         String AvailableVentilators = cmbICU.getText();
         String AvailableBeds = cmbBeds.getText();
-        String HospitalName = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+        String HospitalName = txtHospital.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
@@ -225,12 +223,12 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbHospital.removeAllItems();
+            //cmbHospital.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
-                cmbHospital.addItem(rs.getString("HospitalName"));
-                String HospitalName1 = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+                
+                String HospitalName1 =  rs.getString("HospitalName");
                 String AvailableBeds1 = rs.getString("AvailableBeds");
                 String AvailableVentilators1 = rs.getString("AvailableVentilators");
                 String Lastupdated = rs.getString("Lastupdated");
@@ -254,7 +252,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
        String AvailableVentilators = cmbICU.getText();
         String AvailableBeds = cmbBeds.getText();
-        String HospitalName = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+        String HospitalName = txtHospital.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
@@ -271,11 +269,11 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbHospital.removeAllItems();
+            //cmbHospital.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbHospital.addItem(rs.getString("HospitalName"));
-                String HospitalName1 = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+                //cmbHospital.addItem(rs.getString("HospitalName"));
+                String HospitalName1 = rs.getString("HospitalName");
                 String AvailableBeds1 = rs.getString("AvailableBeds");
                 String AvailableVentilators1 = rs.getString("AvailableVentilators");
                 String Lastupdated = rs.getString("Lastupdated");
@@ -300,7 +298,6 @@ public class HospitalAvailability extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JTextField cmbBeds;
-    private javax.swing.JComboBox<String> cmbHospital;
     private javax.swing.JTextField cmbICU;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -308,5 +305,6 @@ public class HospitalAvailability extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblFoodItems;
+    private javax.swing.JTextField txtHospital;
     // End of variables declaration//GEN-END:variables
 }

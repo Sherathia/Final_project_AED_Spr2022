@@ -44,10 +44,10 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtAvailableQuantity = new javax.swing.JTextField();
         txtAvailableVaccines = new javax.swing.JTextField();
-        cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,8 +76,6 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
 
         jLabel5.setText("Available Quantity:");
 
-        cmbStore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,11 +101,12 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,21 +118,23 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
                                     .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCreate)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(22, 22, 22)
+                                    .addComponent(btnDelete)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAvailableQuantity)
-                                    .addComponent(txtAvailableVaccines)
-                                    .addComponent(cmbStore, 0, 250, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(btnDelete)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtAvailableVaccines, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAvailableQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,16 +146,16 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtAvailableVaccines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(txtAvailableQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnCreate)
@@ -180,7 +181,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
         String AvailableVaccines = txtAvailableVaccines.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
-        String VaccineManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String VaccineManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblVaccineAvailability.getModel();
@@ -196,10 +197,10 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_VaccineManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("VaccineManufacturerName"));
+               // cmbStore.addItem(rs.getString("VaccineManufacturerName"));
                 String VaccineManufacturerName1 = rs.getString("VaccineManufacturerName");
                 String AvailableVaccines1 = rs.getString("AvailableVaccines");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -223,7 +224,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
           String AvailableVaccines = txtAvailableVaccines.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
-        String VaccineManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String VaccineManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblVaccineAvailability.getModel();
@@ -240,11 +241,11 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_VaccineManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
-                 cmbStore.addItem(rs.getString("VaccineManufacturerName"));
+                // cmbStore.addItem(rs.getString("VaccineManufacturerName"));
                 String VaccineManufacturerName1 = rs.getString("VaccineManufacturerName");
                 String AvailableVaccines1 = rs.getString("AvailableVaccines");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -268,7 +269,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
          String AvailableVaccines = txtAvailableVaccines.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
-        String VaccineManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        String VaccineManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblVaccineAvailability.getModel();
@@ -285,10 +286,10 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_VaccineManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-            cmbStore.removeAllItems();
+            //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-                cmbStore.addItem(rs.getString("VaccineManufacturerName"));
+                //cmbStore.addItem(rs.getString("VaccineManufacturerName"));
                 String VaccineManufacturerName1 = rs.getString("VaccineManufacturerName");
                 String AvailableVaccines1 = rs.getString("AvailableVaccines");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -313,7 +314,6 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbStore;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -323,5 +323,6 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
     private javax.swing.JTable tblVaccineAvailability;
     private javax.swing.JTextField txtAvailableQuantity;
     private javax.swing.JTextField txtAvailableVaccines;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }
