@@ -46,8 +46,8 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         txtAvailableEquipment = new javax.swing.JTextField();
         cmbStore = new javax.swing.JComboBox<>();
         btnUpdate = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         jLabel2.setBackground(new java.awt.Color(51, 153, 255));
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
@@ -83,14 +83,19 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("CREATE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreate.setText("CREATE");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCreateActionPerformed(evt);
             }
         });
 
-        jButton3.setText("DELETE");
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,9 +122,9 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnUpdate)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1)
+                                .addComponent(btnCreate)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3))))
+                                .addComponent(btnDelete))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -145,11 +150,11 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(txtAvailableQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton3)))
+                        .addComponent(btnCreate)
+                        .addComponent(btnDelete))
+                    .addComponent(btnUpdate))
                 .addContainerGap(142, Short.MAX_VALUE))
         );
 
@@ -208,16 +213,101 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+         String AvailableEquipment = txtAvailableEquipment.getText();
+        String AvailableQuantity = txtAvailableQuantity.getText();
+        String ManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Insert into `FinalProj_MedicalEquipManufAvailability`" + "values('" + ManufacturerName + "','" + AvailableEquipment + "','" + AvailableQuantity + "','" + Date + "')";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Inserted!!");
+
+            String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            cmbStore.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                //cmbStore.addItem(rs.getString("StoreName"));
+                cmbStore.addItem(rs.getString("ManufacturerName"));
+                String ManufacturerName1 = rs.getString("ManufacturerName");
+                String AvailableEquipment1 = rs.getString("AvailableEquipment");
+                String AvailableQuantity1 = rs.getString("AvailableQuantity");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[4];
+                row[0] = ManufacturerName1;
+                row[1] = AvailableEquipment1;
+                row[2] = AvailableQuantity1;
+                row[3] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+         String AvailableEquipment = txtAvailableEquipment.getText();
+        String AvailableQuantity = txtAvailableQuantity.getText();
+        String ManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Delete from `FinalProj_MedicalEquipManufAvailability` where `ManufacturerName`='" + ManufacturerName + "'";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Deleted!!");
+
+            String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            cmbStore.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                cmbStore.addItem(rs.getString("ManufacturerName"));
+                String ManufacturerName1 = rs.getString("ManufacturerName");
+                String AvailableEquipment1 = rs.getString("AvailableEquipment");
+                String AvailableQuantity1 = rs.getString("AvailableQuantity");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[4];
+                row[0] = ManufacturerName1;
+                row[1] = AvailableEquipment1;
+                row[2] = AvailableQuantity1;
+                row[3] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cmbStore;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -257,7 +257,7 @@ public class TransportAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_Vehicles";
             ResultSet rs = myStatement.executeQuery(querysel);
-            //cmbStore.removeAllItems();
+            cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
