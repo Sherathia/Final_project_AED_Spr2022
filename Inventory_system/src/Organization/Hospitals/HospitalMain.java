@@ -4,6 +4,7 @@
  */
 package Organization.Hospitals;
 
+import UI.Login;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.CardLayout;
@@ -73,6 +74,11 @@ public class HospitalMain extends javax.swing.JFrame {
         jButton4.setText("View Medicines Available");
 
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logoutimage.png"))); // NOI18N
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -303,6 +309,12 @@ public class HospitalMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+         new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
