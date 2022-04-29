@@ -46,8 +46,8 @@ public class HospitalAvailability extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFoodItems = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -83,14 +83,19 @@ public class HospitalAvailability extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HOSPITAL AVAILABILITY");
 
-        jButton1.setText("CREATE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreate.setText("CREATE");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCreateActionPerformed(evt);
             }
         });
 
-        jButton3.setText("DELETE");
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,9 +124,9 @@ public class HospitalAvailability extends javax.swing.JPanel {
                         .addGap(397, 397, 397))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(214, 214, 214)
-                .addComponent(jButton1)
+                .addComponent(btnCreate)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btnDelete)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -149,8 +154,8 @@ public class HospitalAvailability extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(btnCreate)
+                    .addComponent(btnDelete))
                 .addContainerGap(205, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -199,19 +204,104 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        String AvailableVentilators = cmbICU.getText();
+        String AvailableBeds = cmbBeds.getText();
+        String HospitalName = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Insert into `FinalProj_HospitalAvailability`" + "values('" + HospitalName + "','" + AvailableBeds + "','" + AvailableVentilators + "','" + Date + "')";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Inserted!!");
+
+            String querysel = "Select * from FinalProj_HospitalAvailability";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            cmbHospital.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                //cmbStore.addItem(rs.getString("StoreName"));
+                cmbHospital.addItem(rs.getString("HospitalName"));
+                String HospitalName1 = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+                String AvailableBeds1 = rs.getString("AvailableBeds");
+                String AvailableVentilators1 = rs.getString("AvailableVentilators");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[4];
+                row[0] = HospitalName1;
+                row[1] = AvailableBeds1;
+                row[2] = AvailableVentilators1;
+                row[3] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+       String AvailableVentilators = cmbICU.getText();
+        String AvailableBeds = cmbBeds.getText();
+        String HospitalName = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Delete from `FinalProj_HospitalAvailability` where `HospitalName`='" + HospitalName + "'";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Deleted!!");
+
+            String querysel = "Select * from FinalProj_HospitalAvailability";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            cmbHospital.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                cmbHospital.addItem(rs.getString("HospitalName"));
+                String HospitalName1 = cmbHospital.getItemAt(cmbHospital.getSelectedIndex());
+                String AvailableBeds1 = rs.getString("AvailableBeds");
+                String AvailableVentilators1 = rs.getString("AvailableVentilators");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[4];
+                row[0] = HospitalName1;
+                row[1] = AvailableBeds1;
+                row[2] = AvailableVentilators1;
+                row[3] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JTextField cmbBeds;
     private javax.swing.JComboBox<String> cmbHospital;
     private javax.swing.JTextField cmbICU;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
