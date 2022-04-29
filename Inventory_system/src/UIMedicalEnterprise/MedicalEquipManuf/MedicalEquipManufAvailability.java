@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.MedicalEquipManuf;
+package UIMedicalEnterprise.MedicalEquipManuf;
 
 //import com.sun.jdi.connect.spi.Connection;
 //import java.beans.Statement;
@@ -150,14 +150,14 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         String ManufacturerName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblMedicalEquipmentAvailability.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_MedicalEquipManufAvailability set AvailableEquipment ='"+AvailableEquipment+"',AvailableQuantity ='"+AvailableQuantity+"',Lastupdated ='"+Date+"' where ManufacturerName='"+ManufacturerName+"'";
+            String query = "Update FinalProj_MedicalEquipManufAvailability set AvailableEquipment ='" + AvailableEquipment + "',AvailableQuantity ='" + AvailableQuantity + "',Lastupdated ='" + Date + "' where ManufacturerName='" + ManufacturerName + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
@@ -165,8 +165,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
             ResultSet rs = myStatement.executeQuery(querysel);
             cmbStore.removeAllItems();
             model.setRowCount(0);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 cmbStore.addItem(rs.getString("ManufacturerName"));
                 String ManufacturerName1 = rs.getString("ManufacturerName");
                 String AvailableEquipment1 = rs.getString("AvailableEquipment");
@@ -181,9 +180,8 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnUpdateActionPerformed

@@ -26,41 +26,39 @@ public class TransportMain extends javax.swing.JFrame {
      */
     public TransportMain() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel)tblTransport.getModel();
-         model.setRowCount(0);
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_TransportRequests";
-        ResultSet rs = myStatement.executeQuery(query);
-        while(rs.next())
-        {
-            String RequestID = rs.getString("RequestID");
-            String Description = rs.getString("Description");
-            String quantity = rs.getString("quantity");
-            String Requester = rs.getString("Requester");
-            String RequestedDate = rs.getString("RequestedDate");
-            String ApprovalDate = rs.getString("ApprovalDate");
-            String status = rs.getString("status");
-            String Comments = rs.getString("Comments");
-            
-            Object row[] = new Object[8];
-            row[0] = RequestID;
-            row[1] = Description;
-            row[2] = quantity;
-            row[3] = Requester;
-            row[4] = RequestedDate;
-            row[5] = status;
-            row[6] = ApprovalDate;
-            row[7] = Comments;
-            model.addRow(row);
-        }
-        con.close();
-         }
-       catch(Exception E) {
+        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_TransportRequests";
+            ResultSet rs = myStatement.executeQuery(query);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
+            con.close();
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
+        }
     }
 
     /**
@@ -283,18 +281,17 @@ public class TransportMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_TransportRequests set status='IN PROGRESS', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_TransportRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
@@ -306,18 +303,17 @@ public class TransportMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_TransportRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_TransportRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
@@ -329,27 +325,26 @@ public class TransportMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_TransportRequests set status='REJECTED', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_TransportRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          TransportAvailability ta = new TransportAvailability(RightPanel);
-        RightPanel.add("TransportAvailability",ta);
-        CardLayout layout = (CardLayout)RightPanel.getLayout();
+        TransportAvailability ta = new TransportAvailability(RightPanel);
+        RightPanel.add("TransportAvailability", ta);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -16,6 +16,7 @@ public class FoodMarketCreateRequest extends javax.swing.JPanel {
      * Creates new form FoodMarketCreateRequest
      */
     private JPanel RightPanel;
+
     public FoodMarketCreateRequest(JPanel RightPanel) {
         initComponents();
         this.RightPanel = RightPanel;

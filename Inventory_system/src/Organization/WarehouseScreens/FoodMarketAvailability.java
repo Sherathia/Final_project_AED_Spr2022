@@ -24,27 +24,26 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
      * Creates new form FoodMarketAvailability
      */
     private JPanel RightPanel;
+
     public FoodMarketAvailability(JPanel RightPanel) {
         initComponents();
         this.RightPanel = RightPanel;
-         DefaultTableModel model = (DefaultTableModel)tblFoodItems.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
         model.setRowCount(0);
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
             String query = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(query);
-             cmbStore.removeAllItems();
-             
-            while(rs.next())
-            {   
+            cmbStore.removeAllItems();
+
+            while (rs.next()) {
                 cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
                 String WaterCans = rs.getString("WaterCans");
                 String FoodPacket = rs.getString("FoodPacket");
                 String Lastupdated = rs.getString("Lastupdated");
-                
 
                 Object row[] = new Object[4];
                 row[0] = StoreName;
@@ -54,9 +53,8 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
         }
     }
@@ -146,7 +144,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
                                     .addComponent(jLabel3))
                                 .addGap(33, 33, 33)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFood, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                    .addComponent(txtFood)
                                     .addComponent(txtWater)
                                     .addComponent(cmbStore, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(57, 57, 57)
@@ -165,13 +163,14 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
                 .addGap(96, 96, 96)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdate)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -199,33 +198,30 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
         // TODO add your handling code here:
         String foodpacket = txtFood.getText();
         String watercans = txtWater.getText();
-         String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime()); 
-        DefaultTableModel model = (DefaultTableModel)tblFoodItems.getModel();
-        
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        
-        String query = "Update FinalProj_FoodmarketItems set foodpacket ='"+foodpacket+"',Lastupdated ='"+Date+"', watercans ='"+watercans+"' where StoreName='"+StoreName+"'";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "Entry Updated!!");
-        
-        String querysel = "Select * from FinalProj_FoodmarketItems";
+        String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_FoodmarketItems set foodpacket ='" + foodpacket + "',Lastupdated ='" + Date + "', watercans ='" + watercans + "' where StoreName='" + StoreName + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Entry Updated!!");
+
+            String querysel = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(querysel);
-             cmbStore.removeAllItems();
-             model.setRowCount(0);
-            while(rs.next())
-            {   
+            cmbStore.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
                 cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = cmbStore.getItemAt(cmbStore.getSelectedIndex());
                 String WaterCans = rs.getString("WaterCans");
                 String FoodPacket = rs.getString("FoodPacket");
                 String Lastupdated = rs.getString("Lastupdated");
-                
 
                 Object row[] = new Object[4];
                 row[0] = StoreName1;
@@ -234,13 +230,12 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
                 row[3] = Lastupdated;
                 model.addRow(row);
             }
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
-               }
-        
+        }
+
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

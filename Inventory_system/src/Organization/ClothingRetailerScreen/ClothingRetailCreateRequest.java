@@ -16,9 +16,10 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
      * Creates new form ClothingretailCreateRequest
      */
     private JPanel RightPanel;
+
     public ClothingRetailCreateRequest(JPanel RightPanel) {
         initComponents();
-        this.RightPanel= RightPanel;
+        this.RightPanel = RightPanel;
     }
 
     /**

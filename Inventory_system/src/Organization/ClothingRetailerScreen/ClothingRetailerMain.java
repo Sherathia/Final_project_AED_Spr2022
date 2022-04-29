@@ -26,57 +26,53 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
      */
     public ClothingRetailerMain() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel)tblClothingRtl.getModel();
-         model.setRowCount(0);
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_ClothingRequests";
-        ResultSet rs = myStatement.executeQuery(query);
-        while(rs.next())
-        {
-            String RequestID = rs.getString("RequestID");
-            String Description = rs.getString("Description");
-            String quantity = rs.getString("quantity");
-            String Requester = rs.getString("Requester");
-            String RequestedDate = rs.getString("RequestedDate");
-            String ApprovalDate = rs.getString("ApprovalDate");
-            String status = rs.getString("status");
-            String Comments = rs.getString("Comments");
-            
-            Object row[] = new Object[8];
-            row[0] = RequestID;
-            row[1] = Description;
-            row[2] = quantity;
-            row[3] = Requester;
-            row[4] = RequestedDate;
-            row[5] = status;
-            row[6] = ApprovalDate;
-            row[7] = Comments;
-            model.addRow(row);
-        }
-        
-        String querysel = "Select MenApparel from FinalProj_ClothingItems";
+        DefaultTableModel model = (DefaultTableModel) tblClothingRtl.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Inventory_Management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "pankaaniamithu@5");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_ClothingRequests";
+            ResultSet rs = myStatement.executeQuery(query);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
+
+            String querysel = "Select MenApparel from FinalProj_ClothingItems";
             ResultSet rs1 = myStatement.executeQuery(querysel);
-            String Quantity ;
-            int total =0;
-            while(rs1.next())
-        {
-            
-            Quantity = rs1.getString("MenApparel");
-            total += Integer.parseInt(Quantity);
-        }
-            if(total<=0)
-            {
-                 btnApprove.setEnabled(false);
+            String Quantity;
+            int total = 0;
+            while (rs1.next()) {
+
+                Quantity = rs1.getString("MenApparel");
+                total += Integer.parseInt(Quantity);
+            }
+            if (total <= 0) {
+                btnApprove.setEnabled(false);
             }
             con.close();
-       
-         }
-       catch(Exception E) {
+
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
+        }
     }
 
     /**
@@ -345,18 +341,17 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='IN PROGRESS', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_ClothingRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
@@ -369,44 +364,40 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_ClothingRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
-            
-            
+
             String querysel = "Select * from FinalProj_ClothingItems";
             int MenApparel1;
-            int finalqty =0;
-            int flag=0;
+            int finalqty = 0;
+            int flag = 0;
             String StoreName1 = null;
             ResultSet rs1 = myStatement.executeQuery(querysel);
-            while(rs1.next())
-            {
+            while (rs1.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
-                 StoreName1 = rs1.getString("StoreName");
-                 MenApparel1 = Integer.parseInt(rs1.getString("MenApparel"));
+                StoreName1 = rs1.getString("StoreName");
+                MenApparel1 = Integer.parseInt(rs1.getString("MenApparel"));
 
-                if(MenApparel1 >= Integer.parseInt(Quantity) && flag==0)
-                {
-                    finalqty = MenApparel1- Integer.parseInt(Quantity);
+                if (MenApparel1 >= Integer.parseInt(Quantity) && flag == 0) {
+                    finalqty = MenApparel1 - Integer.parseInt(Quantity);
                     //return; 
-                    flag =1;
+                    flag = 1;
                 }
-                
+
             }
-            
-            String queryupd = "Update FinalProj_ClothingItems set MenApparel ='"+finalqty+"',Lastupdated ='"+Date+"' where StoreName='"+StoreName1+"'";
+
+            String queryupd = "Update FinalProj_ClothingItems set MenApparel ='" + finalqty + "',Lastupdated ='" + Date + "' where StoreName='" + StoreName1 + "'";
             myStatement.executeUpdate(queryupd);
-            
+
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
@@ -418,46 +409,45 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_ClothingRequests set status='REJECTED', comments ='"+comments+"' where RequestID='"+requestId+"'";
+            String query = "Update FinalProj_ClothingRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
-                ClothingRetailerMain cm;
-                cm = new ClothingRetailerMain();
-                cm.setVisible(true);
-                this.dispose();
-          /* RightPane.remove(this);
+        ClothingRetailerMain cm;
+        cm = new ClothingRetailerMain();
+        cm.setVisible(true);
+        this.dispose();
+        /* RightPane.remove(this);
         CardLayout layout = (CardLayout) RightPane.getLayout();
         layout.previous(RightPane);*/
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
     private void btnUpdAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdAvailabilityActionPerformed
         // TODO add your handling code here:
-         ClothingRetailAvailability cra = new ClothingRetailAvailability(RightPane);
-        RightPane.add("ClothingRetailAvailability",cra);
-        CardLayout layout = (CardLayout)RightPane.getLayout();
+        ClothingRetailAvailability cra = new ClothingRetailAvailability(RightPane);
+        RightPane.add("ClothingRetailAvailability", cra);
+        CardLayout layout = (CardLayout) RightPane.getLayout();
         layout.next(RightPane);
     }//GEN-LAST:event_btnUpdAvailabilityActionPerformed
 
     private void btnCreateRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRequestActionPerformed
         // TODO add your handling code here:
-         ClothingRetailCreateRequest crc = new ClothingRetailCreateRequest(RightPane);
-        RightPane.add("ClothingRetailCreateRequest",crc);
-        CardLayout layout = (CardLayout)RightPane.getLayout();
+        ClothingRetailCreateRequest crc = new ClothingRetailCreateRequest(RightPane);
+        RightPane.add("ClothingRetailCreateRequest", crc);
+        CardLayout layout = (CardLayout) RightPane.getLayout();
         layout.next(RightPane);
     }//GEN-LAST:event_btnCreateRequestActionPerformed
 

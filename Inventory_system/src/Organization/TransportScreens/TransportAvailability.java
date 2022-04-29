@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Organization.TransportScreens;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.sql.Connection;
@@ -23,6 +24,7 @@ public class TransportAvailability extends javax.swing.JPanel {
      * Creates new form TransportAvailability
      */
     private JPanel RightPanel;
+
     public TransportAvailability(JPanel RightPanel) {
         initComponents();
         this.RightPanel = RightPanel;
@@ -137,13 +139,14 @@ public class TransportAvailability extends javax.swing.JPanel {
                 .addGap(72, 72, 72)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(cmbStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdate)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -179,14 +182,14 @@ public class TransportAvailability extends javax.swing.JPanel {
         String StoreName = cmbStore.getItemAt(cmbStore.getSelectedIndex());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel)tblVehicles.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_Vehicles set Ambulance ='"+Ambulance+"',Truck ='"+Truck+"',Lastupdated ='"+Date+"', Travel ='"+Travel+"' where StoreName='"+StoreName+"'";
+            String query = "Update FinalProj_Vehicles set Ambulance ='" + Ambulance + "',Truck ='" + Truck + "',Lastupdated ='" + Date + "', Travel ='" + Travel + "' where StoreName='" + StoreName + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
@@ -194,8 +197,7 @@ public class TransportAvailability extends javax.swing.JPanel {
             ResultSet rs = myStatement.executeQuery(querysel);
             cmbStore.removeAllItems();
             model.setRowCount(0);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = rs.getString("StoreName");
                 String Ambulance1 = rs.getString("Ambulance");
@@ -212,9 +214,8 @@ public class TransportAvailability extends javax.swing.JPanel {
                 model.addRow(row);
             }
             con.close();
-        }
-        //System.out.println("Inserted data");
-        catch(Exception E) {
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
