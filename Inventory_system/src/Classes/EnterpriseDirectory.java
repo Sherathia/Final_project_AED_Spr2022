@@ -12,11 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class EnterpriseDirectory {
-    
+
     private List<Enterprise> enterpriseList;
-    
-    public EnterpriseDirectory()
-    {
+
+    public EnterpriseDirectory() {
         enterpriseList = new ArrayList<>();
     }
 
@@ -27,6 +26,5 @@ public class EnterpriseDirectory {
     public void setEnterpriseList(List<Enterprise> enterpriseList) {
         this.enterpriseList = enterpriseList;
     }
-    
-    
+
 }

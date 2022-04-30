@@ -9,6 +9,7 @@ package Users;
  * @author aesha
  */
 public class UserAccount {
+
     private String username;
     private String password;
     //private Role role;
@@ -46,12 +47,12 @@ public class UserAccount {
     public void setNetwork(String network) {
         this.network = network;
     }
-    
-     public UserAccount(String name,String username, String password, 
-             String network) {
-         this.name = name;
-         this.username = username;
-         this.password = password;
-         this.network = network;
+
+    public UserAccount(String name, String username, String password,
+            String network) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.network = network;
     }
 }

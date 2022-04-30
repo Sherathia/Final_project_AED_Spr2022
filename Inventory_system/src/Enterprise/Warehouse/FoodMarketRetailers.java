@@ -11,6 +11,7 @@ import java.util.List;
  * @author aesha
  */
 public class FoodMarketRetailers {
+
     private String name;
     private String contact;
     private String address;

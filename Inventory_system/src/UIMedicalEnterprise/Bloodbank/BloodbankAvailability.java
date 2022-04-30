@@ -203,7 +203,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-               // cmbStore.addItem(rs.getString("BloodBankName"));
+                // cmbStore.addItem(rs.getString("BloodBankName"));
                 String BloodBankName1 = rs.getString("BloodBankName");
                 String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
                 String AvailableUnits1 = rs.getString("AvailableUnits");
@@ -225,7 +225,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-       String AvailableBloodGroups = txtAvailableBloodGroups.getText();
+        String AvailableBloodGroups = txtAvailableBloodGroups.getText();
         String AvailableUnits = txtAvailableUnits.getText();
         String BloodBankName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -248,7 +248,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
-               //cmbStore.addItem(rs.getString("BloodBankName"));
+                //cmbStore.addItem(rs.getString("BloodBankName"));
                 String BloodBankName1 = rs.getString("BloodBankName");
                 String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
                 String AvailableUnits1 = rs.getString("AvailableUnits");
@@ -289,10 +289,10 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_BloodGroupAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-           // cmbStore.removeAllItems();
+            // cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-               // cmbStore.addItem(rs.getString("BloodBankName"));
+                // cmbStore.addItem(rs.getString("BloodBankName"));
                 String BloodBankName1 = rs.getString("BloodBankName");
                 String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
                 String AvailableUnits1 = rs.getString("AvailableUnits");

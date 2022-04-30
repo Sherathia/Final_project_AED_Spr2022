@@ -12,9 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class HospitalDirectory {
+
     private List<Hospitals> HospitalList;
-    
-     public HospitalDirectory() {
+
+    public HospitalDirectory() {
         HospitalList = new ArrayList<>();
     }
 
@@ -25,5 +26,5 @@ public class HospitalDirectory {
     public void setHospitalList(List<Hospitals> HospitalList) {
         this.HospitalList = HospitalList;
     }
-     
+
 }

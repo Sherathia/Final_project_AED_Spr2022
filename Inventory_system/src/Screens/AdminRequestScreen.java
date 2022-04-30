@@ -27,7 +27,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
      */
     public AdminRequestScreen() {
         initComponents();
-        
+
     }
 
     /**
@@ -279,146 +279,140 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
     private void btnTaskRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskRequestActionPerformed
         // TODO add your handling code here:
-         TasksRequest tasksRequest = new TasksRequest(jPanel2);
-        jPanel2.add("TasksRequest",tasksRequest);
-        CardLayout layout = (CardLayout)jPanel2.getLayout();
+        TasksRequest tasksRequest = new TasksRequest(jPanel2);
+        jPanel2.add("TasksRequest", tasksRequest);
+        CardLayout layout = (CardLayout) jPanel2.getLayout();
         layout.next(jPanel2);
     }//GEN-LAST:event_btnTaskRequestActionPerformed
 
     private void btnviewrequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewrequestsActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)tblRequests.getModel();
-         model.setRowCount(0);
-       try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_AdminRequests where Attrib1 is NULL";
-        ResultSet rs = myStatement.executeQuery(query);
-        while(rs.next())
-        {
-            String RequestID = rs.getString("RequestID");
-            String Name = rs.getString("Name");
-            String Network = rs.getString("Network");
-            String Enterprise = rs.getString("Enterprise");
-            String Organization = rs.getString("Organization");
-            String Requester = rs.getString("Requester");
-            String RequestedDate = rs.getString("RequestedDate");
-            String ApprovalDate = rs.getString("ApprovalDate");
-            String status = rs.getString("status");
-            String Comments = rs.getString("Comments");
-            
-            Object row[] = new Object[10];
-            row[0] = RequestID;
-            row[1] = Name;
-            row[2] = Network;
-            row[3] = Enterprise;
-            row[4] = Organization;
-            row[5] = Requester;
-            row[6] = RequestedDate;
-            row[7] = ApprovalDate;
-            row[8] = status;
-            row[9] = Comments;
-            model.addRow(row);
-        }
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_AdminRequests where Attrib1 is NULL";
+            ResultSet rs = myStatement.executeQuery(query);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Name = rs.getString("Name");
+                String Network = rs.getString("Network");
+                String Enterprise = rs.getString("Enterprise");
+                String Organization = rs.getString("Organization");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[10];
+                row[0] = RequestID;
+                row[1] = Name;
+                row[2] = Network;
+                row[3] = Enterprise;
+                row[4] = Organization;
+                row[5] = Requester;
+                row[6] = RequestedDate;
+                row[7] = ApprovalDate;
+                row[8] = status;
+                row[9] = Comments;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
-        
+        }
+
     }//GEN-LAST:event_btnviewrequestsActionPerformed
 
     private void btnviewpendingreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewpendingreqActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel)tblRequests.getModel();
-         model.setRowCount(0);
-       try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_AdminRequests where status ='CREATED' and  Attrib1 is NULL";
-        ResultSet rs = myStatement.executeQuery(query);
-        while(rs.next())
-        {
-            String RequestID = rs.getString("RequestID");
-            String Name = rs.getString("Name");
-            String Network = rs.getString("Network");
-            String Enterprise = rs.getString("Enterprise");
-            String Organization = rs.getString("Organization");
-            String Requester = rs.getString("Requester");
-            String RequestedDate = rs.getString("RequestedDate");
-            String ApprovalDate = rs.getString("ApprovalDate");
-            String status = rs.getString("status");
-            String Comments = rs.getString("Comments");
-            
-            Object row[] = new Object[10];
-            row[0] = RequestID;
-            row[1] = Name;
-            row[2] = Network;
-            row[3] = Enterprise;
-            row[4] = Organization;
-            row[5] = Requester;
-            row[6] = RequestedDate;
-            row[7] = ApprovalDate;
-            row[8] = status;
-            row[9] = Comments;
-            model.addRow(row);
-        }
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_AdminRequests where status ='CREATED' and  Attrib1 is NULL";
+            ResultSet rs = myStatement.executeQuery(query);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Name = rs.getString("Name");
+                String Network = rs.getString("Network");
+                String Enterprise = rs.getString("Enterprise");
+                String Organization = rs.getString("Organization");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[10];
+                row[0] = RequestID;
+                row[1] = Name;
+                row[2] = Network;
+                row[3] = Enterprise;
+                row[4] = Organization;
+                row[5] = Requester;
+                row[6] = RequestedDate;
+                row[7] = ApprovalDate;
+                row[8] = status;
+                row[9] = Comments;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
+        }
     }//GEN-LAST:event_btnviewpendingreqActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
         String requestId = txtRequestID.getText();
         String comments = txtComments.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime()); 
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        
-        String query = "Update FinalProj_AdminRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "Request Approved!!");
-        con.close();
-        
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_AdminRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
-               }
+        }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         String requestId = txtRequestID.getText();
         String comments = txtComments.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime()); 
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        
-        String query = "Update FinalProj_AdminRequests set status='REJECTED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "Request Rejected!!");
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_AdminRequests set status='REJECTED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
-               }
+        }
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnUserCreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserCreationActionPerformed
@@ -436,9 +430,9 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-          new HierarchyManage().setVisible(true);
-          this.dispose();
+
+        new HierarchyManage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -476,7 +470,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel RightPanel;
     private javax.swing.JButton btnApprove;

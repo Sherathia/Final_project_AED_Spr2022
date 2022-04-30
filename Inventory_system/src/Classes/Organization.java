@@ -21,8 +21,8 @@ import Users.UserAccountDirectory;
  *
  * @author aesha
  */
-public abstract class Organization{
-    
+public abstract class Organization {
+
     private String name;
     private int organizationID;
     private static int counter = 0;
@@ -38,18 +38,16 @@ public abstract class Organization{
     private ClothingChainDirectory clothingChainDirectory;
     private FoodMarketRtlDirectory foodMarketRtlDirectory;
     private TransportAgenciesDirectory transportAgenciesDirectory;
-    
-   /* public enum OrgType {
+
+    /* public enum OrgType {
         
     }*/
-     public Organization(String name) {
+    public Organization(String name) {
         this.name = name;
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
         ++counter;
     }
-     
-     
 
     public String getName() {
         return name;
@@ -171,6 +169,4 @@ public abstract class Organization{
         this.transportAgenciesDirectory = transportAgenciesDirectory;
     }
 
-     
-    
 }

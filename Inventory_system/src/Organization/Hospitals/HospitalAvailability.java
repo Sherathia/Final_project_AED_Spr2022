@@ -178,7 +178,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-           // cmbHospital.removeAllItems();
+            // cmbHospital.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbHospital.addItem(rs.getString("HospitalName"));
@@ -227,8 +227,8 @@ public class HospitalAvailability extends javax.swing.JPanel {
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
-                
-                String HospitalName1 =  rs.getString("HospitalName");
+
+                String HospitalName1 = rs.getString("HospitalName");
                 String AvailableBeds1 = rs.getString("AvailableBeds");
                 String AvailableVentilators1 = rs.getString("AvailableVentilators");
                 String Lastupdated = rs.getString("Lastupdated");
@@ -250,7 +250,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-       String AvailableVentilators = cmbICU.getText();
+        String AvailableVentilators = cmbICU.getText();
         String AvailableBeds = cmbBeds.getText();
         String HospitalName = txtHospital.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

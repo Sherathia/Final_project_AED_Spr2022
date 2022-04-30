@@ -20,36 +20,39 @@ import Enterprise.Warehouse.TransportAgenciesDirectory;
  *
  * @author aesha
  */
-public abstract class Enterprise extends Organization{
-    
-   // private 
-   private EnterpriseType enterpriseType;
-   public Enterprise(String name,EnterpriseType type){
+public abstract class Enterprise extends Organization {
+
+    // private 
+    private EnterpriseType enterpriseType;
+
+    public Enterprise(String name, EnterpriseType type) {
         super(name);
-        this.enterpriseType=type;
-        organizationDirectory=new OrganizationDirectory();
-    } 
-    
-   
-       public enum EnterpriseType{
+        this.enterpriseType = type;
+        organizationDirectory = new OrganizationDirectory();
+    }
+
+    public enum EnterpriseType {
         Medical("Medical"),
         Voluntary("Voluntary"),
         Government("Government"),
         Warehouse("Warehouse");
-        
+
         private String type;
-        
-        private EnterpriseType(String type){
-            this.type=type;
+
+        private EnterpriseType(String type) {
+            this.type = type;
         }
+
         public String getValue() {
             return type;
         }
+
         @Override
-        public String toString(){
-        return type;
+        public String toString() {
+            return type;
+        }
     }
-    }
+
     public EnterpriseType getEnterpriseType() {
         return enterpriseType;
     }
@@ -57,10 +60,9 @@ public abstract class Enterprise extends Organization{
     public void setEnterpriseType(EnterpriseType enterpriseType) {
         this.enterpriseType = enterpriseType;
     }
-       
+
     private OrganizationDirectory organizationDirectory;
 
-   
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
@@ -68,7 +70,5 @@ public abstract class Enterprise extends Organization{
     public void setOrganizationDirectory(OrganizationDirectory organizationDirectory) {
         this.organizationDirectory = organizationDirectory;
     }
-    
-    
-    
+
 }

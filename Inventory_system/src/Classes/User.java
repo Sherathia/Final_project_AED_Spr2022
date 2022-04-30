@@ -8,17 +8,18 @@ package Classes;
  *
  * @author aesha
  */
-public class User extends Person{
-    
+public class User extends Person {
+
     private String username;
     private String password;
     private String country;
     private String enterprise;
     private String organization;
 
-    public User(){
-        
+    public User() {
+
     }
+
     public String getUsername() {
         return username;
     }
@@ -58,6 +59,5 @@ public class User extends Person{
     public void setOrganization(String organization) {
         this.organization = organization;
     }
-    
-    
+
 }

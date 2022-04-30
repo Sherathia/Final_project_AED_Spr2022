@@ -11,7 +11,7 @@ import java.util.List;
  * @author aesha
  */
 public class Insurance {
-    
+
     private String name;
     private String address;
 
@@ -57,6 +57,5 @@ public class Insurance {
     private String headQuarter;
     private List<String> staff;
     private List<String> policies;
-    
-    
+
 }

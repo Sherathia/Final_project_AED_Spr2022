@@ -200,7 +200,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
             //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-               // cmbStore.addItem(rs.getString("VaccineManufacturerName"));
+                // cmbStore.addItem(rs.getString("VaccineManufacturerName"));
                 String VaccineManufacturerName1 = rs.getString("VaccineManufacturerName");
                 String AvailableVaccines1 = rs.getString("AvailableVaccines");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -222,7 +222,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-          String AvailableVaccines = txtAvailableVaccines.getText();
+        String AvailableVaccines = txtAvailableVaccines.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
         String VaccineManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -267,7 +267,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-         String AvailableVaccines = txtAvailableVaccines.getText();
+        String AvailableVaccines = txtAvailableVaccines.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
         String VaccineManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

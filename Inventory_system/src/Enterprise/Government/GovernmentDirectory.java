@@ -12,9 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class GovernmentDirectory {
+
     private List<Government> governmentList;
-    
-     public GovernmentDirectory() {
+
+    public GovernmentDirectory() {
         governmentList = new ArrayList<>();
     }
 
@@ -25,5 +26,5 @@ public class GovernmentDirectory {
     public void setGovernmentList(List<Government> governmentList) {
         this.governmentList = governmentList;
     }
-     
+
 }

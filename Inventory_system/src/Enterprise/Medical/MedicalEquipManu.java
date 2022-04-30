@@ -11,6 +11,7 @@ import java.util.HashMap;
  * @author aesha
  */
 public class MedicalEquipManu {
+
     private String name;
     private String headQuarter;
     private String address;

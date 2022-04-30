@@ -12,7 +12,7 @@ import java.util.List;
  * @author aesha
  */
 public class VaccineManuf {
-    
+
     private String name;
     private String manufactureAddress;
     private String location;
@@ -67,5 +67,5 @@ public class VaccineManuf {
     }
     private List<String> vaccineAvail;
     private HashMap<String, Integer> VaccineCountAvail;
-    
+
 }

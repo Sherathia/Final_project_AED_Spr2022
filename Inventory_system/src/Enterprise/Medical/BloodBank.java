@@ -12,7 +12,7 @@ import java.util.List;
  * @author aesha
  */
 public class BloodBank {
-    
+
     private String location;
     private String name;
     private String contact;
@@ -76,5 +76,5 @@ public class BloodBank {
     public void setBloodCountAvail(HashMap<String, Integer> bloodCountAvail) {
         this.bloodCountAvail = bloodCountAvail;
     }
-    
+
 }

@@ -266,56 +266,54 @@ public class Login extends javax.swing.JFrame {
                         fr = new Fundraiser();
                         fr.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("FoodMarket")) {
                         fm = new FoodMarketMain();
                         fm.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("Clothing")) {
                         crm = new ClothingRetailerMain();
                         crm.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("Transport")) {
                         tm = new TransportMain();
                         tm.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("NGO")) {
                         cr = new createRequests();
                         cr.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("Government")) {
                         cr = new createRequests();
                         cr.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("NDRF")) {
                         cr = new createRequests();
                         cr.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("Hospitals")) {
                         hm = new HospitalMain();
                         hm.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("Vaccine Manufacturer")) {
                         vm = new MainVaccineManufacturers();
                         vm.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     } else if (DBOrg.equalsIgnoreCase("Medical Equipments")) {
                         mef = new MainMedicalEquipManuf();
                         mef.setVisible(true);
                         this.dispose();
-                         return;
+                        return;
                     }
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(this, "Invalid Username or Password!");
                     txtUserName.setText(null);
                     txtPwd.setText(null);

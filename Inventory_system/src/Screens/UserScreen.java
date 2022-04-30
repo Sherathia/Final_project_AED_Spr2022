@@ -21,61 +21,59 @@ public class UserScreen extends javax.swing.JPanel {
     /**
      * Creates new form UserScreen
      */
-     private JPanel rightPanel;
+    private JPanel rightPanel;
+
     public UserScreen(JPanel rightPanel) {
         initComponents();
         this.rightPanel = rightPanel;
-      
-        
-        DefaultTableModel model = (DefaultTableModel)tblUsers.getModel();
-         model.setRowCount(0);
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "select * from FinalProj_Users";
-        ResultSet rs = myStatement.executeQuery(query);
-        //System.out.println("Inserted data");
-        
-        while(rs.next())
-        {
-            String Name = rs.getString("Name");
-            String UserName = rs.getString("Username");
-            String Password = rs.getString("Password");
-            String Country = rs.getString("Country");
-            String Email = rs.getString("emailID");
-            String enterprise = rs.getString("enterprise");
-            String Organization = rs.getString("Organization");
-            String Contact = rs.getString("Contact");
-           // String Date = rs.getString("Create_datetime");
-            
-            Object row[] = new Object[7];
-            row[0] = UserName;
-            row[1] = Name;
-            row[2] = Contact;
-            row[3] = Email;
-            row[4] = Organization;
-            row[5] = enterprise;
-            row[6] = Country;
-            model.addRow(row);
-            
-        }
-        
-        String query1 = "select distinct Country from FinalProj_Organization";
-        ResultSet rs1 = myStatement.executeQuery(query1);
-        //cmbEnterprise.removeAllItems();
-        cmbNetwork.removeAllItems();
-        //cmbOrg.removeAllItems();
-        while(rs1.next())
-        {
-            cmbNetwork.addItem(rs1.getString("Country"));
-            
-        }
-        
-        con.close();
-        }catch(Exception E) {
+
+        DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "select * from FinalProj_Users";
+            ResultSet rs = myStatement.executeQuery(query);
+            //System.out.println("Inserted data");
+
+            while (rs.next()) {
+                String Name = rs.getString("Name");
+                String UserName = rs.getString("Username");
+                String Password = rs.getString("Password");
+                String Country = rs.getString("Country");
+                String Email = rs.getString("emailID");
+                String enterprise = rs.getString("enterprise");
+                String Organization = rs.getString("Organization");
+                String Contact = rs.getString("Contact");
+                // String Date = rs.getString("Create_datetime");
+
+                Object row[] = new Object[7];
+                row[0] = UserName;
+                row[1] = Name;
+                row[2] = Contact;
+                row[3] = Email;
+                row[4] = Organization;
+                row[5] = enterprise;
+                row[6] = Country;
+                model.addRow(row);
+
+            }
+
+            String query1 = "select distinct Country from FinalProj_Organization";
+            ResultSet rs1 = myStatement.executeQuery(query1);
+            //cmbEnterprise.removeAllItems();
+            cmbNetwork.removeAllItems();
+            //cmbOrg.removeAllItems();
+            while (rs1.next()) {
+                cmbNetwork.addItem(rs1.getString("Country"));
+
+            }
+
+            con.close();
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB call");
-             }   
+        }
     }
 
     /**
@@ -302,104 +300,98 @@ public class UserScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
         String Name = txtName.getText();
         String UserName = txtUserName.getText();
-        
-        char pass[]= pwd.getPassword();
+
+        char pass[] = pwd.getPassword();
         String Password = String.valueOf(pass);
-              
+
         String EmailId = txtEmailID.getText();
         String Contact = txtContact.getText();
         String Country = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
         String Organization = cmbOrg.getItemAt(cmbOrg.getSelectedIndex());
         String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
-        
-        if(Name.isEmpty() || UserName.isEmpty() || EmailId.isEmpty() || Contact.isEmpty() 
-                || Country.isEmpty() || Organization.isEmpty() || Enterprise.isEmpty())
-        {
+
+        if (Name.isEmpty() || UserName.isEmpty() || EmailId.isEmpty() || Contact.isEmpty()
+                || Country.isEmpty() || Organization.isEmpty() || Enterprise.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please populate values!!..");
             return;
         }
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        
-        String Check = "Select distinct Username from FinalProj_Users";
-        ResultSet rs1 = myStatement.executeQuery(Check);
-        while(rs1.next())
-        {   
-            String ValidateUser = rs1.getString("Username");
-            
-            if(UserName.equalsIgnoreCase(ValidateUser))
-            {
-                JOptionPane.showMessageDialog(this, "UserName already Exists.. Please try again!!");
-                txtUserName.setText(null);
-                return;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String Check = "Select distinct Username from FinalProj_Users";
+            ResultSet rs1 = myStatement.executeQuery(Check);
+            while (rs1.next()) {
+                String ValidateUser = rs1.getString("Username");
+
+                if (UserName.equalsIgnoreCase(ValidateUser)) {
+                    JOptionPane.showMessageDialog(this, "UserName already Exists.. Please try again!!");
+                    txtUserName.setText(null);
+                    return;
+                }
             }
-        }
-          if(!txtUserName.getText().isEmpty())
-          {
-          String query = "Insert into `FinalProj_Users`"+"values('"+Name+"','"+UserName+"','"+Password+"','"+EmailId+"','"+Country+"','"+Enterprise+"','"+Organization+"','"+Contact+"')";
-          myStatement.executeUpdate(query);
-          JOptionPane.showMessageDialog(this, "User Created Successfully!!");
-          txtEmailID.setText(null);
-          txtContact.setText(null);
-          txtName.setText(null);
-          txtUserName.setText(null);
-          pwd.setText(null); 
-          }
-          con.close();
-           }catch(Exception E) {
+            if (!txtUserName.getText().isEmpty()) {
+                String query = "Insert into `FinalProj_Users`" + "values('" + Name + "','" + UserName + "','" + Password + "','" + EmailId + "','" + Country + "','" + Enterprise + "','" + Organization + "','" + Contact + "')";
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "User Created Successfully!!");
+                txtEmailID.setText(null);
+                txtContact.setText(null);
+                txtName.setText(null);
+                txtUserName.setText(null);
+                pwd.setText(null);
+            }
+            con.close();
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
-        
+        }
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void cmbNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkActionPerformed
         // TODO add your handling code here:
         String CountrySelected = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
-          try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-         String query1 = "select distinct Enterrpise from FinalProj_Organization where Country ='"+CountrySelected+"'";
-        ResultSet rs1 = myStatement.executeQuery(query1);
-        cmbEnterprise.removeAllItems();
-        //cmbOrg.removeAllItems();
-        while(rs1.next())
-        {
-            cmbEnterprise.addItem(rs1.getString("Enterrpise"));
-            
-        }
-        
-        con.close();
-        }catch(Exception E) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query1 = "select distinct Enterrpise from FinalProj_Organization where Country ='" + CountrySelected + "'";
+            ResultSet rs1 = myStatement.executeQuery(query1);
+            cmbEnterprise.removeAllItems();
+            //cmbOrg.removeAllItems();
+            while (rs1.next()) {
+                cmbEnterprise.addItem(rs1.getString("Enterrpise"));
+
+            }
+
+            con.close();
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB call");
-             }   
+        }
     }//GEN-LAST:event_cmbNetworkActionPerformed
 
     private void cmbEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseActionPerformed
         // TODO add your handling code here:
-         String EnterpriseSelected = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
-         String CountrySelected = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
-          try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-         String query2 = "select OrgName from FinalProj_Organization where Enterrpise ='"+EnterpriseSelected+"' and country ='"+CountrySelected+"'";
-        ResultSet rs1 = myStatement.executeQuery(query2);
-        cmbOrg.removeAllItems();
-        //cmbOrg.removeAllItems();
-        while(rs1.next())
-        {
-            cmbOrg.addItem(rs1.getString("OrgName"));
-            
-        }
-        
-        con.close();
-        }catch(Exception E) {
+        String EnterpriseSelected = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
+        String CountrySelected = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query2 = "select OrgName from FinalProj_Organization where Enterrpise ='" + EnterpriseSelected + "' and country ='" + CountrySelected + "'";
+            ResultSet rs1 = myStatement.executeQuery(query2);
+            cmbOrg.removeAllItems();
+            //cmbOrg.removeAllItems();
+            while (rs1.next()) {
+                cmbOrg.addItem(rs1.getString("OrgName"));
+
+            }
+
+            con.close();
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB call");
-             }   
+        }
     }//GEN-LAST:event_cmbEnterpriseActionPerformed
 
 

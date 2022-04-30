@@ -234,9 +234,9 @@ public class TransportAvailability extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-         String Ambulance = txtAmbulance.getText();
-         String Truck = txtTruck.getText();
-         String Travel = txtTravel.getText();
+        String Ambulance = txtAmbulance.getText();
+        String Truck = txtTruck.getText();
+        String Travel = txtTravel.getText();
         String StoreName = txtStoreName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
@@ -267,8 +267,8 @@ public class TransportAvailability extends javax.swing.JPanel {
                 Object row[] = new Object[5];
                 row[0] = StoreName1;
                 row[1] = Travel1;
-                 row[2] = Ambulance1;
-                 row[3] = Truck1;
+                row[2] = Ambulance1;
+                row[3] = Truck1;
                 row[4] = Lastupdated;
                 model.addRow(row);
             }
@@ -282,8 +282,8 @@ public class TransportAvailability extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         String Ambulance = txtAmbulance.getText();
-         String Truck = txtTruck.getText();
-         String Travel = txtTravel.getText();
+        String Truck = txtTruck.getText();
+        String Travel = txtTravel.getText();
         String StoreName = txtStoreName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
@@ -314,8 +314,8 @@ public class TransportAvailability extends javax.swing.JPanel {
                 Object row[] = new Object[5];
                 row[0] = StoreName1;
                 row[1] = Travel1;
-                 row[2] = Ambulance1;
-                 row[3] = Truck1;
+                row[2] = Ambulance1;
+                row[3] = Truck1;
                 row[4] = Lastupdated;
                 model.addRow(row);
             }

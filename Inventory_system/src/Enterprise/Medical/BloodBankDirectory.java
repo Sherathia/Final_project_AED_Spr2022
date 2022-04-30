@@ -12,11 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class BloodBankDirectory {
-    
+
     public List<BloodBank> bloodBankDirectory;
-    
-    public BloodBankDirectory()
-    {
+
+    public BloodBankDirectory() {
         bloodBankDirectory = new ArrayList<>();
     }
 
@@ -27,5 +26,5 @@ public class BloodBankDirectory {
     public void setBloodBankDirectory(List<BloodBank> bloodBankDirectory) {
         this.bloodBankDirectory = bloodBankDirectory;
     }
-    
+
 }

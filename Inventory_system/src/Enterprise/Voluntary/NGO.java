@@ -11,6 +11,7 @@ import java.util.List;
  * @author aesha
  */
 public class NGO {
+
     private String name;
     private String contact;
     private String address;

@@ -12,10 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class UserAccountDirectory {
-    
+
     private List<UserAccount> userAccountList;
-    public UserAccountDirectory()
-    {
+
+    public UserAccountDirectory() {
         userAccountList = new ArrayList<>();
     }
 
@@ -26,9 +26,9 @@ public class UserAccountDirectory {
     public void setUserAccountList(List<UserAccount> userAccountList) {
         this.userAccountList = userAccountList;
     }
-    
-    public UserAccount createUserAccount( String name, String username, String password, String network) {
-        UserAccount ua = new UserAccount(name,username, password, network);
+
+    public UserAccount createUserAccount(String name, String username, String password, String network) {
+        UserAccount ua = new UserAccount(name, username, password, network);
         ua.setName(name);
         ua.setUsername(username);
         ua.setPassword(password);
@@ -36,7 +36,7 @@ public class UserAccountDirectory {
         userAccountList.add(ua);
         return ua;
     }
-    
+
     public UserAccount validateUser(String username, String password) {
         for (UserAccount acc : userAccountList) {
             if (acc.getUsername().equals(username) && acc.getPassword().equals(password)) {
@@ -45,12 +45,12 @@ public class UserAccountDirectory {
         }
         return null;
     }
+
     public UserAccount getAccountUserName(String userName) {
         UserAccount AccountDetail = userAccountList.stream().filter(x -> x.getUsername().equals(userName)).findAny().orElse(null);
         return AccountDetail;
     }
-    
-    
+
     public boolean duplicateUserName(String username) {
         for (UserAccount ua : userAccountList) {
             if (ua.getUsername().equals(username)) {
@@ -59,11 +59,10 @@ public class UserAccountDirectory {
         }
         return true;
     }
-    
+
     public void DeleteUserAccount(UserAccount account) {
         int value = userAccountList.indexOf(account);
         userAccountList.remove(value);
     }
-    
-    
+
 }

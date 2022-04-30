@@ -24,28 +24,27 @@ public class EnterpriseScreen extends javax.swing.JPanel {
      * Creates new form NetworkScreen
      */
     private JPanel rightPanel;
+
     public EnterpriseScreen(JPanel rightPanel) {
         initComponents();
         this.rightPanel = rightPanel;
-         try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_Network";
-        ResultSet rs = myStatement.executeQuery(query);
-        cmbCountry.removeAllItems();
-        cmbCountry2.removeAllItems();
-        while(rs.next())
-        {
-            cmbCountry.addItem(rs.getString("Name"));
-            cmbCountry2.addItem(rs.getString("Name"));
-        }
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_Network";
+            ResultSet rs = myStatement.executeQuery(query);
+            cmbCountry.removeAllItems();
+            cmbCountry2.removeAllItems();
+            while (rs.next()) {
+                cmbCountry.addItem(rs.getString("Name"));
+                cmbCountry2.addItem(rs.getString("Name"));
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
+        }
     }
 
     /**
@@ -182,61 +181,60 @@ public class EnterpriseScreen extends javax.swing.JPanel {
 
     private void cmbCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCountryActionPerformed
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_cmbCountryActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         String Name = txtEnterpriseNAme.getText();
         String Country = cmbCountry2.getItemAt(cmbCountry2.getSelectedIndex());
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());  
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Insert into `finalproj_enterprise`"+"values('"+Name+"','"+Country+"','"+Date+"')";
-         myStatement.executeUpdate(query);
-        //System.out.println("Inserted data");
-        con.close();
-        JOptionPane.showMessageDialog(this, "Enterprise Created Successfully!!!");
-    }catch(Exception E) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Insert into `finalproj_enterprise`" + "values('" + Name + "','" + Country + "','" + Date + "')";
+            myStatement.executeUpdate(query);
+            //System.out.println("Inserted data");
+            con.close();
+            JOptionPane.showMessageDialog(this, "Enterprise Created Successfully!!!");
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB call");
-    }
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         String Country = cmbCountry.getItemAt(cmbCountry.getSelectedIndex());
-        
-        DefaultTableModel model = (DefaultTableModel)tblEnterprise.getModel();
-         model.setRowCount(0);
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "select * from FinalProj_Enterprise where country ='"+Country+"'";
-        ResultSet rs = myStatement.executeQuery(query);
-        //System.out.println("Inserted data");
-        
-        while(rs.next())
-        {
-            String EnterpriseName = rs.getString("Name");
-            String Country1 = rs.getString("Country");
-            String Date = rs.getString("Create_datetime");
-            
-            Object row[] = new Object[3];
-            row[0] = EnterpriseName;
-            row[1] = Country1;
-            row[2] = Date;
-            model.addRow(row);
-            
-        }
-        con.close();
-        }catch(Exception E) {
+
+        DefaultTableModel model = (DefaultTableModel) tblEnterprise.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "select * from FinalProj_Enterprise where country ='" + Country + "'";
+            ResultSet rs = myStatement.executeQuery(query);
+            //System.out.println("Inserted data");
+
+            while (rs.next()) {
+                String EnterpriseName = rs.getString("Name");
+                String Country1 = rs.getString("Country");
+                String Date = rs.getString("Create_datetime");
+
+                Object row[] = new Object[3];
+                row[0] = EnterpriseName;
+                row[1] = Country1;
+                row[2] = Date;
+                model.addRow(row);
+
+            }
+            con.close();
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB call");
-             }   
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
 
 

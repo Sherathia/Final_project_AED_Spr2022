@@ -191,7 +191,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
             //cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-               // cmbStore.addItem(rs.getString("ManufacturerName"));
+                // cmbStore.addItem(rs.getString("ManufacturerName"));
                 String ManufacturerName1 = rs.getString("ManufacturerName");
                 String AvailableEquipment1 = rs.getString("AvailableEquipment");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -213,7 +213,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-         String AvailableEquipment = txtAvailableEquipment.getText();
+        String AvailableEquipment = txtAvailableEquipment.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
         String ManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -236,7 +236,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));
-               // cmbStore.addItem(rs.getString("ManufacturerName"));
+                // cmbStore.addItem(rs.getString("ManufacturerName"));
                 String ManufacturerName1 = rs.getString("ManufacturerName");
                 String AvailableEquipment1 = rs.getString("AvailableEquipment");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");
@@ -258,7 +258,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-         String AvailableEquipment = txtAvailableEquipment.getText();
+        String AvailableEquipment = txtAvailableEquipment.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
         String ManufacturerName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -277,10 +277,10 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
-           // cmbStore.removeAllItems();
+            // cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-               // cmbStore.addItem(rs.getString("ManufacturerName"));
+                // cmbStore.addItem(rs.getString("ManufacturerName"));
                 String ManufacturerName1 = rs.getString("ManufacturerName");
                 String AvailableEquipment1 = rs.getString("AvailableEquipment");
                 String AvailableQuantity1 = rs.getString("AvailableQuantity");

@@ -20,9 +20,8 @@ public class HierarchyManage extends javax.swing.JFrame {
      */
     public HierarchyManage() {
         initComponents();
-        
-       
-         }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -189,16 +188,16 @@ public class HierarchyManage extends javax.swing.JFrame {
     private void btnOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrgActionPerformed
         // TODO add your handling code here:
         OrgScreen orgScreen = new OrgScreen(RightPanel);
-        RightPanel.add("OrgScreen",orgScreen);
-        CardLayout layout = (CardLayout)RightPanel.getLayout();
+        RightPanel.add("OrgScreen", orgScreen);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);
     }//GEN-LAST:event_btnOrgActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
         // TODO add your handling code here:
         UserScreen userScreen = new UserScreen(RightPanel);
-        RightPanel.add("UserScreen",userScreen);
-        CardLayout layout = (CardLayout)RightPanel.getLayout();
+        RightPanel.add("UserScreen", userScreen);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);
     }//GEN-LAST:event_btnUserActionPerformed
 
@@ -206,9 +205,9 @@ public class HierarchyManage extends javax.swing.JFrame {
         // TODO add your handling code here:
         AdminRequestScreen ar;
         ar = new AdminRequestScreen();
-                ar.setVisible(true);
-                this.dispose();
-          /*RequestScreen requestScreen = new RequestScreen(RightPanel);
+        ar.setVisible(true);
+        this.dispose();
+        /*RequestScreen requestScreen = new RequestScreen(RightPanel);
         RightPanel.add("RequestScreen",requestScreen);
         CardLayout layout = (CardLayout)RightPanel.getLayout();
         layout.next(RightPanel);*/
@@ -217,10 +216,10 @@ public class HierarchyManage extends javax.swing.JFrame {
     private void btnEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterpriseActionPerformed
         // TODO add your handling code here:
         EnterpriseScreen enterpriseScreen = new EnterpriseScreen(RightPanel);
-        RightPanel.add("EnterpriseScreen",enterpriseScreen);
-        CardLayout layout = (CardLayout)RightPanel.getLayout();
+        RightPanel.add("EnterpriseScreen", enterpriseScreen);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);
-        
+
     }//GEN-LAST:event_btnEnterpriseActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

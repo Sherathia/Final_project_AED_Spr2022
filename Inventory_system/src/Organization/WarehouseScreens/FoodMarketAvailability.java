@@ -220,10 +220,10 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(querysel);
-           // cmbStore.removeAllItems();
+            // cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-               // cmbStore.addItem(rs.getString("StoreName"));
+                // cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = rs.getString("StoreName");
                 String WaterCans = rs.getString("WaterCans");
                 String FoodPacket = rs.getString("FoodPacket");
@@ -265,10 +265,10 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(querysel);
-          //  cmbStore.removeAllItems();
+            //  cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
-              //  cmbStore.addItem(rs.getString("StoreName"));
+                //  cmbStore.addItem(rs.getString("StoreName"));
                 String StoreName1 = rs.getString("StoreName");
                 String WaterCans = rs.getString("WaterCans");
                 String FoodPacket = rs.getString("FoodPacket");
@@ -290,7 +290,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-         String foodpacket = txtFood.getText();
+        String foodpacket = txtFood.getText();
         String watercans = txtWater.getText();
         String StoreName = txtStore.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -309,7 +309,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
 
             String querysel = "Select * from FinalProj_FoodmarketItems";
             ResultSet rs = myStatement.executeQuery(querysel);
-           // cmbStore.removeAllItems();
+            // cmbStore.removeAllItems();
             model.setRowCount(0);
             while (rs.next()) {
                 //cmbStore.addItem(rs.getString("StoreName"));

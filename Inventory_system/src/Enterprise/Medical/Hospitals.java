@@ -11,7 +11,7 @@ import java.util.List;
  * @author aesha
  */
 public class Hospitals {
-    
+
     private String name;
     private String location;
     private String contactNo;
@@ -84,5 +84,5 @@ public class Hospitals {
     }
     private List<String> doctors;
     private List<String> staff;
-    
+
 }

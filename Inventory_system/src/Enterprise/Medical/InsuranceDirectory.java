@@ -12,10 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class InsuranceDirectory {
+
     public List<Insurance> insuranceList;
-    
-    public InsuranceDirectory()
-    {
+
+    public InsuranceDirectory() {
         insuranceList = new ArrayList<>();
     }
 
@@ -26,5 +26,5 @@ public class InsuranceDirectory {
     public void setInsuranceList(List<Insurance> insuranceList) {
         this.insuranceList = insuranceList;
     }
-    
+
 }
