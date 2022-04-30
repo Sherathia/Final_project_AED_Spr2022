@@ -72,9 +72,6 @@ public class OrgScreen extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtOrgName = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtLocation = new javax.swing.JTextField();
-        btnLocation = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -115,20 +112,7 @@ public class OrgScreen extends javax.swing.JPanel {
 
         txtOrgName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setText("Location:");
-
-        txtLocation.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
-        btnLocation.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnLocation.setText("Browse Location");
-        btnLocation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLocationActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("MANAGE ORGANIZATION");
 
@@ -158,7 +142,7 @@ public class OrgScreen extends javax.swing.JPanel {
         });
 
         btnCreate.setBackground(new java.awt.Color(255, 255, 255));
-        btnCreate.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\create1.png")); // NOI18N
+        btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/create1.png"))); // NOI18N
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
@@ -196,19 +180,14 @@ public class OrgScreen extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel2))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtOrgName)
-                            .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOrgType, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLocation))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtOrgName, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                        .addComponent(txtOrgType, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(326, 326, 326))
+                .addGap(453, 453, 453))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbCountry, cmbEnterprise});
@@ -227,7 +206,7 @@ public class OrgScreen extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -237,35 +216,18 @@ public class OrgScreen extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLocation)))
-                .addGap(54, 54, 54)
+                .addGap(39, 39, 39)
                 .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112))
+                .addGap(171, 171, 171))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
-        // TODO add your handling code here:
-
-        try {
-            Desktop.getDesktop().browse(new URL("http:/maps.google.com").toURI());
-        } catch (Exception e) {
-        }
-        //open("http://maps.google.com/");
-
-    }//GEN-LAST:event_btnLocationActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
 
         String Orgtype = txtOrgType.getText();
         String OrgName = txtOrgName.getText();
-        String Location = txtLocation.getText();
+        String Location =  null;
         String EnterpriseSel = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
         String CountrySel = cmbCountry.getItemAt(cmbCountry.getSelectedIndex());
 
@@ -323,13 +285,11 @@ public class OrgScreen extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
-    private javax.swing.JButton btnLocation;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cmbCountry;
     private javax.swing.JComboBox<String> cmbEnterprise;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -337,7 +297,6 @@ public class OrgScreen extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblManageOrg;
-    private javax.swing.JTextField txtLocation;
     private javax.swing.JTextField txtOrgName;
     private javax.swing.JTextField txtOrgType;
     // End of variables declaration//GEN-END:variables

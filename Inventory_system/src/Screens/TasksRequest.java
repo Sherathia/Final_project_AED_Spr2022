@@ -291,6 +291,9 @@ public class TasksRequest extends javax.swing.JPanel {
         String Enter = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
         DefaultTableModel model = (DefaultTableModel) tblManageRequest.getModel();
         model.setRowCount(0);
+        if(Org.equalsIgnoreCase("Hospital"))
+        {
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
@@ -330,6 +333,8 @@ public class TasksRequest extends javax.swing.JPanel {
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
         }
+        }
+        
     }//GEN-LAST:event_btnviewpendingreqActionPerformed
 
     private void btnviewrequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewrequestsActionPerformed

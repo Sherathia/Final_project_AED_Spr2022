@@ -313,12 +313,12 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         return;
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Invalid Username or Password!");
+                }/* else {
+                   JOptionPane.showMessageDialog(this, "Invalid Username or Password!");
                     txtUserName.setText(null);
                     txtPwd.setText(null);
                     return;
-                }
+                }*/
 
             }
             //System.out.println("Inserted data");
