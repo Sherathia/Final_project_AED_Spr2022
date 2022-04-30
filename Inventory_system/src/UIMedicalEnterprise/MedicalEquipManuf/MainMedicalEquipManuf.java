@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,6 +25,41 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
      */
     public MainMedicalEquipManuf() {
         initComponents();
+        DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from finalproj_medicalequipmanufrequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
+
+            con.close();
+
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+        }
     }
 
     /**
@@ -45,7 +81,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         RightPane = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClothingRtl = new javax.swing.JTable();
+        tblMedicalEquip = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtComments = new javax.swing.JTextField();
@@ -143,7 +179,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MEDICAL EQUIPMENT MANUFACTURERS");
 
-        tblClothingRtl.setModel(new javax.swing.table.DefaultTableModel(
+        tblMedicalEquip.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -154,7 +190,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
                 "RequestID", "Description", "Quantity", "Requester", "Requested Date", "Status", "Approval Date", "Comments"
             }
         ));
-        jScrollPane1.setViewportView(tblClothingRtl);
+        jScrollPane1.setViewportView(tblMedicalEquip);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("RequestID");
@@ -294,6 +330,31 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             String query = "Update FinalProj_MedicalEquipManufRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
+            DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
+             model.setRowCount(0);
+            String query1 = "Select * from finalproj_medicalequipmanufrequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -316,6 +377,32 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             String query = "Update FinalProj_MedicalEquipManufRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
+            DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
+             model.setRowCount(0);
+            String query1 = "Select * from finalproj_medicalequipmanufrequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
+            
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -338,6 +425,31 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             String query = "Update FinalProj_MedicalEquipManufRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
+             model.setRowCount(0);
+            String query1 = "Select * from finalproj_medicalequipmanufrequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -402,7 +514,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblClothingRtl;
+    private javax.swing.JTable tblMedicalEquip;
     private javax.swing.JTextField txtComments;
     private javax.swing.JTextField txtRequestID;
     // End of variables declaration//GEN-END:variables

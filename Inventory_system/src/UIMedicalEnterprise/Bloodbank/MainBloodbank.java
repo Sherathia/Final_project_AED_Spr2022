@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,6 +25,41 @@ public class MainBloodbank extends javax.swing.JFrame {
      */
     public MainBloodbank() {
         initComponents();
+        DefaultTableModel model = (DefaultTableModel) tblBloodBank.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from finalproj_bloodbankrequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
+
+            con.close();
+
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+        }
     }
 
     /**
@@ -49,7 +85,7 @@ public class MainBloodbank extends javax.swing.JFrame {
         btnReject = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClothingRtl = new javax.swing.JTable();
+        tblBloodBank = new javax.swing.JTable();
         txtRequestID = new javax.swing.JTextField();
         txtComments = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -167,7 +203,7 @@ public class MainBloodbank extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("BLOOD BANKS ");
 
-        tblClothingRtl.setModel(new javax.swing.table.DefaultTableModel(
+        tblBloodBank.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -178,7 +214,7 @@ public class MainBloodbank extends javax.swing.JFrame {
                 "RequestID", "Description", "Quantity", "Requester", "Requested Date", "Status", "Approval Date", "Comments"
             }
         ));
-        jScrollPane1.setViewportView(tblClothingRtl);
+        jScrollPane1.setViewportView(tblBloodBank);
 
         txtRequestID.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
@@ -296,6 +332,31 @@ public class MainBloodbank extends javax.swing.JFrame {
             String query = "Update FinalProj_BloodBankRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
+            DefaultTableModel model = (DefaultTableModel) tblBloodBank.getModel();
+            model.setRowCount(0);
+            String query1 = "Select * from finalproj_bloodbankrequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -318,6 +379,31 @@ public class MainBloodbank extends javax.swing.JFrame {
             String query = "Update FinalProj_BloodBankRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
+            DefaultTableModel model = (DefaultTableModel) tblBloodBank.getModel();
+            model.setRowCount(0);
+            String query1 = "Select * from finalproj_bloodbankrequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -340,6 +426,31 @@ public class MainBloodbank extends javax.swing.JFrame {
             String query = "Update FinalProj_BloodBankRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            DefaultTableModel model = (DefaultTableModel) tblBloodBank.getModel();
+            model.setRowCount(0);
+            String query1 = "Select * from finalproj_bloodbankrequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -420,7 +531,7 @@ public class MainBloodbank extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblClothingRtl;
+    private javax.swing.JTable tblBloodBank;
     private javax.swing.JTextField txtComments;
     private javax.swing.JTextField txtRequestID;
     // End of variables declaration//GEN-END:variables

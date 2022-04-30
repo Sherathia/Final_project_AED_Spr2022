@@ -33,7 +33,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-            String query = "Select * from FinalProj_FoodmarketRequests";
+            String query = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
@@ -330,6 +330,33 @@ public class FoodMarketMain extends javax.swing.JFrame {
             String query = "Update FinalProj_FoodmarketRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
+            
+            
+            DefaultTableModel model = (DefaultTableModel) tblFoodRequest.getModel();
+            model.setRowCount(0);
+            String query1 = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -352,6 +379,31 @@ public class FoodMarketMain extends javax.swing.JFrame {
             String query = "Update FinalProj_FoodmarketRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
+            DefaultTableModel model = (DefaultTableModel) tblFoodRequest.getModel();
+            model.setRowCount(0);
+            String query1 = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -374,6 +426,31 @@ public class FoodMarketMain extends javax.swing.JFrame {
             String query = "Update FinalProj_FoodmarketRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            DefaultTableModel model = (DefaultTableModel) tblFoodRequest.getModel();
+            model.setRowCount(0);
+            String query1 = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Description = rs.getString("Description");
+                String quantity = rs.getString("quantity");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[8];
+                row[0] = RequestID;
+                row[1] = Description;
+                row[2] = quantity;
+                row[3] = Requester;
+                row[4] = RequestedDate;
+                row[5] = status;
+                row[6] = ApprovalDate;
+                row[7] = Comments;
+                model.addRow(row);
+            }
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
