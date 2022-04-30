@@ -9,7 +9,7 @@ package Classes;
  * @author aesha
  */
 public class Person {
-    
+
     private String name;
     private String age;
     private String emailid;
@@ -46,6 +46,5 @@ public class Person {
     public void setContact(String contact) {
         this.contact = contact;
     }
-    
-    
+
 }

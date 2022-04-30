@@ -12,10 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class VaccineManuDirectory {
+
     public List<VaccineManuf> vaccineManufList;
-    
-    public VaccineManuDirectory()
-    {
+
+    public VaccineManuDirectory() {
         vaccineManufList = new ArrayList<>();
     }
 
@@ -26,6 +26,5 @@ public class VaccineManuDirectory {
     public void setVaccineManufList(List<VaccineManuf> vaccineManufList) {
         this.vaccineManufList = vaccineManufList;
     }
-    
 
 }

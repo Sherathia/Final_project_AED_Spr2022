@@ -12,12 +12,12 @@ import java.util.List;
  * @author aesha
  */
 public class OrganizationDirectory {
-     private List<Organization> organizationList;
-     
-     public OrganizationDirectory()
-     {
-         organizationList = new ArrayList<>();
-     }
+
+    private List<Organization> organizationList;
+
+    public OrganizationDirectory() {
+        organizationList = new ArrayList<>();
+    }
 
     public List<Organization> getOrganizationList() {
         return organizationList;
@@ -26,6 +26,5 @@ public class OrganizationDirectory {
     public void setOrganizationList(List<Organization> organizationList) {
         this.organizationList = organizationList;
     }
-     
-     
+
 }

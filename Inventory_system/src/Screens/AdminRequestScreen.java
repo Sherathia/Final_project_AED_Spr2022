@@ -4,6 +4,7 @@
  */
 package Screens;
 
+import UI.Login;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.sql.Connection;
@@ -26,7 +27,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
      */
     public AdminRequestScreen() {
         initComponents();
-        
+
     }
 
     /**
@@ -42,13 +43,13 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnUserCreation = new javax.swing.JButton();
         btnTaskRequest = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         RightPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRequests = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnApprove = new javax.swing.JButton();
-        btnHold = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         txtComments = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -56,12 +57,14 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         btnviewrequests = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtRequestID = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
-        btnUserCreation.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnUserCreation.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnUserCreation.setForeground(new java.awt.Color(51, 153, 255));
         btnUserCreation.setText("User Creation Request");
         btnUserCreation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,11 +72,19 @@ public class AdminRequestScreen extends javax.swing.JFrame {
             }
         });
 
-        btnTaskRequest.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnTaskRequest.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnTaskRequest.setForeground(new java.awt.Color(51, 153, 255));
         btnTaskRequest.setText("Task Requests");
         btnTaskRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaskRequestActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\logoutimage.png")); // NOI18N
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
             }
         });
 
@@ -82,22 +93,27 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUserCreation)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnTaskRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnUserCreation))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnTaskRequest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(btnUserCreation)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTaskRequest)
-                .addContainerGap(533, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 520, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -118,9 +134,11 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblRequests);
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("USER CREATION REQUESTS");
 
+        btnApprove.setBackground(new java.awt.Color(188, 210, 254));
         btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnApprove.setText("Approve");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
@@ -129,14 +147,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
             }
         });
 
-        btnHold.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnHold.setText("Hold");
-        btnHold.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHoldActionPerformed(evt);
-            }
-        });
-
+        btnReject.setBackground(new java.awt.Color(188, 210, 254));
         btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnReject.setText("Reject");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +161,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Comments:");
 
+        btnviewpendingreq.setBackground(new java.awt.Color(188, 210, 254));
         btnviewpendingreq.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnviewpendingreq.setText("View Pending Requests");
         btnviewpendingreq.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +170,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
             }
         });
 
+        btnviewrequests.setBackground(new java.awt.Color(188, 210, 254));
         btnviewrequests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnviewrequests.setText("View All Requests");
         btnviewrequests.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +184,15 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
         txtRequestID.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(188, 210, 254));
+        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jButton1.setText("<<Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout RightPanelLayout = new javax.swing.GroupLayout(RightPanel);
         RightPanel.setLayout(RightPanelLayout);
         RightPanelLayout.setHorizontalGroup(
@@ -178,36 +200,38 @@ public class AdminRequestScreen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPanelLayout.createSequentialGroup()
                 .addGap(0, 108, Short.MAX_VALUE)
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RightPanelLayout.createSequentialGroup()
-                        .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(RightPanelLayout.createSequentialGroup()
-                                .addGap(176, 176, 176)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(RightPanelLayout.createSequentialGroup()
-                                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(27, 27, 27)
-                                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(RightPanelLayout.createSequentialGroup()
-                                        .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(RightPanelLayout.createSequentialGroup()
-                                        .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(44, 44, 44)
-                                        .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnHold, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(RightPanelLayout.createSequentialGroup()
                                 .addComponent(btnviewpendingreq)
                                 .addGap(33, 33, 33)
                                 .addComponent(btnviewrequests))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(58, 58, 58))))
+                        .addGap(58, 58, 58))
+                    .addGroup(RightPanelLayout.createSequentialGroup()
+                        .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(27, 27, 27)
+                        .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(RightPanelLayout.createSequentialGroup()
+                                .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(RightPanelLayout.createSequentialGroup()
+                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RightPanelLayout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(jLabel1))
+                    .addGroup(RightPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         RightPanelLayout.setVerticalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,19 +244,19 @@ public class AdminRequestScreen extends javax.swing.JFrame {
                     .addComponent(btnviewrequests))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(55, 55, 55)
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnApprove))
-                .addGap(31, 31, 31)
+                .addGap(37, 37, 37)
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHold))
-                .addGap(33, 33, 33)
-                .addComponent(btnReject)
-                .addContainerGap(205, Short.MAX_VALUE))
+                    .addComponent(btnReject))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(23, 23, 23))
         );
 
         jPanel2.add(RightPanel, "card2");
@@ -255,168 +279,140 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
     private void btnTaskRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskRequestActionPerformed
         // TODO add your handling code here:
-         TasksRequest tasksRequest = new TasksRequest(jPanel2);
-        jPanel2.add("TasksRequest",tasksRequest);
-        CardLayout layout = (CardLayout)jPanel2.getLayout();
+        TasksRequest tasksRequest = new TasksRequest(jPanel2);
+        jPanel2.add("TasksRequest", tasksRequest);
+        CardLayout layout = (CardLayout) jPanel2.getLayout();
         layout.next(jPanel2);
     }//GEN-LAST:event_btnTaskRequestActionPerformed
 
     private void btnviewrequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewrequestsActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)tblRequests.getModel();
-         model.setRowCount(0);
-       try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_AdminRequests where Attrib1 is NULL";
-        ResultSet rs = myStatement.executeQuery(query);
-        while(rs.next())
-        {
-            String RequestID = rs.getString("RequestID");
-            String Name = rs.getString("Name");
-            String Network = rs.getString("Network");
-            String Enterprise = rs.getString("Enterprise");
-            String Organization = rs.getString("Organization");
-            String Requester = rs.getString("Requester");
-            String RequestedDate = rs.getString("RequestedDate");
-            String ApprovalDate = rs.getString("ApprovalDate");
-            String status = rs.getString("status");
-            String Comments = rs.getString("Comments");
-            
-            Object row[] = new Object[10];
-            row[0] = RequestID;
-            row[1] = Name;
-            row[2] = Network;
-            row[3] = Enterprise;
-            row[4] = Organization;
-            row[5] = Requester;
-            row[6] = RequestedDate;
-            row[7] = ApprovalDate;
-            row[8] = status;
-            row[9] = Comments;
-            model.addRow(row);
-        }
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_AdminRequests where Attrib1 is NULL";
+            ResultSet rs = myStatement.executeQuery(query);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Name = rs.getString("Name");
+                String Network = rs.getString("Network");
+                String Enterprise = rs.getString("Enterprise");
+                String Organization = rs.getString("Organization");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[10];
+                row[0] = RequestID;
+                row[1] = Name;
+                row[2] = Network;
+                row[3] = Enterprise;
+                row[4] = Organization;
+                row[5] = Requester;
+                row[6] = RequestedDate;
+                row[7] = ApprovalDate;
+                row[8] = status;
+                row[9] = Comments;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
-        
+        }
+
     }//GEN-LAST:event_btnviewrequestsActionPerformed
 
     private void btnviewpendingreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewpendingreqActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel)tblRequests.getModel();
-         model.setRowCount(0);
-       try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_AdminRequests where status ='CREATED' and  Attrib1 is NULL";
-        ResultSet rs = myStatement.executeQuery(query);
-        while(rs.next())
-        {
-            String RequestID = rs.getString("RequestID");
-            String Name = rs.getString("Name");
-            String Network = rs.getString("Network");
-            String Enterprise = rs.getString("Enterprise");
-            String Organization = rs.getString("Organization");
-            String Requester = rs.getString("Requester");
-            String RequestedDate = rs.getString("RequestedDate");
-            String ApprovalDate = rs.getString("ApprovalDate");
-            String status = rs.getString("status");
-            String Comments = rs.getString("Comments");
-            
-            Object row[] = new Object[10];
-            row[0] = RequestID;
-            row[1] = Name;
-            row[2] = Network;
-            row[3] = Enterprise;
-            row[4] = Organization;
-            row[5] = Requester;
-            row[6] = RequestedDate;
-            row[7] = ApprovalDate;
-            row[8] = status;
-            row[9] = Comments;
-            model.addRow(row);
-        }
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
+        model.setRowCount(0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_AdminRequests where status ='CREATED' and  Attrib1 is NULL";
+            ResultSet rs = myStatement.executeQuery(query);
+            while (rs.next()) {
+                String RequestID = rs.getString("RequestID");
+                String Name = rs.getString("Name");
+                String Network = rs.getString("Network");
+                String Enterprise = rs.getString("Enterprise");
+                String Organization = rs.getString("Organization");
+                String Requester = rs.getString("Requester");
+                String RequestedDate = rs.getString("RequestedDate");
+                String ApprovalDate = rs.getString("ApprovalDate");
+                String status = rs.getString("status");
+                String Comments = rs.getString("Comments");
+
+                Object row[] = new Object[10];
+                row[0] = RequestID;
+                row[1] = Name;
+                row[2] = Network;
+                row[3] = Enterprise;
+                row[4] = Organization;
+                row[5] = Requester;
+                row[6] = RequestedDate;
+                row[7] = ApprovalDate;
+                row[8] = status;
+                row[9] = Comments;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
+        }
     }//GEN-LAST:event_btnviewpendingreqActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
         String requestId = txtRequestID.getText();
         String comments = txtComments.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime()); 
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        
-        String query = "Update FinalProj_AdminRequests set status='APPROVED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "Request Approved!!");
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-               }
-    }//GEN-LAST:event_btnApproveActionPerformed
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-    private void btnHoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoldActionPerformed
-        // TODO add your handling code here:
-        String requestId = txtRequestID.getText();
-        String comments = txtComments.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime()); 
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        
-        String query = "Update FinalProj_AdminRequests set status='ON HOLD',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "Request On Hold!!");
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_AdminRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
-               }
-    }//GEN-LAST:event_btnHoldActionPerformed
+        }
+    }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         String requestId = txtRequestID.getText();
         String comments = txtComments.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime()); 
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        
-        String query = "Update FinalProj_AdminRequests set status='REJECTED',ApprovalDate ='"+Date+"', comments ='"+comments+"' where RequestID='"+requestId+"'";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "Request Rejected!!");
-        con.close();
-         }
-        //System.out.println("Inserted data");
-           catch(Exception E) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_AdminRequests set status='REJECTED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
-               }
+        }
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnUserCreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserCreationActionPerformed
@@ -425,6 +421,19 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) jPanel2.getLayout();
         layout.previous(jPanel2);
     }//GEN-LAST:event_btnUserCreationActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        new HierarchyManage().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,16 +470,17 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel RightPanel;
     private javax.swing.JButton btnApprove;
-    private javax.swing.JButton btnHold;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnTaskRequest;
     private javax.swing.JButton btnUserCreation;
     private javax.swing.JButton btnviewpendingreq;
     private javax.swing.JButton btnviewrequests;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -12,10 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class MedicalEquipManuDirectory {
+
     public List<MedicalEquipManu> medicalEquipmentList;
-    
-    public MedicalEquipManuDirectory()
-    {
+
+    public MedicalEquipManuDirectory() {
         medicalEquipmentList = new ArrayList<>();
     }
 
@@ -26,5 +26,5 @@ public class MedicalEquipManuDirectory {
     public void setMedicalEquipmentList(List<MedicalEquipManu> medicalEquipmentList) {
         this.medicalEquipmentList = medicalEquipmentList;
     }
-    
+
 }

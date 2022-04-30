@@ -9,13 +9,12 @@ package Classes;
  * @author aesha
  */
 public class Network {
-    
+
     private String country;
     private EnterpriseDirectory enterpriseDirectory;
-    
-    public Network()
-    {
-        
+
+    public Network() {
+
     }
 
     public String getCountry() {
@@ -33,6 +32,5 @@ public class Network {
     public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
         this.enterpriseDirectory = enterpriseDirectory;
     }
-    
-    
+
 }

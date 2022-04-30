@@ -10,14 +10,13 @@ import Users.UserAccount;
  *
  * @author aesha
  */
-public class AddSystem{
-    
-    public static Ecosystem configure()
-    {
+public class AddSystem {
+
+    public static Ecosystem configure() {
         Ecosystem addsystem = Ecosystem.getSystem();
-        
+
         UserAccount userAccount = addsystem.getUserAccountDirectory().createUserAccount("Admin", "Admin123", "Admin123", "US");
-        
+
         return addsystem;
     }
 }

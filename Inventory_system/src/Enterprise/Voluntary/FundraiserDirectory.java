@@ -12,10 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class FundraiserDirectory {
+
     public List<FundRaiser> fundRaiseList;
-    
-    public FundraiserDirectory()
-    {
+
+    public FundraiserDirectory() {
         fundRaiseList = new ArrayList<>();
     }
 
@@ -26,5 +26,5 @@ public class FundraiserDirectory {
     public void setFundRaiseList(List<FundRaiser> fundRaiseList) {
         this.fundRaiseList = fundRaiseList;
     }
-    
+
 }

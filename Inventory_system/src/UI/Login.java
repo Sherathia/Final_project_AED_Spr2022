@@ -5,7 +5,9 @@
 package UI;
 
 import Organization.ClothingRetailerScreen.ClothingRetailerMain;
+import Organization.Hospitals.HospitalMain;
 import Organization.TransportScreens.TransportMain;
+import Organization.VaccineManufacturers.MainVaccineManufacturers;
 import Organization.WarehouseScreens.FoodMarketMain;
 import Screens.HierarchyManage;
 import Users.UserAccount;
@@ -17,6 +19,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import UIMedicalEnterprise.MedicalEquipManuf.MainMedicalEquipManuf;
 
 /**
  *
@@ -27,15 +30,19 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public HierarchyManage hr ;
+    public HierarchyManage hr;
     public Fundraiser fr;
     public FoodMarketMain fm;
     public ClothingRetailerMain crm;
     public TransportMain tm;
-    
+    public createRequests cr;
+    public HospitalMain hm;
+    public MainVaccineManufacturers vm;
+    public MainMedicalEquipManuf mef;
+
     public Login() {
         initComponents();
-        
+
     }
 
     /**
@@ -63,6 +70,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1300, 800));
 
         leftPanel.setLayout(new java.awt.CardLayout());
         jSplitPane1.setLeftComponent(leftPanel);
@@ -71,8 +79,11 @@ public class Login extends javax.swing.JFrame {
 
         RightPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\login button_final.jpg")); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login button_final.jpg"))); // NOI18N
         btnLogin.setBorder(null);
+        btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogin.setIconTextGap(8);
+        btnLogin.setIgnoreRepaint(true);
         btnLogin.setMaximumSize(new java.awt.Dimension(675, 353));
         btnLogin.setMinimumSize(new java.awt.Dimension(675, 353));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +92,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btnRegister.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\register.jpg")); // NOI18N
+        btnRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/register.jpg"))); // NOI18N
+        btnRegister.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnRegister.setPreferredSize(new java.awt.Dimension(75, 35));
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +105,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\inventory-management.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventory-management.jpg"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(100, 100));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -110,16 +122,17 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(178, 178, 178)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtPwd.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\user1.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user1.png"))); // NOI18N
         jLabel3.setText("jLabel3");
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -134,35 +147,49 @@ public class Login extends javax.swing.JFrame {
         RightPanel.setLayout(RightPanelLayout);
         RightPanelLayout.setHorizontalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RightPanelLayout.createSequentialGroup()
-                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPwd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(276, 276, 276))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPanelLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(382, 382, 382))
                     .addGroup(RightPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPwd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(RightPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
-                        .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(276, Short.MAX_VALUE))
+                            .addGroup(RightPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPanelLayout.createSequentialGroup()
+                                .addGap(0, 273, Short.MAX_VALUE)
+                                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(276, 276, 276))))))
         );
+
+        RightPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLogin, btnRegister});
+
+        RightPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtPwd, txtUserName});
+
         RightPanelLayout.setVerticalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RightPanelLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jLabel1)
-                .addGap(68, 68, 68)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -170,9 +197,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(38, 38, 38)
+                .addGap(52, 52, 52)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(31, 31, 31)
                 .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,83 +226,107 @@ public class Login extends javax.swing.JFrame {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         RegistrationScreen rs = new RegistrationScreen(PanelLogin);
-        PanelLogin.add("RegistrationScreen",rs);
-        CardLayout layout = (CardLayout)PanelLogin.getLayout();
+        PanelLogin.add("RegistrationScreen", rs);
+        CardLayout layout = (CardLayout) PanelLogin.getLayout();
         layout.next(PanelLogin);
-        
-        
+
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-       /* Hierarchy hr = new Hierarchy(PanelLogin);
+        /* Hierarchy hr = new Hierarchy(PanelLogin);
         PanelLogin.add("Hierarchy",hr);
         CardLayout layout = (CardLayout)PanelLogin.getLayout();
         layout.next(PanelLogin);*/
-       String UserName = txtUserName.getText();
-       char[] passwordArr = txtPwd.getPassword();
-       String password = String.valueOf(passwordArr);
-       UserAccount userAccount;
-       
-       try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Select * from FinalProj_Users";
-        ResultSet rs = myStatement.executeQuery(query);
-        
-        while(rs.next())
-        {
-            String DBUsername = rs.getString("Username");
-            String DBPassword = rs.getString("Password");
-            String DBOrg = rs.getString("Organization");
-            
-            if(UserName.equalsIgnoreCase(DBUsername) && password.equalsIgnoreCase(DBPassword))
-            {
-                if(DBOrg.equalsIgnoreCase("Admin"))
-                {
-                hr = new HierarchyManage();
-                hr.setVisible(true);
-                this.dispose();
+        String UserName = txtUserName.getText();
+        char[] passwordArr = txtPwd.getPassword();
+        String password = String.valueOf(passwordArr);
+        UserAccount userAccount;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            String query = "Select * from FinalProj_Users";
+            ResultSet rs = myStatement.executeQuery(query);
+
+            while (rs.next()) {
+                String DBUsername = rs.getString("Username");
+                String DBPassword = rs.getString("Password");
+                String DBOrg = rs.getString("Organization");
+
+                if (UserName.equalsIgnoreCase(DBUsername) && password.equalsIgnoreCase(DBPassword)) {
+                    if (DBOrg.equalsIgnoreCase("Admin")) {
+                        hr = new HierarchyManage();
+                        hr.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("Fund Raiser")) {
+                        fr = new Fundraiser();
+                        fr.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("FoodMarket")) {
+                        fm = new FoodMarketMain();
+                        fm.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("Clothing")) {
+                        crm = new ClothingRetailerMain();
+                        crm.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("Transport")) {
+                        tm = new TransportMain();
+                        tm.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("NGO")) {
+                        cr = new createRequests();
+                        cr.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("Government")) {
+                        cr = new createRequests();
+                        cr.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("NDRF")) {
+                        cr = new createRequests();
+                        cr.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("Hospitals")) {
+                        hm = new HospitalMain();
+                        hm.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("Vaccine Manufacturer")) {
+                        vm = new MainVaccineManufacturers();
+                        vm.setVisible(true);
+                        this.dispose();
+                        return;
+                    } else if (DBOrg.equalsIgnoreCase("Medical Equipments")) {
+                        mef = new MainMedicalEquipManuf();
+                        mef.setVisible(true);
+                        this.dispose();
+                        return;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid Username or Password!");
+                    txtUserName.setText(null);
+                    txtPwd.setText(null);
+                    return;
                 }
-                else if(DBOrg.equalsIgnoreCase("Item 2"))
-                {
-                 fr =  new Fundraiser();
-                 fr.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("FoodMarket"))
-                {
-                 fm =  new FoodMarketMain();
-                 fm.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("Clothing"))
-                {
-                 crm =  new ClothingRetailerMain();
-                 crm.setVisible(true);
-                 this.dispose();
-                }
-                else if(DBOrg.equalsIgnoreCase("Transport"))
-                {
-                 tm =  new TransportMain();
-                 tm.setVisible(true);
-                 this.dispose();
-                }
+
             }
-            
-        }
-        //System.out.println("Inserted data");
-           }catch(Exception E) {
+            //System.out.println("Inserted data");
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
-       
-       
-       
-       
-       
-       
- 
+        }
+
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

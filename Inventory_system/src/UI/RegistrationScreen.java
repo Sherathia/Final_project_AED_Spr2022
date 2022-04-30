@@ -4,11 +4,13 @@
  */
 package UI;
 
+import Business.SendMail;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -22,10 +24,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
      * Creates new form RegistrationScreen
      */
     private JPanel rightPanel;
+
     public RegistrationScreen(JPanel rightPanel) {
         initComponents();
         this.rightPanel = rightPanel;
-        
+
     }
 
     /**
@@ -98,7 +101,8 @@ public class RegistrationScreen extends javax.swing.JPanel {
 
         btnRegister.setBackground(new java.awt.Color(231, 239, 254));
         btnRegister.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        btnRegister.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\registerbtn1.jpg")); // NOI18N
+        btnRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registerbtn1.jpg"))); // NOI18N
+        btnRegister.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -126,6 +130,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel9.setText("Contact:");
 
         txtcontact.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtcontact.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtcontactFocusLost(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 153, 255));
@@ -144,9 +153,8 @@ public class RegistrationScreen extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("WELCOME NEW USER!! ");
-
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\user1.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,21 +163,19 @@ public class RegistrationScreen extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel12)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel11)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel12)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pwd1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -198,7 +204,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
 
         txtcountry.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\aesha\\OneDrive\\Desktop\\AED\\Final_project\\Images\\newuser3.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/newuser3.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRegisterLayout = new javax.swing.GroupLayout(panelRegister);
         panelRegister.setLayout(panelRegisterLayout);
@@ -211,58 +217,60 @@ public class RegistrationScreen extends javax.swing.JPanel {
                         .addGap(274, 274, 274)
                         .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRegisterLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(176, 176, 176)
-                                .addComponent(txtName))
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtcontact, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelRegisterLayout.createSequentialGroup()
-                                .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addGap(151, 151, 151))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addGap(165, 165, 165))
-                                        .addGroup(panelRegisterLayout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(152, 152, 152))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(164, 164, 164))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(151, 151, 151))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(137, 137, 137))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(166, 166, 166)))
-                                .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(pwd1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                        .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtcountry, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(pwd2))
-                                    .addComponent(cmbEnterprise, 0, 179, Short.MAX_VALUE)
-                                    .addComponent(cmbOrganisation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtcontact))))
-                        .addGap(93, 93, 93)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmbOrganisation, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRegisterLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRegisterLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtcountry))
+                            .addGroup(panelRegisterLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtEmail))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pwd2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pwd1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+                            .addGroup(panelRegisterLayout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRegisterLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(51, 51, 51)
                         .addComponent(jLabel13))
                     .addGroup(panelRegisterLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnBack)))
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(122, 122, 122))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(443, 443, 443))
         );
+
+        panelRegisterLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel4});
+
+        panelRegisterLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbEnterprise, cmbOrganisation, jLabel3, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, pwd1, pwd2, txtEmail, txtName, txtUsername, txtcontact, txtcountry});
+
         panelRegisterLayout.setVerticalGroup(
             panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegisterLayout.createSequentialGroup()
@@ -273,13 +281,16 @@ public class RegistrationScreen extends javax.swing.JPanel {
                 .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
                 .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRegisterLayout.createSequentialGroup()
-                        .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel13))
+                    .addGroup(panelRegisterLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                        .addGap(21, 21, 21)
                         .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(pwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -306,11 +317,10 @@ public class RegistrationScreen extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(txtcontact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel13))
-                .addGap(13, 13, 13)
+                            .addComponent(txtcontact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(149, 149, 149)
                 .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -338,132 +348,122 @@ public class RegistrationScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
         String Name = txtName.getText();
         String UserName = txtUsername.getText();
-        
-        char pass[]= pwd1.getPassword();
+
+        char pass[] = pwd1.getPassword();
         String Password = String.valueOf(pass);
-        
-        char passconf[]= pwd2.getPassword();
+
+        char passconf[] = pwd2.getPassword();
         String PasswordConfirm = String.valueOf(passconf);
-        
+
         /*if(Password != PasswordConfirm)
                 {
                    JOptionPane.showMessageDialog(this, "Passwords don't match");
                    pwd2.setText(null);
                    return;
                 }*/
-        
         String EmailId = txtEmail.getText();
         String Contact = txtcontact.getText();
         String Country = txtcountry.getText();
         String Organization = cmbOrganisation.getItemAt(cmbOrganisation.getSelectedIndex());
         String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
-        
-        if(Name.isEmpty() || UserName.isEmpty() || EmailId.isEmpty() || Contact.isEmpty() 
-                || Country.isEmpty() || Organization.isEmpty() || Enterprise.isEmpty())
-        {
+
+        if (Name.isEmpty() || UserName.isEmpty() || EmailId.isEmpty() || Contact.isEmpty()
+                || Country.isEmpty() || Organization.isEmpty() || Enterprise.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please populate values!!..");
             return;
         }
-        
-<<<<<<< Updated upstream
-=======
         Business.SendMail mail = new Business.SendMail();
-        mail.sendMail("User Registration", "User Registered", EmailId);
->>>>>>> Stashed changes
-        
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-        Statement myStatement = con.createStatement();
-        String query = "Insert into `FinalProj_Users`"+"values('"+Name+"','"+UserName+"','"+Password+"','"+EmailId+"','"+Country+"','"+Enterprise+"','"+Organization+"','"+Contact+"')";
-        myStatement.executeUpdate(query);
-        JOptionPane.showMessageDialog(this, "User Created Successfully!!..");
-        txtEmail.setText(null);
-        txtName.setText(null);
-        txtUsername.setText(null);
-        txtcontact.setText(null);
-        txtcountry.setText(null);
-        pwd1.setText(null);
-        pwd2.setText(null);
-        //System.out.println("Inserted data");
-           }catch(Exception E) {
+        mail.sendMail("Registration", "Registration Completed.!!", EmailId);
+
+        //sendMail("Registration","Registered Successfully",EmailId);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Inventory_Management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "pankaaniamithu@5");
+            Statement myStatement = con.createStatement();
+            String query = "Insert into `FinalProj_Users`" + "values('" + Name + "','" + UserName + "','" + Password + "','" + EmailId + "','" + Country + "','" + Enterprise + "','" + Organization + "','" + Contact + "')";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "User Created Successfully!!..");
+            txtEmail.setText(null);
+            txtName.setText(null);
+            txtUsername.setText(null);
+            txtcontact.setText(null);
+            txtcountry.setText(null);
+            pwd1.setText(null);
+            pwd2.setText(null);
+            //System.out.println("Inserted data");
+        } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
-               }
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void cmbOrganisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganisationActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_cmbOrganisationActionPerformed
 
     private void cmbEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseActionPerformed
         // TODO add your handling code here:
         String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
         cmbOrganisation.removeAllItems();
-                if(Enterprise.equalsIgnoreCase("Medical"))
-                {
-                 cmbOrganisation.addItem("Hospitals");
-                 cmbOrganisation.addItem("Vaccine Manufacturer");
-                 cmbOrganisation.addItem("Blood Bank");
-                 cmbOrganisation.addItem("Medical Equipments");
-                 cmbOrganisation.addItem("Insurance");
-                 
-                }
-                else if(Enterprise.equalsIgnoreCase("Voluntary"))
-                {
-                    cmbOrganisation.addItem("NGO");
-                    cmbOrganisation.addItem("Fund Raiser");
-                }
-                else if(Enterprise.equalsIgnoreCase("Government"))
-                {
-                    cmbOrganisation.addItem("Government");
-                    cmbOrganisation.addItem("NDRF");
-                }
-                else if(Enterprise.equalsIgnoreCase("Warehouse"))
-                {
-                    cmbOrganisation.addItem("FoodMarket");
-                    cmbOrganisation.addItem("Clothing");
-                    cmbOrganisation.addItem("Transport");
-                }
+        if (Enterprise.equalsIgnoreCase("Medical")) {
+            cmbOrganisation.addItem("Hospitals");
+            cmbOrganisation.addItem("Vaccine Manufacturer");
+            cmbOrganisation.addItem("Blood Bank");
+            cmbOrganisation.addItem("Medical Equipments");
+            //cmbOrganisation.addItem("Insurance");
+
+        } else if (Enterprise.equalsIgnoreCase("Voluntary")) {
+            cmbOrganisation.addItem("NGO");
+            cmbOrganisation.addItem("Fund Raiser");
+        } else if (Enterprise.equalsIgnoreCase("Government")) {
+            cmbOrganisation.addItem("Government");
+            cmbOrganisation.addItem("NDRF");
+        } else if (Enterprise.equalsIgnoreCase("Warehouse")) {
+            cmbOrganisation.addItem("FoodMarket");
+            cmbOrganisation.addItem("Clothing");
+            cmbOrganisation.addItem("Transport");
+        }
     }//GEN-LAST:event_cmbEnterpriseActionPerformed
 
     private void pwd1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pwd1MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_pwd1MouseExited
 
     private void pwd2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pwd2MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_pwd2MouseExited
 
     private void pwd1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwd1FocusLost
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_pwd1FocusLost
 
-<<<<<<< Updated upstream
-=======
-   
-    
->>>>>>> Stashed changes
     private void pwd2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwd2FocusLost
         // TODO add your handling code here:
-         char pass1[]= pwd1.getPassword();
+        char pass1[] = pwd1.getPassword();
         String Password1 = String.valueOf(pass1);
-        if(Password1.length()<= 8)
-        {
+        if (Password1.length() <= 8) {
             JOptionPane.showMessageDialog(this, "Passwords should be more than 8 characters");
         }
-        char pass2[]= pwd2.getPassword();
+        char pass2[] = pwd2.getPassword();
         String Password2 = String.valueOf(pass2);
-        if(!Password2.equalsIgnoreCase(Password1))
-        {
+        if (!Password2.equalsIgnoreCase(Password1)) {
             JOptionPane.showMessageDialog(this, "Passwords and confirm passwords are not matching!!");
             pwd2.setText(null);
         }
     }//GEN-LAST:event_pwd2FocusLost
+
+    private void txtcontactFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcontactFocusLost
+        // TODO add your handling code here:
+        String ContactNo = txtcontact.getText();
+        if (ContactNo.length() != 10) {
+            JOptionPane.showMessageDialog(this, "Please enter Valid Phone number!");
+            return;
+        }
+    }//GEN-LAST:event_txtcontactFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -12,10 +12,10 @@ import java.util.List;
  * @author aesha
  */
 public class NGODirectory {
+
     public List<NGO> ngoList;
-    
-    public NGODirectory()
-    {
+
+    public NGODirectory() {
         ngoList = new ArrayList<>();
     }
 
@@ -26,5 +26,5 @@ public class NGODirectory {
     public void setNgoList(List<NGO> ngoList) {
         this.ngoList = ngoList;
     }
-    
+
 }
