@@ -105,6 +105,11 @@ public class HospitalMain extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jButton3.setText("Create Requests");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jButton4.setText("View Medicines Available");
@@ -351,6 +356,14 @@ public class HospitalMain extends javax.swing.JFrame {
         new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        HospitalCreateRequest hcr = new HospitalCreateRequest(RightPanel);
+        RightPanel.add("Hospital create request", hcr);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

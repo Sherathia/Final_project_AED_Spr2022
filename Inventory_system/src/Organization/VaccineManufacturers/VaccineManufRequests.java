@@ -4,6 +4,8 @@
  */
 package Organization.VaccineManufacturers;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author saisr
@@ -13,8 +15,20 @@ public class VaccineManufRequests extends javax.swing.JPanel {
     /**
      * Creates new form VaccineManufRequests
      */
-    public VaccineManufRequests() {
+    JPanel RightPanel;
+
+    public VaccineManufRequests(JPanel RightPanel) {
         initComponents();
+        this.RightPanel = RightPanel;
+        comboBoxNetwork.removeAllItems();
+        comboBoxEnterprise.removeAllItems();
+        comboBoxOrg.removeAllItems();
+        comboBoxNetwork.addItem("Select");
+        comboBoxNetwork.addItem("India");
+        comboBoxEnterprise.addItem("Select");
+        comboBoxEnterprise.addItem("Medical enterprise");
+        comboBoxEnterprise.addItem("Warehouse enterprise");
+        comboBoxOrg.addItem("Select");
     }
 
     /**
@@ -34,9 +48,9 @@ public class VaccineManufRequests extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxOrg = new javax.swing.JComboBox<>();
+        comboBoxEnterprise = new javax.swing.JComboBox<>();
+        comboBoxNetwork = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
         lblApprovedorRejected.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
@@ -63,14 +77,19 @@ public class VaccineManufRequests extends javax.swing.JPanel {
 
         jTextField1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jComboBox3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxOrg.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        comboBoxOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxEnterprise.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        comboBoxEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxEnterpriseActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxNetwork.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        comboBoxNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Create");
 
@@ -78,8 +97,11 @@ public class VaccineManufRequests extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(lblApprovedorRejected, javax.swing.GroupLayout.DEFAULT_SIZE, 949, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(220, Short.MAX_VALUE)
+                .addGap(219, 219, 219)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,20 +113,17 @@ public class VaccineManufRequests extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(136, 136, 136))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(lblApprovedorRejected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, jComboBox2, jComboBox3, jTextField1, jTextField2});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboBoxEnterprise, comboBoxNetwork, comboBoxOrg, jTextField1, jTextField2});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,15 +132,15 @@ public class VaccineManufRequests extends javax.swing.JPanel {
                 .addComponent(lblApprovedorRejected, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -133,16 +152,35 @@ public class VaccineManufRequests extends javax.swing.JPanel {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(jButton1)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboBoxEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEnterpriseActionPerformed
+        // TODO add your handling code here:
+        if (comboBoxEnterprise.getSelectedItem() == "Medical enterprise") {
+            comboBoxOrg.removeAllItems();
+            comboBoxOrg.addItem("Select");
+            comboBoxOrg.addItem("Hospitals");
+            comboBoxOrg.addItem("Vaccine manufacturer");
+            comboBoxOrg.addItem("Blood bank");
+            comboBoxOrg.addItem("Medical equipment");
+            comboBoxOrg.addItem("Insurance");
+        } else if (comboBoxEnterprise.getSelectedItem() == "Warehouse enterprise") {
+            comboBoxOrg.removeAllItems();
+            comboBoxOrg.addItem("Select");
+            comboBoxOrg.addItem("Food market chains");
+            comboBoxOrg.addItem("Clothing retailers");
+            comboBoxOrg.addItem("Transport/Travel agencies");
+        }
+    }//GEN-LAST:event_comboBoxEnterpriseActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBoxEnterprise;
+    private javax.swing.JComboBox<String> comboBoxNetwork;
+    private javax.swing.JComboBox<String> comboBoxOrg;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
