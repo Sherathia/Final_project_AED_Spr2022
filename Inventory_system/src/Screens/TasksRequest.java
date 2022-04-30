@@ -67,13 +67,13 @@ public class TasksRequest extends javax.swing.JPanel {
 
         tblManageRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Request No.", "Network", "Enterprise", "Organization", "Requester", "Request Desc", "Quantity", "Location", "Status", "Created Date", "Comments"
+                "Request No.", "Network", "Enterprise", "Organization", "Requester", "Request Desc", "Quantity", "Status", "Created Date", "Comments"
             }
         ));
         tblManageRequest.setGridColor(new java.awt.Color(0, 0, 0));
@@ -242,17 +242,21 @@ public class TasksRequest extends javax.swing.JPanel {
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
+        String org = cmbOrganisation.getItemAt(cmbOrganisation.getSelectedIndex());
         String requestId = txtRequestID.getText();
         String comments = txtComments.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
 
-        try {
+        if(org.equalsIgnoreCase("Hospitals"))
+                {
+                    
+                    try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_AdminRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            String query = "Update FinalProj_HospitalRequests set attrib1='A',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             con.close();
@@ -260,6 +264,109 @@ public class TasksRequest extends javax.swing.JPanel {
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
+                    
+                }
+        else if(org.equalsIgnoreCase("Blood Bank"))
+        {
+             
+                    try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_bloodbankRequests set attrib1='A',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+         }
+        }
+        else if(org.equalsIgnoreCase("Vaccine Manufacturer"))
+        {
+            
+             try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update finalproj_vaccinemanufrequests set attrib1='A',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+         }
+             
+        }
+        else if(org.equalsIgnoreCase("Medical Equipments"))
+        {
+             try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update finalproj_medicalequipmanufrequests set attrib1='A',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+         }
+            
+        }
+        else if(org.equalsIgnoreCase("FoodMarket"))
+        {
+             try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update finalproj_foodmarketrequests set attrib1='A',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+         }
+        }
+        else if(org.equalsIgnoreCase("Clothing"))
+        {
+             try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update FinalProj_ClothingRequests set attrib1='A',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+         }
+        }
+        else if(org.equalsIgnoreCase("Transport"))
+        {
+             try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update finalproj_transportrequests set attrib1='A',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved!!");
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+         }
+        }
+        
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
@@ -291,30 +398,54 @@ public class TasksRequest extends javax.swing.JPanel {
         String Enter = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
         DefaultTableModel model = (DefaultTableModel) tblManageRequest.getModel();
         model.setRowCount(0);
-        if(Org.equalsIgnoreCase("Hospital"))
-        {
-        
+        String TableName="finalproj_hospitalrequests";
+        if(Org.equalsIgnoreCase("Transport"))
+                {
+                    TableName = "finalproj_transportrequests";
+                }
+        else if(Org.equalsIgnoreCase("Hospitals"))
+                {
+                    TableName = "finalproj_hospitalrequests";
+                }
+        else if(Org.equalsIgnoreCase("Clothing"))
+                {
+                    TableName = "FinalProj_ClothingRequests";
+                }
+        else if(Org.equalsIgnoreCase("Medical Equipments"))
+                {
+                    TableName = "finalproj_medicalequipmanufrequests";
+                }
+        else if(Org.equalsIgnoreCase("Vaccine Manufacturer"))
+                {
+                    TableName = "finalproj_vaccinemanufrequests";
+                }
+        else if(Org.equalsIgnoreCase("Blood Bank"))
+                {
+                    TableName = "finalproj_bloodbankrequests";
+                }
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-            String query = "Select * from FinalProj_AdminRequests where status ='CREATED' and Attrib1='WORK' and Network='" + Ntw + "' and Organization='" + Org + "' and Enterprise='" + Enter + "'";
+            String query = "select * from "+ TableName +" where Attrib1 is null";
+            //union select * from finalproj_hospitalrequests where Attrib1 is null union select * from finalproj_bloodbankrequests where Attrib1 is null union select * from finalproj_vaccinemanufrequests where Attrib1 is null union select * from finalproj_medicalequipmanufrequests where Attrib1 is null union select * from finalproj_foodmarketrequests where Attrib1 is null";
             ResultSet rs = myStatement.executeQuery(query);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
                 String Description = rs.getString("Description");
                 String quantity = rs.getString("quantity");
-                String Network = rs.getString("Network");
-                String Enterprise = rs.getString("Enterprise");
-                String Organization = rs.getString("Organization");
+                String Network = Ntw;
+                String Enterprise = Enter;
+                String Organization = Org;
                 String Requester = rs.getString("Requester");
                 String RequestedDate = rs.getString("RequestedDate");
                 String ApprovalDate = rs.getString("ApprovalDate");
-                String status = rs.getString("status");
-                String Location = rs.getString("Location");
+                String status = rs.getString("Attrib1");
+                //String Location = rs.getString("Location");
                 String Comments = rs.getString("Comments");
 
-                Object row[] = new Object[11];
+                Object row[] = new Object[10];
                 row[0] = RequestID;
                 row[1] = Network;
                 row[2] = Enterprise;
@@ -322,10 +453,9 @@ public class TasksRequest extends javax.swing.JPanel {
                 row[4] = Requester;
                 row[5] = Description;
                 row[6] = quantity;
-                row[7] = Location;
-                row[8] = status;
-                row[9] = RequestedDate;
-                row[10] = Comments;
+                row[7] = status;
+                row[8] = RequestedDate;
+                row[9] = Comments;
                 model.addRow(row);
             }
             con.close();
@@ -333,7 +463,8 @@ public class TasksRequest extends javax.swing.JPanel {
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
         }
-        }
+                
+        
         
     }//GEN-LAST:event_btnviewpendingreqActionPerformed
 
@@ -344,27 +475,54 @@ public class TasksRequest extends javax.swing.JPanel {
         String Enter = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
         DefaultTableModel model = (DefaultTableModel) tblManageRequest.getModel();
         model.setRowCount(0);
+         String TableName="finalproj_hospitalrequests";
+        if(Org.equalsIgnoreCase("Transport"))
+                {
+                    TableName = "finalproj_transportrequests";
+                }
+        else if(Org.equalsIgnoreCase("Hospitals"))
+                {
+                    TableName = "finalproj_hospitalrequests";
+                }
+        else if(Org.equalsIgnoreCase("Clothing"))
+                {
+                    TableName = "FinalProj_ClothingRequests";
+                }
+        else if(Org.equalsIgnoreCase("Medical Equipments"))
+                {
+                    TableName = "finalproj_medicalequipmanufrequests";
+                }
+        else if(Org.equalsIgnoreCase("Vaccine Manufacturer"))
+                {
+                    TableName = "finalproj_vaccinemanufrequests";
+                }
+        else if(Org.equalsIgnoreCase("Blood Bank"))
+                {
+                    TableName = "finalproj_bloodbankrequests";
+                }
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-            String query = "Select * from FinalProj_AdminRequests where Attrib1='WORK'and Network='" + Ntw + "' and Organization='" + Org + "' and Enterprise='" + Enter + "'";
+            String query = "select * from "+ TableName ;
+            //union select * from finalproj_hospitalrequests where Attrib1 is null union select * from finalproj_bloodbankrequests where Attrib1 is null union select * from finalproj_vaccinemanufrequests where Attrib1 is null union select * from finalproj_medicalequipmanufrequests where Attrib1 is null union select * from finalproj_foodmarketrequests where Attrib1 is null";
             ResultSet rs = myStatement.executeQuery(query);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
                 String Description = rs.getString("Description");
                 String quantity = rs.getString("quantity");
-                String Network = rs.getString("Network");
-                String Enterprise = rs.getString("Enterprise");
-                String Organization = rs.getString("Organization");
+                String Network = Ntw;
+                String Enterprise = Enter;
+                String Organization = Org;
                 String Requester = rs.getString("Requester");
                 String RequestedDate = rs.getString("RequestedDate");
                 String ApprovalDate = rs.getString("ApprovalDate");
-                String status = rs.getString("status");
-                String Location = rs.getString("Location");
+                String status = rs.getString("Attrib1");
+                //String Location = rs.getString("Location");
                 String Comments = rs.getString("Comments");
 
-                Object row[] = new Object[11];
+                Object row[] = new Object[10];
                 row[0] = RequestID;
                 row[1] = Network;
                 row[2] = Enterprise;
@@ -372,10 +530,9 @@ public class TasksRequest extends javax.swing.JPanel {
                 row[4] = Requester;
                 row[5] = Description;
                 row[6] = quantity;
-                row[7] = Location;
-                row[8] = status;
-                row[9] = RequestedDate;
-                row[10] = Comments;
+                row[7] = status;
+                row[8] = RequestedDate;
+                row[9] = Comments;
                 model.addRow(row);
             }
             con.close();

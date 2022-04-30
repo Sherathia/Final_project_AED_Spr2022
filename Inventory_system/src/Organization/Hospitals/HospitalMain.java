@@ -33,7 +33,7 @@ public class HospitalMain extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-            String query = "Select * from FinalProj_HospitalRequests where status ='ASSIGNED'";
+            String query = "Select * from FinalProj_HospitalRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
