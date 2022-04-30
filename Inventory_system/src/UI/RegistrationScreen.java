@@ -378,7 +378,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         //sendMail("Registration","Registered Successfully",EmailId);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Inventory_Management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "pankaaniamithu@5");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
             String query = "Insert into `FinalProj_Users`" + "values('" + Name + "','" + UserName + "','" + Password + "','" + EmailId + "','" + Country + "','" + Enterprise + "','" + Organization + "','" + Contact + "')";
             myStatement.executeUpdate(query);

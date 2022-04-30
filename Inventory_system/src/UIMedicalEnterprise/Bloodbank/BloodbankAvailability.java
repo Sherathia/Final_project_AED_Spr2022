@@ -191,7 +191,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory management?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Saisrujan@123");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
             String query = "Update FinalProj_BloodGroupAvailability set AvailableBloodGroups ='" + AvailableBloodGroups + "',AvailableUnits ='" + AvailableUnits + "',Lastupdated ='" + Date + "' where BloodBankName='" + BloodBankName + "'";
