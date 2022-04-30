@@ -344,7 +344,7 @@ public class OrgPanel extends javax.swing.JPanel {
         lblBloodbankInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBloodbankInventory.setText("Bloodbank Inventory");
 
-        jLabel7.setText("Enter the blood group required :");
+        jLabel7.setText("Select the blood group required :");
 
         jLabel8.setText("Enter the count :");
 
@@ -417,6 +417,12 @@ public class OrgPanel extends javax.swing.JPanel {
         lblVaccineInventory2.setText("Insurance Inventory");
 
         jLabel9.setText("Enter the insurance coverage required :");
+
+        txtInsuranceCoverage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInsuranceCoverageActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Enter the number of such coverage(s) required  :");
 
@@ -1028,6 +1034,10 @@ public class OrgPanel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_txtNumberOfClothing1FocusLost
+
+    private void txtInsuranceCoverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInsuranceCoverageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInsuranceCoverageActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

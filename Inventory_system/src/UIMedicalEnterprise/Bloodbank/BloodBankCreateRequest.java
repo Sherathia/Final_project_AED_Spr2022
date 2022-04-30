@@ -4,6 +4,8 @@
  */
 package UIMedicalEnterprise.Bloodbank;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author anvithalakshmisha
@@ -13,8 +15,24 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
     /**
      * Creates new form BloodBankCreateRequest
      */
-    public BloodBankCreateRequest() {
+    JPanel RightPanel;
+
+    public BloodBankCreateRequest(JPanel RightPanel) {
         initComponents();
+        this.RightPanel = RightPanel;
+        txtRequest1.setVisible(false);
+        txtRequest2.setVisible(false);
+        comboBoxNetwork.removeAllItems();
+        comboBoxEnterprise.removeAllItems();
+        comboBoxOrg.removeAllItems();
+        comboBoxNetwork.addItem("Select");
+        comboBoxNetwork.addItem("India");
+        comboBoxNetwork.addItem("US");
+        comboBoxNetwork.addItem("Canada");
+        comboBoxEnterprise.addItem("Select");
+        comboBoxEnterprise.addItem("Medical enterprise");
+        comboBoxEnterprise.addItem("Warehouse enterprise");
+        comboBoxOrg.addItem("Select");
     }
 
     /**
@@ -30,13 +48,13 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        comboBoxNetwork = new javax.swing.JComboBox<>();
+        comboBoxEnterprise = new javax.swing.JComboBox<>();
+        comboBoxOrg = new javax.swing.JComboBox<>();
+        lblRequest1 = new javax.swing.JLabel();
+        txtRequest1 = new javax.swing.JTextField();
+        lblRequest2 = new javax.swing.JLabel();
+        txtRequest2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         lblApprovedorRejected = new javax.swing.JLabel();
 
@@ -51,24 +69,37 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel4.setText("Organization:");
 
-        jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxNetwork.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        comboBoxNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxNetwork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxNetworkActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxEnterprise.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        comboBoxEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxEnterpriseActionPerformed(evt);
+            }
+        });
 
-        jComboBox3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxOrg.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        comboBoxOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxOrgActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setText("Quantity required:");
+        lblRequest1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtRequest1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setText("Description:");
+        lblRequest2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtRequest2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jButton1.setText("Create");
 
@@ -90,28 +121,30 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel4)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(88, 88, 88)
+                                    .addComponent(lblRequest1)
+                                    .addComponent(lblRequest2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtRequest1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRequest2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(328, 328, 328)
                                 .addComponent(jButton1)))
-                        .addGap(0, 324, Short.MAX_VALUE))
+                        .addGap(0, 336, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblApprovedorRejected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jComboBox1, jComboBox2, jComboBox3, jTextField1, jTextField2});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboBoxEnterprise, comboBoxNetwork, comboBoxOrg, jButton1, txtRequest1, txtRequest2});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, lblRequest1, lblRequest2});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,24 +153,24 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
                 .addComponent(lblApprovedorRejected, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(txtRequest1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRequest1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRequest2)
+                    .addComponent(txtRequest2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(jButton1)
                 .addContainerGap(166, Short.MAX_VALUE))
@@ -155,20 +188,116 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboBoxNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxNetworkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxNetworkActionPerformed
+
+    private void comboBoxEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEnterpriseActionPerformed
+        // TODO add your handling code here:
+        if (comboBoxEnterprise.getSelectedItem() == "Medical enterprise") {
+            comboBoxOrg.removeAllItems();
+            comboBoxOrg.addItem("Select");
+            comboBoxOrg.addItem("Hospitals");
+            comboBoxOrg.addItem("Vaccine manufacturer");
+            comboBoxOrg.addItem("Blood bank");
+            comboBoxOrg.addItem("Medical equipment");
+            comboBoxOrg.addItem("Insurance");
+        } else if (comboBoxEnterprise.getSelectedItem() == "Warehouse enterprise") {
+            comboBoxOrg.removeAllItems();
+            comboBoxOrg.addItem("Select");
+            comboBoxOrg.addItem("Food market chains");
+            comboBoxOrg.addItem("Clothing retailers");
+            comboBoxOrg.addItem("Transport/Travel agencies");
+        }
+    }//GEN-LAST:event_comboBoxEnterpriseActionPerformed
+
+    private void comboBoxOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrgActionPerformed
+        // TODO add your handling code here:
+        String selectedOrg = null;
+        if (comboBoxNetwork.getSelectedIndex() != 0 && comboBoxEnterprise.getSelectedIndex() != 0 && comboBoxOrg.getSelectedIndex() != 0) {
+            if (comboBoxOrg.getSelectedItem() == "Hospitals") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Vaccine manufacturer") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Blood bank") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Medical equipment") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Insurance") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Food market chains") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Clothing retailers") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            } else if (comboBoxOrg.getSelectedItem() == "Transport/Travel agencies") {
+                selectedOrg = comboBoxOrg.getSelectedItem().toString();
+            }
+            if (selectedOrg == "Hospitals") {
+                lblRequest1.setText("Enter the number of beds required: ");
+                lblRequest2.setText("Enter the location: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Vaccine manufacturer") {
+                lblRequest1.setText("Enter the vaccine required: ");
+                lblRequest2.setText("Enter the number of vaccine required: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Blood bank") {
+                lblRequest1.setText("Enter the blood group required: ");
+                lblRequest2.setText("Enter the count: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Medical equipment") {
+                lblRequest1.setText("Enter the medical equipment required: ");
+                lblRequest2.setText("Enter the count: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Insurance") {
+                lblRequest1.setText("Enter the insurance coverage required: ");
+                lblRequest2.setText("Enter the number of such coverage(s) required: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Food market chains") {
+                lblRequest1.setText("Enter the number of people to be served: ");
+                lblRequest2.setText("Enter the location: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Clothing retailers") {
+                lblRequest1.setText("Enter the number of people to be served: ");
+                lblRequest2.setText("Enter the location: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Transport/Travel agencies") {
+                lblRequest1.setText("Enter the type of vehicle required: ");
+                lblRequest2.setText("Enter the count: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+
+        }
+    }//GEN-LAST:event_comboBoxOrgActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBoxEnterprise;
+    private javax.swing.JComboBox<String> comboBoxNetwork;
+    private javax.swing.JComboBox<String> comboBoxOrg;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblApprovedorRejected;
+    private javax.swing.JLabel lblRequest1;
+    private javax.swing.JLabel lblRequest2;
+    private javax.swing.JTextField txtRequest1;
+    private javax.swing.JTextField txtRequest2;
     // End of variables declaration//GEN-END:variables
 }

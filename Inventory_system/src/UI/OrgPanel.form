@@ -402,7 +402,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Enter the blood group required :"/>
+                <Property name="text" type="java.lang.String" value="Select the blood group required :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
@@ -516,6 +516,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtInsuranceCoverage">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtInsuranceCoverageActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>

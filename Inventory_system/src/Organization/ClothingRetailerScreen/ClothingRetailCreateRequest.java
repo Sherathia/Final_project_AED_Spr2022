@@ -20,11 +20,15 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
     public ClothingRetailCreateRequest(JPanel RightPanel) {
         initComponents();
         this.RightPanel = RightPanel;
+        txtRequest1.setVisible(false);
+        txtRequest2.setVisible(false);
         comboBoxNetwork.removeAllItems();
         comboBoxEnterprise.removeAllItems();
         comboBoxOrganization.removeAllItems();
         comboBoxNetwork.addItem("Select");
         comboBoxNetwork.addItem("India");
+        comboBoxNetwork.addItem("US");
+        comboBoxNetwork.addItem("Canada");
         comboBoxEnterprise.addItem("Select");
         comboBoxEnterprise.addItem("Medical enterprise");
         comboBoxEnterprise.addItem("Warehouse enterprise");
@@ -48,10 +52,10 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
         comboBoxEnterprise = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         comboBoxOrganization = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lblRequest1 = new javax.swing.JLabel();
+        txtRequest1 = new javax.swing.JTextField();
+        txtRequest2 = new javax.swing.JTextField();
+        lblRequest2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
@@ -95,15 +99,13 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setText("Quantity required:");
+        lblRequest1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtRequest1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtRequest2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setText("Description:");
+        lblRequest2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(188, 210, 254));
         jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -126,57 +128,62 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(comboBoxNetwork, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboBoxEnterprise, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboBoxOrganization, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(351, 351, 351)
-                        .addComponent(jButton1)))
-                .addContainerGap(286, Short.MAX_VALUE))
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtRequest1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(lblRequest1)
+                                    .addComponent(lblRequest2))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(txtRequest2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboBoxOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, lblRequest1, lblRequest2});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jTextField2});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, txtRequest2});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(comboBoxOrganization, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblRequest1)
+                    .addComponent(txtRequest1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                    .addComponent(lblRequest2)
+                    .addComponent(txtRequest2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addComponent(jButton1)
                 .addGap(7, 7, 7)
                 .addComponent(jLabel7)
@@ -207,6 +214,75 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
 
     private void comboBoxOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrganizationActionPerformed
         // TODO add your handling code here:
+        String selectedOrg = null;
+        if (comboBoxNetwork.getSelectedIndex() != 0 && comboBoxEnterprise.getSelectedIndex() != 0 && comboBoxOrganization.getSelectedIndex() != 0) {
+            if (comboBoxOrganization.getSelectedItem() == "Hospitals") {
+                selectedOrg = comboBoxOrganization.getSelectedItem().toString();
+            } else if (comboBoxOrganization.getSelectedItem() == "Vaccine manufacturer") {
+                selectedOrg = comboBoxOrganization.getSelectedItem().toString();
+            } else if (comboBoxOrganization.getSelectedItem() == "Blood bank") {
+                selectedOrg = comboBoxOrganization.getSelectedItem().toString();
+            } else if (comboBoxOrganization.getSelectedItem() == "Medical equipment") {
+                selectedOrg = comboBoxOrganization.getSelectedItem().toString();
+            } else if (comboBoxOrganization.getSelectedItem() == "Insurance") {
+                selectedOrg = comboBoxOrganization.getSelectedItem().toString();
+            } else if (comboBoxOrganization.getSelectedItem() == "Food market chains") {
+                selectedOrg = comboBoxOrganization.getSelectedItem().toString();
+            } else if (comboBoxOrganization.getSelectedItem() == "Clothing retailers") {
+                selectedOrg = comboBoxOrganization.getSelectedItem().toString();
+            } else if (comboBoxOrganization.getSelectedItem() == "Transport/Travel agencies") {
+                selectedOrg = comboBoxOrganization.getSelectedItem().toString();
+            }
+            if (selectedOrg == "Hospitals") {
+                lblRequest1.setText("Enter the number of beds required: ");
+                lblRequest2.setText("Enter the location: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Vaccine manufacturer") {
+                lblRequest1.setText("Enter the vaccine required: ");
+                lblRequest2.setText("Enter the number of vaccine required: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Blood bank") {
+                lblRequest1.setText("Enter the blood group required: ");
+                lblRequest2.setText("Enter the count: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Medical equipment") {
+                lblRequest1.setText("Enter the medical equipment required: ");
+                lblRequest2.setText("Enter the count: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Insurance") {
+                lblRequest1.setText("Enter the insurance coverage required: ");
+                lblRequest2.setText("Enter the number of such coverage(s) required: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Food market chains") {
+                lblRequest1.setText("Enter the number of people to be served: ");
+                lblRequest2.setText("Enter the location: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Clothing retailers") {
+                lblRequest1.setText("Enter the number of people to be served: ");
+                lblRequest2.setText("Enter the location: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+            if (selectedOrg == "Transport/Travel agencies") {
+                lblRequest1.setText("Enter the type of vehicle required: ");
+                lblRequest2.setText("Enter the count: ");
+                txtRequest1.setVisible(true);
+                txtRequest2.setVisible(true);
+            }
+
+        }
     }//GEN-LAST:event_comboBoxOrganizationActionPerformed
 
     private void comboBoxEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEnterpriseActionPerformed
@@ -238,11 +314,11 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblRequest1;
+    private javax.swing.JLabel lblRequest2;
+    private javax.swing.JTextField txtRequest1;
+    private javax.swing.JTextField txtRequest2;
     // End of variables declaration//GEN-END:variables
 }
