@@ -4,6 +4,10 @@
  */
 package Organization.TransportScreens;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -16,6 +20,7 @@ public class TransportCreateRequest extends javax.swing.JPanel {
      * Creates new form TransportCreateRequest
      */
     private JPanel rightPanel;
+    String selectedOrg;
 
     public TransportCreateRequest(JPanel RightPanel) {
         initComponents();
@@ -97,6 +102,11 @@ public class TransportCreateRequest extends javax.swing.JPanel {
         lblRequest2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jButton1.setText("Create");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
@@ -213,7 +223,7 @@ public class TransportCreateRequest extends javax.swing.JPanel {
 
     private void comboBoxOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrgActionPerformed
         // TODO add your handling code here:
-        String selectedOrg = null;
+//        String selectedOrg = null;
         if (comboBoxNetwork.getSelectedIndex() != 0 && comboBoxEnterprise.getSelectedIndex() != 0 && comboBoxOrg.getSelectedIndex() != 0) {
             if (comboBoxOrg.getSelectedItem() == "Hospitals") {
                 selectedOrg = comboBoxOrg.getSelectedItem().toString();
@@ -283,6 +293,57 @@ public class TransportCreateRequest extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_comboBoxOrgActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        StringBuilder Error = new StringBuilder();
+        if (!txtRequest1.getText().isEmpty() && !txtRequest1.getText().isEmpty()) {
+        } else {
+            Error.append("All fields are mandatory \n");
+        }
+        if (!Error.isEmpty()) {
+            JOptionPane.showMessageDialog(this, Error);
+        }
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String query = null;
+            if (selectedOrg == "Hospitals") {
+                query = "Insert into `FinalProj_HospitalRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+            }
+            if (selectedOrg == "Vaccine manufacturer") {
+                query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+            }
+            if (selectedOrg == "Blood bank") {
+                query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+            }
+            if (selectedOrg == "Medical equipment") {
+                query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+            }
+            if (selectedOrg == "Insurance") {
+                query = "Insert into `FinalProj_InsuranceRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+            }
+            if (selectedOrg == "Food market chains") {
+                query = "Insert into `FinalProj_FoodmarketRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+            }
+            if (selectedOrg == "Clothing retailers") {
+                query = "Insert into `FinalProj_ClothingRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+            }
+            if (selectedOrg == "Transport/Travel agencies") {
+                query = "Insert into `FinalProj_TransportRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+            }
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+//            String query = "Insert into `FinalProj_Users`" + "values('" + Name + "','" + UserName + "','" + Password + "','" + EmailId + "','" + Country + "','" + Enterprise + "','" + Organization + "','" + Contact + "')";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request created");
+            txtRequest1.setText("");
+            txtRequest2.setText("");
+            Business.SendMail mail = new Business.SendMail();
+            mail.sendMail("Request created", "Your request has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,9 @@
 package UI;
 
 import java.awt.Component;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -723,11 +726,20 @@ public class OrgPanel extends javax.swing.JPanel {
             Error.append("Enter Number of beds \n");
         }
         if (Error.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Request created");
-            txtNumberOfBeds.setText("");
-            txtHospitalLoc.setText("");
-            Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Request created", "Your request for hospital beds has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String query = "Insert into `FinalProj_HospitalRequests`" + "values('" + txtNumberOfBeds.getText() + "','" + txtHospitalLoc.getText() + "')";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Request created");
+                txtNumberOfBeds.setText("");
+                txtHospitalLoc.setText("");
+                Business.SendMail mail = new Business.SendMail();
+                mail.sendMail("Request created", "Your request for hospital beds has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            }
 
         } else {
             JOptionPane.showMessageDialog(this, Error);
@@ -746,12 +758,20 @@ public class OrgPanel extends javax.swing.JPanel {
             Error.append("Enter the vaccine count \n");
         }
         if (Error.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Request created");
-            txtVaccineCount.setText("");
-            txtVaccine.setText("");
-            Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Request created", "Your request for vaccine has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
-
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + txtVaccine.getText() + "','" + txtVaccineCount.getText() + "')";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Request created");
+                txtVaccine.setText("");
+                txtVaccineCount.setText("");
+                Business.SendMail mail = new Business.SendMail();
+                mail.sendMail("Request created", "Your request for vaccine has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            }
         } else {
             JOptionPane.showMessageDialog(this, Error);
         }
@@ -769,12 +789,20 @@ public class OrgPanel extends javax.swing.JPanel {
             Error.append("Enter the equipment count \n");
         }
         if (Error.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Request created");
-            txtMedicalEquip.setText("");
-            txtMedicalEquipCount.setText("");
-            Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Request created", "Your request for medical equipment has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
-
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + txtMedicalEquip.getText() + "','" + txtMedicalEquip.getText() + "')";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Request created");
+                txtMedicalEquip.setText("");
+                txtMedicalEquipCount.setText("");
+                Business.SendMail mail = new Business.SendMail();
+                mail.sendMail("Request created", "Your request for medical equipment has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            }
         } else {
             JOptionPane.showMessageDialog(this, Error);
         }
@@ -792,12 +820,20 @@ public class OrgPanel extends javax.swing.JPanel {
             Error.append("Enter the count \n");
         }
         if (Error.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Request created");
-//            comboBoxBloodGroup.rem"");
-            txtBloodCount.setText("");
-            Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Request created", "Your request for blood has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
-
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + comboBoxBloodGroup.getSelectedItem() + "','" + txtBloodCount.getText() + "')";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Request created");
+//                txtMedicalEquip.setText("");
+                txtBloodCount.setText("");
+                Business.SendMail mail = new Business.SendMail();
+                mail.sendMail("Request created", "Your request for blood has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            }
         } else {
             JOptionPane.showMessageDialog(this, Error);
         }
@@ -815,12 +851,20 @@ public class OrgPanel extends javax.swing.JPanel {
             Error.append("Enter insurance coverage count \n");
         }
         if (Error.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Request created");
-            txtInsuranceCoverage.setText("");
-            txtNumberOfCoverage.setText("");
-            Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Request created", "Your request for insurance coverage has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
-
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String query = "Insert into `FinalProj_InsuranceRequests`" + "values('" + txtInsuranceCoverage.getText() + "','" + txtNumberOfCoverage.getText() + "')";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Request created");
+                txtInsuranceCoverage.setText("");
+                txtNumberOfCoverage.setText("");
+                Business.SendMail mail = new Business.SendMail();
+                mail.sendMail("Request created", "Your request for insurance has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            }
         } else {
             JOptionPane.showMessageDialog(this, Error);
         }
@@ -838,12 +882,20 @@ public class OrgPanel extends javax.swing.JPanel {
             Error.append("Enter location \n");
         }
         if (Error.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Request created");
-            txtFoodBankLoc.setText("");
-            txtFoodBankServed.setText("");
-            Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Request created", "Your request for food items has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
-
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String query = "Insert into `FinalProj_FoodmarketRequests`" + "values('" + txtFoodBankServed.getText() + "','" + txtFoodBankLoc.getText() + "')";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Request created");
+                txtFoodBankServed.setText("");
+                txtFoodBankLoc.setText("");
+                Business.SendMail mail = new Business.SendMail();
+                mail.sendMail("Request created", "Your request for food has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            }
         } else {
             JOptionPane.showMessageDialog(this, Error);
         }
@@ -861,12 +913,20 @@ public class OrgPanel extends javax.swing.JPanel {
             Error.append("Enter number of vehicles required \n");
         }
         if (Error.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Request created");
-            txtVehicleCount.setText("");
-            txtVehicleType.setText("");
-            Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Request created", "Your request for vehicles has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
-
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String query = "Insert into `FinalProj_TransportRequests`" + "values('" + txtVehicleType.getText() + "','" + txtVehicleCount.getText() + "')";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Request created");
+                txtVehicleType.setText("");
+                txtVehicleCount.setText("");
+                Business.SendMail mail = new Business.SendMail();
+                mail.sendMail("Request created", "Your request for transport has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            }
         } else {
             JOptionPane.showMessageDialog(this, Error);
         }
@@ -884,12 +944,20 @@ public class OrgPanel extends javax.swing.JPanel {
             Error.append("Enter number of people to be served \n");
         }
         if (Error.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Request created");
-            txtNumberOfClothing1.setText("");
-            txtClothingLoc1.setText("");
-            Business.SendMail mail = new Business.SendMail();
-            mail.sendMail("Request created", "Your request for clothing has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
-
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String query = "Insert into `FinalProj_ClothingRequests`" + "values('" + txtClothingLoc1.getText() + "','" + txtNumberOfClothing1.getText() + "')";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Request created");
+                txtClothingLoc1.setText("");
+                txtNumberOfClothing1.setText("");
+                Business.SendMail mail = new Business.SendMail();
+                mail.sendMail("Request created", "Your request for clothing has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            }
         } else {
             JOptionPane.showMessageDialog(this, Error);
         }
