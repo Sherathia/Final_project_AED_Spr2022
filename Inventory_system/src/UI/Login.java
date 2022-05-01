@@ -10,6 +10,7 @@ import Organization.TransportScreens.TransportMain;
 import Organization.VaccineManufacturers.MainVaccineManufacturers;
 import Organization.WarehouseScreens.FoodMarketMain;
 import Screens.HierarchyManage;
+import UIMedicalEnterprise.Bloodbank.BloodBankMain;
 import Users.UserAccount;
 import VoluntaryEnterprise.Fundraiser;
 import java.awt.CardLayout;
@@ -39,6 +40,7 @@ public class Login extends javax.swing.JFrame {
     public HospitalMain hm;
     public MainVaccineManufacturers vm;
     public MainMedicalEquipManuf mef;
+    public BloodBankMain bbm;
 
     public Login() {
         initComponents();
@@ -310,6 +312,12 @@ public class Login extends javax.swing.JFrame {
                     } else if (DBOrg.equalsIgnoreCase("Medical Equipments")) {
                         mef = new MainMedicalEquipManuf();
                         mef.setVisible(true);
+                        this.dispose();
+                        return;
+                    }
+                     else if (DBOrg.equalsIgnoreCase("Blood Bank")) {
+                        bbm = new BloodBankMain();
+                        bbm.setVisible(true);
                         this.dispose();
                         return;
                     }
