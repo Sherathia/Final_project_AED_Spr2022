@@ -786,7 +786,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + rand.nextInt(1000) + "','" + txtVaccineCount.getText() + "','" + txtVaccine.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
+                String query = "Insert into `finalproj_vaccinemanufrequests`" + "values('" + rand.nextInt(1000) + "','" + txtVaccineCount.getText() + "','" + txtVaccine.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -820,7 +820,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + rand.nextInt(1000) + "','" + txtMedicalEquipCount.getText() + "','" + txtMedicalEquip.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
+                String query = "Insert into `finalproj_medicalequipmanufrequests`" + "values('" + rand.nextInt(1000) + "','" + txtMedicalEquipCount.getText() + "','" + txtMedicalEquip.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -854,7 +854,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + rand.nextInt(1000) + "','" + txtBloodCount.getText() + "','" + comboBoxBloodGroup.getSelectedItem().toString() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
+                String query = "Insert into `finalproj_bloodbankrequests`" + "values('" + rand.nextInt(1000) + "','" + txtBloodCount.getText() + "','" + comboBoxBloodGroup.getSelectedItem().toString() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
