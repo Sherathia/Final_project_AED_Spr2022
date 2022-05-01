@@ -29,6 +29,8 @@ public class HospitalCreateRequest extends javax.swing.JPanel {
     public HospitalCreateRequest(JPanel RightPanel) {
         this.rightPanel = RightPanel;
         initComponents();
+        txtRequest1.setVisible(false);
+        txtRequest2.setVisible(false);
         comboBoxNetwork.removeAllItems();
         comboBoxEnterprise.removeAllItems();
         comboBoxOrg.removeAllItems();
@@ -143,7 +145,7 @@ public class HospitalCreateRequest extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(365, 365, 365)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 313, Short.MAX_VALUE)))
+                        .addGap(0, 553, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -178,7 +180,7 @@ public class HospitalCreateRequest extends javax.swing.JPanel {
                     .addComponent(txtRequest2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addComponent(jButton1)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

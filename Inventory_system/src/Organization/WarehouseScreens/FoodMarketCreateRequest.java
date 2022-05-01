@@ -151,7 +151,7 @@ public class FoodMarketCreateRequest extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(328, 328, 328)
                                 .addComponent(jButton1)))
-                        .addGap(0, 318, Short.MAX_VALUE)))
+                        .addGap(0, 554, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -186,7 +186,7 @@ public class FoodMarketCreateRequest extends javax.swing.JPanel {
                     .addComponent(txtRequest2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(jButton1)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
