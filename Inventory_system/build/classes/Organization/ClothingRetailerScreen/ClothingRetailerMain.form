@@ -107,7 +107,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="33" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="View Requests"/>
+                    <Property name="text" type="java.lang.String" value="VIEW REQUESTS"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewRequestActionPerformed"/>
@@ -121,7 +121,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="33" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Update Availability"/>
+                    <Property name="text" type="java.lang.String" value="AVAILABILITY"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdAvailabilityActionPerformed"/>
@@ -135,7 +135,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="33" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Create Requests"/>
+                    <Property name="text" type="java.lang.String" value="CREATE REQUEST"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateRequestActionPerformed"/>
@@ -236,10 +236,7 @@
                               <Component id="jScrollPane1" min="-2" pref="175" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel4" min="-2" pref="218" max="-2" attributes="0"/>
-                                      <EmptySpace pref="35" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel4" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="txtRequestID" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -255,9 +252,9 @@
                                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnAssign" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnApprove" alignment="3" min="-2" max="-2" attributes="0"/>

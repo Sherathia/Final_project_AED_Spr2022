@@ -292,7 +292,7 @@ public class HospitalMain extends javax.swing.JFrame {
                     .addComponent(btnApprove)
                     .addComponent(btnAssign)
                     .addComponent(jButton1))
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
 
         RightPanel.add(jPanel2, "card2");
