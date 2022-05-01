@@ -428,7 +428,7 @@ public class TasksRequest extends javax.swing.JPanel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-            String query = "select * from "+ TableName +" where Attrib1 is null";
+            String query = "select * from "+ TableName +" where Attrib1 <> 'A'";
             //union select * from finalproj_hospitalrequests where Attrib1 is null union select * from finalproj_bloodbankrequests where Attrib1 is null union select * from finalproj_vaccinemanufrequests where Attrib1 is null union select * from finalproj_medicalequipmanufrequests where Attrib1 is null union select * from finalproj_foodmarketrequests where Attrib1 is null";
             ResultSet rs = myStatement.executeQuery(query);
             while (rs.next()) {

@@ -23,8 +23,10 @@ public class HospitalAvailability extends javax.swing.JPanel {
     /**
      * Creates new form HospitalAvailability
      */
-    public HospitalAvailability() {
+    private JPanel RightPanel;
+    public HospitalAvailability(JPanel RightPanel) {
         initComponents();
+        this.RightPanel= RightPanel;
     }
 
     /**
