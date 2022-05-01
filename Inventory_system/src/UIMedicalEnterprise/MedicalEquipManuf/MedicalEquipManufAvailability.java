@@ -24,6 +24,36 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
      */
     public MedicalEquipManufAvailability(JPanel RightPane) {
         initComponents();
+        DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+            
+            String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            //cmbStore.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                // cmbStore.addItem(rs.getString("ManufacturerName"));
+                String ManufacturerName1 = rs.getString("ManufacturerName");
+                String AvailableEquipment1 = rs.getString("AvailableEquipment");
+                String AvailableQuantity1 = rs.getString("AvailableQuantity");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[4];
+                row[0] = ManufacturerName1;
+                row[1] = AvailableEquipment1;
+                row[2] = AvailableQuantity1;
+                row[3] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
     }
 
     /**
@@ -172,6 +202,13 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+         if(txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter value.");
+            return;
+        }
+        else
+        {
         String AvailableEquipment = txtAvailableEquipment.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
         String ManufacturerName = txtName.getText();
@@ -211,10 +248,18 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        if(txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter value.");
+            return;
+        }
+        else
+        {
         String AvailableEquipment = txtAvailableEquipment.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
         String ManufacturerName = txtName.getText();
@@ -256,10 +301,18 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+         if(txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter value.");
+            return;
+        }
+        else
+        {
         String AvailableEquipment = txtAvailableEquipment.getText();
         String AvailableQuantity = txtAvailableQuantity.getText();
         String ManufacturerName = txtName.getText();
@@ -299,6 +352,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

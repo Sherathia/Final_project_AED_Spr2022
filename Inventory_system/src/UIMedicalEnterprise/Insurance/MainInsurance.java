@@ -335,13 +335,13 @@ public class MainInsurance extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_FoodmarketRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            String query = "Update FinalProj_InsuranceRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
 
             DefaultTableModel model = (DefaultTableModel) tblInsurance.getModel();
             model.setRowCount(0);
-            String query1 = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
+            String query1 = "Select * from FinalProj_InsuranceRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query1);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
@@ -383,12 +383,12 @@ public class MainInsurance extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_FoodmarketRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            String query = "Update FinalProj_InsuranceRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             DefaultTableModel model = (DefaultTableModel) tblInsurance.getModel();
             model.setRowCount(0);
-            String query1 = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
+            String query1 = "Select * from FinalProj_InsuranceRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query1);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
@@ -430,12 +430,12 @@ public class MainInsurance extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_FoodmarketRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            String query = "Update FinalProj_InsuranceRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
             DefaultTableModel model = (DefaultTableModel) tblInsurance.getModel();
             model.setRowCount(0);
-            String query1 = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
+            String query1 = "Select * from FinalProj_InsuranceRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query1);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");

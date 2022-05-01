@@ -28,6 +28,38 @@ public class TransportAvailability extends javax.swing.JPanel {
     public TransportAvailability(JPanel RightPanel) {
         initComponents();
         this.RightPanel = RightPanel;
+        DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+            Statement myStatement = con.createStatement();
+
+            String querysel = "Select * from FinalProj_Vehicles";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            //cmbStore.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                //cmbStore.addItem(rs.getString("StoreName"));
+                String StoreName1 = rs.getString("StoreName");
+                String Ambulance1 = rs.getString("Ambulance");
+                String Truck1 = rs.getString("Truck");
+                String Travel1 = rs.getString("Travel");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[5];
+                row[0] = StoreName1;
+                row[1] = Ambulance1;
+                row[2] = Truck1;
+                row[3] = Travel1;
+                row[4] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
     }
 
     /**
@@ -192,6 +224,13 @@ public class TransportAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+         if(txtStoreName.getText().isBlank())
+         {
+            JOptionPane.showMessageDialog(this, "Please enter value .");
+            return;
+        }
+        else
+        {
         String Ambulance = txtAmbulance.getText();
         String Truck = txtTruck.getText();
         String Travel = txtTravel.getText();
@@ -234,10 +273,18 @@ public class TransportAvailability extends javax.swing.JPanel {
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        if(txtStoreName.getText().isBlank())
+         {
+            JOptionPane.showMessageDialog(this, "Please enter value .");
+            return;
+        }
+        else
+        {
         String Ambulance = txtAmbulance.getText();
         String Truck = txtTruck.getText();
         String Travel = txtTravel.getText();
@@ -281,10 +328,18 @@ public class TransportAvailability extends javax.swing.JPanel {
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
         }
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        if(txtStoreName.getText().isBlank())
+         {
+            JOptionPane.showMessageDialog(this, "Please enter value .");
+            return;
+        }
+        else
+        {
         String Ambulance = txtAmbulance.getText();
         String Truck = txtTruck.getText();
         String Travel = txtTravel.getText();
@@ -327,6 +382,7 @@ public class TransportAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+        }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
