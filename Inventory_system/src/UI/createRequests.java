@@ -55,7 +55,8 @@ public class createRequests extends javax.swing.JFrame {
         lblLoggedInAs = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1300, 800));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         lblChooseNetwork.setText("Choose network : ");
 
@@ -105,7 +106,7 @@ public class createRequests extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(410, Short.MAX_VALUE))
+                .addContainerGap(378, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCreateRequest)
@@ -151,23 +152,27 @@ public class createRequests extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jPanel2);
 
-        lblLoggedInAs.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lblLoggedInAs.setForeground(new java.awt.Color(51, 153, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblLoggedInAs.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lblLoggedInAs.setForeground(new java.awt.Color(102, 153, 255));
         lblLoggedInAs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLoggedInAs.setText("Welcome User {{Username}}");
+        lblLoggedInAs.setText("Welcome User !");
         lblLoggedInAs.setToolTipText("");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLoggedInAs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblLoggedInAs, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(lblLoggedInAs, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 751, Short.MAX_VALUE))
+                .addComponent(lblLoggedInAs, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 738, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel3);

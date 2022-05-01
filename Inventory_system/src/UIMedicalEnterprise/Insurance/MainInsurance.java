@@ -97,6 +97,7 @@ public class MainInsurance extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 153, 255));
 
         jButton4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(51, 153, 255));
         jButton4.setText("View requests");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +106,7 @@ public class MainInsurance extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(51, 153, 255));
         jButton2.setText("Create request");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +154,8 @@ public class MainInsurance extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(jPanel3);
 
         RightPane.setLayout(new java.awt.CardLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));

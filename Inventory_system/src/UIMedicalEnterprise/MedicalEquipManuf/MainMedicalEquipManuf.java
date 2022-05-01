@@ -100,6 +100,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 153, 255));
 
         btnViewRequest.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnViewRequest.setForeground(new java.awt.Color(51, 153, 255));
         btnViewRequest.setText("View Requests");
         btnViewRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +109,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         });
 
         btnUpdAvailability.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnUpdAvailability.setForeground(new java.awt.Color(51, 153, 255));
         btnUpdAvailability.setText("Update Availability");
         btnUpdAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +118,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 153, 255));
         jButton1.setText("Create Request");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +188,8 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(jPanel1);
 
         RightPane.setLayout(new java.awt.CardLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));

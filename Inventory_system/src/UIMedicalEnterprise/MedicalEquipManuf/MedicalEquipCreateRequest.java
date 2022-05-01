@@ -111,8 +111,8 @@ public class MedicalEquipCreateRequest extends javax.swing.JPanel {
             }
         });
 
-        lblApprovedorRejected.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        lblApprovedorRejected.setForeground(new java.awt.Color(51, 153, 255));
+        lblApprovedorRejected.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        lblApprovedorRejected.setForeground(new java.awt.Color(102, 153, 255));
         lblApprovedorRejected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblApprovedorRejected.setText("Create Request");
 

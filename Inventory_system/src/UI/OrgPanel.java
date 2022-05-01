@@ -132,8 +132,10 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLayeredPane1.setLayout(new java.awt.CardLayout());
 
-        lblHospitalInventory.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lblHospitalInventory.setForeground(new java.awt.Color(51, 153, 255));
+        panelHospital.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblHospitalInventory.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lblHospitalInventory.setForeground(new java.awt.Color(102, 153, 255));
         lblHospitalInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHospitalInventory.setText("Hospital Inventory");
 
@@ -202,8 +204,10 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLayeredPane1.add(panelHospital, "card2");
 
-        lblVaccineInventory1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lblVaccineInventory1.setForeground(new java.awt.Color(51, 153, 255));
+        panelVaccine.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblVaccineInventory1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lblVaccineInventory1.setForeground(new java.awt.Color(102, 153, 255));
         lblVaccineInventory1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVaccineInventory1.setText("Vaccine Inventory");
 
@@ -270,8 +274,10 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLayeredPane1.add(panelVaccine, "card2");
 
-        lbMedicalEqupInventory.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lbMedicalEqupInventory.setForeground(new java.awt.Color(51, 153, 255));
+        panelMedicalEquip.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbMedicalEqupInventory.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lbMedicalEqupInventory.setForeground(new java.awt.Color(102, 153, 255));
         lbMedicalEqupInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMedicalEqupInventory.setText("Medical Euipment Inventory");
 
@@ -345,8 +351,10 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLayeredPane1.add(panelMedicalEquip, "card2");
 
-        lblBloodbankInventory.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lblBloodbankInventory.setForeground(new java.awt.Color(51, 153, 255));
+        panelBloodbank.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblBloodbankInventory.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lblBloodbankInventory.setForeground(new java.awt.Color(102, 153, 255));
         lblBloodbankInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBloodbankInventory.setText("Bloodbank Inventory");
 
@@ -417,8 +425,10 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLayeredPane1.add(panelBloodbank, "card2");
 
-        lblVaccineInventory2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lblVaccineInventory2.setForeground(new java.awt.Color(51, 153, 255));
+        panelInsurance.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblVaccineInventory2.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lblVaccineInventory2.setForeground(new java.awt.Color(102, 153, 255));
         lblVaccineInventory2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVaccineInventory2.setText("Insurance Inventory");
 
@@ -493,8 +503,10 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLayeredPane1.add(panelInsurance, "card2");
 
-        lblFoodbankInventory.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lblFoodbankInventory.setForeground(new java.awt.Color(51, 153, 255));
+        panelFoodbank.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblFoodbankInventory.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lblFoodbankInventory.setForeground(new java.awt.Color(102, 153, 255));
         lblFoodbankInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFoodbankInventory.setText("Foodbank Inventory");
 
@@ -563,8 +575,10 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLayeredPane1.add(panelFoodbank, "card2");
 
-        lblFoodbankInventory1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lblFoodbankInventory1.setForeground(new java.awt.Color(51, 153, 255));
+        panelTransportation.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblFoodbankInventory1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lblFoodbankInventory1.setForeground(new java.awt.Color(102, 153, 255));
         lblFoodbankInventory1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFoodbankInventory1.setText("Transportation Inventory");
 
@@ -631,8 +645,10 @@ public class OrgPanel extends javax.swing.JPanel {
 
         jLayeredPane1.add(panelTransportation, "card2");
 
-        lblFoodbankInventory2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        lblFoodbankInventory2.setForeground(new java.awt.Color(51, 153, 255));
+        panelClothing.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblFoodbankInventory2.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        lblFoodbankInventory2.setForeground(new java.awt.Color(102, 153, 255));
         lblFoodbankInventory2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFoodbankInventory2.setText("Clothing Inventory");
 

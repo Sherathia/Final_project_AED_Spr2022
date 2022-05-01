@@ -59,7 +59,10 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
         btnview.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnview.setForeground(new java.awt.Color(51, 153, 255));
         btnview.setText("View Requests");
         btnview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +71,7 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
         });
 
         btnAvailability.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnAvailability.setForeground(new java.awt.Color(51, 153, 255));
         btnAvailability.setText("Availability");
         btnAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +80,7 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
         });
 
         BtnCreate.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        BtnCreate.setForeground(new java.awt.Color(51, 153, 255));
         BtnCreate.setText("Create Requests");
         BtnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,10 +127,12 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
 
         RightPanel.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("REQUESTS");
+        jLabel1.setText("VACCINE MANUFACTURER");
 
         tblVaccine.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
