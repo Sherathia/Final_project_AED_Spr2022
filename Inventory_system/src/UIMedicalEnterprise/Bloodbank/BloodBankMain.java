@@ -112,7 +112,7 @@ public class BloodBankMain extends javax.swing.JFrame {
                 .addComponent(btnUpdAvailability)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 528, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addContainerGap())
         );
@@ -235,7 +235,7 @@ public class BloodBankMain extends javax.swing.JFrame {
                     .addComponent(btnApprove)
                     .addComponent(btnReject)
                     .addComponent(jButton2))
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         RightPane.add(jPanel3, "card2");
@@ -246,11 +246,11 @@ public class BloodBankMain extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 941, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
         );
 
         pack();
@@ -258,9 +258,10 @@ public class BloodBankMain extends javax.swing.JFrame {
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
-        RightPane.remove(this);
-        CardLayout layout = (CardLayout) RightPane.getLayout();
-        layout.previous(RightPane);
+        BloodBankMain bbm;
+        bbm = new BloodBankMain();
+        bbm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
     private void btnUpdAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdAvailabilityActionPerformed
