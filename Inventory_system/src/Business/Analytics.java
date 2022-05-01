@@ -16,10 +16,11 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class Analytics {
 
-    public void drawChart(int acceptedRequest, int rejectedRequest, int totalRequest) {
+    public void drawChart(int acceptedRequest, int rejectedRequest, int pendingRequest, int totalRequest) {
         DefaultPieDataset pieDataSet = new DefaultPieDataset();
         pieDataSet.setValue("Accepted", Integer.valueOf(acceptedRequest));
         pieDataSet.setValue("Rejected", Integer.valueOf(rejectedRequest));
+        pieDataSet.setValue("Pending request", Integer.valueOf(pendingRequest));
         pieDataSet.setValue("Total request", Integer.valueOf(totalRequest));
 
         JFreeChart chart = ChartFactory.createPieChart("Request analytics", pieDataSet, true, true, true);

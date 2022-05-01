@@ -513,6 +513,7 @@ public class MainBloodbank extends javax.swing.JFrame {
         Business.Analytics chart = new Business.Analytics();
         int accepted = 0;
         int rejected = 0;
+        int pending = 0;
 
         for (int row = 0; row < model.getRowCount(); row++) {
 
@@ -520,10 +521,12 @@ public class MainBloodbank extends javax.swing.JFrame {
                 accepted++;
             } else if (model.getValueAt(row, 5) == "REJECTED") {
                 rejected++;
+            } else {
+                pending++;
             }
 
         }
-        chart.drawChart(accepted, rejected, model.getColumnCount());
+        chart.drawChart(accepted, rejected, pending, model.getColumnCount());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
