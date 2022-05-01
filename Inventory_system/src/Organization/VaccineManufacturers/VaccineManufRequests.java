@@ -62,10 +62,10 @@ public class VaccineManufRequests extends javax.swing.JPanel {
         comboBoxNetwork = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
-        lblApprovedorRejected.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        lblApprovedorRejected.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         lblApprovedorRejected.setForeground(new java.awt.Color(51, 153, 255));
         lblApprovedorRejected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblApprovedorRejected.setText("CREATE REQUEST");
+        lblApprovedorRejected.setText("Create Request");
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Network:");

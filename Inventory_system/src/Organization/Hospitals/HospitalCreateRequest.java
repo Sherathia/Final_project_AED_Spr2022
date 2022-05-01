@@ -7,6 +7,9 @@ package Organization.Hospitals;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -283,29 +286,31 @@ public class HospitalCreateRequest extends javax.swing.JPanel {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String query = null;
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
             if (selectedOrg == "Hospitals") {
-                query = "Insert into `FinalProj_HospitalRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_HospitalRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest1.getText() + "','" + txtRequest2.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Vaccine manufacturer") {
-                query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Blood bank") {
-                query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Medical equipment") {
-                query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Insurance") {
-                query = "Insert into `FinalProj_InsuranceRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_InsuranceRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Food market chains") {
-                query = "Insert into `FinalProj_FoodmarketRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_FoodmarketRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest1.getText() + "','" + txtRequest2.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Clothing retailers") {
-                query = "Insert into `FinalProj_ClothingRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_ClothingRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest1.getText() + "','" + txtRequest2.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Transport/Travel agencies") {
-                query = "Insert into `FinalProj_TransportRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_TransportRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();

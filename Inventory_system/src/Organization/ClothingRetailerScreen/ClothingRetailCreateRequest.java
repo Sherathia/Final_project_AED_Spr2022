@@ -7,6 +7,7 @@ package Organization.ClothingRetailerScreen;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -328,7 +329,7 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String query = null;
             if (selectedOrg == "Hospitals") {
-                query = "Insert into `FinalProj_HospitalRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_HospitalRequests`" + "values('" + UUID.randomUUID().toString() + "','" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
             }
             if (selectedOrg == "Vaccine manufacturer") {
                 query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
