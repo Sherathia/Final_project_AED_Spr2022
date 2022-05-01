@@ -23,6 +23,8 @@ public class createRequests extends javax.swing.JFrame {
         comboBoxOrg.removeAllItems();
         comboBoxNetwork.addItem("Select");
         comboBoxNetwork.addItem("India");
+        comboBoxNetwork.addItem("US");
+        comboBoxNetwork.addItem("Canada");
         comboBoxEnterprise.addItem("Select");
         comboBoxEnterprise.addItem("Medical enterprise");
         comboBoxEnterprise.addItem("Warehouse enterprise");
