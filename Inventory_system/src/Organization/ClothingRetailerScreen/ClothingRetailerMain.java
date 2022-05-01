@@ -182,7 +182,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
         RightPane.setLayout(new java.awt.CardLayout());
 
-        jPanel3.setBackground(new java.awt.Color(237, 243, 254));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
@@ -215,6 +215,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         btnAssign.setBackground(new java.awt.Color(188, 210, 254));
         btnAssign.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAssign.setText("ASSIGN TO ME");
+        btnAssign.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 153, 255)));
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
@@ -224,6 +225,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         btnApprove.setBackground(new java.awt.Color(188, 210, 254));
         btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnApprove.setText("APPROVE");
+        btnApprove.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 153, 255)));
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveActionPerformed(evt);
@@ -233,6 +235,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         btnReject.setBackground(new java.awt.Color(188, 210, 254));
         btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnReject.setText("REJECT");
+        btnReject.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 153, 255)));
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRejectActionPerformed(evt);
@@ -248,6 +251,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(188, 210, 254));
         jButton1.setText("ANALYTICS");
+        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 153, 255)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -261,8 +265,6 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(38, 38, 38)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -273,18 +275,10 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(btnAssign)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(7, 7, 7)
-                                    .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(23, 23, 23)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
@@ -292,7 +286,20 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnAssign)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -324,13 +331,13 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssign)
-                    .addComponent(btnApprove)
-                    .addComponent(btnReject)
-                    .addComponent(jButton1))
-                .addGap(220, 220, 220))
+                    .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
         RightPane.add(jPanel3, "card2");

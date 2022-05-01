@@ -23,6 +23,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
     /**
      * Creates new form RegistrationScreen
      */
+    
     private JPanel rightPanel;
 
     public RegistrationScreen(JPanel rightPanel) {
