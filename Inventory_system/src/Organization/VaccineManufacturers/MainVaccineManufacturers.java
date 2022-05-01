@@ -39,9 +39,9 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnview = new javax.swing.JButton();
+        btnAvailability = new javax.swing.JButton();
+        BtnCreate = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         RightPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -59,22 +59,27 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton1.setText("View Requests");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnview.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnview.setText("View Requests");
+        btnview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnviewActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton3.setText("Availability");
-
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton2.setText("Create Requests");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAvailability.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnAvailability.setText("Availability");
+        btnAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAvailabilityActionPerformed(evt);
+            }
+        });
+
+        BtnCreate.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        BtnCreate.setText("Create Requests");
+        BtnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCreateActionPerformed(evt);
             }
         });
 
@@ -93,9 +98,9 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(BtnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAvailability, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                        .addComponent(btnview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -103,11 +108,11 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jButton1)
+                .addComponent(btnview)
                 .addGap(17, 17, 17)
-                .addComponent(jButton3)
+                .addComponent(btnAvailability)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(BtnCreate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addContainerGap())
@@ -252,21 +257,21 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewActionPerformed
         // TODO add your handling code here:
-        VaccineManufAvailability ta = new VaccineManufAvailability(RightPanel);
-        RightPanel.add("VaccineAvail", ta);
-        CardLayout layout = (CardLayout) RightPanel.getLayout();
-        layout.next(RightPanel);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        MainVaccineManufacturers mvm;
+        mvm = new MainVaccineManufacturers();
+        mvm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnviewActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BtnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCreateActionPerformed
         // TODO add your handling code here:
         VaccineManufRequests ta = new VaccineManufRequests(RightPanel);
         RightPanel.add("VaccineCreateRequest", ta);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BtnCreateActionPerformed
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
@@ -362,6 +367,14 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void btnAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvailabilityActionPerformed
+        // TODO add your handling code here:
+        VaccineManufAvailability ta = new VaccineManufAvailability(RightPanel);
+        RightPanel.add("VaccineAvail", ta);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+    }//GEN-LAST:event_btnAvailabilityActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -399,14 +412,14 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCreate;
     private javax.swing.JPanel RightPanel;
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnAvailability;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnReject;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnview;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

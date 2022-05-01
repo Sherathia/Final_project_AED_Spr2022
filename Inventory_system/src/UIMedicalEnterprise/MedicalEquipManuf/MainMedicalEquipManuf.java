@@ -349,9 +349,10 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
-        RightPane.remove(this);
-        CardLayout layout = (CardLayout) RightPane.getLayout();
-        layout.previous(RightPane);
+         MainMedicalEquipManuf mme;
+        mme = new MainMedicalEquipManuf();
+        mme.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
     private void btnUpdAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdAvailabilityActionPerformed

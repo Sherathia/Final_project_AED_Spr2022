@@ -43,11 +43,11 @@ public class BloodbankAvailability extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtAvailableUnits = new javax.swing.JTextField();
-        txtAvailableBloodGroups = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
+        cmbBlood = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -81,8 +81,6 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
         txtAvailableUnits.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        txtAvailableBloodGroups.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
         btnUpdate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +105,9 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
         txtName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        cmbBlood.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        cmbBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+ve", "O-ve", "A+ve", "A-ve", "AB+ve", "B +ve", "B-ve" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -127,8 +128,8 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtAvailableUnits, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(txtAvailableBloodGroups)
-                                    .addComponent(txtName)))
+                                    .addComponent(txtName)
+                                    .addComponent(cmbBlood, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnUpdate)
                                 .addGap(18, 18, 18)
@@ -151,11 +152,11 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(txtAvailableBloodGroups, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(cmbBlood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtAvailableUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,7 +166,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                         .addComponent(btnCreate)
                         .addComponent(btnDelete))
                     .addComponent(btnUpdate))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -182,7 +183,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        String AvailableBloodGroups = txtAvailableBloodGroups.getText();
+        String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
         String AvailableUnits = txtAvailableUnits.getText();
         String BloodBankName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -225,7 +226,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        String AvailableBloodGroups = txtAvailableBloodGroups.getText();
+        String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
         String AvailableUnits = txtAvailableUnits.getText();
         String BloodBankName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -270,7 +271,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        String AvailableBloodGroups = txtAvailableBloodGroups.getText();
+        String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
         String AvailableUnits = txtAvailableUnits.getText();
         String BloodBankName = txtName.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -317,6 +318,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cmbBlood;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -324,7 +326,6 @@ public class BloodbankAvailability extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBloodGroupAvailability;
-    private javax.swing.JTextField txtAvailableBloodGroups;
     private javax.swing.JTextField txtAvailableUnits;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
