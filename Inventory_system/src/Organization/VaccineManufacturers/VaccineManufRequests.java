@@ -7,6 +7,9 @@ package Organization.VaccineManufacturers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -280,29 +283,32 @@ public class VaccineManufRequests extends javax.swing.JPanel {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String query = null;
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            Random rand = new Random();
             if (selectedOrg == "Hospitals") {
-                query = "Insert into `FinalProj_HospitalRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_HospitalRequests`" + "values('" + rand.nextInt(1000) + "','" + txtRequest1.getText() + "','" + txtRequest2.getText() + "','" + "Vaccine manufacturer" + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Vaccine manufacturer") {
-                query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + rand.nextInt(1000) + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + "Vaccine manufacturer" + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Blood bank") {
-                query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + rand.nextInt(1000) + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + "Vaccine manufacturer" + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Medical equipment") {
-                query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + rand.nextInt(1000) + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + "Vaccine manufacturer" + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Insurance") {
-                query = "Insert into `FinalProj_InsuranceRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_InsuranceRequests`" + "values('" + rand.nextInt(1000) + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + "Vaccine manufacturer" + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Food market chains") {
-                query = "Insert into `FinalProj_FoodmarketRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_FoodmarketRequests`" + "values('" + rand.nextInt(1000) + "','" + txtRequest1.getText() + "','" + txtRequest2.getText() + "','" + "Vaccine manufacturer" + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Clothing retailers") {
-                query = "Insert into `FinalProj_ClothingRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_ClothingRequests`" + "values('" + rand.nextInt(1000) + "','" + txtRequest1.getText() + "','" + txtRequest2.getText() + "','" + "Vaccine manufacturer" + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             if (selectedOrg == "Transport/Travel agencies") {
-                query = "Insert into `FinalProj_TransportRequests`" + "values('" + txtRequest1.getText() + "','" + txtRequest2.getText() + "')";
+                query = "Insert into `FinalProj_TransportRequests`" + "values('" + rand.nextInt(1000) + "','" + txtRequest2.getText() + "','" + txtRequest1.getText() + "','" + "Vaccine manufacturer" + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
             }
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
@@ -312,6 +318,7 @@ public class VaccineManufRequests extends javax.swing.JPanel {
             txtRequest1.setText("");
             txtRequest2.setText("");
             Business.SendMail mail = new Business.SendMail();
+//           TODO - change the email ID
             mail.sendMail("Request created", "Your request has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
