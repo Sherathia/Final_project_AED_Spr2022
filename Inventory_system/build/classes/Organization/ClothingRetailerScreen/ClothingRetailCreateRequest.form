@@ -29,7 +29,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="fe" green="f3" red="ed" type="rgb"/>
         </Property>
       </Properties>
 
@@ -47,40 +47,33 @@
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="351" max="-2" attributes="0"/>
-                          <Component id="jButton1" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtRequest1" min="-2" pref="250" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="txtRequest1" min="-2" pref="250" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel4" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" linkSize="1" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                              <Component id="jLabel3" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblRequest1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblRequest2" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="txtRequest2" linkSize="2" pref="250" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel4" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" linkSize="1" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                                      <Component id="jLabel3" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblRequest1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblRequest2" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="txtRequest2" linkSize="2" pref="250" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="comboBoxEnterprise" min="-2" pref="250" max="-2" attributes="0"/>
-                                              <Component id="comboBoxOrganization" min="-2" pref="250" max="-2" attributes="0"/>
-                                              <Component id="comboBoxNetwork" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="comboBoxEnterprise" min="-2" pref="250" max="-2" attributes="0"/>
+                                      <Component id="comboBoxOrganization" min="-2" pref="250" max="-2" attributes="0"/>
+                                      <Component id="comboBoxNetwork" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
+                      <Component id="jButton1" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="545" max="32767" attributes="0"/>
               </Group>
@@ -116,9 +109,9 @@
                       <Component id="lblRequest2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtRequest2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
               </Group>
@@ -135,7 +128,7 @@
               <Color blue="ff" green="99" red="66" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Create Request"/>
+            <Property name="text" type="java.lang.String" value="CREATE REQUEST"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

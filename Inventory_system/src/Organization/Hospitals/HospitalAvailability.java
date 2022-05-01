@@ -51,7 +51,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         txtHospital = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(237, 243, 254));
 
         jLabel4.setText("ICU:");
 
