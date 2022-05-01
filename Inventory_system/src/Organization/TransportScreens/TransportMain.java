@@ -24,9 +24,11 @@ public class TransportMain extends javax.swing.JFrame {
     /**
      * Creates new form TransportMain
      */
+    DefaultTableModel model;
+
     public TransportMain() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
+        model = (DefaultTableModel) tblTransport.getModel();
         model.setRowCount(0);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -89,6 +91,7 @@ public class TransportMain extends javax.swing.JFrame {
         btnAssign = new javax.swing.JButton();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,6 +214,14 @@ public class TransportMain extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(188, 210, 254));
+        jButton4.setText("ANALYTICS");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -239,12 +250,16 @@ public class TransportMain extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4))
                     .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtComments, txtRequestID});
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApprove, btnAssign, btnReject, jButton4});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +280,8 @@ public class TransportMain extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssign)
                     .addComponent(btnApprove)
-                    .addComponent(btnReject))
+                    .addComponent(btnReject)
+                    .addComponent(jButton4))
                 .addContainerGap(164, Short.MAX_VALUE))
         );
 
@@ -387,6 +403,24 @@ public class TransportMain extends javax.swing.JFrame {
         layout.next(RightPanel);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Business.Analytics chart = new Business.Analytics();
+        int accepted = 0;
+        int rejected = 0;
+
+        for (int row = 0; row < model.getRowCount(); row++) {
+
+            if (model.getValueAt(row, 5) == "ACCEPTED") {
+                accepted++;
+            } else if (model.getValueAt(row, 5) == "REJECTED") {
+                rejected++;
+            }
+
+        }
+        chart.drawChart(accepted, rejected, model.getColumnCount());
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -431,6 +465,7 @@ public class TransportMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

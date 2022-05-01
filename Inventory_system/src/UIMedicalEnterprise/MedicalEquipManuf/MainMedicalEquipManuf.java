@@ -23,15 +23,17 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
     /**
      * Creates new form MainMedicalEquipManuf
      */
+    DefaultTableModel model;
+
     public MainMedicalEquipManuf() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
+        model = (DefaultTableModel) tblMedicalEquip.getModel();
         model.setRowCount(0);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-            String query = "Select * from finalproj_medicalequipmanufrequests where Attrib1='A'";
+            String query = "Select * from FinalProj_MedicalEquipmentRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
@@ -89,6 +91,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         btnAssign = new javax.swing.JButton();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -231,6 +234,14 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(188, 210, 254));
+        jButton2.setText("ANALYTICS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout RightPaneLayout = new javax.swing.GroupLayout(RightPane);
         RightPane.setLayout(RightPaneLayout);
         RightPaneLayout.setHorizontalGroup(
@@ -242,19 +253,21 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
                         .addGap(99, 99, 99)
                         .addGroup(RightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(RightPaneLayout.createSequentialGroup()
-                                .addComponent(btnAssign)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(RightPaneLayout.createSequentialGroup()
                                 .addGroup(RightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addGap(52, 52, 52)
                                 .addGroup(RightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(RightPaneLayout.createSequentialGroup()
+                                .addComponent(btnAssign)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPaneLayout.createSequentialGroup()
@@ -264,6 +277,8 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         );
 
         RightPaneLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtComments, txtRequestID});
+
+        RightPaneLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApprove, btnAssign, btnReject, jButton2});
 
         RightPaneLayout.setVerticalGroup(
             RightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +299,8 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
                 .addGroup(RightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssign)
                     .addComponent(btnApprove)
-                    .addComponent(btnReject))
+                    .addComponent(btnReject)
+                    .addComponent(jButton2))
                 .addContainerGap(229, Short.MAX_VALUE))
         );
 
@@ -332,12 +348,12 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_MedicalEquipManufRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            String query = "Update FinalProj_MedicalEquipmentRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
             DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
-             model.setRowCount(0);
-            String query1 = "Select * from finalproj_medicalequipmanufrequests where Attrib1='A'";
+            model.setRowCount(0);
+            String query1 = "Select * from FinalProj_MedicalEquipmentRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query1);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
@@ -379,12 +395,12 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_MedicalEquipManufRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            String query = "Update FinalProj_MedicalEquipmentRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
             DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
-             model.setRowCount(0);
-            String query1 = "Select * from finalproj_medicalequipmanufrequests where Attrib1='A'";
+            model.setRowCount(0);
+            String query1 = "Select * from FinalProj_MedicalEquipmentRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query1);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
@@ -407,7 +423,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
                 row[7] = Comments;
                 model.addRow(row);
             }
-            
+
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
@@ -427,12 +443,12 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_MedicalEquipManufRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
+            String query = "Update FinalProj_MedicalEquipmentRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
             DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
-             model.setRowCount(0);
-            String query1 = "Select * from finalproj_medicalequipmanufrequests where Attrib1='A'";
+            model.setRowCount(0);
+            String query1 = "Select * from FinalProj_MedicalEquipmentRequests where Attrib1='A'";
             ResultSet rs = myStatement.executeQuery(query1);
             while (rs.next()) {
                 String RequestID = rs.getString("RequestID");
@@ -475,6 +491,24 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) RightPane.getLayout();
         layout.next(RightPane);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Business.Analytics chart = new Business.Analytics();
+        int accepted = 0;
+        int rejected = 0;
+
+        for (int row = 0; row < model.getRowCount(); row++) {
+
+            if (model.getValueAt(row, 5) == "ACCEPTED") {
+                accepted++;
+            } else if (model.getValueAt(row, 5) == "REJECTED") {
+                rejected++;
+            }
+
+        }
+        chart.drawChart(accepted, rejected, model.getRowCount());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -520,6 +554,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdAvailability;
     private javax.swing.JButton btnViewRequest;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

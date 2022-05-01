@@ -24,7 +24,6 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
     /**
      * Creates new form ClothingRetailerMain
      */
-    ResultSet table;
     DefaultTableModel model;
 
     public ClothingRetailerMain() {
@@ -247,6 +246,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
         txtQuantity.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(188, 210, 254));
         jButton1.setText("ANALYTICS");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,7 +314,6 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
@@ -494,11 +493,11 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         int accepted = 0;
         int rejected = 0;
 
-        for (int col = 0; col < model.getColumnCount(); col++) {
+        for (int row = 0; row < model.getRowCount(); row++) {
 
-            if (model.getValueAt(5, col) == "ACCEPTED") {
+            if (model.getValueAt(row, 5) == "ACCEPTED") {
                 accepted++;
-            } else if (model.getValueAt(5, col) == "REJECTED") {
+            } else if (model.getValueAt(row, 5) == "REJECTED") {
                 rejected++;
             }
 

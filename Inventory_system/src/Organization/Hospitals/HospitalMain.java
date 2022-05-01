@@ -24,9 +24,11 @@ public class HospitalMain extends javax.swing.JFrame {
     /**
      * Creates new form HospitalMain
      */
+    DefaultTableModel model;
+
     public HospitalMain() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
+        model = (DefaultTableModel) tblHospital.getModel();
         model.setRowCount(0);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -91,6 +93,7 @@ public class HospitalMain extends javax.swing.JFrame {
         btnAssign = new javax.swing.JButton();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -224,6 +227,14 @@ public class HospitalMain extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(188, 210, 254));
+        jButton1.setText("ANALYTICS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -248,13 +259,17 @@ public class HospitalMain extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtComments, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(284, 284, 284))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(169, 169, 169))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtComments, txtRequestID});
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApprove, btnAssign, btnReject, jButton1});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +290,8 @@ public class HospitalMain extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReject)
                     .addComponent(btnApprove)
-                    .addComponent(btnAssign))
+                    .addComponent(btnAssign)
+                    .addComponent(jButton1))
                 .addContainerGap(271, Short.MAX_VALUE))
         );
 
@@ -313,8 +329,7 @@ public class HospitalMain extends javax.swing.JFrame {
             String query = "Update FinalProj_HospitalRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
-            
-            
+
             DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
             model.setRowCount(0);
             String query1 = "Select * from FinalProj_HospitalRequests where Attrib1='A'";
@@ -457,7 +472,7 @@ public class HospitalMain extends javax.swing.JFrame {
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
-         HospitalMain hm;
+        HospitalMain hm;
         hm = new HospitalMain();
         hm.setVisible(true);
         this.dispose();
@@ -465,11 +480,29 @@ public class HospitalMain extends javax.swing.JFrame {
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
         // TODO add your handling code here:
-         HospitalAvailability ha = new HospitalAvailability(RightPanel);
+        HospitalAvailability ha = new HospitalAvailability(RightPanel);
         RightPanel.add("HospitalAvailability", ha);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);
     }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Business.Analytics chart = new Business.Analytics();
+        int accepted = 0;
+        int rejected = 0;
+
+        for (int row = 0; row < model.getRowCount(); row++) {
+
+            if (model.getValueAt(row, 5) == "ACCEPTED") {
+                accepted++;
+            } else if (model.getValueAt(row, 5) == "REJECTED") {
+                rejected++;
+            }
+
+        }
+        chart.drawChart(accepted, rejected, model.getColumnCount());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,6 +547,7 @@ public class HospitalMain extends javax.swing.JFrame {
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnViewRequest;
     private javax.swing.JButton btnupdate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

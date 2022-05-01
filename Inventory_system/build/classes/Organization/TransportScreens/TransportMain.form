@@ -201,16 +201,18 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnAssign" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnAssign" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnApprove" min="-2" pref="134" max="-2" attributes="0"/>
+                                      <Component id="btnApprove" linkSize="2" min="-2" pref="134" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnReject" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <Component id="btnReject" linkSize="2" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jButton4" linkSize="2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="94" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -236,6 +238,7 @@
                                   <Component id="btnAssign" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnApprove" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnReject" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="164" max="32767" attributes="0"/>
                           </Group>
@@ -344,6 +347,17 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRejectActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButton4">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="fe" green="d2" red="bc" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="ANALYTICS"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

@@ -22,8 +22,8 @@ public class Analytics {
         pieDataSet.setValue("Rejected", Integer.valueOf(rejectedRequest));
         pieDataSet.setValue("Total request", Integer.valueOf(totalRequest));
 
-        JFreeChart chart = ChartFactory.createPieChart3D("Request analytics", pieDataSet, true, true, true);
-        PiePlot3D p = (PiePlot3D) chart.getPlot();
+        JFreeChart chart = ChartFactory.createPieChart("Request analytics", pieDataSet, true, true, true);
+//        PiePlot3D p = (PiePlot3D) chart.getPlot();
         ChartFrame frame = new ChartFrame("Pie chart", chart);
         frame.setVisible(true);
         frame.setSize(450, 500);
