@@ -8,6 +8,9 @@ import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -717,6 +720,10 @@ public class OrgPanel extends javax.swing.JPanel {
     private void btnSendRequestHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestHospitalActionPerformed
         // TODO add your handling code here:
         StringBuilder Error = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        Random rand = new Random();
+
         if (!txtHospitalLoc.getText().isEmpty()) {
         } else {
             Error.append("Enter Hospital Location \n");
@@ -728,7 +735,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_HospitalRequests`" + "values('" + txtNumberOfBeds.getText() + "','" + txtHospitalLoc.getText() + "')";
+                String query = "Insert into `FinalProj_HospitalRequests`" + "values('" + rand.nextInt(1000) + "','" + txtNumberOfBeds.getText() + "','" + txtHospitalLoc.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -749,6 +756,9 @@ public class OrgPanel extends javax.swing.JPanel {
     private void btnSendRequestVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestVaccineActionPerformed
         // TODO add your handling code here:
         StringBuilder Error = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        Random rand = new Random();
         if (!txtVaccine.getText().isEmpty()) {
         } else {
             Error.append("Enter vaccine required \n");
@@ -760,7 +770,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + txtVaccine.getText() + "','" + txtVaccineCount.getText() + "')";
+                String query = "Insert into `FinalProj_VaccineManufacturerRequests`" + "values('" + rand.nextInt(1000) + "','" + txtVaccineCount.getText() + "','" + txtVaccine.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -780,6 +790,9 @@ public class OrgPanel extends javax.swing.JPanel {
     private void btnSendRequestMedicalEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestMedicalEquipActionPerformed
         // TODO add your handling code here:
         StringBuilder Error = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        Random rand = new Random();
         if (!txtMedicalEquip.getText().isEmpty()) {
         } else {
             Error.append("Enter equipment required \n");
@@ -791,7 +804,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + txtMedicalEquip.getText() + "','" + txtMedicalEquip.getText() + "')";
+                String query = "Insert into `FinalProj_MedicalEquipmentRequests`" + "values('" + rand.nextInt(1000) + "','" + txtMedicalEquipCount.getText() + "','" + txtMedicalEquip.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -811,6 +824,9 @@ public class OrgPanel extends javax.swing.JPanel {
     private void btnSendRequestBloodbankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestBloodbankActionPerformed
         // TODO add your handling code here:
         StringBuilder Error = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        Random rand = new Random();
         if (comboBoxBloodGroup.getSelectedIndex() != -1) {
         } else {
             Error.append("Select the blood group  \n");
@@ -822,7 +838,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + comboBoxBloodGroup.getSelectedItem() + "','" + txtBloodCount.getText() + "')";
+                String query = "Insert into `FinalProj_BloodbankRequests`" + "values('" + rand.nextInt(1000) + "','" + txtBloodCount.getText() + "','" + comboBoxBloodGroup.getSelectedItem().toString() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -842,6 +858,9 @@ public class OrgPanel extends javax.swing.JPanel {
     private void btnSubmitRequestInsuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestInsuranceActionPerformed
         // TODO add your handling code here:
         StringBuilder Error = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        Random rand = new Random();
         if (!txtInsuranceCoverage.getText().isEmpty()) {
         } else {
             Error.append("Enter insurance coverage required \n");
@@ -853,7 +872,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_InsuranceRequests`" + "values('" + txtInsuranceCoverage.getText() + "','" + txtNumberOfCoverage.getText() + "')";
+                String query = "Insert into `FinalProj_InsuranceRequests`" + "values('" + rand.nextInt(1000) + "','" + txtNumberOfCoverage.getText() + "','" + txtInsuranceCoverage.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -873,6 +892,9 @@ public class OrgPanel extends javax.swing.JPanel {
     private void btnSendRequestFoodbankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestFoodbankActionPerformed
         // TODO add your handling code here:
         StringBuilder Error = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        Random rand = new Random();
         if (!txtFoodBankServed.getText().isEmpty()) {
         } else {
             Error.append("Enter number of people to be served \n");
@@ -884,7 +906,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_FoodmarketRequests`" + "values('" + txtFoodBankServed.getText() + "','" + txtFoodBankLoc.getText() + "')";
+                String query = "Insert into `FinalProj_FoodmarketRequests`" + "values('" + rand.nextInt(1000) + "','" + txtFoodBankServed.getText() + "','" + txtFoodBankLoc.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -904,6 +926,9 @@ public class OrgPanel extends javax.swing.JPanel {
     private void btnSendRequestTransportationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestTransportationActionPerformed
         // TODO add your handling code here:
         StringBuilder Error = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        Random rand = new Random();
         if (!txtVehicleType.getText().isEmpty()) {
         } else {
             Error.append("Enter vehicle type \n");
@@ -915,7 +940,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_TransportRequests`" + "values('" + txtVehicleType.getText() + "','" + txtVehicleCount.getText() + "')";
+                String query = "Insert into `FinalProj_TransportRequests`" + "values('" + rand.nextInt(1000) + "','" + txtVehicleCount.getText() + "','" + txtVehicleType.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
@@ -935,6 +960,9 @@ public class OrgPanel extends javax.swing.JPanel {
     private void btnSendRequestClothingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestClothingActionPerformed
         // TODO add your handling code here:
         StringBuilder Error = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        Random rand = new Random();
         if (!txtClothingLoc1.getText().isEmpty()) {
         } else {
             Error.append("Enter location \n");
@@ -946,7 +974,7 @@ public class OrgPanel extends javax.swing.JPanel {
         if (Error.isEmpty()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String query = "Insert into `FinalProj_ClothingRequests`" + "values('" + txtClothingLoc1.getText() + "','" + txtNumberOfClothing1.getText() + "')";
+                String query = "Insert into `FinalProj_ClothingRequests`" + "values('" + rand.nextInt(1000) + "','" + txtNumberOfClothing1.getText() + "','" + txtClothingLoc1.getText() + "','" + null + "','" + Date + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')";
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
