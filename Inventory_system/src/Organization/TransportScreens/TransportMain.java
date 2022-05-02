@@ -92,7 +92,6 @@ public class TransportMain extends javax.swing.JFrame {
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,7 +166,7 @@ public class TransportMain extends javax.swing.JFrame {
 
         RightPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(237, 243, 254));
 
         tblTransport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,7 +196,9 @@ public class TransportMain extends javax.swing.JFrame {
 
         txtRequestID.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        btnAssign.setBackground(new java.awt.Color(188, 210, 254));
+        btnAssign.setBackground(new java.awt.Color(102, 153, 255));
+        btnAssign.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(255, 255, 255));
         btnAssign.setText("ASSIGN TO ME");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +206,9 @@ public class TransportMain extends javax.swing.JFrame {
             }
         });
 
-        btnApprove.setBackground(new java.awt.Color(188, 210, 254));
+        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
+        btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnApprove.setForeground(new java.awt.Color(255, 255, 255));
         btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +216,9 @@ public class TransportMain extends javax.swing.JFrame {
             }
         });
 
-        btnReject.setBackground(new java.awt.Color(188, 210, 254));
+        btnReject.setBackground(new java.awt.Color(102, 153, 255));
+        btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("REJECT");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,15 +226,15 @@ public class TransportMain extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(188, 210, 254));
+        jButton4.setBackground(new java.awt.Color(102, 153, 255));
+        jButton4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("ANALYTICS");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ambulance.jpg"))); // NOI18N
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/truck.jpg"))); // NOI18N
 
@@ -271,10 +276,8 @@ public class TransportMain extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(197, 197, 197)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(269, 269, 269)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(702, 702, 702)
+                .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -305,8 +308,7 @@ public class TransportMain extends javax.swing.JFrame {
                             .addComponent(btnApprove)
                             .addComponent(btnReject)
                             .addComponent(jButton4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                        .addComponent(jLabel4))
+                        .addGap(0, 256, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)))
@@ -580,7 +582,6 @@ public class TransportMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

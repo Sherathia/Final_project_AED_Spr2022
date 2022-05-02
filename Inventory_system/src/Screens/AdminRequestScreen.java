@@ -121,7 +121,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.CardLayout());
 
-        RightPanel.setBackground(new java.awt.Color(255, 255, 255));
+        RightPanel.setBackground(new java.awt.Color(237, 243, 254));
 
         tblRequests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         tblRequests.setModel(new javax.swing.table.DefaultTableModel(
@@ -139,8 +139,9 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("USER CREATION REQUESTS");
 
-        btnApprove.setBackground(new java.awt.Color(188, 210, 254));
+        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
         btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnApprove.setForeground(new java.awt.Color(255, 255, 255));
         btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,8 +149,9 @@ public class AdminRequestScreen extends javax.swing.JFrame {
             }
         });
 
-        btnReject.setBackground(new java.awt.Color(188, 210, 254));
+        btnReject.setBackground(new java.awt.Color(102, 153, 255));
         btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("REJECT");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,8 +164,9 @@ public class AdminRequestScreen extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Comments:");
 
-        btnviewpendingreq.setBackground(new java.awt.Color(188, 210, 254));
+        btnviewpendingreq.setBackground(new java.awt.Color(102, 153, 255));
         btnviewpendingreq.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnviewpendingreq.setForeground(new java.awt.Color(255, 255, 255));
         btnviewpendingreq.setText("View Pending Requests");
         btnviewpendingreq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,8 +174,9 @@ public class AdminRequestScreen extends javax.swing.JFrame {
             }
         });
 
-        btnviewrequests.setBackground(new java.awt.Color(188, 210, 254));
+        btnviewrequests.setBackground(new java.awt.Color(102, 153, 255));
         btnviewrequests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnviewrequests.setForeground(new java.awt.Color(255, 255, 255));
         btnviewrequests.setText("View All Requests");
         btnviewrequests.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,9 +189,10 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
         txtRequestID.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(188, 210, 254));
+        jButton1.setBackground(new java.awt.Color(102, 153, 255));
         jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton1.setText("<<Back");
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("<< BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
