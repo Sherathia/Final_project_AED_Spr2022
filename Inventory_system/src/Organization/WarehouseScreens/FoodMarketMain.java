@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -25,6 +26,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
      * Creates new form FoodMarketMain
      */
     DefaultTableModel model;
+    static Logger log = Logger.getLogger(FoodMarketMain.class.getName());
 
     public FoodMarketMain() {
         initComponents();

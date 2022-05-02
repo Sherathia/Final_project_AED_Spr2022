@@ -4,6 +4,7 @@
  */
 package UIMedicalEnterprise.Bloodbank;
 
+import UI.Login;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -12,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +26,7 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
      */
     JPanel RightPanel;
     String selectedOrg;
+    static Logger log = Logger.getLogger(BloodBankCreateRequest.class.getName());
 
     public BloodBankCreateRequest(JPanel RightPanel) {
         initComponents();

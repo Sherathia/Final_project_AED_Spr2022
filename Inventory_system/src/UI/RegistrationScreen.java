@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -25,6 +26,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
      */
     
     private JPanel rightPanel;
+    static Logger log = Logger.getLogger(RegistrationScreen.class.getName());
 
     public RegistrationScreen(JPanel rightPanel) {
         initComponents();

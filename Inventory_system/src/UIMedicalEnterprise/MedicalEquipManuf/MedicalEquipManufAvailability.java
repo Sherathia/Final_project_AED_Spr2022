@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -22,6 +23,8 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
     /**
      * Creates new form MedicalEquipManufRequests
      */
+    static Logger log = Logger.getLogger(MedicalEquipManufAvailability.class.getName());
+
     public MedicalEquipManufAvailability(JPanel RightPane) {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();

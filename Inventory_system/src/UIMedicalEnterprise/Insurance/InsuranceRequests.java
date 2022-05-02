@@ -4,6 +4,7 @@
  */
 package UIMedicalEnterprise.Insurance;
 
+import UIMedicalEnterprise.Bloodbank.BloodbankAvailability;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Random;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +26,7 @@ public class InsuranceRequests extends javax.swing.JPanel {
      */
     JPanel RightPanel;
     String selectedOrg;
+    static Logger log = Logger.getLogger(InsuranceRequests.class.getName());
 
     public InsuranceRequests(JPanel RightPanel) {
         initComponents();

@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -25,6 +26,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
      * Creates new form ClothingRetailerMain
      */
     DefaultTableModel model;
+    static Logger log = Logger.getLogger(ClothingRetailerMain.class.getName());
 
     public ClothingRetailerMain() {
         initComponents();

@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -22,6 +23,7 @@ public class BloodBankMain extends javax.swing.JFrame {
      * Creates new form BloodBankMain
      */
       DefaultTableModel model;
+      static Logger log = Logger.getLogger(BloodBankMain.class.getName());
     public BloodBankMain() {
         initComponents();
          model = (DefaultTableModel) tblBloodBank.getModel();

@@ -4,6 +4,7 @@
  */
 package Organization.Hospitals;
 
+import Organization.ClothingRetailerScreen.ClothingRetailerMain;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +26,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
      * Creates new form HospitalAvailability
      */
     private JPanel RightPanel;
+    static Logger log = Logger.getLogger(HospitalAvailability.class.getName());
     public HospitalAvailability(JPanel RightPanel) {
         initComponents();
         this.RightPanel= RightPanel;

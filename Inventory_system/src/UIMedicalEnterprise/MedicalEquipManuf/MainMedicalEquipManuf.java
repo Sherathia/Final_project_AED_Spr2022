@@ -6,6 +6,7 @@ package UIMedicalEnterprise.MedicalEquipManuf;
 
 //import com.sun.jdi.connect.spi.Connection;
 import UI.Login;
+import UIMedicalEnterprise.Insurance.MainInsurance;
 import java.awt.CardLayout;
 //import java.beans.Statement;
 import java.text.DateFormat;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +26,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
      * Creates new form MainMedicalEquipManuf
      */
     DefaultTableModel model;
+    static Logger log = Logger.getLogger(MainMedicalEquipManuf.class.getName());
 
     public MainMedicalEquipManuf() {
         initComponents();

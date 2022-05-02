@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -25,6 +26,7 @@ public class TransportMain extends javax.swing.JFrame {
      * Creates new form TransportMain
      */
     DefaultTableModel model;
+    static Logger log = Logger.getLogger(TransportMain.class.getName());
 
     public TransportMain() {
         initComponents();

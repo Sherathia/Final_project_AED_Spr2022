@@ -4,6 +4,7 @@
  */
 package Organization.TransportScreens;
 
+import Organization.Hospitals.HospitalMain;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +26,7 @@ public class TransportAvailability extends javax.swing.JPanel {
      * Creates new form TransportAvailability
      */
     private JPanel RightPanel;
+    static Logger log = Logger.getLogger(TransportAvailability.class.getName());
 
     public TransportAvailability(JPanel RightPanel) {
         initComponents();

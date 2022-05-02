@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Organization.WarehouseScreens.FoodMarketMain;
 import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -23,6 +25,7 @@ public class OrgPanel extends javax.swing.JPanel {
      * Creates new form OrgPanel
      */
     String selectedOrg;
+    static Logger log = Logger.getLogger(OrgPanel.class.getName());
 
     public OrgPanel(String selectedOrg) {
         initComponents();

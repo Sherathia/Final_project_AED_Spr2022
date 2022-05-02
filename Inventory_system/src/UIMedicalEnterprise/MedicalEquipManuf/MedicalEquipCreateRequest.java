@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +25,7 @@ public class MedicalEquipCreateRequest extends javax.swing.JPanel {
      */
     JPanel RightPanel;
     String selectedOrg;
+    static Logger log = Logger.getLogger(MedicalEquipCreateRequest.class.getName());
 
     public MedicalEquipCreateRequest(JPanel RightPanel) {
         initComponents();

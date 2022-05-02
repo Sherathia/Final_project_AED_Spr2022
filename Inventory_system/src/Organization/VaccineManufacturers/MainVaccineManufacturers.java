@@ -4,6 +4,7 @@
  */
 package Organization.VaccineManufacturers;
 
+import Organization.TransportScreens.TransportMain;
 import UI.Login;
 import java.awt.CardLayout;
 import java.text.DateFormat;
@@ -14,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 /**
  *
  * @author aesha
@@ -24,6 +26,7 @@ public class MainVaccineManufacturers extends javax.swing.JFrame {
      * Creates new form VaccineMfrMain
      */
     DefaultTableModel model;
+    static Logger log = Logger.getLogger(MainVaccineManufacturers.class.getName());
     public MainVaccineManufacturers() {
         initComponents();
         model = (DefaultTableModel) tblVaccine.getModel();

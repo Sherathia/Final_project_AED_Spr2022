@@ -13,6 +13,7 @@ import java.util.Random;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -25,6 +26,7 @@ public class HospitalCreateRequest extends javax.swing.JPanel {
      */
     private JPanel rightPanel;
     String selectedOrg;
+    static Logger log = Logger.getLogger(HospitalCreateRequest.class.getName());
 
     public HospitalCreateRequest(JPanel RightPanel) {
         this.rightPanel = RightPanel;

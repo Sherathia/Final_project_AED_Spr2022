@@ -4,6 +4,7 @@
  */
 package Organization.WarehouseScreens;
 
+import Organization.VaccineManufacturers.MainVaccineManufacturers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +26,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
      * Creates new form FoodMarketAvailability
      */
     private JPanel RightPanel;
+    static Logger log = Logger.getLogger(FoodMarketAvailability.class.getName());
 
     public FoodMarketAvailability(JPanel RightPanel) {
         initComponents();

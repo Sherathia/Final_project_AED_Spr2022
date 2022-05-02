@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
     /**
      * Creates new form ClothingRetailAvailability
      */
+    static Logger log = Logger.getLogger(ClothingRetailAvailability.class.getName());
     private JPanel RightPanel;
 
     public ClothingRetailAvailability(JPanel RightPanel) {

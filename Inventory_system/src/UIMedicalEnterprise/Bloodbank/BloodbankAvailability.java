@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -22,6 +23,8 @@ public class BloodbankAvailability extends javax.swing.JPanel {
     /**
      * Creates new form AllRequests
      */
+    static Logger log = Logger.getLogger(BloodbankAvailability.class.getName());
+
     public BloodbankAvailability(JPanel RightPane) {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
@@ -213,157 +216,148 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        if(txtName.getText().isBlank() || txtAvailableUnits.getText().isBlank())
-        {
+        if (txtName.getText().isBlank() || txtAvailableUnits.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value .");
             return;
-        }
-        else
-        {
-        String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
-        String AvailableUnits = txtAvailableUnits.getText();
-        String BloodBankName = txtName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
+        } else {
+            String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
+            String AvailableUnits = txtAvailableUnits.getText();
+            String BloodBankName = txtName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_BloodGroupAvailability set AvailableBloodGroups ='" + AvailableBloodGroups + "',AvailableUnits ='" + AvailableUnits + "',Lastupdated ='" + Date + "' where BloodBankName='" + BloodBankName + "'";
-            myStatement.executeUpdate(query);
-            JOptionPane.showMessageDialog(this, "Entry Updated!!");
+                String query = "Update FinalProj_BloodGroupAvailability set AvailableBloodGroups ='" + AvailableBloodGroups + "',AvailableUnits ='" + AvailableUnits + "',Lastupdated ='" + Date + "' where BloodBankName='" + BloodBankName + "'";
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Entry Updated!!");
 
-            String querysel = "Select * from FinalProj_BloodGroupAvailability";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            //cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                // cmbStore.addItem(rs.getString("BloodBankName"));
-                String BloodBankName1 = rs.getString("BloodBankName");
-                String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
-                String AvailableUnits1 = rs.getString("AvailableUnits");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_BloodGroupAvailability";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                //cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    // cmbStore.addItem(rs.getString("BloodBankName"));
+                    String BloodBankName1 = rs.getString("BloodBankName");
+                    String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
+                    String AvailableUnits1 = rs.getString("AvailableUnits");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[4];
-                row[0] = BloodBankName1;
-                row[1] = AvailableBloodGroups1;
-                row[2] = AvailableUnits1;
-                row[3] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[4];
+                    row[0] = BloodBankName1;
+                    row[1] = AvailableBloodGroups1;
+                    row[2] = AvailableUnits1;
+                    row[3] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        if(txtName.getText().isBlank() || txtAvailableUnits.getText().isBlank())
-        {
+        if (txtName.getText().isBlank() || txtAvailableUnits.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value .");
             return;
-        }
-        else
-        {
-        String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
-        String AvailableUnits = txtAvailableUnits.getText();
-        String BloodBankName = txtName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
+        } else {
+            String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
+            String AvailableUnits = txtAvailableUnits.getText();
+            String BloodBankName = txtName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Insert into `FinalProj_BloodGroupAvailability`" + "values('" + BloodBankName + "','" + AvailableBloodGroups + "','" + AvailableUnits + "','" + Date + "')";
-            myStatement.executeUpdate(query);
+                String query = "Insert into `FinalProj_BloodGroupAvailability`" + "values('" + BloodBankName + "','" + AvailableBloodGroups + "','" + AvailableUnits + "','" + Date + "')";
+                myStatement.executeUpdate(query);
 
-            JOptionPane.showMessageDialog(this, "Record Inserted!!");
+                JOptionPane.showMessageDialog(this, "Record Inserted!!");
 
-            String querysel = "Select * from FinalProj_BloodGroupAvailability";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            //cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                //cmbStore.addItem(rs.getString("StoreName"));
-                //cmbStore.addItem(rs.getString("BloodBankName"));
-                String BloodBankName1 = rs.getString("BloodBankName");
-                String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
-                String AvailableUnits1 = rs.getString("AvailableUnits");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_BloodGroupAvailability";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                //cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    //cmbStore.addItem(rs.getString("StoreName"));
+                    //cmbStore.addItem(rs.getString("BloodBankName"));
+                    String BloodBankName1 = rs.getString("BloodBankName");
+                    String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
+                    String AvailableUnits1 = rs.getString("AvailableUnits");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[4];
-                row[0] = BloodBankName1;
-                row[1] = AvailableBloodGroups1;
-                row[2] = AvailableUnits1;
-                row[3] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[4];
+                    row[0] = BloodBankName1;
+                    row[1] = AvailableBloodGroups1;
+                    row[2] = AvailableUnits1;
+                    row[3] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        if(txtName.getText().isBlank() || txtAvailableUnits.getText().isBlank())
-        {
+        if (txtName.getText().isBlank() || txtAvailableUnits.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value .");
             return;
-        }
-        else
-        {
-        String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
-        String AvailableUnits = txtAvailableUnits.getText();
-        String BloodBankName = txtName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
+        } else {
+            String AvailableBloodGroups = cmbBlood.getItemAt(cmbBlood.getSelectedIndex());
+            String AvailableUnits = txtAvailableUnits.getText();
+            String BloodBankName = txtName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Delete from `FinalProj_BloodGroupAvailability` where `BloodBankName`='" + BloodBankName + "'";
-            myStatement.executeUpdate(query);
+                String query = "Delete from `FinalProj_BloodGroupAvailability` where `BloodBankName`='" + BloodBankName + "'";
+                myStatement.executeUpdate(query);
 
-            JOptionPane.showMessageDialog(this, "Record Deleted!!");
+                JOptionPane.showMessageDialog(this, "Record Deleted!!");
 
-            String querysel = "Select * from FinalProj_BloodGroupAvailability";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            // cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                // cmbStore.addItem(rs.getString("BloodBankName"));
-                String BloodBankName1 = rs.getString("BloodBankName");
-                String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
-                String AvailableUnits1 = rs.getString("AvailableUnits");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_BloodGroupAvailability";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                // cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    // cmbStore.addItem(rs.getString("BloodBankName"));
+                    String BloodBankName1 = rs.getString("BloodBankName");
+                    String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
+                    String AvailableUnits1 = rs.getString("AvailableUnits");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[4];
-                row[0] = BloodBankName1;
-                row[1] = AvailableBloodGroups1;
-                row[2] = AvailableUnits1;
-                row[3] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[4];
+                    row[0] = BloodBankName1;
+                    row[1] = AvailableBloodGroups1;
+                    row[2] = AvailableUnits1;
+                    row[3] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

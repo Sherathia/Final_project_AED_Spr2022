@@ -13,6 +13,7 @@ import java.util.Random;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ClothingRetailCreateRequest extends javax.swing.JPanel {
     /**
      * Creates new form ClothingretailCreateRequest
      */
+    static Logger log = Logger.getLogger(ClothingRetailCreateRequest.class.getName());
     private JPanel RightPanel;
     String selectedOrg;
 

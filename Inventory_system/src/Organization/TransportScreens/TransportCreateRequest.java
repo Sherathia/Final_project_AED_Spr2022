@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +25,7 @@ public class TransportCreateRequest extends javax.swing.JPanel {
      */
     private JPanel rightPanel;
     String selectedOrg;
+    static Logger log = Logger.getLogger(TransportCreateRequest.class.getName());
 
     public TransportCreateRequest(JPanel RightPanel) {
         initComponents();

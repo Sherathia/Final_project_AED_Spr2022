@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import UI.Login;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +25,7 @@ public class MainInsurance extends javax.swing.JFrame {
      * Creates new form MainInsurance
      */
     DefaultTableModel model;
+    static Logger log = Logger.getLogger(MainInsurance.class.getName());
 
     public MainInsurance() {
         initComponents();

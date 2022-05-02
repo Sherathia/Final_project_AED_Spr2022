@@ -21,6 +21,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import UIMedicalEnterprise.MedicalEquipManuf.MainMedicalEquipManuf;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -41,6 +42,7 @@ public class Login extends javax.swing.JFrame {
     public MainVaccineManufacturers vm;
     public MainMedicalEquipManuf mef;
     public BloodBankMain bbm;
+    static Logger log = Logger.getLogger(Login.class.getName());
 
     public Login() {
         initComponents();
@@ -314,8 +316,7 @@ public class Login extends javax.swing.JFrame {
                         mef.setVisible(true);
                         this.dispose();
                         return;
-                    }
-                     else if (DBOrg.equalsIgnoreCase("Blood Bank")) {
+                    } else if (DBOrg.equalsIgnoreCase("Blood Bank")) {
                         bbm = new BloodBankMain();
                         bbm.setVisible(true);
                         this.dispose();
