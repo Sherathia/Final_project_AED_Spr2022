@@ -67,6 +67,7 @@ public class MedicalEquipCreateRequest extends javax.swing.JPanel {
         txtRequest2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         lblApprovedorRejected = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -121,6 +122,8 @@ public class MedicalEquipCreateRequest extends javax.swing.JPanel {
         lblApprovedorRejected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblApprovedorRejected.setText("CREATE REQUEST");
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crerrequest.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,6 +152,10 @@ public class MedicalEquipCreateRequest extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(lblApprovedorRejected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(42, 42, 42))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboBoxEnterprise, comboBoxNetwork, comboBoxOrg, jButton1, txtRequest1, txtRequest2});
@@ -182,7 +189,9 @@ public class MedicalEquipCreateRequest extends javax.swing.JPanel {
                     .addComponent(txtRequest2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jButton1)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -355,6 +364,7 @@ public class MedicalEquipCreateRequest extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblApprovedorRejected;
     private javax.swing.JLabel lblRequest1;

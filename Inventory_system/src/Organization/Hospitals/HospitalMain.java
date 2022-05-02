@@ -96,6 +96,7 @@ public class HospitalMain extends javax.swing.JFrame {
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,7 +169,7 @@ public class HospitalMain extends javax.swing.JFrame {
 
         RightPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel2.setBackground(new java.awt.Color(237, 243, 254));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
@@ -238,6 +239,9 @@ public class HospitalMain extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hospital.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -268,6 +272,10 @@ public class HospitalMain extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(429, 429, 429)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtComments, txtRequestID});
@@ -295,7 +303,9 @@ public class HospitalMain extends javax.swing.JFrame {
                     .addComponent(btnApprove)
                     .addComponent(btnAssign)
                     .addComponent(jButton1))
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel4)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         RightPanel.add(jPanel2, "card2");
@@ -564,6 +574,7 @@ public class HospitalMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

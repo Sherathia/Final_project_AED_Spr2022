@@ -85,9 +85,9 @@ public class createRequests extends javax.swing.JFrame {
             }
         });
 
-        btnCreateRequest.setBackground(new java.awt.Color(102, 153, 255));
+        btnCreateRequest.setBackground(new java.awt.Color(255, 255, 255));
         btnCreateRequest.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnCreateRequest.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreateRequest.setForeground(new java.awt.Color(102, 153, 255));
         btnCreateRequest.setText("Create request");
         btnCreateRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
