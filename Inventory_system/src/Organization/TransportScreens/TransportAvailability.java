@@ -62,6 +62,7 @@ public class TransportAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }
 
@@ -235,165 +236,162 @@ public class TransportAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-         if(txtStoreName.getText().isBlank())
-         {
+        if (txtStoreName.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value .");
             return;
-        }
-        else
-        {
-        String Ambulance = txtAmbulance.getText();
-        String Truck = txtTruck.getText();
-        String Travel = txtTravel.getText();
-        String StoreName = txtStoreName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
+        } else {
+            String Ambulance = txtAmbulance.getText();
+            String Truck = txtTruck.getText();
+            String Travel = txtTravel.getText();
+            String StoreName = txtStoreName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_Vehicles set Ambulance ='" + Ambulance + "',Truck ='" + Truck + "',Lastupdated ='" + Date + "', Travel ='" + Travel + "' where StoreName='" + StoreName + "'";
-            myStatement.executeUpdate(query);
-            JOptionPane.showMessageDialog(this, "Entry Updated!!");
+                String query = "Update FinalProj_Vehicles set Ambulance ='" + Ambulance + "',Truck ='" + Truck + "',Lastupdated ='" + Date + "', Travel ='" + Travel + "' where StoreName='" + StoreName + "'";
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Entry Updated!!");
+                log.info("Entry Updated!!");
 
-            String querysel = "Select * from FinalProj_Vehicles";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            //cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                //cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = rs.getString("StoreName");
-                String Ambulance1 = rs.getString("Ambulance");
-                String Truck1 = rs.getString("Truck");
-                String Travel1 = rs.getString("Travel");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_Vehicles";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                //cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    //cmbStore.addItem(rs.getString("StoreName"));
+                    String StoreName1 = rs.getString("StoreName");
+                    String Ambulance1 = rs.getString("Ambulance");
+                    String Truck1 = rs.getString("Truck");
+                    String Travel1 = rs.getString("Travel");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[5];
-                row[0] = StoreName1;
-                row[1] = Ambulance1;
-                row[2] = Truck1;
-                row[3] = Travel1;
-                row[4] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[5];
+                    row[0] = StoreName1;
+                    row[1] = Ambulance1;
+                    row[2] = Truck1;
+                    row[3] = Travel1;
+                    row[4] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        if(txtStoreName.getText().isBlank())
-         {
+        if (txtStoreName.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value .");
             return;
-        }
-        else
-        {
-        String Ambulance = txtAmbulance.getText();
-        String Truck = txtTruck.getText();
-        String Travel = txtTravel.getText();
-        String StoreName = txtStoreName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
+        } else {
+            String Ambulance = txtAmbulance.getText();
+            String Truck = txtTruck.getText();
+            String Travel = txtTravel.getText();
+            String StoreName = txtStoreName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Insert into `FinalProj_Vehicles`" + "values('" + StoreName + "','" + Ambulance + "','" + Truck + "','" + Travel + "','" + Date + "')";
-            myStatement.executeUpdate(query);
+                String query = "Insert into `FinalProj_Vehicles`" + "values('" + StoreName + "','" + Ambulance + "','" + Truck + "','" + Travel + "','" + Date + "')";
+                myStatement.executeUpdate(query);
 
-            JOptionPane.showMessageDialog(this, "Record Inserted!!");
+                JOptionPane.showMessageDialog(this, "Record Inserted!!");
+                log.info("Record Inserted!!");
 
-            String querysel = "Select * from FinalProj_Vehicles";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            //cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                //cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = rs.getString("StoreName");
-                String Ambulance1 = rs.getString("Ambulance");
-                String Truck1 = rs.getString("Truck");
-                String Travel1 = rs.getString("Travel");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_Vehicles";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                //cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    //cmbStore.addItem(rs.getString("StoreName"));
+                    String StoreName1 = rs.getString("StoreName");
+                    String Ambulance1 = rs.getString("Ambulance");
+                    String Truck1 = rs.getString("Truck");
+                    String Travel1 = rs.getString("Travel");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[5];
-                row[0] = StoreName1;
-                row[1] = Travel1;
-                row[2] = Ambulance1;
-                row[3] = Truck1;
-                row[4] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[5];
+                    row[0] = StoreName1;
+                    row[1] = Travel1;
+                    row[2] = Ambulance1;
+                    row[3] = Truck1;
+                    row[4] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        if(txtStoreName.getText().isBlank())
-         {
+        if (txtStoreName.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value .");
             return;
-        }
-        else
-        {
-        String Ambulance = txtAmbulance.getText();
-        String Truck = txtTruck.getText();
-        String Travel = txtTravel.getText();
-        String StoreName = txtStoreName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
+        } else {
+            String Ambulance = txtAmbulance.getText();
+            String Truck = txtTruck.getText();
+            String Travel = txtTravel.getText();
+            String StoreName = txtStoreName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblVehicles.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Delete from `FinalProj_Vehicles` where `StoreName`='" + StoreName + "'";
-            myStatement.executeUpdate(query);
+                String query = "Delete from `FinalProj_Vehicles` where `StoreName`='" + StoreName + "'";
+                myStatement.executeUpdate(query);
 
-            JOptionPane.showMessageDialog(this, "Record Deleted!!");
+                JOptionPane.showMessageDialog(this, "Record Deleted!!");
+                log.info("Record Deleted!!");
 
-            String querysel = "Select * from FinalProj_Vehicles";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            //cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                //cmbStore.addItem(rs.getString("StoreName"));
-                String StoreName1 = rs.getString("StoreName");
-                String Ambulance1 = rs.getString("Ambulance");
-                String Truck1 = rs.getString("Truck");
-                String Travel1 = rs.getString("Travel");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_Vehicles";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                //cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    //cmbStore.addItem(rs.getString("StoreName"));
+                    String StoreName1 = rs.getString("StoreName");
+                    String Ambulance1 = rs.getString("Ambulance");
+                    String Truck1 = rs.getString("Truck");
+                    String Travel1 = rs.getString("Travel");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[5];
-                row[0] = StoreName1;
-                row[1] = Travel1;
-                row[2] = Ambulance1;
-                row[3] = Truck1;
-                row[4] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[5];
+                    row[0] = StoreName1;
+                    row[1] = Travel1;
+                    row[2] = Ambulance1;
+                    row[3] = Truck1;
+                    row[4] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

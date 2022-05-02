@@ -33,7 +33,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-            
+
             String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
             //cmbStore.removeAllItems();
@@ -56,6 +56,7 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }
 
@@ -205,157 +206,154 @@ public class MedicalEquipManufAvailability extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-         if(txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank())
-        {
+        if (txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value.");
             return;
-        }
-        else
-        {
-        String AvailableEquipment = txtAvailableEquipment.getText();
-        String AvailableQuantity = txtAvailableQuantity.getText();
-        String ManufacturerName = txtName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
+        } else {
+            String AvailableEquipment = txtAvailableEquipment.getText();
+            String AvailableQuantity = txtAvailableQuantity.getText();
+            String ManufacturerName = txtName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Update FinalProj_MedicalEquipManufAvailability set AvailableEquipment ='" + AvailableEquipment + "',AvailableQuantity ='" + AvailableQuantity + "',Lastupdated ='" + Date + "' where ManufacturerName='" + ManufacturerName + "'";
-            myStatement.executeUpdate(query);
-            JOptionPane.showMessageDialog(this, "Entry Updated!!");
+                String query = "Update FinalProj_MedicalEquipManufAvailability set AvailableEquipment ='" + AvailableEquipment + "',AvailableQuantity ='" + AvailableQuantity + "',Lastupdated ='" + Date + "' where ManufacturerName='" + ManufacturerName + "'";
+                myStatement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Entry Updated!!");
+                log.info("Entry Updated!!");
 
-            String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            //cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                // cmbStore.addItem(rs.getString("ManufacturerName"));
-                String ManufacturerName1 = rs.getString("ManufacturerName");
-                String AvailableEquipment1 = rs.getString("AvailableEquipment");
-                String AvailableQuantity1 = rs.getString("AvailableQuantity");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                //cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    // cmbStore.addItem(rs.getString("ManufacturerName"));
+                    String ManufacturerName1 = rs.getString("ManufacturerName");
+                    String AvailableEquipment1 = rs.getString("AvailableEquipment");
+                    String AvailableQuantity1 = rs.getString("AvailableQuantity");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[4];
-                row[0] = ManufacturerName1;
-                row[1] = AvailableEquipment1;
-                row[2] = AvailableQuantity1;
-                row[3] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[4];
+                    row[0] = ManufacturerName1;
+                    row[1] = AvailableEquipment1;
+                    row[2] = AvailableQuantity1;
+                    row[3] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        if(txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank())
-        {
+        if (txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value.");
             return;
-        }
-        else
-        {
-        String AvailableEquipment = txtAvailableEquipment.getText();
-        String AvailableQuantity = txtAvailableQuantity.getText();
-        String ManufacturerName = txtName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
+        } else {
+            String AvailableEquipment = txtAvailableEquipment.getText();
+            String AvailableQuantity = txtAvailableQuantity.getText();
+            String ManufacturerName = txtName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Insert into `FinalProj_MedicalEquipManufAvailability`" + "values('" + ManufacturerName + "','" + AvailableEquipment + "','" + AvailableQuantity + "','" + Date + "')";
-            myStatement.executeUpdate(query);
+                String query = "Insert into `FinalProj_MedicalEquipManufAvailability`" + "values('" + ManufacturerName + "','" + AvailableEquipment + "','" + AvailableQuantity + "','" + Date + "')";
+                myStatement.executeUpdate(query);
 
-            JOptionPane.showMessageDialog(this, "Record Inserted!!");
+                JOptionPane.showMessageDialog(this, "Record Inserted!!");
+                log.info("Record Inserted!!");
 
-            String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            //cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                //cmbStore.addItem(rs.getString("StoreName"));
-                // cmbStore.addItem(rs.getString("ManufacturerName"));
-                String ManufacturerName1 = rs.getString("ManufacturerName");
-                String AvailableEquipment1 = rs.getString("AvailableEquipment");
-                String AvailableQuantity1 = rs.getString("AvailableQuantity");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                //cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    //cmbStore.addItem(rs.getString("StoreName"));
+                    // cmbStore.addItem(rs.getString("ManufacturerName"));
+                    String ManufacturerName1 = rs.getString("ManufacturerName");
+                    String AvailableEquipment1 = rs.getString("AvailableEquipment");
+                    String AvailableQuantity1 = rs.getString("AvailableQuantity");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[4];
-                row[0] = ManufacturerName1;
-                row[1] = AvailableEquipment1;
-                row[2] = AvailableQuantity1;
-                row[3] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[4];
+                    row[0] = ManufacturerName1;
+                    row[1] = AvailableEquipment1;
+                    row[2] = AvailableQuantity1;
+                    row[3] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-         if(txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank())
-        {
+        if (txtName.getText().isBlank() || txtAvailableQuantity.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please enter value.");
             return;
-        }
-        else
-        {
-        String AvailableEquipment = txtAvailableEquipment.getText();
-        String AvailableQuantity = txtAvailableQuantity.getText();
-        String ManufacturerName = txtName.getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
+        } else {
+            String AvailableEquipment = txtAvailableEquipment.getText();
+            String AvailableQuantity = txtAvailableQuantity.getText();
+            String ManufacturerName = txtName.getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+            DefaultTableModel model = (DefaultTableModel) tblMedicalEquipmentAvailability.getModel();
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
-            Statement myStatement = con.createStatement();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
+                Statement myStatement = con.createStatement();
 
-            String query = "Delete from `FinalProj_MedicalEquipManufAvailability` where `ManufacturerName`='" + ManufacturerName + "'";
-            myStatement.executeUpdate(query);
+                String query = "Delete from `FinalProj_MedicalEquipManufAvailability` where `ManufacturerName`='" + ManufacturerName + "'";
+                myStatement.executeUpdate(query);
 
-            JOptionPane.showMessageDialog(this, "Record Deleted!!");
+                JOptionPane.showMessageDialog(this, "Record Deleted!!");
+                log.info("Record Deleted!!");
 
-            String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
-            ResultSet rs = myStatement.executeQuery(querysel);
-            // cmbStore.removeAllItems();
-            model.setRowCount(0);
-            while (rs.next()) {
-                // cmbStore.addItem(rs.getString("ManufacturerName"));
-                String ManufacturerName1 = rs.getString("ManufacturerName");
-                String AvailableEquipment1 = rs.getString("AvailableEquipment");
-                String AvailableQuantity1 = rs.getString("AvailableQuantity");
-                String Lastupdated = rs.getString("Lastupdated");
+                String querysel = "Select * from FinalProj_MedicalEquipManufAvailability";
+                ResultSet rs = myStatement.executeQuery(querysel);
+                // cmbStore.removeAllItems();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    // cmbStore.addItem(rs.getString("ManufacturerName"));
+                    String ManufacturerName1 = rs.getString("ManufacturerName");
+                    String AvailableEquipment1 = rs.getString("AvailableEquipment");
+                    String AvailableQuantity1 = rs.getString("AvailableQuantity");
+                    String Lastupdated = rs.getString("Lastupdated");
 
-                Object row[] = new Object[4];
-                row[0] = ManufacturerName1;
-                row[1] = AvailableEquipment1;
-                row[2] = AvailableQuantity1;
-                row[3] = Lastupdated;
-                model.addRow(row);
+                    Object row[] = new Object[4];
+                    row[0] = ManufacturerName1;
+                    row[1] = AvailableEquipment1;
+                    row[2] = AvailableQuantity1;
+                    row[3] = Lastupdated;
+                    model.addRow(row);
+                }
+                con.close();
+            } //System.out.println("Inserted data");
+            catch (Exception E) {
+                JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Error in DB connection");
-        }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

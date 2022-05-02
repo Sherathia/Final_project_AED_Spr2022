@@ -63,6 +63,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
             con.close();
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            log.error("Error while fetching data from DB");
         }
     }
 
@@ -356,6 +357,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
             String query = "Update FinalProj_FoodmarketRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
+            log.info("Request Assigned!!");
 
             DefaultTableModel model = (DefaultTableModel) tblFoodRequest.getModel();
             model.setRowCount(0);
@@ -386,6 +388,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
@@ -404,6 +407,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
             String query = "Update FinalProj_FoodmarketRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
+            log.info("Request Approved!!");
             DefaultTableModel model = (DefaultTableModel) tblFoodRequest.getModel();
             model.setRowCount(0);
             String query1 = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
@@ -433,6 +437,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
 
@@ -451,6 +456,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
             String query = "Update FinalProj_FoodmarketRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            log.info("Request Rejected!!");
             DefaultTableModel model = (DefaultTableModel) tblFoodRequest.getModel();
             model.setRowCount(0);
             String query1 = "Select * from FinalProj_FoodmarketRequests where Attrib1='A'";
@@ -480,6 +486,7 @@ public class FoodMarketMain extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed
 

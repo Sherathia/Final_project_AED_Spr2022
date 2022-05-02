@@ -56,6 +56,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            log.error("Error while fetching data from DB");
         }
     }
 
@@ -223,6 +224,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
             String query = "Update FinalProj_ClothingItems set MenApparel ='" + MenApparel + "',Lastupdated ='" + Date + "' where StoreName='" + StoreName + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Entry Updated!!");
+            log.info("Entry Updated!!");
 
             String querysel = "Select * from FinalProj_ClothingItems";
             ResultSet rs = myStatement.executeQuery(querysel);
@@ -244,6 +246,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
 
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -265,6 +268,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
             myStatement.executeUpdate(query);
 
             JOptionPane.showMessageDialog(this, "Record Inserted!!");
+            log.info("Record Inserted!!");
 
             String querysel = "Select * from FinalProj_ClothingItems";
             ResultSet rs = myStatement.executeQuery(querysel);
@@ -286,6 +290,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -306,6 +311,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
             myStatement.executeUpdate(query);
 
             JOptionPane.showMessageDialog(this, "Record Deleted!!");
+            log.info("Record Deleted!!");
 
             String querysel = "Select * from FinalProj_ClothingItems";
             ResultSet rs = myStatement.executeQuery(querysel);
@@ -327,6 +333,7 @@ public class ClothingRetailAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

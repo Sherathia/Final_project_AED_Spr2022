@@ -26,7 +26,7 @@ public class MainInsurance extends javax.swing.JFrame {
      */
     DefaultTableModel model;
     static Logger log = Logger.getLogger(MainInsurance.class.getName());
-
+    
     public MainInsurance() {
         initComponents();
         model = (DefaultTableModel) tblInsurance.getModel();
@@ -46,7 +46,7 @@ public class MainInsurance extends javax.swing.JFrame {
                 String ApprovalDate = rs.getString("ApprovalDate");
                 String status = rs.getString("status");
                 String Comments = rs.getString("Comments");
-
+                
                 Object row[] = new Object[8];
                 row[0] = RequestID;
                 row[1] = Description;
@@ -58,11 +58,12 @@ public class MainInsurance extends javax.swing.JFrame {
                 row[7] = Comments;
                 model.addRow(row);
             }
-
+            
             con.close();
-
+            
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            log.error("Error while fetching data from DB");
         }
     }
 
@@ -330,16 +331,17 @@ public class MainInsurance extends javax.swing.JFrame {
         String comments = txtComments.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-
+            
             String query = "Update FinalProj_InsuranceRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
-
+            log.info("Request Assigned!!");
+            
             DefaultTableModel model = (DefaultTableModel) tblInsurance.getModel();
             model.setRowCount(0);
             String query1 = "Select * from FinalProj_InsuranceRequests where Attrib1='A'";
@@ -353,7 +355,7 @@ public class MainInsurance extends javax.swing.JFrame {
                 String ApprovalDate = rs.getString("ApprovalDate");
                 String status = rs.getString("status");
                 String Comments = rs.getString("Comments");
-
+                
                 Object row[] = new Object[8];
                 row[0] = RequestID;
                 row[1] = Description;
@@ -369,6 +371,7 @@ public class MainInsurance extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
@@ -378,15 +381,16 @@ public class MainInsurance extends javax.swing.JFrame {
         String comments = txtComments.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-
+            
             String query = "Update FinalProj_InsuranceRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
+            log.info("Request Approved!!");
             DefaultTableModel model = (DefaultTableModel) tblInsurance.getModel();
             model.setRowCount(0);
             String query1 = "Select * from FinalProj_InsuranceRequests where Attrib1='A'";
@@ -400,7 +404,7 @@ public class MainInsurance extends javax.swing.JFrame {
                 String ApprovalDate = rs.getString("ApprovalDate");
                 String status = rs.getString("status");
                 String Comments = rs.getString("Comments");
-
+                
                 Object row[] = new Object[8];
                 row[0] = RequestID;
                 row[1] = Description;
@@ -416,6 +420,7 @@ public class MainInsurance extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
 
@@ -425,15 +430,16 @@ public class MainInsurance extends javax.swing.JFrame {
         String comments = txtComments.getText();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-
+            
             String query = "Update FinalProj_InsuranceRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            log.info("Request Rejected!!");
             DefaultTableModel model = (DefaultTableModel) tblInsurance.getModel();
             model.setRowCount(0);
             String query1 = "Select * from FinalProj_InsuranceRequests where Attrib1='A'";
@@ -447,7 +453,7 @@ public class MainInsurance extends javax.swing.JFrame {
                 String ApprovalDate = rs.getString("ApprovalDate");
                 String status = rs.getString("status");
                 String Comments = rs.getString("Comments");
-
+                
                 Object row[] = new Object[8];
                 row[0] = RequestID;
                 row[1] = Description;
@@ -463,6 +469,7 @@ public class MainInsurance extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed
 
@@ -472,9 +479,9 @@ public class MainInsurance extends javax.swing.JFrame {
         int accepted = 0;
         int rejected = 0;
         int pending = 0;
-
+        
         for (int row = 0; row < model.getRowCount(); row++) {
-
+            
             if (model.getValueAt(row, 5) == "ACCEPTED") {
                 accepted++;
             } else if (model.getValueAt(row, 5) == "REJECTED") {
@@ -482,7 +489,7 @@ public class MainInsurance extends javax.swing.JFrame {
             } else {
                 pending++;
             }
-
+            
         }
         chart.drawChart(accepted, rejected, pending, model.getColumnCount());
     }//GEN-LAST:event_jButton3ActionPerformed

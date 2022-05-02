@@ -62,6 +62,7 @@ public class TransportMain extends javax.swing.JFrame {
             con.close();
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            log.error("Error while fetching data from DB");
         }
     }
 
@@ -362,6 +363,7 @@ public class TransportMain extends javax.swing.JFrame {
             String query = "Update FinalProj_TransportRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
+            log.info("Request Assigned!!");
             
             String query1 = "Select * from FinalProj_TransportRequests";
             ResultSet rs = myStatement.executeQuery(query1);
@@ -390,6 +392,7 @@ public class TransportMain extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
@@ -408,6 +411,7 @@ public class TransportMain extends javax.swing.JFrame {
             String query = "Update FinalProj_TransportRequests set status='APPROVED',ApprovalDate ='" + Date + "', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Approved!!");
+            log.info("Request Approved!!");
             
              String query1 = "Select * from FinalProj_TransportRequests";
             ResultSet rs = myStatement.executeQuery(query1);
@@ -436,6 +440,7 @@ public class TransportMain extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
 
@@ -454,6 +459,7 @@ public class TransportMain extends javax.swing.JFrame {
             String query = "Update FinalProj_TransportRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            log.info("Request Rejected!!");
             
              String query1 = "Select * from FinalProj_TransportRequests";
             ResultSet rs = myStatement.executeQuery(query1);
@@ -482,6 +488,7 @@ public class TransportMain extends javax.swing.JFrame {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed
 

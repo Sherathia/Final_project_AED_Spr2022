@@ -759,16 +759,19 @@ public class OrgPanel extends javax.swing.JPanel {
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Request created");
+                log.info("Request created");
                 txtNumberOfBeds.setText("");
                 txtHospitalLoc.setText("");
                 Business.SendMail mail = new Business.SendMail();
                 mail.sendMail("Request created", "Your request for hospital beds has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
             } catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+                log.error("Error while fetching data from DB");
             }
 
         } else {
             JOptionPane.showMessageDialog(this, Error);
+            log.error(Error);
         }
     }//GEN-LAST:event_btnSendRequestHospitalActionPerformed
 
@@ -794,15 +797,19 @@ public class OrgPanel extends javax.swing.JPanel {
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Request created");
+                log.info("Request created");
                 txtVaccine.setText("");
                 txtVaccineCount.setText("");
                 Business.SendMail mail = new Business.SendMail();
                 mail.sendMail("Request created", "Your request for vaccine has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
             } catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+                log.error("Error while fetching data from DB");
+                
             }
         } else {
             JOptionPane.showMessageDialog(this, Error);
+            log.error(Error);
         }
     }//GEN-LAST:event_btnSendRequestVaccineActionPerformed
 
@@ -828,15 +835,18 @@ public class OrgPanel extends javax.swing.JPanel {
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Request created");
+                log.info("Request created");
                 txtMedicalEquip.setText("");
                 txtMedicalEquipCount.setText("");
                 Business.SendMail mail = new Business.SendMail();
                 mail.sendMail("Request created", "Your request for medical equipment has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
             } catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+                log.error("Error while fetching data from DB");
             }
         } else {
             JOptionPane.showMessageDialog(this, Error);
+            log.error(Error);
         }
     }//GEN-LAST:event_btnSendRequestMedicalEquipActionPerformed
 
@@ -862,15 +872,18 @@ public class OrgPanel extends javax.swing.JPanel {
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Request created");
+                log.info("Request created");
 //                txtMedicalEquip.setText("");
                 txtBloodCount.setText("");
                 Business.SendMail mail = new Business.SendMail();
                 mail.sendMail("Request created", "Your request for blood has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
             } catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+                log.error("Error while fetching data from DB");
             }
         } else {
             JOptionPane.showMessageDialog(this, Error);
+            log.error(Error);
         }
     }//GEN-LAST:event_btnSendRequestBloodbankActionPerformed
 
@@ -896,15 +909,18 @@ public class OrgPanel extends javax.swing.JPanel {
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Request created");
+                log.info("Request created");
                 txtInsuranceCoverage.setText("");
                 txtNumberOfCoverage.setText("");
                 Business.SendMail mail = new Business.SendMail();
                 mail.sendMail("Request created", "Your request for insurance has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
             } catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+                log.error("Error while fetching data from DB");
             }
         } else {
             JOptionPane.showMessageDialog(this, Error);
+            log.error(Error);
         }
     }//GEN-LAST:event_btnSubmitRequestInsuranceActionPerformed
 
@@ -930,15 +946,18 @@ public class OrgPanel extends javax.swing.JPanel {
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Request created");
+                log.info("Request created");
                 txtFoodBankServed.setText("");
                 txtFoodBankLoc.setText("");
                 Business.SendMail mail = new Business.SendMail();
                 mail.sendMail("Request created", "Your request for food has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
             } catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+                log.error("Error while fetching data from DB");
             }
         } else {
             JOptionPane.showMessageDialog(this, Error);
+            log.error(Error);
         }
     }//GEN-LAST:event_btnSendRequestFoodbankActionPerformed
 
@@ -964,15 +983,18 @@ public class OrgPanel extends javax.swing.JPanel {
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Request created");
+                log.info("Request created");
                 txtVehicleType.setText("");
                 txtVehicleCount.setText("");
                 Business.SendMail mail = new Business.SendMail();
                 mail.sendMail("Request created", "Your request for transport has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
             } catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+                log.error("Error while fetching data from DB");
             }
         } else {
             JOptionPane.showMessageDialog(this, Error);
+            log.error(Error);
         }
     }//GEN-LAST:event_btnSendRequestTransportationActionPerformed
 
@@ -998,15 +1020,18 @@ public class OrgPanel extends javax.swing.JPanel {
                 Statement myStatement = con.createStatement();
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Request created");
+                log.info("Request created");
                 txtClothingLoc1.setText("");
                 txtNumberOfClothing1.setText("");
                 Business.SendMail mail = new Business.SendMail();
                 mail.sendMail("Request created", "Your request for clothing has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
             } catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+                log.error("Error while fetching data from DB");
             }
         } else {
             JOptionPane.showMessageDialog(this, Error);
+            log.error(Error);
         }
     }//GEN-LAST:event_btnSendRequestClothingActionPerformed
 

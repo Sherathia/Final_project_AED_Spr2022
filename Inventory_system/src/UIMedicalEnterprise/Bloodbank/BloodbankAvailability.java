@@ -24,16 +24,16 @@ public class BloodbankAvailability extends javax.swing.JPanel {
      * Creates new form AllRequests
      */
     static Logger log = Logger.getLogger(BloodbankAvailability.class.getName());
-
+    
     public BloodbankAvailability(JPanel RightPane) {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
-
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
             Statement myStatement = con.createStatement();
-
+            
             String querysel = "Select * from FinalProj_BloodGroupAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
             //cmbStore.removeAllItems();
@@ -44,7 +44,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                 String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
                 String AvailableUnits1 = rs.getString("AvailableUnits");
                 String Lastupdated = rs.getString("Lastupdated");
-
+                
                 Object row[] = new Object[4];
                 row[0] = BloodBankName1;
                 row[1] = AvailableBloodGroups1;
@@ -56,6 +56,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }
 
@@ -226,16 +227,17 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
             DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
-
+            
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
-
+                
                 String query = "Update FinalProj_BloodGroupAvailability set AvailableBloodGroups ='" + AvailableBloodGroups + "',AvailableUnits ='" + AvailableUnits + "',Lastupdated ='" + Date + "' where BloodBankName='" + BloodBankName + "'";
                 myStatement.executeUpdate(query);
                 JOptionPane.showMessageDialog(this, "Entry Updated!!");
-
+                log.info("Entry Updated!!");
+                
                 String querysel = "Select * from FinalProj_BloodGroupAvailability";
                 ResultSet rs = myStatement.executeQuery(querysel);
                 //cmbStore.removeAllItems();
@@ -246,7 +248,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                     String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
                     String AvailableUnits1 = rs.getString("AvailableUnits");
                     String Lastupdated = rs.getString("Lastupdated");
-
+                    
                     Object row[] = new Object[4];
                     row[0] = BloodBankName1;
                     row[1] = AvailableBloodGroups1;
@@ -258,6 +260,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             } //System.out.println("Inserted data");
             catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -274,17 +277,18 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
             DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
-
+            
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
-
+                
                 String query = "Insert into `FinalProj_BloodGroupAvailability`" + "values('" + BloodBankName + "','" + AvailableBloodGroups + "','" + AvailableUnits + "','" + Date + "')";
                 myStatement.executeUpdate(query);
-
+                
                 JOptionPane.showMessageDialog(this, "Record Inserted!!");
-
+                log.info("Record Inserted!!");
+                
                 String querysel = "Select * from FinalProj_BloodGroupAvailability";
                 ResultSet rs = myStatement.executeQuery(querysel);
                 //cmbStore.removeAllItems();
@@ -296,7 +300,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                     String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
                     String AvailableUnits1 = rs.getString("AvailableUnits");
                     String Lastupdated = rs.getString("Lastupdated");
-
+                    
                     Object row[] = new Object[4];
                     row[0] = BloodBankName1;
                     row[1] = AvailableBloodGroups1;
@@ -308,6 +312,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             } //System.out.println("Inserted data");
             catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
         }
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -324,17 +329,18 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
             DefaultTableModel model = (DefaultTableModel) tblBloodGroupAvailability.getModel();
-
+            
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema1?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "root12345");
                 Statement myStatement = con.createStatement();
-
+                
                 String query = "Delete from `FinalProj_BloodGroupAvailability` where `BloodBankName`='" + BloodBankName + "'";
                 myStatement.executeUpdate(query);
-
+                
                 JOptionPane.showMessageDialog(this, "Record Deleted!!");
-
+                log.info("Record Deleted!!");
+                
                 String querysel = "Select * from FinalProj_BloodGroupAvailability";
                 ResultSet rs = myStatement.executeQuery(querysel);
                 // cmbStore.removeAllItems();
@@ -345,7 +351,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                     String AvailableBloodGroups1 = rs.getString("AvailableBloodGroups");
                     String AvailableUnits1 = rs.getString("AvailableUnits");
                     String Lastupdated = rs.getString("Lastupdated");
-
+                    
                     Object row[] = new Object[4];
                     row[0] = BloodBankName1;
                     row[1] = AvailableBloodGroups1;
@@ -357,6 +363,7 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             } //System.out.println("Inserted data");
             catch (Exception E) {
                 JOptionPane.showMessageDialog(this, "Error in DB connection");
+                log.error("Error in DB connection");
             }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed

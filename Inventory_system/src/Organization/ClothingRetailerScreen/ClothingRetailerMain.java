@@ -77,6 +77,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            log.error("Error while fetching data from DB");
         }
     }
 
@@ -388,10 +389,12 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
             String query = "Update FinalProj_ClothingRequests set status='IN PROGRESS', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Assigned!!");
+            log.info("Request Assigned!!");
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
@@ -434,10 +437,12 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
             myStatement.executeUpdate(queryupd);
 
             JOptionPane.showMessageDialog(this, "Request Approved!!");
+            log.info("Request Approved!!");
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
 
@@ -456,10 +461,12 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
             String query = "Update FinalProj_ClothingRequests set status='REJECTED', comments ='" + comments + "' where RequestID='" + requestId + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            log.info("Request Rejected!!");
             con.close();
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnRejectActionPerformed
 

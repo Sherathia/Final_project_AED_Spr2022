@@ -24,7 +24,6 @@ public class RegistrationScreen extends javax.swing.JPanel {
     /**
      * Creates new form RegistrationScreen
      */
-    
     private JPanel rightPanel;
     static Logger log = Logger.getLogger(RegistrationScreen.class.getName());
 
@@ -381,6 +380,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         }
         Business.SendMail mail = new Business.SendMail();
         mail.sendMail("Registration", "Registration Completed.!!", EmailId);
+        log.info("Registration Completed.!!");
 
         //sendMail("Registration","Registered Successfully",EmailId);
         try {
@@ -390,6 +390,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
             String query = "Insert into `FinalProj_Users`" + "values('" + Name + "','" + UserName + "','" + Password + "','" + EmailId + "','" + Country + "','" + Enterprise + "','" + Organization + "','" + Contact + "')";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "User Created Successfully!!..");
+            log.info("User Created Successfully!!..");
             txtEmail.setText(null);
             txtName.setText(null);
             txtUsername.setText(null);
@@ -400,6 +401,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
             //System.out.println("Inserted data");
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            log.error("Error while fetching data from DB");
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 

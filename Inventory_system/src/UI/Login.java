@@ -333,6 +333,7 @@ public class Login extends javax.swing.JFrame {
             //System.out.println("Inserted data");
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            log.error("Error while fetching data from DB");
         }
 
 

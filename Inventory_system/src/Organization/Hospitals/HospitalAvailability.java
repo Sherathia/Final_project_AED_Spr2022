@@ -212,6 +212,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
 
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -234,6 +235,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
             myStatement.executeUpdate(query);
 
             JOptionPane.showMessageDialog(this, "Record Inserted!!");
+            log.info("Record Inserted!!");
 
             String querysel = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
@@ -258,6 +260,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
 
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -280,6 +283,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
             myStatement.executeUpdate(query);
 
             JOptionPane.showMessageDialog(this, "Record Deleted!!");
+            log.info("Record Deleted!!");
 
             String querysel = "Select * from FinalProj_HospitalAvailability";
             ResultSet rs = myStatement.executeQuery(querysel);
@@ -303,6 +307,7 @@ public class HospitalAvailability extends javax.swing.JPanel {
         } //System.out.println("Inserted data");
         catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

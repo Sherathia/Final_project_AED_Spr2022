@@ -345,6 +345,7 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
 //            String query = "Insert into `FinalProj_Users`" + "values('" + Name + "','" + UserName + "','" + Password + "','" + EmailId + "','" + Country + "','" + Enterprise + "','" + Organization + "','" + Contact + "')";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request created");
+            log.info("Request created");
             txtRequest1.setText("");
             txtRequest2.setText("");
             Business.SendMail mail = new Business.SendMail();
@@ -352,6 +353,7 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
             mail.sendMail("Request created", "Your request has been created, you will get an update on the request when its status changes", "anvithabl@gmail.com");
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Error while fetching data from DB");
+            log.error("Error while fetching data from DB");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
