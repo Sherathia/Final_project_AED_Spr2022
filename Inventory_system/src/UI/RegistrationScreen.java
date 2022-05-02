@@ -142,9 +142,10 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(51, 153, 255));
         jLabel10.setText("New User Registration");
 
-        btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        btnBack.setText("<<Back");
+        btnBack.setBackground(new java.awt.Color(102, 153, 255));
+        btnBack.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("<< BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);

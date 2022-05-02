@@ -185,7 +185,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
 
         RightPane.setLayout(new java.awt.CardLayout());
 
-        jPanel3.setBackground(new java.awt.Color(237, 243, 254));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
@@ -193,7 +193,6 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
         jLabel1.setText("CLOTHING RETAILER");
 
         tblClothingRtl.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        tblClothingRtl.setForeground(new java.awt.Color(102, 153, 255));
         tblClothingRtl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -205,7 +204,7 @@ public class ClothingRetailerMain extends javax.swing.JFrame {
                 "RequestID", "Description", "Quantity", "Requester", "Requested Date", "Status", "Approval Date", "Comments"
             }
         ));
-        tblClothingRtl.setGridColor(new java.awt.Color(102, 153, 255));
+        tblClothingRtl.setGridColor(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(tblClothingRtl);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N

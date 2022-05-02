@@ -67,7 +67,7 @@ public class VaccineManufRequests extends javax.swing.JPanel {
         comboBoxNetwork = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(237, 243, 254));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         lblApprovedorRejected.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         lblApprovedorRejected.setForeground(new java.awt.Color(102, 153, 255));

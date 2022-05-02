@@ -82,7 +82,7 @@ public class VaccineManufAvailability extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
 
-        jPanel1.setBackground(new java.awt.Color(237, 243, 254));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 800));
 
         jLabel2.setBackground(new java.awt.Color(51, 153, 255));

@@ -169,7 +169,7 @@ public class TransportMain extends javax.swing.JFrame {
 
         RightPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel3.setBackground(new java.awt.Color(237, 243, 254));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         tblTransport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

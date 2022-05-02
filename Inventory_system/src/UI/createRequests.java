@@ -56,7 +56,7 @@ public class createRequests extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
         lblChooseNetwork.setText("Choose network : ");
 
@@ -85,6 +85,9 @@ public class createRequests extends javax.swing.JFrame {
             }
         });
 
+        btnCreateRequest.setBackground(new java.awt.Color(102, 153, 255));
+        btnCreateRequest.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnCreateRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnCreateRequest.setText("Create request");
         btnCreateRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +133,7 @@ public class createRequests extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(338, 338, 338)
                 .addComponent(btnCreateRequest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

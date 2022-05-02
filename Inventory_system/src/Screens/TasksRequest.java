@@ -61,8 +61,8 @@ public class TasksRequest extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("MANAGE REQUEST");
 
         tblManageRequest.setModel(new javax.swing.table.DefaultTableModel(
@@ -80,16 +80,20 @@ public class TasksRequest extends javax.swing.JPanel {
         tblManageRequest.setShowGrid(false);
         jScrollPane1.setViewportView(tblManageRequest);
 
+        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
         btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnApprove.setText("Approve");
+        btnApprove.setForeground(new java.awt.Color(255, 255, 255));
+        btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveActionPerformed(evt);
             }
         });
 
+        btnReject.setBackground(new java.awt.Color(102, 153, 255));
         btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnReject.setText("Reject");
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
+        btnReject.setText("REJECT");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRejectActionPerformed(evt);
@@ -106,7 +110,9 @@ public class TasksRequest extends javax.swing.JPanel {
 
         txtComments.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        btnviewpendingreq.setBackground(new java.awt.Color(102, 153, 255));
         btnviewpendingreq.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnviewpendingreq.setForeground(new java.awt.Color(255, 255, 255));
         btnviewpendingreq.setText("View Pending Requests");
         btnviewpendingreq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +120,9 @@ public class TasksRequest extends javax.swing.JPanel {
             }
         });
 
+        btnviewrequests.setBackground(new java.awt.Color(102, 153, 255));
         btnviewrequests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnviewrequests.setForeground(new java.awt.Color(255, 255, 255));
         btnviewrequests.setText("View All Requests");
         btnviewrequests.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,7 +203,7 @@ public class TasksRequest extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))

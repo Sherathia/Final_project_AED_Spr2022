@@ -65,7 +65,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
         btnUserCreation.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnUserCreation.setForeground(new java.awt.Color(51, 153, 255));
-        btnUserCreation.setText("User Creation Request");
+        btnUserCreation.setText("USER CREATION REQUEST");
         btnUserCreation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUserCreationActionPerformed(evt);
@@ -74,7 +74,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
         btnTaskRequest.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnTaskRequest.setForeground(new java.awt.Color(51, 153, 255));
-        btnTaskRequest.setText("Task Requests");
+        btnTaskRequest.setText("TASK REQUEST");
         btnTaskRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaskRequestActionPerformed(evt);
@@ -121,7 +121,7 @@ public class AdminRequestScreen extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.CardLayout());
 
-        RightPanel.setBackground(new java.awt.Color(237, 243, 254));
+        RightPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         tblRequests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         tblRequests.setModel(new javax.swing.table.DefaultTableModel(

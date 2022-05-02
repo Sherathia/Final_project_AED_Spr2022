@@ -86,7 +86,7 @@ public class FoodMarketAvailability extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         txtStore = new javax.swing.JTextField();
 
-        jPanel1.setBackground(new java.awt.Color(237, 243, 254));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
