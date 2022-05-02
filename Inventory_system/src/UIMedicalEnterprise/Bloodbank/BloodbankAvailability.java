@@ -115,7 +115,9 @@ public class BloodbankAvailability extends javax.swing.JPanel {
 
         txtAvailableUnits.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        btnUpdate.setBackground(new java.awt.Color(102, 153, 255));
         btnUpdate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +125,9 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             }
         });
 
+        btnCreate.setBackground(new java.awt.Color(102, 153, 255));
+        btnCreate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("CREATE");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +135,9 @@ public class BloodbankAvailability extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(102, 153, 255));
+        btnDelete.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,8 +189,8 @@ public class BloodbankAvailability extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel2)
                 .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

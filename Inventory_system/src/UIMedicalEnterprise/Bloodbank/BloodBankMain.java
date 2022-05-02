@@ -194,7 +194,9 @@ public class BloodBankMain extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel3.setText("Comments:");
 
-        btnAssign.setBackground(new java.awt.Color(188, 210, 254));
+        btnAssign.setBackground(new java.awt.Color(102, 153, 255));
+        btnAssign.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(255, 255, 255));
         btnAssign.setText("ASSIGN TO ME");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +204,9 @@ public class BloodBankMain extends javax.swing.JFrame {
             }
         });
 
-        btnApprove.setBackground(new java.awt.Color(188, 210, 254));
+        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
+        btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnApprove.setForeground(new java.awt.Color(255, 255, 255));
         btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +214,9 @@ public class BloodBankMain extends javax.swing.JFrame {
             }
         });
 
-        btnReject.setBackground(new java.awt.Color(188, 210, 254));
+        btnReject.setBackground(new java.awt.Color(102, 153, 255));
+        btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("REJECT");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +224,9 @@ public class BloodBankMain extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(188, 210, 254));
+        jButton2.setBackground(new java.awt.Color(102, 153, 255));
+        jButton2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("ANALYTICS");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,10 +281,10 @@ public class BloodBankMain extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1)
                 .addGap(54, 54, 54)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
+                        .addGap(159, 159, 159)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtRequestID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -291,9 +299,9 @@ public class BloodBankMain extends javax.swing.JFrame {
                             .addComponent(btnReject)
                             .addComponent(jButton2)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(144, 144, 144)
                         .addComponent(jLabel4)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         RightPane.add(jPanel3, "card2");
@@ -308,7 +316,7 @@ public class BloodBankMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
 
         pack();

@@ -219,7 +219,9 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel3.setText("Comments:");
 
-        btnAssign.setBackground(new java.awt.Color(188, 210, 254));
+        btnAssign.setBackground(new java.awt.Color(102, 153, 255));
+        btnAssign.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(255, 255, 255));
         btnAssign.setText("ASSIGN TO ME");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,7 +229,9 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             }
         });
 
-        btnApprove.setBackground(new java.awt.Color(188, 210, 254));
+        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
+        btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnApprove.setForeground(new java.awt.Color(255, 255, 255));
         btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,7 +239,9 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             }
         });
 
-        btnReject.setBackground(new java.awt.Color(188, 210, 254));
+        btnReject.setBackground(new java.awt.Color(102, 153, 255));
+        btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("REJECT");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,7 +249,9 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(188, 210, 254));
+        jButton3.setBackground(new java.awt.Color(102, 153, 255));
+        jButton3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("ANALYTICS");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,7 +319,7 @@ public class MainMedicalEquipManuf extends javax.swing.JFrame {
                     .addComponent(btnApprove)
                     .addComponent(btnReject)
                     .addComponent(jButton3))
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(374, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
