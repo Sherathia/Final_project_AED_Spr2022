@@ -126,7 +126,7 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
         lblApprovedorRejected.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         lblApprovedorRejected.setForeground(new java.awt.Color(102, 153, 255));
         lblApprovedorRejected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblApprovedorRejected.setText("Create Request");
+        lblApprovedorRejected.setText("CREATE REQUEST");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crerrequest.png"))); // NOI18N
 
@@ -152,16 +152,13 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
                             .addComponent(comboBoxOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboBoxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRequest2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addGap(0, 554, Short.MAX_VALUE))
+                            .addComponent(jButton1)
+                            .addComponent(jLabel7))
+                        .addGap(0, 552, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblApprovedorRejected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(41, 41, 41))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboBoxEnterprise, comboBoxNetwork, comboBoxOrg, jButton1, txtRequest1, txtRequest2});
@@ -195,9 +192,9 @@ public class BloodBankCreateRequest extends javax.swing.JPanel {
                     .addComponent(txtRequest2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
                 .addComponent(jLabel7)
-                .addGap(49, 49, 49))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
